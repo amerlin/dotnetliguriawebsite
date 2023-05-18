@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import './loginControl.css';
-import {useOidc} from "@axa-fr/react-oidc";
+import {useOidc, useOidcIdToken} from "@axa-fr/react-oidc";
 import {useOidcUser} from '@axa-fr/react-oidc';
 import {Link} from "react-router-dom";
 

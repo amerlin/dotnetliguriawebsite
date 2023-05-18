@@ -4,16 +4,16 @@ import {Notifications, Language} from "@mui/icons-material/";
 import SettingsIcon from '@mui/icons-material/Settings';
 import LoginControl from "../loginControl";
 import {Link} from "react-router-dom";
+import {useOidcIdToken, useOidcUser} from "@axa-fr/react-oidc";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface TopBarProps {
 }
 
 const TopBar: FC<TopBarProps> = () => {
-
     const [result, setResult] = useState("");
     const [isError, setIsError] = useState(true);
-
+    const {oidcUser, oidcUserLoadingState} = useOidcUser();
     const loggedOut = () => {
         setResult("");
         setIsError(true);
@@ -48,7 +48,7 @@ const TopBar: FC<TopBarProps> = () => {
                     <div>
                         <LoginControl onLogout={loggedOut}/>
                     </div>
-                    <img src="https://amerlin.keantex.com/wp-content/uploads/2019/01/profilo.jpg?57d607&57d607"
+                    <img src={oidcUser?.picture}
                          alt="Profile" className={styles.TopAvatar}/>
                 </div>
             </div>
