@@ -14,7 +14,6 @@ const AdminUsers: FC<AdminUsersProps> = () => {
                 const data = await fetch("https://hello.vevy.com/realms/DotNetLiguria/users", {});
                 console.log(data);
             }
-            console.log("I'm here");
             loadUsers().catch(console.error);
         }, []);
 
