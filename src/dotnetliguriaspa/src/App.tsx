@@ -14,6 +14,7 @@ import HomeHeader from "./components/HomeHeader/HomeHeader";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import AdminTokens from "./pages/AdminTokens/AdminTokens";
 import Layout from "./components/Layout/Layout";
+import AdminUsers from "./pages/AdminUsers/AdminUsers";
 
 const acr_to_loa = Object.freeze({
     pwd: 1,
@@ -129,7 +130,7 @@ function App() {
                         <Route element={<Layout/>}>
                             <Route path='/admin' element={<AdminHome/>}/>
                             <Route path='/admin/analytics/' element={<PageNotFound pagename={"Analytics"}/>}/>
-                            <Route path='/admin/users/' element={<PageNotFound pagename={"Users"}/>}/>
+                            <Route path='/admin/users/' element={<AdminUsers pagename={"Users"}/>}/>
                             <Route path='/admin/workshops/' element={<PageNotFound pagename={"Workshops"}/>}/>
                             <Route path='/admin/events/' element={<PageNotFound pagename={"Events"}/>}/>
                             <Route path='/admin/reports/' element={<PageNotFound pagename={"Reports"}/>}/>
