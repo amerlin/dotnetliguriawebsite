@@ -67,9 +67,8 @@ function App() {
     const invokeAPI = async (resource: string, requested_loa: number, previousInvocationOk = true) => {
         try {
             console.log(`requesting ${resource} with loa:${requested_loa}`);
-            console.log("I'm here");
             const token = idToken;
-            //console.log(token);
+            console.log("Id token: ", token);
             if (!isAuthenticated) {
                 setResult("User is not authenticated");
                 setIsError(true);
@@ -83,12 +82,12 @@ function App() {
                 return;
             }
 
-            const loadedUsers = await fetch("https://hello.vevy.com/realms/DotNetLiguria/users", {
-                // headers: {
-                //   Authorization: `Bearer ${token}`,
-                // },
-            });
-            console.log(loadedUsers);
+            // const loadedUsers = await fetch("https://hello.vevy.com/realms/DotNetLiguria/users", {
+            //     // headers: {
+            //     //   Authorization: `Bearer ${token}`,
+            //     // },
+            // });
+            // console.log(loadedUsers);
 
             const response = await fetch(window.location.origin + "/api/values/" + resource, {
                 // headers: {

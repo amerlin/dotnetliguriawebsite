@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import styles from './AdminSpeakers.module.css';
 import { useOidcFetch } from "@axa-fr/react-oidc";
 import Speaker from '../../models/Speaker';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface AdminSpeakersProps {
@@ -9,14 +10,20 @@ interface AdminSpeakersProps {
 
 const AdminSpeakers: FC<AdminSpeakersProps> = () => {
     const { fetch } = useOidcFetch();
-    const [data, setdata] = useState<Speaker[]>();
+    const [dataRows, setDataRows] = useState<Speaker[]>([]);
+
+    const columns: GridColDef[] = [
+        { field: 'name', headerName: 'Name', width: 180 },
+        { field: 'profileImage', headerName: 'Profile Image', width: 360 },
+      ];
 
     useEffect(() => {
         const loadWorkshops = async () => {
             await fetch("https://localhost:64561/api/Speaker/Get")
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data); setdata(data)
+                    console.log(data);
+                    setDataRows(data);
                 }
                 )
                 .catch(error => console.error('Error:', error));
@@ -26,8 +33,21 @@ const AdminSpeakers: FC<AdminSpeakersProps> = () => {
 
     return (
         <div className={styles.AdminSpeakers} data-testid="AdminSpeakers">
-            Admin Speakers
-            <p>Total speakers: {data?.length}</p>
+            <div className={styles.Title}>Speakers Page</div>
+            <div>
+                <DataGrid 
+                    style={{height: 373, width: "80%"}}
+                    getRowId={(data) => data.name}
+                    rows={dataRows}
+                    columns={columns}
+                    initialState={{
+                        pagination: {
+                            page: 0, pageSize: 5
+                        },
+                    }}
+                />
+            </div>
+
         </div>
     )
 
