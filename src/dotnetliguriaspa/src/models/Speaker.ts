@@ -1,4 +1,4 @@
-﻿export interface Workshop
+﻿export interface Speaker
 {
     workshopSpeakerId: string;
     name: string;
@@ -6,4 +6,4 @@
     blogHtml: string;
     userName: string;
 }
-export default Workshop;
+export default Speaker;

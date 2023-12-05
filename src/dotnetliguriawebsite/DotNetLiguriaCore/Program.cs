@@ -45,8 +45,8 @@ public class Program
             options.AddPolicy(CorsPolicy, policy =>
             {
                 policy
-                    //.AllowAnyOrigin()
-                    .WithOrigins(AllowedOrigins)
+                    .AllowAnyOrigin()
+                    // .WithOrigins(AllowedOrigins)
                     .AllowAnyHeader()
                     .AllowAnyMethod();
             });

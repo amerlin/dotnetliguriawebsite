@@ -18,6 +18,7 @@ import AdminWorkshops from "./pages/AdminWorkshops/AdminWorkshops";
 import AdminSpeakers from "./pages/AdminSpeakers/AdminSpeakers";
 import AuthQuestionario from './pages/AuthQuestionario/AuthQuestionario';
 import AuthHome from './pages/AuthHome/AuthHome';
+import AdminHome from './pages/AdminHome/AdminHome';
 
 const acr_to_loa = Object.freeze({
     pwd: 1,
@@ -133,6 +134,7 @@ function App() {
                         <Route element={<Layout/>}>
                             <Route path='/auth/home' element={<AuthHome/>}/>
                             <Route paht='/auth/questionario' element={AuthQuestionario}/>
+                            <Route path='/admin' element={<AdminHome pagename={"Admin Dashboard"}/>}/>
                             <Route path='/admin/analytics/' element={<PageNotFound pagename={"Analytics"}/>}/>
                             <Route path='/admin/users/' element={<AdminUsers pagename={"Users"}/>}/>
                             <Route path='/admin/workshops/' element={<AdminWorkshops pagename={"Workshops"}/>}/>

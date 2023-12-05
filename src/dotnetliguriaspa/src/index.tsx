@@ -52,8 +52,6 @@ root.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
-
-
 /*
 // https://authts.github.io/oidc-client-ts/classes/OidcClientSettingsStore.html
 === List of all the oidcConfig properties ===
