@@ -6,6 +6,8 @@ using MongoDB.Driver.Core.Operations;
 
 namespace DotNetLiguriaCore.Controllers
 {
+    [Route("api/[controller]/[action]")]
+    [ApiController]
     public class WorkshopController : ControllerBase
     {
         private readonly WorkshopService _workshopService;
@@ -16,7 +18,6 @@ namespace DotNetLiguriaCore.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public async Task<List<Workshop>> Get() =>
             await _workshopService.GetAsync();
 
