@@ -1,10 +1,21 @@
 # Running locally the website
 
+## Mongo DbSetup
+
+DataMigration project
+
+```
+dotnet run 
+```
+We have mongodb database and tables: 
+
+ - workshopFiles
+ - workshops
+ - workshopSpeakers
+ - workshopTracks
 
 
-
-
-## The .env file
+## The .env FILE
 
 Even if ASP.NET Core does not use `.env` files, there is a small class offering the opportunity to set some environment variables.
 

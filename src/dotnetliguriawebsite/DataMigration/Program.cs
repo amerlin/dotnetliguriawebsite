@@ -42,8 +42,7 @@ internal class Program
         //File.WriteAllText("workshopSpeakers.json", jsonWorkshopSpeakers);
 
         var envPath = Environment.CurrentDirectory;
-
-        string jsonPath = Path.GetFullPath(Path.Combine(envPath, @"..\..\..\json\"));
+        string jsonPath = Path.GetFullPath(Path.Combine(envPath, @"json\"));
 
         string fileName = jsonPath + "workshopSpeakers.json";
         string jsonString = File.ReadAllText(fileName);

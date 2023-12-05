@@ -47,6 +47,12 @@ const SideBar: FC<SideBarProps> = () => (
                             Users
                         </li>
                     </Link>
+                    <Link to="/admin/speakers" className="link">
+                        <li className={styles.SideBarListItem}>
+                            <ProductionQuantityLimits className={styles.SideBarIcon}/>
+                            Speakers
+                        </li>
+                    </Link>
                     <Link to="/admin/workshops" className="link">
                         <li className={styles.SideBarListItem}>
                             <ProductionQuantityLimits className={styles.SideBarIcon}/>
@@ -63,6 +69,24 @@ const SideBar: FC<SideBarProps> = () => (
                         <li className={styles.SideBarListItem}>
                             <Report className={styles.SideBarIcon}/>
                             Reports
+                        </li>
+                    </Link>
+                </ul>
+            </div>
+
+            <div className={styles.SideBarMenu}>
+                <h3 className={styles.SideBarTitle}>Auth User Menu</h3>
+                <ul className={styles.SideBarList}>
+                    <Link to="/auth/home/" className="link">
+                        <li className={styles.SideBarListItem}>
+                            <VerifiedUser className={styles.SideBarIcon}/>
+                            User Profile
+                        </li>
+                    </Link>
+                    <Link to="/auth/questionario" className="link">
+                        <li className={styles.SideBarListItem}>
+                            <ProductionQuantityLimits className={styles.SideBarIcon}/>
+                            User Questionario
                         </li>
                     </Link>
                 </ul>

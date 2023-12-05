@@ -9,7 +9,6 @@ import {useOidcFetch} from '@axa-fr/react-oidc';
 import {useOidc} from "@axa-fr/react-oidc";
 import {useOidcIdToken, useOidcAccessToken} from '@axa-fr/react-oidc';
 import {Route, Routes} from 'react-router-dom';
-import AdminHome from './pages/AdminHome/AdminHome';
 import HomeHeader from "./components/HomeHeader/HomeHeader";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import AdminTokens from "./pages/AdminTokens/AdminTokens";
@@ -17,6 +16,8 @@ import Layout from "./components/Layout/Layout";
 import AdminUsers from "./pages/AdminUsers/AdminUsers";
 import AdminWorkshops from "./pages/AdminWorkshops/AdminWorkshops";
 import AdminSpeakers from "./pages/AdminSpeakers/AdminSpeakers";
+import AuthQuestionario from './pages/AuthQuestionario/AuthQuestionario';
+import AuthHome from './pages/AuthHome/AuthHome';
 
 const acr_to_loa = Object.freeze({
     pwd: 1,
@@ -130,7 +131,8 @@ function App() {
                     <Routes>
                         <Route path='/' exact element={<HomeHeader/>}/>
                         <Route element={<Layout/>}>
-                            <Route path='/admin' element={<AdminHome/>}/>
+                            <Route path='/auth/home' element={<AuthHome/>}/>
+                            <Route paht='/auth/questionario' element={AuthQuestionario}/>
                             <Route path='/admin/analytics/' element={<PageNotFound pagename={"Analytics"}/>}/>
                             <Route path='/admin/users/' element={<AdminUsers pagename={"Users"}/>}/>
                             <Route path='/admin/workshops/' element={<AdminWorkshops pagename={"Workshops"}/>}/>
