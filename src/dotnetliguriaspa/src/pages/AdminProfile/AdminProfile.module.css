@@ -7,3 +7,27 @@
         font-size: 20px;
         font-weight: 600;
 }
+
+.FormGroup { 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.FormGroupElement {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+}
+
+.FormGroupSeparator {
+    display: flex;
+    margin: 10px;
+}
+
+.FormGroupTitle {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+    font-weight: bold;
+}

@@ -94,6 +94,7 @@
 .container {
   display: flex;
   margin-top: 10px;
+  margin-left: 0px !important;
 }
 
 .link {

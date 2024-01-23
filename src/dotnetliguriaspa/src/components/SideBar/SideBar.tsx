@@ -32,7 +32,7 @@ const SideBar: FC<SideBarProps> = () => (
                     <Link to="/admin/profile/" className="link">
                         <li className={styles.SideBarListItem}>
                             <VerifiedUser className={styles.SideBarIcon} />
-                            Profile
+                            Profilo
                         </li>
                     </Link>
                     {/* <Link to="/admin/analytics/" className="link">

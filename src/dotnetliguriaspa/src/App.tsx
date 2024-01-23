@@ -16,6 +16,7 @@ import AdminHome from './pages/AdminHome/AdminHome';
 import AdminProfile from './pages/AdminProfile/AdminProfile';
 import AdminFeedbacks from './pages/AdminFeedbacks/AdminFeedbacks';
 import AdminEvents from './pages/AdminEvents/AdminEvents';
+import 'bootstrap/dist/css/bootstrap.css';
 
 // const acr_to_loa = Object.freeze({
 //     pwd: 1,
