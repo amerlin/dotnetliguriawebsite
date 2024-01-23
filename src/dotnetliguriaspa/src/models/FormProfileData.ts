@@ -1,0 +1,21 @@
+export type FormProfileData = {
+  firstname: string;
+  lastname: string;
+  email: string;
+  city: string;
+  address: string;
+  cap: string;
+  prov: string;
+  factory: string;
+  factoryCity: string;
+  factoryProv: string;
+  factoryRoles: string;
+  mobile: string;
+  socialGoogle: string;
+  socialFacebook: string;
+  socialTwitter: string;
+  socialLinkedin: string;
+  socialAltro: string;
+  consentPrivacy: boolean;
+  consentData: boolean;
+};

@@ -20,6 +20,16 @@
     padding: 0.5em;
 }
 
+.FormGroupElement span {
+    color:red;
+    font-size:10px;
+}
+
+.FormGroupElement select {
+    width: 186px;
+    height: 29px;
+}
+
 .FormGroupSeparator {
     display: flex;
     margin: 10px;
@@ -30,4 +40,18 @@
     flex-direction: column;
     padding: 0.5em;
     font-weight: bold;
+    font-style: italic;
+}
+
+.FormGroupButtons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.alert{
+    color:red;
+    font-size:15px;
 }

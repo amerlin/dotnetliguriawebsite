@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import styles from './AdminHome.module.css';
 import { data } from '../../mockup/chartData';
 import AdminFeaturedInfo from "../../components/AdminFeaturedInfo/AdminFeaturedInfo";
@@ -8,15 +8,25 @@ import Chart from "../../components/Chart/Chart";
 
 interface AdminHomeProps { pagename?: string }
 
-const AdminHome: FC<AdminHomeProps> = () => (
-    <div className={styles.AdminHome} data-testid="AdminHome">
-        <AdminFeaturedInfo />
-        <Chart title="User Analytics" dataGrid={true} dataKey="Active User" data={data} />
-        <div className={styles.AdminHomeWidgets}>
-            <AdminWidgetSm />
-            <AdminWidgetLg />
+const AdminHome: FC<AdminHomeProps> = () => {
+
+    useEffect(() => {
+        const redirect = true;
+        if (redirect) {
+            window.location.replace('/admin/profile/');
+        }
+    }, []);
+
+    return (
+        <div className={styles.AdminHome} data-testid="AdminHome">
+            <AdminFeaturedInfo />
+            <Chart title="User Analytics" dataGrid={true} dataKey="Active User" data={data} />
+            <div className={styles.AdminHomeWidgets}>
+                <AdminWidgetSm />
+                <AdminWidgetLg />
+            </div>
         </div>
-    </div>
-);
+    )
+};
 
 export default AdminHome;
