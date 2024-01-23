@@ -5,14 +5,17 @@ import AdminFeaturedInfo from "../../components/AdminFeaturedInfo/AdminFeaturedI
 import AdminWidgetLg from "../../components/AdminWidgetLg/AdminWidgetLg";
 import AdminWidgetSm from "../../components/AdminWidgetSm/AdminWidgetSm";
 import Chart from "../../components/Chart/Chart";
+import { userProfileLocalStorageStore } from "../../store/userProfileLocalStorageStore";
 
 interface AdminHomeProps { pagename?: string }
 
 const AdminHome: FC<AdminHomeProps> = () => {
 
+    const profileSaved = userProfileLocalStorageStore((state) => state.profileSaved);
+
     useEffect(() => {
-        const redirect = true;
-        if (redirect) {
+        console.log(profileSaved);
+        if (!profileSaved) {
             window.location.replace('/admin/profile/');
         }
     }, []);
@@ -30,3 +33,5 @@ const AdminHome: FC<AdminHomeProps> = () => {
 };
 
 export default AdminHome;
+
+

@@ -1,8 +1,8 @@
-import React, {FC, useState} from 'react';
+import React, { FC, useState } from 'react';
 import styles from './HomeHeader.module.css';
 import LoginControl from "../loginControl";
 import logo from "../../assets/Logo_H200.png";
-import {useOidc, useOidcAccessToken, useOidcFetch, useOidcIdToken} from "@axa-fr/react-oidc";
+import { useOidc, useOidcAccessToken, useOidcFetch, useOidcIdToken } from "@axa-fr/react-oidc";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface HomeHeaderProps {
@@ -20,14 +20,14 @@ const acr_to_loa: tokenLevelType = Object.freeze({
 
 const HomeHeader: FC<HomeHeaderProps> = () => {
 
-    const {login, logout, renewTokens, isAuthenticated} = useOidc();
-    const {idToken, idTokenPayload} = useOidcIdToken();
-    const {accessToken, accessTokenPayload} = useOidcAccessToken();
+    const { login, logout, renewTokens, isAuthenticated } = useOidc();
+    const { idToken, idTokenPayload } = useOidcIdToken();
+    const { accessToken, accessTokenPayload } = useOidcAccessToken();
 
     const [result, setResult] = useState("");
     const [isError, setIsError] = useState(true);
 
-    const {fetch} = useOidcFetch();
+    const { fetch } = useOidcFetch();
 
     const invokeAPI = async (resource: string, requested_loa: number, previousInvocationOk = true) => {
         try {
@@ -41,7 +41,7 @@ const HomeHeader: FC<HomeHeaderProps> = () => {
             }
 
             // console.log("token: ", token);
-            
+
             const token_loa = acr_to_loa[accessTokenPayload.acr];
             if (token_loa < requested_loa) {
                 setResult("User need higher privileges: " + Object.keys(acr_to_loa)[requested_loa - 1]);
@@ -50,9 +50,9 @@ const HomeHeader: FC<HomeHeaderProps> = () => {
             }
 
             //const loadedUsers = await fetch("https://hello.vevy.com/realms/DotNetLiguria/users", {
-                // headers: {
-                //   Authorization: `Bearer ${token}`,
-                // },
+            // headers: {
+            //   Authorization: `Bearer ${token}`,
+            // },
             //});
             //console.log(loadedUsers);
 
@@ -87,7 +87,9 @@ const HomeHeader: FC<HomeHeaderProps> = () => {
     }
 
     const loggedOut = () => {
+        console.log("fatto il logout");
         setResult("");
+        localStorage.removeItem("profileStore");
         setIsError(true);
     }
 
@@ -102,11 +104,11 @@ const HomeHeader: FC<HomeHeaderProps> = () => {
                 </div>
                 <div className="two"></div>
                 <div className="three">
-                    <LoginControl onLogout={loggedOut}/>
+                    <LoginControl onLogout={loggedOut} />
                 </div>
             </header>
             <div className="content">
-                <img src={logo} className="App-logo" alt="logo"/>
+                <img src={logo} className="App-logo" alt="logo" />
             </div>
         </div>
     )

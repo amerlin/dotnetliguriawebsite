@@ -46,6 +46,7 @@ function LoginControl(props) {
         await logout();
         //await auth.removeUser();
         // eslint-disable-next-line react/prop-types
+        localStorage.removeItem("profileStore");
         props.onLogout();
     }
 
@@ -54,6 +55,7 @@ function LoginControl(props) {
         //await auth.revokeTokens(["access_token", "refresh_token"]);
         //await auth.removeUser();
         //removeSessionStorageOidc();
+        localStorage.removeItem("profileStore");
         props.onLogout();
     }
 
@@ -65,7 +67,6 @@ function LoginControl(props) {
     //     return <div>Authentication error: {auth.error.message}</div>;
     // }
     if (isAuthenticated) {
-        console.log(oidcUser);
         let name = oidcUser == null ? "(none)" : oidcUser.name;
         return (
             <div className="auth">

@@ -1,25 +1,24 @@
 import React, { FC, useEffect, useState } from 'react';
 import styles from './AdminProfile.module.css';
-import { useOidcAccessToken, useOidcIdToken, useOidcUser } from '@axa-fr/react-oidc';
+import { useOidcUser } from '@axa-fr/react-oidc';
 import { UserProfile } from '../../models/UserProfile';
 import { FormProfileData } from '../../models/FormProfileData';
 import { useForm, SubmitHandler } from "react-hook-form";
+import { userProfileLocalStorageStore } from '../../store/userProfileLocalStorageStore';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface AdminProfileProps { pagename?: string; }
 
 const AdminProfile: FC<AdminProfileProps> = () => {
 
-  const { idToken } = useOidcIdToken();
-  const { accessToken } = useOidcAccessToken();
+  // const { idToken } = useOidcIdToken();
+  // const { accessToken } = useOidcAccessToken();
   const { oidcUser } = useOidcUser();
+  const { setProfileSaved } = userProfileLocalStorageStore();
   const [loggedUser, setLoggedUser] = useState<UserProfile>();
+  const profileSaved = userProfileLocalStorageStore((state) => state.profileSaved);
 
   useEffect(() => {
-    console.log(oidcUser);
-    console.log(idToken);
-    console.log(accessToken);
-
     if (oidcUser !== null) {
       const currentUser: UserProfile = { email: oidcUser?.email, family_name: oidcUser.family_name, given_name: oidcUser.given_name, name: oidcUser.name };
       setLoggedUser(currentUser);
@@ -34,11 +33,12 @@ const AdminProfile: FC<AdminProfileProps> = () => {
 
   const onSubmit: SubmitHandler<FormProfileData> = (data) => {
     console.log("call api", data);
+    setProfileSaved(true);
   };
 
   return (
     <div className={styles.AdminProfile} data-testid="AdminProfile">
-      <div className={styles.Title}> Profilo <span className={styles.alert}>Attenzione I tuoi dati non sono ancora stati confermati.</span></div>
+      <div className={styles.Title}> Profilo <span className={styles.alert}>{!profileSaved && <span>Attenzione I tuoi dati non sono ancora stati confermati.</span>}</span></div>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.FormGroup}>
