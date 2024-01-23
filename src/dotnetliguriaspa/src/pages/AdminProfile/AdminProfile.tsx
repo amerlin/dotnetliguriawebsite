@@ -32,6 +32,9 @@ const AdminProfile: FC<AdminProfileProps> = () => {
   } = useForm<FormProfileData>();
 
   const onSubmit: SubmitHandler<FormProfileData> = (data) => {
+    data.firstname = loggedUser?.given_name || '';
+    data.lastname = loggedUser?.family_name || '';
+    data.email = loggedUser?.email || '';
     console.log("call api", data);
     setProfileSaved(true);
   };

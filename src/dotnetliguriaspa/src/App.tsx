@@ -5,7 +5,7 @@
 // import { useOidcIdToken, useOidcAccessToken } from '@axa-fr/react-oidc';
 // import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import './App.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useOidc } from "@axa-fr/react-oidc";
 import { Route, Routes } from 'react-router-dom';
 import HomeHeader from "./components/HomeHeader/HomeHeader";
@@ -120,10 +120,15 @@ function App() {
     // }
 
     // const loggedOut = () => {
-    //     console.log("sono fuori");
     //     setResult("");
     //     setIsError(true);
     // }
+
+    useEffect(() => {
+        if (!isAuthenticated) {
+            localStorage.removeItem("profileStore");
+        }
+    }, [isAuthenticated]);
 
     return (
         <div className="App">

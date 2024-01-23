@@ -14,7 +14,6 @@ const AdminHome: FC<AdminHomeProps> = () => {
     const profileSaved = userProfileLocalStorageStore((state) => state.profileSaved);
 
     useEffect(() => {
-        console.log(profileSaved);
         if (!profileSaved) {
             window.location.replace('/admin/profile/');
         }

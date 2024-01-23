@@ -4,8 +4,8 @@ import LoginControl from "../loginControl";
 import { Link } from "react-router-dom";
 import { useOidcUser } from "@axa-fr/react-oidc";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface TopBarProps {
+    pageName?: string;
 }
 
 const TopBar: FC<TopBarProps> = () => {
@@ -20,6 +20,7 @@ const TopBar: FC<TopBarProps> = () => {
     const loggedOut = () => {
         setResult("");
         setIsError(true);
+        localStorage.removeItem("profileStore");
     }
 
     return (

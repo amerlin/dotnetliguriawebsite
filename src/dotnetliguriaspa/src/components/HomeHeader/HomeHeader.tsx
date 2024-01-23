@@ -4,8 +4,8 @@ import LoginControl from "../loginControl";
 import logo from "../../assets/Logo_H200.png";
 import { useOidc, useOidcAccessToken, useOidcFetch, useOidcIdToken } from "@axa-fr/react-oidc";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface HomeHeaderProps {
+    pageName?: string
 }
 
 interface tokenLevelType {
@@ -33,14 +33,11 @@ const HomeHeader: FC<HomeHeaderProps> = () => {
         try {
             console.log(`requesting ${resource} with loa:${requested_loa}`);
             const token = idToken;
-            //console.log(token);
             if (!isAuthenticated) {
                 setResult("User is not authenticated");
                 setIsError(true);
                 return;
             }
-
-            // console.log("token: ", token);
 
             const token_loa = acr_to_loa[accessTokenPayload.acr];
             if (token_loa < requested_loa) {
@@ -48,13 +45,6 @@ const HomeHeader: FC<HomeHeaderProps> = () => {
                 setIsError(true);
                 return;
             }
-
-            //const loadedUsers = await fetch("https://hello.vevy.com/realms/DotNetLiguria/users", {
-            // headers: {
-            //   Authorization: `Bearer ${token}`,
-            // },
-            //});
-            //console.log(loadedUsers);
 
             const response = await fetch(window.location.origin + "/api/values/" + resource, {
                 // headers: {
@@ -87,7 +77,7 @@ const HomeHeader: FC<HomeHeaderProps> = () => {
     }
 
     const loggedOut = () => {
-        console.log("fatto il logout");
+        console.log("sono qui dentro");
         setResult("");
         localStorage.removeItem("profileStore");
         setIsError(true);
