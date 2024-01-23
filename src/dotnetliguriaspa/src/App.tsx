@@ -1,22 +1,21 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
 //import logo from './assets/Logo_W400.png';
 //import logo from './assets/Logo_H200.png';
 //import logo from './assets/Logo_H100.png';
 // import { useOidcFetch } from '@axa-fr/react-oidc';
 // import { useOidcIdToken, useOidcAccessToken } from '@axa-fr/react-oidc';
+// import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import './App.css';
 import React, { useState } from 'react';
 import { useOidc } from "@axa-fr/react-oidc";
 import { Route, Routes } from 'react-router-dom';
 import HomeHeader from "./components/HomeHeader/HomeHeader";
-import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import Layout from "./components/Layout/Layout";
 import AdminWorkshops from "./pages/AdminWorkshops/AdminWorkshops";
 import AdminSpeakers from "./pages/AdminSpeakers/AdminSpeakers";
 import AdminHome from './pages/AdminHome/AdminHome';
 import AdminProfile from './pages/AdminProfile/AdminProfile';
 import AdminFeedbacks from './pages/AdminFeedbacks/AdminFeedbacks';
+import AdminEvents from './pages/AdminEvents/AdminEvents';
 
 // const acr_to_loa = Object.freeze({
 //     pwd: 1,
@@ -130,14 +129,13 @@ function App() {
             {isAuthenticated ? (
                 <>
                     <Routes>
-                        <Route path='/' exact element={<HomeHeader />} />
+                        <Route path='/' element={<HomeHeader />} />
                         <Route element={<Layout />}>
                             <Route path='/admin' element={<AdminHome pagename={"Admin Dashboard"} />} />
-                            <Route path='/admin/profile' element={<AdminProfile />} />
-                            <Route path='/admin/analytics/' element={<PageNotFound pagename={"Analytics"} />} />
+                            <Route path='/admin/profile/' element={<AdminProfile pagename={"Profile"} />} />
                             <Route path='/admin/speakers/' element={<AdminSpeakers pagename={"Speakers"} />} />
                             <Route path='/admin/workshops/' element={<AdminWorkshops pagename={"Workshops"} />} />
-                            <Route path='/admin/events/' element={<PageNotFound pagename={"Events"} />} />
+                            <Route path='/admin/events/' element={<AdminEvents pagename={"Events"} />} />
                             <Route path='/admin/feedbacks' element={<AdminFeedbacks pagename={"Feedbacks"} />} />
                             {/* <Route path='/admin/users/' element={<AdminUsers pagename={"Users"} />} />
                             <Route path='/admin/reports/' element={<PageNotFound pagename={"Reports"} />} />

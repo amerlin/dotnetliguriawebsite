@@ -4,9 +4,7 @@ import { useOidcFetch } from "@axa-fr/react-oidc";
 import Speaker from '../../models/Speaker';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface AdminSpeakersProps {
-}
+interface AdminSpeakersProps { pagename?: string }
 
 const AdminSpeakers: FC<AdminSpeakersProps> = () => {
     const { fetch } = useOidcFetch();

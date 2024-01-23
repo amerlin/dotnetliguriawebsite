@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styles from './NotFound.module.css';
 
 interface NotFoundProps {
-    pagename: string;
+    pagename?: string;
 }
 
 const NotFound: FC<NotFoundProps> = (props: NotFoundProps) => (

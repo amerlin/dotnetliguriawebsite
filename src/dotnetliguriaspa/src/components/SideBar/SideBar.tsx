@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import styles from './SideBar.module.css';
 import LineStyleIcon from '@mui/icons-material/LineStyle';
-import Timeline from '@mui/icons-material/Timeline';
 import VerifiedUser from '@mui/icons-material/VerifiedUser';
 import ProductionQuantityLimits from '@mui/icons-material/ProductionQuantityLimits';
 import Money from '@mui/icons-material/Money';
+// import Timeline from '@mui/icons-material/Timeline';
 // import Report from '@mui/icons-material/Report';
 // import Mail from '@mui/icons-material/Mail';
 // import Feedback from '@mui/icons-material/Feedback';
@@ -35,12 +35,12 @@ const SideBar: FC<SideBarProps> = () => (
                             Profile
                         </li>
                     </Link>
-                    <Link to="/admin/analytics/" className="link">
+                    {/* <Link to="/admin/analytics/" className="link">
                         <li className={styles.SideBarListItem}>
                             <Timeline className={styles.SideBarIcon} />
                             Analytics
                         </li>
-                    </Link>
+                    </Link> */}
                 </ul>
             </div>
 
@@ -92,7 +92,7 @@ const SideBar: FC<SideBarProps> = () => (
                     <Link to="/admin/feedbacks" className="link">
                         <li className={styles.SideBarListItem}>
                             <ProductionQuantityLimits className={styles.SideBarIcon} />
-                            Questionario
+                            Questionari
                         </li>
                     </Link>
                 </ul>

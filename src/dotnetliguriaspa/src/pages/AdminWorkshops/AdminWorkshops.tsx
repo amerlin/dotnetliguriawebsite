@@ -4,8 +4,7 @@ import { useOidcFetch } from '@axa-fr/react-oidc';
 import { Workshop } from '../../models/Workshop';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface AdminWorkshopsProps { }
+interface AdminWorkshopsProps { pagename?: string }
 
 const AdminWorkshops: FC<AdminWorkshopsProps> = () => {
 

@@ -6,12 +6,11 @@ import AdminWidgetLg from "../../components/AdminWidgetLg/AdminWidgetLg";
 import AdminWidgetSm from "../../components/AdminWidgetSm/AdminWidgetSm";
 import Chart from "../../components/Chart/Chart";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface AdminHomeProps {}
+interface AdminHomeProps { pagename?: string }
 
 const AdminHome: FC<AdminHomeProps> = () => (
     <div className={styles.AdminHome} data-testid="AdminHome">
-        <AdminFeaturedInfo/>
+        <AdminFeaturedInfo />
         <Chart title="User Analytics" dataGrid={true} dataKey="Active User" data={data} />
         <div className={styles.AdminHomeWidgets}>
             <AdminWidgetSm />

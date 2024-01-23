@@ -6,7 +6,7 @@ import AdminFeedbacks from './AdminFeedbacks';
 describe('<AdminFeedbacks />', () => {
   test('it should mount', () => {
     render(<AdminFeedbacks />);
-    
+
     const adminFeedbacks = screen.getByTestId('AdminFeedbacks');
 
     expect(adminFeedbacks).toBeInTheDocument();

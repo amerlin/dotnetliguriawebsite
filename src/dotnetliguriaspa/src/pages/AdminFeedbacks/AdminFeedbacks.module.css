@@ -1,1 +1,9 @@
-.AdminFeedbacks {}
+.AdminFeedbacks {
+    flex:4;
+}
+
+.Title {
+    margin-bottom: 20px;
+        font-size: 20px;
+        font-weight: 600;
+}

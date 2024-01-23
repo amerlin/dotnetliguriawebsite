@@ -1,16 +1,14 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import styles from './TopBar.module.css';
 import LoginControl from "../loginControl";
 import { Link } from "react-router-dom";
-import { useOidcAccessToken, useOidcIdToken, useOidcUser } from "@axa-fr/react-oidc";
+import { useOidcUser } from "@axa-fr/react-oidc";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface TopBarProps {
 }
 
 const TopBar: FC<TopBarProps> = () => {
-    const { idToken } = useOidcIdToken();
-    const { accessToken } = useOidcAccessToken();
     const { oidcUser } = useOidcUser();
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -18,12 +16,6 @@ const TopBar: FC<TopBarProps> = () => {
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [isError, setIsError] = useState(true);
-
-    useEffect(() => {
-        console.log("Id token: ", idToken);
-        console.log("Access token: ", accessToken);
-        console.log("OidcUser", oidcUser);
-    }, []);
 
     const loggedOut = () => {
         setResult("");
