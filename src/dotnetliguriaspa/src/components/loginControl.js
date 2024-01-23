@@ -2,13 +2,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import './loginControl.css';
-import {useOidc, useOidcIdToken} from "@axa-fr/react-oidc";
-import {useOidcUser} from '@axa-fr/react-oidc';
-import {Link} from "react-router-dom";
+import { useOidc, useOidcIdToken } from "@axa-fr/react-oidc";
+import { useOidcUser } from '@axa-fr/react-oidc';
+import { Link } from "react-router-dom";
 
 function LoginControl(props) {
-    const {login, logout, isAuthenticated} = useOidc();
-    const {oidcUser, oidcUserLoadingState} = useOidcUser();
+    const { login, logout, isAuthenticated } = useOidc();
+    const { oidcUser, oidcUserLoadingState } = useOidcUser();
 
     // const removeSessionStorageOidc = () => {
     //     var oidcKeys = Object.keys(sessionStorage)
@@ -65,7 +65,7 @@ function LoginControl(props) {
     //     return <div>Authentication error: {auth.error.message}</div>;
     // }
     if (isAuthenticated) {
-        //console.log(oidcUser);
+        console.log(oidcUser);
         let name = oidcUser == null ? "(none)" : oidcUser.name;
         return (
             <div className="auth">

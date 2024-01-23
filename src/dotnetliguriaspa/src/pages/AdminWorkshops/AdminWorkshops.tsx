@@ -16,7 +16,7 @@ const AdminWorkshops: FC<AdminWorkshopsProps> = () => {
         { field: 'workshopId', headerName: 'Id', resizable: true },
         { field: 'title', headerName: 'Title', width: 200, resizable: true },
         { field: 'eventDate', headerName: 'Event Date', width: 200, resizable: true },
-        { field: 'published', headerName: 'Published', width: 130, resizable: true},
+        { field: 'published', headerName: 'Published', width: 130, resizable: true },
     ];
 
     useEffect(() => {
@@ -32,10 +32,10 @@ const AdminWorkshops: FC<AdminWorkshopsProps> = () => {
 
     return (
         <div className={styles.AdminWorkshops}>
-            <div className={styles.Title}>Workshops Page</div>
+            <div className={styles.Title}>Workshops</div>
             <div>
                 <DataGrid
-                    style={{height: 365, width: "80%"}}     
+                    style={{ height: 365, width: "80%" }}
                     getRowId={(data) => data.workshopId}
                     rows={dataRows}
                     columns={columns}

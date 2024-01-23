@@ -7,7 +7,7 @@ interface NotFoundProps {
 
 const NotFound: FC<NotFoundProps> = (props: NotFoundProps) => (
     <div className={styles.NotFound} data-testid="NotFound">
-        Page {props.pagename} - NotFound
+        Page {props.pagename} - Work in progress
     </div>
 );
 

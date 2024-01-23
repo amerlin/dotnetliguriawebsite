@@ -1,19 +1,30 @@
-import React, {FC, useState} from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import styles from './TopBar.module.css';
-import {Notifications, Language} from "@mui/icons-material/";
-import SettingsIcon from '@mui/icons-material/Settings';
 import LoginControl from "../loginControl";
-import {Link} from "react-router-dom";
-import {useOidcIdToken, useOidcUser} from "@axa-fr/react-oidc";
+import { Link } from "react-router-dom";
+import { useOidcAccessToken, useOidcIdToken, useOidcUser } from "@axa-fr/react-oidc";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface TopBarProps {
 }
 
 const TopBar: FC<TopBarProps> = () => {
+    const { idToken } = useOidcIdToken();
+    const { accessToken } = useOidcAccessToken();
+    const { oidcUser } = useOidcUser();
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [result, setResult] = useState("");
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [isError, setIsError] = useState(true);
-    const {oidcUser, oidcUserLoadingState} = useOidcUser();
+
+    useEffect(() => {
+        console.log("Id token: ", idToken);
+        console.log("Access token: ", accessToken);
+        console.log("OidcUser", oidcUser);
+    }, []);
+
     const loggedOut = () => {
         setResult("");
         setIsError(true);
@@ -24,8 +35,8 @@ const TopBar: FC<TopBarProps> = () => {
             <div className={styles.TopBarWrapper}>
                 <div className="topLeft">
                     <div className={styles.logo}>
-                        <Link to = {"/"}>
-                        DotNet Liguria
+                        <Link to={"/"}>
+                            DotNet Liguria
                         </Link>
                     </div>
                 </div>
@@ -46,10 +57,10 @@ const TopBar: FC<TopBarProps> = () => {
                     {/*    <SettingsIcon/>*/}
                     {/*</div>*/}
                     <div>
-                        <LoginControl onLogout={loggedOut}/>
+                        <LoginControl onLogout={loggedOut} />
                     </div>
                     <img src={oidcUser?.picture}
-                         alt="Profile" className={styles.TopAvatar}/>
+                        alt="Profile" className={styles.TopAvatar} />
                 </div>
             </div>
         </div>

@@ -15,7 +15,7 @@ const AdminSpeakers: FC<AdminSpeakersProps> = () => {
     const columns: GridColDef[] = [
         { field: 'name', headerName: 'Name', width: 180 },
         { field: 'profileImage', headerName: 'Profile Image', width: 360 },
-      ];
+    ];
 
     useEffect(() => {
         const loadWorkshops = async () => {
@@ -33,10 +33,10 @@ const AdminSpeakers: FC<AdminSpeakersProps> = () => {
 
     return (
         <div className={styles.AdminSpeakers} data-testid="AdminSpeakers">
-            <div className={styles.Title}>Speakers Page</div>
+            <div className={styles.Title}>Speakers</div>
             <div>
-                <DataGrid 
-                    style={{height: 373, width: "80%"}}
+                <DataGrid
+                    style={{ height: 373, width: "80%" }}
                     getRowId={(data) => data.name}
                     rows={dataRows}
                     columns={columns}
@@ -47,7 +47,6 @@ const AdminSpeakers: FC<AdminSpeakersProps> = () => {
                     }}
                 />
             </div>
-
         </div>
     )
 

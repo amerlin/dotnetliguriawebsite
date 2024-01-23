@@ -1,40 +1,40 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 //import logo from './assets/Logo_W400.png';
-import logo from './assets/Logo_H200.png';
+//import logo from './assets/Logo_H200.png';
 //import logo from './assets/Logo_H100.png';
+// import { useOidcFetch } from '@axa-fr/react-oidc';
+// import { useOidcIdToken, useOidcAccessToken } from '@axa-fr/react-oidc';
 import './App.css';
-import React, {useState} from 'react';
-import {useOidcFetch} from '@axa-fr/react-oidc';
-import {useOidc} from "@axa-fr/react-oidc";
-import {useOidcIdToken, useOidcAccessToken} from '@axa-fr/react-oidc';
-import {Route, Routes} from 'react-router-dom';
+import React, { useState } from 'react';
+import { useOidc } from "@axa-fr/react-oidc";
+import { Route, Routes } from 'react-router-dom';
 import HomeHeader from "./components/HomeHeader/HomeHeader";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
-import AdminTokens from "./pages/AdminTokens/AdminTokens";
 import Layout from "./components/Layout/Layout";
-import AdminUsers from "./pages/AdminUsers/AdminUsers";
 import AdminWorkshops from "./pages/AdminWorkshops/AdminWorkshops";
 import AdminSpeakers from "./pages/AdminSpeakers/AdminSpeakers";
-import AuthQuestionario from './pages/AuthQuestionario/AuthQuestionario';
-import AuthHome from './pages/AuthHome/AuthHome';
 import AdminHome from './pages/AdminHome/AdminHome';
+import AdminProfile from './pages/AdminProfile/AdminProfile';
+import AdminFeedbacks from './pages/AdminFeedbacks/AdminFeedbacks';
 
-const acr_to_loa = Object.freeze({
-    pwd: 1,
-    mfa: 2,
-    hwk: 3,
-});
+// const acr_to_loa = Object.freeze({
+//     pwd: 1,
+//     mfa: 2,
+//     hwk: 3,
+// });
 
 function App() {
-    const {login, logout, renewTokens, isAuthenticated} = useOidc();
-    const {idToken, idTokenPayload} = useOidcIdToken();
-    const {accessToken, accessTokenPayload} = useOidcAccessToken();
+    const { isAuthenticated } = useOidc();
+    // const { idToken } = useOidcIdToken();
+    // const { accessTokenPayload } = useOidcAccessToken();
+    // const { fetch } = useOidcFetch();
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [result, setResult] = useState("");
-    const [isError, setIsError] = useState(true);
 
-    const {fetch} = useOidcFetch();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [isError, setIsError] = useState(true);
 
     // switch (auth.activeNavigator) {
     //   case "signinSilent":
@@ -53,104 +53,104 @@ function App() {
     // }
 
     // if (auth.isAuthenticated) {
-    //   //console.log(auth.user.profile);
-    //   return (
-    //     <div>
-    //       Hello {auth.user?.profile.name}{" "}
-    //       <button onClick={() => void auth.removeUser()}>Log out</button>
-    //       <div>Claim sub: {auth.user.profile['sub']}</div>
+    //     // console.log("User profile: ", auth.user.profile);
+    //     return (
+    //         <div>
+    //             Hello {auth.user?.profile.name}{" "}
+    //             <button onClick={() => void auth.removeUser()}>Log out</button>
+    //             <div>Claim sub: {auth.user.profile['sub']}</div>
 
-    //     </div>
-    //   );
+    //         </div>
+    //     );
     // }
 
-    const invokeAPI = async (resource: string, requested_loa: number, previousInvocationOk = true) => {
-        try {
-            console.log(`requesting ${resource} with loa:${requested_loa}`);
-            const token = idToken;
-            console.log("Id token: ", token);
-            if (!isAuthenticated) {
-                setResult("User is not authenticated");
-                setIsError(true);
-                return;
-            }
+    // const invokeAPI = async (resource: string, requested_loa: number, previousInvocationOk = true) => {
+    //     try {
+    //         console.log(`requesting ${resource} with loa:${requested_loa}`);
+    //         const token = idToken;
+    //         console.log("Id token: ", token);
+    //         if (!isAuthenticated) {
+    //             setResult("User is not authenticated");
+    //             setIsError(true);
+    //             return;
+    //         }
 
-            const token_loa = acr_to_loa[accessTokenPayload.acr];
-            if (token_loa < requested_loa) {
-                setResult("User need higher privileges: " + Object.keys(acr_to_loa)[requested_loa - 1]);
-                setIsError(true);
-                return;
-            }
+    //         const token_loa = acr_to_loa[accessTokenPayload.acr];
+    //         if (token_loa < requested_loa) {
+    //             setResult("User need higher privileges: " + Object.keys(acr_to_loa)[requested_loa - 1]);
+    //             setIsError(true);
+    //             return;
+    //         }
 
-            // const loadedUsers = await fetch("https://hello.vevy.com/realms/DotNetLiguria/users", {
-            //     // headers: {
-            //     //   Authorization: `Bearer ${token}`,
-            //     // },
-            // });
-            // console.log(loadedUsers);
+    //         // const loadedUsers = await fetch("https://hello.vevy.com/realms/DotNetLiguria/users", {
+    //         //     // headers: {
+    //         //     //   Authorization: `Bearer ${token}`,
+    //         //     // },
+    //         // });
+    //         // console.log(loadedUsers);
 
-            const response = await fetch(window.location.origin + "/api/values/" + resource, {
-                // headers: {
-                //   Authorization: `Bearer ${token}`,
-                // },
-            });
+    //         const response = await fetch(window.location.origin + "/api/values/" + resource, {
+    //             // headers: {
+    //             //   Authorization: `Bearer ${token}`,
+    //             // },
+    //         });
 
-            if (!response.ok) {
-                let message;
-                try {
-                    console.log(response);
-                    const authError = response.headers.get("WWW-Authenticate");
-                    message = `Fetch failed with HTTP status ${response.status} ${authError}  ${await response.text()}`;
-                } catch (e) {
-                    message = `Fetch failed with HTTP status ${response.status} ${response.statusText}`;
-                }
+    //         if (!response.ok) {
+    //             let message;
+    //             try {
+    //                 console.log(response);
+    //                 const authError = response.headers.get("WWW-Authenticate");
+    //                 message = `Fetch failed with HTTP status ${response.status} ${authError}  ${await response.text()}`;
+    //             } catch (e) {
+    //                 message = `Fetch failed with HTTP status ${response.status} ${response.statusText}`;
+    //             }
 
-                setResult(message);
-                setIsError(true);
-                return;
-            }
+    //             setResult(message);
+    //             setIsError(true);
+    //             return;
+    //         }
 
-            setResult(await response.json());
-            setIsError(false);
-        } catch (e) {
-            console.log(e);
-            setResult(e.message);
-            setIsError(true);
-        }
-    }
+    //         setResult(await response.json());
+    //         setIsError(false);
+    //     } catch (e) {
+    //         console.log(e);
+    //         setResult(e.message);
+    //         setIsError(true);
+    //     }
+    // }
 
-    const loggedOut = () => {
-        setResult("");
-        setIsError(true);
-    }
+    // const loggedOut = () => {
+    //     console.log("sono fuori");
+    //     setResult("");
+    //     setIsError(true);
+    // }
 
     return (
         <div className="App">
             {isAuthenticated ? (
                 <>
                     <Routes>
-                        <Route path='/' exact element={<HomeHeader/>}/>
-                        <Route element={<Layout/>}>
-                            <Route path='/auth/home' element={<AuthHome/>}/>
-                            <Route paht='/auth/questionario' element={AuthQuestionario}/>
-                            <Route path='/admin' element={<AdminHome pagename={"Admin Dashboard"}/>}/>
-                            <Route path='/admin/analytics/' element={<PageNotFound pagename={"Analytics"}/>}/>
-                            <Route path='/admin/users/' element={<AdminUsers pagename={"Users"}/>}/>
-                            <Route path='/admin/workshops/' element={<AdminWorkshops pagename={"Workshops"}/>}/>
-                            <Route path='/admin/speakers/' element={<AdminSpeakers pagename={"Speakers"}/>}/>
-                            <Route path='/admin/events/' element={<PageNotFound pagename={"Events"}/>}/>
-                            <Route path='/admin/reports/' element={<PageNotFound pagename={"Reports"}/>}/>
-                            <Route path='/admin/mails/' element={<PageNotFound pagename={"Mails"}/>}/>
-                            <Route path='/admin/feedbacks/' element={<PageNotFound pagename={"Feedbacks"}/>}/>
-                            <Route path='/admin/messages/' element={<PageNotFound pagename={"Messages"}/>}/>
-                            <Route path='/admin/manage/' element={<PageNotFound pagename={"Manage"}/>}/>
-                            <Route path='/admin/tokens/' element={<AdminTokens pagename={"tokens"}/>}/>
+                        <Route path='/' exact element={<HomeHeader />} />
+                        <Route element={<Layout />}>
+                            <Route path='/admin' element={<AdminHome pagename={"Admin Dashboard"} />} />
+                            <Route path='/admin/profile' element={<AdminProfile />} />
+                            <Route path='/admin/analytics/' element={<PageNotFound pagename={"Analytics"} />} />
+                            <Route path='/admin/speakers/' element={<AdminSpeakers pagename={"Speakers"} />} />
+                            <Route path='/admin/workshops/' element={<AdminWorkshops pagename={"Workshops"} />} />
+                            <Route path='/admin/events/' element={<PageNotFound pagename={"Events"} />} />
+                            <Route path='/admin/feedbacks' element={<AdminFeedbacks pagename={"Feedbacks"} />} />
+                            {/* <Route path='/admin/users/' element={<AdminUsers pagename={"Users"} />} />
+                            <Route path='/admin/reports/' element={<PageNotFound pagename={"Reports"} />} />
+                            <Route path='/admin/mails/' element={<PageNotFound pagename={"Mails"} />} />
+                            <Route path='/admin/messages/' element={<PageNotFound pagename={"Messages"} />} />
+                            <Route path='/admin/manage/' element={<PageNotFound pagename={"Manage"} />} />
+                            <Route path='/admin/tokens/' element={<AdminTokens pagename={"tokens"} />} /> */}
                         </Route>
                     </Routes>
                 </>
             ) : (
                 <>
-                    <HomeHeader/>
+                    <HomeHeader />
                 </>
             )}
         </div>
