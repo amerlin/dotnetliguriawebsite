@@ -159,7 +159,7 @@ const AdminProfile: FC<AdminProfileProps> = () => {
 
         <div className={styles.FormGroup}>
           <div className={styles.FormGroupElement}>
-            <label htmlFor="consentData">Consenso trattamemento dei dati</label>
+            <label htmlFor="consentData">Consenso trattamento dei dati</label>
             <input id="consentData" type="checkbox" {...register("consentData", { required: true })} />
             {errors.consentData && <span>This field is required</span>}
           </div>
