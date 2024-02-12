@@ -29,7 +29,7 @@ const TopBar: FC<TopBarProps> = () => {
                 <div className="topLeft">
                     <div className={styles.logo}>
                         <Link to={"/"}>
-                            DotNet Liguria
+                            DotNetLiguria
                         </Link>
                     </div>
                 </div>

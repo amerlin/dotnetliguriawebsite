@@ -20,7 +20,7 @@ const AdminProfile: FC<AdminProfileProps> = () => {
 
   useEffect(() => {
     if (oidcUser !== null) {
-      const currentUser: UserProfile = { email: oidcUser?.email, family_name: oidcUser.family_name, given_name: oidcUser.given_name, name: oidcUser.name };
+      const currentUser: UserProfile = { email: oidcUser?.email, family_name: oidcUser.family_name, given_name: oidcUser.given_name, name: oidcUser.name, id: oidcUser.sub };
       setLoggedUser(currentUser);
     }
   }, [oidcUser]);
@@ -74,20 +74,8 @@ const AdminProfile: FC<AdminProfileProps> = () => {
             <input type="text" {...register("city")} />
           </div>
           <div className={styles.FormGroupElement}>
-            <label htmlFor="address">Indirizzo</label>
-            <input id="address" type="text" {...register("address")} />
-          </div>
-          <div className={styles.FormGroupElement}>
-            <label htmlFor="cap">C.A.P.</label>
-            <input id="cap" type="text" {...register("cap")} />
-          </div>
-          <div className={styles.FormGroupElement}>
             <label htmlFor="prov">Provincia</label>
             <input id="prov" type="text" {...register("prov")} />
-          </div>
-          <div className={styles.FormGroupElement}>
-            <label htmlFor="mobile">Mobile</label>
-            <input id="mobile" type="text" {...register("mobile")} />
           </div>
         </div>
 
@@ -121,33 +109,23 @@ const AdminProfile: FC<AdminProfileProps> = () => {
             <input id="factoryProv" type="text" {...register("factoryProv")} />
           </div>
         </div>
-
         <div className={styles.FormGroupSeparator}></div>
-
         <div className={styles.FormGroup}>
-          <div className={styles.FormGroupTitle}>SOCIAL MEDIA</div>
+          <div className={styles.FormGroupTitle}>Se vuoi farti conoscere...</div>
         </div>
 
         <div className={styles.FormGroup}>
           <div className={styles.FormGroupElement}>
-            <label htmlFor="socialGoogle">Google</label>
-            <input id="socialGoogle" type="text" {...register("socialGoogle")} />
-          </div>
-          <div className={styles.FormGroupElement}>
             <label htmlFor="socialTwitter">X / Twitter</label>
             <input id="socialTwitter" type="text" {...register("socialTwitter")} />
-          </div>
-          <div className={styles.FormGroupElement}>
-            <label htmlFor="socialFacebook">Facebook</label>
-            <input id="socialFacebook" type="text" {...register("socialFacebook")} />
           </div>
           <div className={styles.FormGroupElement}>
             <label htmlFor="socialLinkedin">Linkedin</label>
             <input id="socialLinkedin" type="text" {...register("socialLinkedin")} />
           </div>
           <div className={styles.FormGroupElement}>
-            <label htmlFor="socialAltro">Altro</label>
-            <input id="socialAltro" type="text" {...register("socialAltro")} />
+            <label htmlFor="socialGitHub">GitHub</label>
+            <input id="socialGitHub" type="text" {...register("socialGitHub")} />
           </div>
         </div>
 
