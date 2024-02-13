@@ -5,6 +5,7 @@ import { UserProfile } from '../../models/UserProfile';
 import { FormProfileData } from '../../models/FormProfileData';
 import { useForm, SubmitHandler } from "react-hook-form";
 import { userProfileLocalStorageStore } from '../../store/userProfileLocalStorageStore';
+import { KeyCloakUserProfile } from '../../models/KeyCloakUserProfile';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface AdminProfileProps { pagename?: string; }
@@ -35,7 +36,36 @@ const AdminProfile: FC<AdminProfileProps> = () => {
     data.firstname = loggedUser?.given_name || '';
     data.lastname = loggedUser?.family_name || '';
     data.email = loggedUser?.email || '';
-    console.log("call api", data);
+    console.log(loggedUser);
+
+    //user profile struct
+    const keyCloakProfile: KeyCloakUserProfile = {
+      id: loggedUser?.id,
+      username: data.email,
+      firstName: data.firstname,
+      email: data.email,
+      lastName: data.lastname,
+      emailVerified: true,
+      userProfileMetadata: {
+        attributes: [],
+        groups: []
+      },
+      attributes: { d_city: [], d_prov: [], d_factory_name: [], d_factory_city: [], d_factory_prov: [], d_factory_role: [], d_social_twitterX: [], d_social_linkedin: [], d_social_github: [] }
+    };
+
+    keyCloakProfile.attributes.d_city.push(data.city);
+    keyCloakProfile.attributes.d_prov.push(data.prov);
+    keyCloakProfile.attributes.d_factory_name.push(data.factory);
+    keyCloakProfile.attributes.d_factory_city.push(data.factoryCity);
+    keyCloakProfile.attributes.d_factory_prov.push(data.factoryProv);
+    keyCloakProfile.attributes.d_factory_role.push(data.factoryRoles);
+    keyCloakProfile.attributes.d_social_twitterX.push(data.socialTwitter);
+    keyCloakProfile.attributes.d_social_linkedin.push(data.socialLinkedin);
+    keyCloakProfile.attributes.d_social_github.push(data.socialGitHub);
+
+
+    const json = JSON.stringify(keyCloakProfile);
+    console.log("call api", json);
     setProfileSaved(true);
   };
 
