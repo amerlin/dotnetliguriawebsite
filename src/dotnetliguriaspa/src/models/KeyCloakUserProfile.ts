@@ -21,5 +21,7 @@ export interface KeyCloakUserProfile {
     d_social_twitterX: string[];
     d_social_linkedin: string[];
     d_social_github: string[];
+    d_privacy_consent: string[];
+    d_consent: string[];
   };
 }

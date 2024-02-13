@@ -20,7 +20,6 @@ const AdminSpeakers: FC<AdminSpeakersProps> = () => {
             await fetch("https://localhost:64561/api/Speaker/Get")
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data);
                     setDataRows(data);
                 }
                 )

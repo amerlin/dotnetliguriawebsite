@@ -1,44 +1,62 @@
 import React, { FC, useEffect, useState } from 'react';
 import styles from './AdminProfile.module.css';
-import { useOidcUser } from '@axa-fr/react-oidc';
+import { useOidcIdToken, useOidcUser } from '@axa-fr/react-oidc';
 import { UserProfile } from '../../models/UserProfile';
 import { FormProfileData } from '../../models/FormProfileData';
 import { useForm, SubmitHandler } from "react-hook-form";
 import { userProfileLocalStorageStore } from '../../store/userProfileLocalStorageStore';
 import { KeyCloakUserProfile } from '../../models/KeyCloakUserProfile';
+import { useOidcFetch } from "@axa-fr/react-oidc";
+import { jwtDecode } from 'jwt-decode';
+import { decode } from 'punycode';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface AdminProfileProps { pagename?: string; }
 
 const AdminProfile: FC<AdminProfileProps> = () => {
 
-  // const { idToken } = useOidcIdToken();
+  const { idToken } = useOidcIdToken();
   // const { accessToken } = useOidcAccessToken();
-  const { oidcUser } = useOidcUser();
+  const { fetch } = useOidcFetch();
   const { setProfileSaved } = userProfileLocalStorageStore();
+  const { oidcUser } = useOidcUser();
   const [loggedUser, setLoggedUser] = useState<UserProfile>();
   const profileSaved = userProfileLocalStorageStore((state) => state.profileSaved);
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<FormProfileData>();
 
   useEffect(() => {
     if (oidcUser !== null) {
       const currentUser: UserProfile = { email: oidcUser?.email, family_name: oidcUser.family_name, given_name: oidcUser.given_name, name: oidcUser.name, id: oidcUser.sub };
       setLoggedUser(currentUser);
+
+      const decodedToken = jwtDecode(idToken);
+      setValue("city", "citta di prova");
+      setValue("prov", "provincia");
+      setValue("factory", "azienda");
+      setValue("factoryCity", "citta azienda");
+      setValue("factoryProv", "provincia azienda");
+      setValue("socialTwitter", "twitter");
+      setValue("socialLinkedin", "linkedin");
+      setValue("socialGitHub", "github");
+      setValue("consentData", true);
+      setValue("consentPrivacy", true);
+      setValue("factoryRoles", "IT Manager");
+
+      console.log("Id token: ", decodedToken);
     }
   }, [oidcUser]);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormProfileData>();
 
   const onSubmit: SubmitHandler<FormProfileData> = (data) => {
     data.firstname = loggedUser?.given_name || '';
     data.lastname = loggedUser?.family_name || '';
     data.email = loggedUser?.email || '';
-    console.log(loggedUser);
 
-    //user profile struct
     const keyCloakProfile: KeyCloakUserProfile = {
       id: loggedUser?.id,
       username: data.email,
@@ -50,9 +68,11 @@ const AdminProfile: FC<AdminProfileProps> = () => {
         attributes: [],
         groups: []
       },
-      attributes: { d_city: [], d_prov: [], d_factory_name: [], d_factory_city: [], d_factory_prov: [], d_factory_role: [], d_social_twitterX: [], d_social_linkedin: [], d_social_github: [] }
+      attributes: { d_city: [], d_prov: [], d_factory_name: [], d_factory_city: [], d_factory_prov: [], d_factory_role: [], d_social_twitterX: [], d_social_linkedin: [], d_social_github: [], d_consent: [], d_privacy_consent: [] }
     };
 
+    const dataConsent = data.consentData ? "S" : "N";
+    const dataPrivacyConsent = data.consentPrivacy ? "S" : "N";
     keyCloakProfile.attributes.d_city.push(data.city);
     keyCloakProfile.attributes.d_prov.push(data.prov);
     keyCloakProfile.attributes.d_factory_name.push(data.factory);
@@ -62,10 +82,15 @@ const AdminProfile: FC<AdminProfileProps> = () => {
     keyCloakProfile.attributes.d_social_twitterX.push(data.socialTwitter);
     keyCloakProfile.attributes.d_social_linkedin.push(data.socialLinkedin);
     keyCloakProfile.attributes.d_social_github.push(data.socialGitHub);
+    keyCloakProfile.attributes.d_consent.push(dataConsent);
+    keyCloakProfile.attributes.d_privacy_consent.push(dataPrivacyConsent);
 
+    const jsonBody = JSON.stringify(keyCloakProfile);
 
-    const json = JSON.stringify(keyCloakProfile);
-    console.log("call api", json);
+    fetch('http://192.168.150.201:8080/realms/TraloSystem/account', {
+      method: 'POST',
+      body: jsonBody
+    }).then(response => response.text());
     setProfileSaved(true);
   };
 
@@ -114,7 +139,6 @@ const AdminProfile: FC<AdminProfileProps> = () => {
         <div className={styles.FormGroup}>
           <div className={styles.FormGroupTitle}>INFORMAZIONI AZIENDALI</div>
         </div>
-
         <div className={styles.FormGroup}>
           <div className={styles.FormGroupElement}>
             <label htmlFor="industry">Azienda</label>
