@@ -20,18 +20,29 @@ const acr_to_loa: tokenLevelType = Object.freeze({
 
 const HomeHeader: FC<HomeHeaderProps> = () => {
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { login, logout, renewTokens, isAuthenticated } = useOidc();
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { idToken, idTokenPayload } = useOidcIdToken();
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { accessToken, accessTokenPayload } = useOidcAccessToken();
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [result, setResult] = useState("");
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [isError, setIsError] = useState(true);
 
     const { fetch } = useOidcFetch();
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const invokeAPI = async (resource: string, requested_loa: number, previousInvocationOk = true) => {
         try {
             console.log(`requesting ${resource} with loa:${requested_loa}`);
+
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const token = idToken;
             if (!isAuthenticated) {
                 setResult("User is not authenticated");

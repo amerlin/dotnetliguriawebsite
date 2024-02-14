@@ -8,7 +8,6 @@ import { userProfileLocalStorageStore } from '../../store/userProfileLocalStorag
 import { KeyCloakUserProfile } from '../../models/KeyCloakUserProfile';
 import { useOidcFetch } from "@axa-fr/react-oidc";
 import { jwtDecode } from 'jwt-decode';
-import { decode } from 'punycode';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface AdminProfileProps { pagename?: string; }
@@ -91,6 +90,7 @@ const AdminProfile: FC<AdminProfileProps> = () => {
       method: 'POST',
       body: jsonBody
     }).then(response => response.text());
+
     setProfileSaved(true);
   };
 
