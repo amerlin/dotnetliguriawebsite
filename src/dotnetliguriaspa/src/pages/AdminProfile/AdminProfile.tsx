@@ -202,7 +202,6 @@ const AdminProfile: FC<AdminProfileProps> = () => {
           </div>
         </div>
 
-
         <div className={styles.FormGroupButtons}>
           <input type="submit" className="btn btn-primary" />
         </div>
