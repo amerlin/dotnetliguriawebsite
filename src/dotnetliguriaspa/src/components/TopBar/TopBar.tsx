@@ -38,6 +38,7 @@ const TopBar: FC<TopBarProps>=({showMenu, pageName}) => {
         setResult("");
         setIsError(true);
         localStorage.removeItem("profileStore");
+        window.location.href = '/';
     }
 
     const DotNetLiguriaAppBar=styled(AppBar)(({theme}) => ({
