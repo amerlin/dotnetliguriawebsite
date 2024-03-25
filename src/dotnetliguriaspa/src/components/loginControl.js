@@ -4,8 +4,7 @@ import React from 'react';
 import './loginControl.css';
 import { useOidc, useOidcIdToken } from "@axa-fr/react-oidc";
 import { useOidcUser } from '@axa-fr/react-oidc';
-import { Link } from "react-router-dom";
-
+import {Avatar, Box, Button, Typography} from "@mui/material";
 function LoginControl(props) {
     const { login, logout, isAuthenticated } = useOidc();
     const { oidcUser, oidcUserLoadingState } = useOidcUser();
@@ -50,6 +49,17 @@ function LoginControl(props) {
         props.onLogout();
     }
 
+    const stringAvatar = (name) => {
+        const currentName = String(name);
+        console.log(currentName);
+        if(currentName===null || currentName===undefined || currentName===''){
+            return "DN";
+        }
+        return {
+            children: `${currentName.split(' ')[0][0]}${currentName.split(' ')[1][0]}`,
+        };
+    }
+    
     const logoutAndRevoke = async () => {
         await logout();
         //await auth.revokeTokens(["access_token", "refresh_token"]);
@@ -59,29 +69,22 @@ function LoginControl(props) {
         props.onLogout();
     }
 
-    // if (auth.isLoading) {
-    //     return <div>Loading...</div>;
-    // }
-
-    // if (auth.error) {
-    //     return <div>Authentication error: {auth.error.message}</div>;
-    // }
     if (isAuthenticated) {
         let name = oidcUser == null ? "(none)" : oidcUser.name;
         return (
-            <div className="auth">
-                <span className="helloUser"><Link to={"/admin"}>Admin</Link></span>
-                <span className="helloUser">Hello {name}</span>
-                <span className="helloUser"><a href="#" onClick={logoutPlain}>Log out</a></span>
-                <span className="helloUser"><a href="#" onClick={logoutAndRevoke}>Log out and Revoke</a></span>
-            </div>
+            <Box pl={15} display={"flex"} flex-direction={"row"} alignItems={"center"} component={"div"}>
+                <Typography fontSize={ 12 } pr={5}>HELLO {name}</Typography>
+                <Button color="inherit" onClick={logoutPlain}><Typography fontSize={ 12 }>Logout</Typography></Button>
+                {/*<Avatar {...stringAvatar({name})}/>*/}
+            </Box>
         );
     } else {
         return (
-            <div className="auth">
-                <span className="helloUser"><a href="#" onClick={loginPlain}>Log in</a></span>
-                <span className="helloUser"><a href="#" onClick={loginMfa}>Log in [MFA]</a></span>
-
+            <>
+                <Button color="inherit" onClick={loginPlain}><Typography fontSize={ 12 }>Log in</Typography></Button>                
+                <Button color="inherit" onClick={loginMfa}><Typography fontSize={ 12 }>Log in [MFA]</Typography></Button>
+                {/*<span className="helloUser"><a href="#" onClick={loginPlain}></a></span>*/}
+                {/*<span className="helloUser"><a href="#" onClick={loginMfa}>Log in [MFA]</a></span>*/}
                 {/*
                     The following link is used for the "Super Secret" page
                     The scenario is when using three levels of Step-Up auth which are:
@@ -89,9 +92,8 @@ function LoginControl(props) {
                     - TOTP Google Authenticator (mfa)
                     - Hardware FIDO2 key (hwk)
                  */}
-
                 {/* <span className="helloUser"><a href="#" onClick={loginHwk}>Log in [HWK]</a></span> */}
-            </div>
+            </>
         );
     }
 }

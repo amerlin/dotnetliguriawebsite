@@ -7,7 +7,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { OidcProvider } from "@axa-fr/react-oidc";
-
+import { ThemeProvider } from '@mui/material';
+import theme from './theme';
 
 const configuration = {
   //metadataUrl: "https://hello.vevy.com/realms/DotNetLiguria/.well-known/openid-configuration",

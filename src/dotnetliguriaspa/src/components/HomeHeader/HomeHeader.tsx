@@ -1,8 +1,8 @@
 import React, { FC, useState } from 'react';
-import styles from './HomeHeader.module.css';
-import LoginControl from "../loginControl";
 import logo from "../../assets/Logo_H200.png";
 import { useOidc, useOidcAccessToken, useOidcFetch, useOidcIdToken } from "@axa-fr/react-oidc";
+import TopBar from "../TopBar/TopBar";
+import {isatty} from "node:tty";
 
 interface HomeHeaderProps {
     pageName?: string
@@ -66,7 +66,6 @@ const HomeHeader: FC<HomeHeaderProps> = () => {
             if (!response.ok) {
                 let message;
                 try {
-                    console.log(response);
                     const authError = response.headers.get("WWW-Authenticate");
                     message = `Fetch failed with HTTP status ${response.status} ${authError}  ${await response.text()}`;
                 } catch (e) {
@@ -88,30 +87,18 @@ const HomeHeader: FC<HomeHeaderProps> = () => {
     }
 
     const loggedOut = () => {
-        console.log("sono qui dentro");
         setResult("");
         localStorage.removeItem("profileStore");
         setIsError(true);
     }
 
     return (
-        <div className={styles.HomeHeader} data-testid="HomeHeader">
-            <header className="header">
-                <div className="one">
-                    <a href="#" className="apilink" onClick={() => invokeAPI("ValuesPlain", acr_to_loa.pwd)}>Plain
-                        API</a>
-                    <a href="#" className="apilink" onClick={() => invokeAPI("ValuesMfa", acr_to_loa.mfa)}>TOTP API</a>
-                    <a href="#" className="apilink" onClick={() => invokeAPI("ValuesHwk", acr_to_loa.hwk)}>Key API</a>
-                </div>
-                <div className="two"></div>
-                <div className="three">
-                    <LoginControl onLogout={loggedOut} />
-                </div>
-            </header>
+        <>
+            <TopBar pageName={"Home"} showMenu={isAuthenticated}/>
             <div className="content">
                 <img src={logo} className="App-logo" alt="logo" />
             </div>
-        </div>
+        </>
     )
 };
 

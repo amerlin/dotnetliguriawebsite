@@ -4,7 +4,7 @@ const LazyTopBar = lazy(() => import('./TopBar'));
 
 const TopBar = (props: JSX.IntrinsicAttributes & { children?: React.ReactNode; }) => (
   <Suspense fallback={null}>
-    <LazyTopBar {...props} />
+    <LazyTopBar {...props} showMenu={false} pageName={""}/>
   </Suspense>
 );
 

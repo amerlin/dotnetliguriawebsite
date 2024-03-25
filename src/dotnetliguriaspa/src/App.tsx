@@ -16,7 +16,9 @@ import AdminHome from './pages/AdminHome/AdminHome';
 import AdminProfile from './pages/AdminProfile/AdminProfile';
 import AdminFeedbacks from './pages/AdminFeedbacks/AdminFeedbacks';
 import AdminEvents from './pages/AdminEvents/AdminEvents';
-import 'bootstrap/dist/css/bootstrap.css';
+import "@fontsource/roboto";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/400-italic.css";
 
 // const acr_to_loa = Object.freeze({
 //     pwd: 1,

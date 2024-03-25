@@ -1,21 +1,21 @@
 import React, { FC } from 'react';
-import styles from './Layout.module.css';
-import SideBar from "../SideBar/SideBar";
 import { Outlet } from "react-router-dom"
 import TopBar from "../TopBar/TopBar";
+import CustomSideBar from "../CustomSideBar/CustomSideBar";
+import {Box} from "@mui/material";
 
 interface LayoutProps {
     pageName?: string;
 }
 
-const Layout: FC<LayoutProps> = () => (
-    <div className={styles.Layout} data-testid="Layout">
-        <TopBar />
-        <div className="container">
-            <SideBar />
+const Layout: FC<LayoutProps> = () => {return (
+<>
+        <TopBar pageName={""} showMenu={false}/>
+        <Box component={"div"} display={"flex"}>
+            <CustomSideBar />
             <Outlet />
-        </div>
-    </div>
-);
+        </Box>
+</>
+)};
 
 export default Layout;

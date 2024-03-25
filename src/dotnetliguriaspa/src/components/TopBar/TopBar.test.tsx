@@ -5,7 +5,7 @@ import TopBar from './TopBar';
 
 describe('<TopBar />', () => {
   test('it should mount', () => {
-    render(<TopBar />);
+    render(<TopBar pageName={"Test"} showMenu={false} />);
     
     const topBar = screen.getByTestId('TopBar');
 
