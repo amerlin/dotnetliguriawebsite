@@ -11,8 +11,7 @@ interface LayoutProps {
 const Layout: FC<LayoutProps> = () => {return (
 <>
         <TopBar pageName={""} showMenu={false}/>
-        <Box component={"div"} display={"flex"}>
-            <CustomSideBar />
+        <Box component={"div"}>
             <Outlet />
         </Box>
 </>

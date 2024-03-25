@@ -8,7 +8,6 @@ import './App.css';
 import React, { useEffect, useState } from 'react';
 import { useOidc } from "@axa-fr/react-oidc";
 import { Route, Routes } from 'react-router-dom';
-import HomeHeader from "./components/HomeHeader/HomeHeader";
 import Layout from "./components/Layout/Layout";
 import AdminWorkshops from "./pages/AdminWorkshops/AdminWorkshops";
 import AdminSpeakers from "./pages/AdminSpeakers/AdminSpeakers";
@@ -19,6 +18,10 @@ import AdminEvents from './pages/AdminEvents/AdminEvents';
 import "@fontsource/roboto";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/400-italic.css";
+import AboutUs from "./pages/AboutUs/AboutUs";
+import Workshops from "./pages/Workshops/Workshops";
+import AdminLayout from "./components/AdminLayout/AdminLayout";
+import HomePage from "./components/HomePage/HomePage";
 
 // const acr_to_loa = Object.freeze({
 //     pwd: 1,
@@ -134,31 +137,29 @@ function App() {
 
     return (
         <div className="App">
+            <>
+                <Routes>
+                    <Route element={<Layout/>}>
+                        <Route path="/about-us" element={<AboutUs pagename={"About Us"}/>}></Route>
+                        <Route path="/workshops" element={<Workshops pagename={"Workshops"}/>}></Route>
+                    </Route>
+                </Routes>
             {isAuthenticated ? (
-                <>
                     <Routes>
-                        <Route path='/' element={<HomeHeader />} />
-                        <Route element={<Layout />}>
+                        <Route path='/' element={<HomePage />} />
+                        <Route element={<AdminLayout />}>
                             <Route path='/admin' element={<AdminHome pagename={"Admin Dashboard"} />} />
                             <Route path='/admin/profile/' element={<AdminProfile pagename={"Profile"} />} />
                             <Route path='/admin/speakers/' element={<AdminSpeakers pagename={"Speakers"} />} />
                             <Route path='/admin/workshops/' element={<AdminWorkshops pagename={"Workshops"} />} />
                             <Route path='/admin/events/' element={<AdminEvents pagename={"Events"} />} />
                             <Route path='/admin/feedbacks' element={<AdminFeedbacks pagename={"Feedbacks"} />} />
-                            {/* <Route path='/admin/users/' element={<AdminUsers pagename={"Users"} />} />
-                            <Route path='/admin/reports/' element={<PageNotFound pagename={"Reports"} />} />
-                            <Route path='/admin/mails/' element={<PageNotFound pagename={"Mails"} />} />
-                            <Route path='/admin/messages/' element={<PageNotFound pagename={"Messages"} />} />
-                            <Route path='/admin/manage/' element={<PageNotFound pagename={"Manage"} />} />
-                            <Route path='/admin/tokens/' element={<AdminTokens pagename={"tokens"} />} /> */}
                         </Route>
                     </Routes>
-                </>
             ) : (
-                <>
-                    <HomeHeader />
-                </>
+                    <HomePage />
             )}
+                </>
         </div>
     );
 

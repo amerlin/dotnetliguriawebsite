@@ -4,7 +4,7 @@ import styles from './Home.module.css';
 interface HomeProps { pagename?: string }
 
 const Home: FC<HomeProps> = () => (
-  <div className={styles.Home} data-testid="Home">
+  <div className={styles.Home}>
     Admin - Home Pages
   </div>
 );

@@ -6,7 +6,7 @@ import {
     Box,
     Button,Container,Divider,
     Drawer,
-    IconButton,
+    IconButton,Link,
     List,
     ListItem,ListItemButton,
     Stack,
@@ -75,8 +75,8 @@ const TopBar: FC<TopBarProps>=({showMenu, pageName}) => {
                                "justify-content":"flex-end"
                            }}>
                         <Button color="inherit" href={"/"}><Typography fontSize={ 12 }>Home</Typography></Button>
-                        <Button color="inherit"><Typography fontSize={ 12 }>Workshops</Typography></Button>
-                        <Button color="inherit"><Typography fontSize={ 12 }>Chi siamo</Typography></Button>
+                        <Button color="inherit" href={"/workshops"}><Typography fontSize={ 12 }>Workshops</Typography></Button>
+                        <Button color="inherit" href={"/about-us"}><Typography fontSize={ 12 }>Chi siamo</Typography></Button>
                         {(showMenu || isAuthenticated) &&
                             <>
                                 <Button color="inherit" href="/admin"><Typography fontSize={ 12 }>Admin</Typography></Button>
@@ -94,10 +94,7 @@ const TopBar: FC<TopBarProps>=({showMenu, pageName}) => {
                 <Drawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
                     <List sx={{width : 250}}>
                         <ListItem sx={{'padding-left' : 0}}>
-                            <ListItemButton component='a' href='/users'>Gestione utenti</ListItemButton>
-                        </ListItem>
-                        <ListItem sx={{'padding-left' : 0}}>
-                            <ListItemButton component='a' href='/configuration'>Configurazione</ListItemButton>
+                            <ListItemButton component='a' href='/users'>Admin</ListItemButton>
                         </ListItem>
                         <ListItem sx={{'padding-left' : 0}}>
                             <ListItemButton component='a' href='/logout'>Logout</ListItemButton>
