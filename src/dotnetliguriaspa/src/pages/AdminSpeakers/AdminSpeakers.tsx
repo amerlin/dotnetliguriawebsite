@@ -1,9 +1,8 @@
 import React, { FC, useEffect, useState } from 'react';
-import styles from './AdminSpeakers.module.css';
 import { useOidcFetch } from "@axa-fr/react-oidc";
-import Speaker from '../../models/Speaker';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-
+import Speaker from '../../models/Speaker';
+import {Typography} from "@mui/material";
 interface AdminSpeakersProps { pagename?: string }
 
 const AdminSpeakers: FC<AdminSpeakersProps> = () => {
@@ -29,22 +28,23 @@ const AdminSpeakers: FC<AdminSpeakersProps> = () => {
     }, []);
 
     return (
-        <div className={styles.AdminSpeakers} data-testid="AdminSpeakers">
-            <div className={styles.Title}>Speakers</div>
-            <div>
-                <DataGrid
-                    style={{ height: 373, width: "80%" }}
-                    getRowId={(data) => data.name}
-                    rows={dataRows}
-                    columns={columns}
-                    initialState={{
-                        pagination: {
-                            page: 0, pageSize: 5
-                        },
-                    }}
-                />
-            </div>
-        </div>
+        <>
+            <Typography font-size={12}> SPEAKERS
+                {/*<div>*/}
+                {/*    <DataGrid*/}
+                {/*        style={{ height: 373, width: "80%" }}*/}
+                {/*        getRowId={(data) => data.name}*/}
+                {/*        rows={dataRows}*/}
+                {/*        columns={columns}*/}
+                {/*        initialState={{*/}
+                {/*            pagination: {*/}
+                {/*                page: 0, pageSize: 5*/}
+                {/*            },*/}
+                {/*        }}*/}
+                {/*    />*/}
+                {/*</div>*/}
+            </Typography>
+        </>
     )
 
 };

@@ -1,12 +1,14 @@
 import React, { FC } from 'react';
-import styles from './AdminEvents.module.css';
+import {Typography} from "@mui/material";
 
 interface AdminEventsProps { pagename?: string }
 
-const AdminEvents: FC<AdminEventsProps> = () => (
-  <div className={styles.AdminEvents} data-testid="AdminEvents">
-    <div className={styles.Title}>Events</div>
-  </div>
-);
+const AdminEvents: FC<AdminEventsProps>=() => {
+    return (
+        <>
+            <Typography font-size={ 12 }> EVENTS</Typography>
+        </>
+    )
+};
 
 export default AdminEvents;
