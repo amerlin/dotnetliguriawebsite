@@ -52,9 +52,9 @@ function App() {
                     </Routes>
                 ) : (
                     <Routes>
-                        <Route path='/' element={ <HomePage/> }/>
                         <Route element={ <Layout/> }>
                             <Route>
+                                <Route path='/' element={ <HomePage/> }/>
                                 <Route path="/about-us" element={ <AboutUs pagename={ "About Us" }/> }></Route>
                                 <Route path="/workshops" element={ <Workshops pagename={ "Workshops" }/> }></Route>
                             </Route>
