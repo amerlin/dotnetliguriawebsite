@@ -2,7 +2,8 @@ import React, { FC, useState } from 'react';
 import logo from "../../assets/Logo_H200.png";
 import { useOidc, useOidcAccessToken, useOidcFetch, useOidcIdToken } from "@axa-fr/react-oidc";
 import TopBar from "../TopBar/TopBar";
-import {Box,Typography} from "@mui/material";
+import {Box} from "@mui/material";
+import HomeMainBox from "../HomeMainBox/HomeMainBox";
 
 interface HomePageProps { pageName?: string}
 
@@ -83,6 +84,7 @@ const HomePage: FC<HomePageProps> = () => {
         }
     }
 
+    //eslint-disable-next-line @typescript-eslint/no-unused-vars
     const loggedOut = () => {
         setResult("");
         localStorage.removeItem("profileStore");
@@ -92,10 +94,10 @@ const HomePage: FC<HomePageProps> = () => {
     return (
         <>
             <TopBar pageName={"Home"} showMenu={isAuthenticated}/>
-            <Box display={"flex"} flexDirection={'row'} alignItems={'center'} justifyContent={'center'}>
-                <Typography font-size={12}>Home page</Typography>
+            <Box display={"flex"} flexDirection={'row'} alignItems={'center'} justifyContent={'center'} pt={3}>
                 <img src={logo} className="App-logo" alt="logo" />
             </Box>
+            <HomeMainBox pagename={"homepage"}/>
         </>
     )
 };

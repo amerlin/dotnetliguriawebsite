@@ -12,10 +12,13 @@ import AdminEvents from './pages/AdminEvents/AdminEvents';
 import "@fontsource/roboto";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/400-italic.css";
-import AboutUs from "./pages/AboutUs/AboutUs";
-import Workshops from "./pages/Workshops/Workshops";
+import AboutUs from "./components/AboutUs/AboutUs";
 import AdminLayout from "./components/AdminLayout/AdminLayout";
 import HomePage from "./components/HomePage/HomePage";
+import Workshops from "./components/Workshops/Workshops";
+import TopBar from "./components/TopBar/TopBar";
+import {Height} from "@mui/icons-material";
+import {Box} from "@mui/material";
 function App() {
     const { isAuthenticated } = useOidc();
     
@@ -29,6 +32,7 @@ function App() {
         if (!isAuthenticated) {
             localStorage.removeItem("profileStore");
         }
+        console.log("Auth: ", isAuthenticated);
     }, [isAuthenticated]);
 
     return (
@@ -50,8 +54,10 @@ function App() {
                     <Routes>
                         <Route path='/' element={ <HomePage/> }/>
                         <Route element={ <Layout/> }>
-                            <Route path="/about-us" element={ <AboutUs pagename={ "About Us" }/> }></Route>
-                            <Route path="/workshops" element={ <Workshops pagename={ "Workshops" }/> }></Route>
+                            <Route>
+                                <Route path="/about-us" element={ <AboutUs pagename={ "About Us" }/> }></Route>
+                                <Route path="/workshops" element={ <Workshops pagename={ "Workshops" }/> }></Route>
+                            </Route>
                         </Route>
                     </Routes>
                 ) }

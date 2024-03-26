@@ -72,8 +72,8 @@ function LoginControl(props) {
     if (isAuthenticated) {
         let name = oidcUser == null ? "(none)" : oidcUser.name;
         return (
-            <Box pl={15} display={"flex"} flex-direction={"row"} alignItems={"center"} component={"div"}>
-                <Typography fontSize={ 12 } pr={5}>Benvenuto, {name}</Typography>
+            <Box pl={4} display={"flex"} flex-direction={"row"} alignItems={"center"} component={"div"}>
+                <Typography fontSize={ 12 } pr={2}>Benvenuto, {name}</Typography>
                 <Button color="inherit" onClick={logoutPlain}><Typography fontSize={ 12 }>Logout</Typography></Button>
                 {/*<Avatar {...stringAvatar({name})}/>*/}
             </Box>
@@ -81,8 +81,10 @@ function LoginControl(props) {
     } else {
         return (
             <>
-                <Button color="inherit" onClick={loginPlain}><Typography fontSize={ 12 }>Log in</Typography></Button>                
-                <Button color="inherit" onClick={loginMfa}><Typography fontSize={ 12 }>Log in [MFA]</Typography></Button>
+                <Box display={"flex"} flex-direction={"row"} justifyContent={'flex-end'} component={"div"} align-items={"top"}>
+                    <Button color="inherit" onClick={loginPlain}><Typography fontSize={ 12 }>Log in</Typography></Button>                
+                    {/*<Button color="inherit" onClick={loginMfa}><Typography fontSize={ 12 }>Log in [MFA]</Typography></Button>*/}
+                </Box>
                 {/*<span className="helloUser"><a href="#" onClick={loginPlain}></a></span>*/}
                 {/*<span className="helloUser"><a href="#" onClick={loginMfa}>Log in [MFA]</a></span>*/}
                 {/*

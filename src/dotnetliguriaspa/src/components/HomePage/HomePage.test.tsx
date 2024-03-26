@@ -5,7 +5,7 @@ import HomePage from './HomePage';
 
 describe('<HomePage />', () => {
   test('it should mount', () => {
-    render(<HomePage />);
+    render(<HomePage pageName={"home"}/>);
     
     const homePage = screen.getByTestId('HomePage');
 

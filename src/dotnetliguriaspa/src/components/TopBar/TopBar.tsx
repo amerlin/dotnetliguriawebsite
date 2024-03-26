@@ -1,12 +1,17 @@
 import React , {FC , useState} from 'react';
 import LoginControl from "../loginControl";
+import { Link as RouterLink } from "react-router-dom";
+import { Link } from "@mui/material";
 import {useOidc,useOidcUser} from "@axa-fr/react-oidc";
+
 import {
-    AppBar,Avatar,
+    AppBar,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    Avatar,
     Box,
-    Button,Container,Divider,
+    Divider,
     Drawer,
-    IconButton,Link,
+    IconButton,
     List,
     ListItem,ListItemButton,
     Stack,
@@ -14,7 +19,7 @@ import {
     Toolbar,
     Typography,
 } from "@mui/material";
-import {CatchingPokemon , Padding} from "@mui/icons-material";
+
 import MenuIcon from '@mui/icons-material/Menu';
 
 interface TopBarProps{
@@ -22,10 +27,14 @@ interface TopBarProps{
     showMenu: boolean;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const TopBar: FC<TopBarProps>=({showMenu, pageName}) => {
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const {oidcUser}=useOidcUser();
     const [isDrawerOpen , setIsDrawerOpen]=useState<boolean>(false);
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { login, logout, isAuthenticated } = useOidc();
     
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -51,7 +60,6 @@ const TopBar: FC<TopBarProps>=({showMenu, pageName}) => {
             <DotNetLiguriaAppBar position="static" sx={{background : "#648B2D"}}>
                 <Toolbar>
                     <IconButton size='large' edge='start' color='inherit' aria-label='logo'>
-                        <CatchingPokemon/>
                         <Typography variant='h6' component={'div'} sx={{flexGrow : 1}}>
                             DotNet Liguria
                         </Typography>
@@ -73,15 +81,24 @@ const TopBar: FC<TopBarProps>=({showMenu, pageName}) => {
                                    xl : 'flex'
                                },
                                "flex-grow": "6",
-                               "justify-content":"flex-end"
+                               "justify-content":"flex-end",
+                               "align-item":"center"
                            }}>
-                        <Button color="inherit" href={"/"}><Typography fontSize={ 12 }>Home</Typography></Button>
-                        <Button color="inherit" href={"/workshops"}><Typography fontSize={ 12 }>Workshops</Typography></Button>
-                        <Button color="inherit" href={"/about-us"}><Typography fontSize={ 12 }>Chi siamo</Typography></Button>
-                        {(showMenu || isAuthenticated) &&
+                        <Link pl={1} pr={1} alignContent={'center'} underline={"none"} component={RouterLink} color="inherit" to='/'><Typography fontSize={ 12 }>HOME</Typography></Link>
+                        <Box  alignContent={'center'} >
+                            <Divider orientation="vertical" flexItem sx={{backgroundColor: "white", height: "13px",borderBottomWidth: '10px' }}/>
+                        </Box>
+                        <Link pl={1} pr={1} alignContent={'center'} underline={"none"} component={RouterLink} color="inherit" to="/about-us"><Typography fontSize={ 12 }>CHI SIAMO</Typography></Link>
+                        <Box  alignContent={'center'} >
+                            <Divider orientation="vertical" flexItem sx={{backgroundColor: "white", height: "13px",borderBottomWidth: '10px'}}/>
+                        </Box>                            
+                        <Link pl={1} pr={1} alignContent={'center'} underline={"none"} component={RouterLink} color="inherit" to="/workshops"><Typography fontSize={ 12 }>WORKSHOPS</Typography></Link>
+                        <Box  alignContent={'center'} >
+                            <Divider orientation="vertical" flexItem sx={{backgroundColor: "white", height: "13px",borderBottomWidth: '10px'}}/>
+                        </Box>
+                        {(isAuthenticated) &&
                             <>
-                                <Button color="inherit" href="/admin"><Typography fontSize={ 12 }>Admin</Typography></Button>
-                                {/*<Button color="inherit" ><Typography fontSize={ 12 }>Configurazione</Typography></Button>*/}
+                                <Link pl={1} pr={1} component={RouterLink} underline={"none"} color="inherit" to="/admin" alignContent={'center'}><Typography fontSize={ 12 }>ADMIN</Typography></Link>
                                 <LoginControl onLogout={ loggedOut }/>
                             </>
                         }
