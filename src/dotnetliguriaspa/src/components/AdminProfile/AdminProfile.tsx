@@ -8,7 +8,7 @@ import {KeyCloakUserProfile} from '../../models/KeyCloakUserProfile';
 import {useOidcFetch} from "@axa-fr/react-oidc";
 import {jwtDecode} from 'jwt-decode';
 import {Box,Container,Grid,Typography} from "@mui/material";
-
+import styles from './AdminProfile.module.css';
 const AdminProfile : FC=() => {
 
     const {idToken}=useOidcIdToken();
@@ -125,8 +125,8 @@ const AdminProfile : FC=() => {
                 <Container component={ "div" } sx={ {"padding-top":15} }>
                     <Box component={ "div" } pb={ 3 }><Typography variant={ "h6" }>PROFILO UTENTE</Typography>
                         { !profileSaved &&
-                            <Box component={"span"} sx={ {"color": "red"}}>
-                                <Typography fontSize={12} variant={"body2"}>I tuoi dati non sono ancora stati confermati.</Typography>
+                            <Box component={"span"}>
+                                <Typography variant={"inherit"} fontSize={14} sx={{"color": "red"}}>I tuoi dati non sono ancora stati confermati.</Typography>
                             </Box> 
                         }
                     </Box>
@@ -135,7 +135,7 @@ const AdminProfile : FC=() => {
                     <Grid container spacing={ 2 } pb={ 3 }>
                         <Grid item xs={ 3 } md={ 3 }><Box component={ "div" } display={ 'flex' }
                                                           flexDirection={ 'column' }><label
-                            htmlFor="firstname"><Typography fontSize={ 12 }>Nome</Typography></label><input type="text"
+                            htmlFor="firstname"><Typography fontSize={ 12 }>Nome</Typography></label><input type="text" 
                                                                                                             id="firstname" { ...register("firstname",{maxLength:50}) }
                                                                                                             value={ loggedUser?.given_name }
                                                                                                             disabled/>{ errors.firstname &&
@@ -168,7 +168,7 @@ const AdminProfile : FC=() => {
                                                                                                             type="text" { ...register("prov") } /></Box></Grid>
                     </Grid>
                     <Box component={ "div" } pb={ 1 }>
-                        <Typography fontSize={ 16 } fontStyle={ 'italic' }>INFORMAZIONI AZIENDALI</Typography>
+                        <Typography fontSize={ 16 } fontStyle={ 'italic' } >INFORMAZIONI AZIENDALI</Typography>
                         <Grid container spacing={ 2 } pb={ 3 } pt={ 2 }>
                             <Grid item xs={ 3 } md={ 3 }>
                                 <Box component={ "div" } display={ 'flex' } flexDirection={ 'column' } fontSize={ 12 }>
@@ -233,7 +233,7 @@ const AdminProfile : FC=() => {
                                         privacy</Typography></label>
                                     <input id="consentPrivacy"
                                            type="checkbox" { ...register("consentPrivacy",{required:true}) } />
-                                    { errors.consentPrivacy && <span>This field is required</span> }
+                                    { errors.consentPrivacy && <span className={styles.alert}>This field is required</span> }
                                 </Box>
                             </Grid>
                         </Grid>

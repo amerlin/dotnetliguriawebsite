@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-import './loginControl.css';
+// import './loginControl.css';
 import { useOidc, useOidcIdToken } from "@axa-fr/react-oidc";
 import { useOidcUser } from '@axa-fr/react-oidc';
 import {Avatar, Box, Button, Typography} from "@mui/material";
@@ -82,7 +82,7 @@ function LoginControl(props) {
         return (
             <>
                 <Box display={"flex"} flex-direction={"row"} alignItems={'flex-start'} component={"div"}>
-                    <Button color="inherit" onClick={loginPlain} sx={{"padding":"0"}}><Typography fontSize={12}>Log in</Typography></Button>
+                    <Button color="inherit" onClick={loginPlain} sx={{"padding-top":"1"}}><Typography fontSize={12}>Log in</Typography></Button>
                     {/*<Button color="inherit" onClick={loginMfa}><Typography fontSize={ 12 }>Log in [MFA]</Typography></Button>*/}
                 </Box>
             </>

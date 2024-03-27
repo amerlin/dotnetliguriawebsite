@@ -5,46 +5,52 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
-import { OidcProvider } from "@axa-fr/react-oidc";
-import { ThemeProvider } from '@mui/material';
+import {BrowserRouter} from 'react-router-dom';
+import {OidcProvider} from "@axa-fr/react-oidc";
+import {ThemeProvider} from '@mui/material';
 import theme from './theme';
+import {DevSupport} from "@react-buddy/ide-toolbox";
+import {ComponentPreviews,useInitial} from "./dev";
 
-const configuration = {
-  //metadataUrl: "https://hello.vevy.com/realms/DotNetLiguria/.well-known/openid-configuration",
-  authority: "https://hello.vevy.com/realms/DotNetLiguria",
-  client_id: "DotNetLiguriaSpa",
-  redirect_uri: window.location.origin + '/authentication/callback',
-  silent_redirect_uri: window.location.origin + '/authentication/silent-callback',
-  //scope: 'openid profile email api offline_access',
-  scope: 'openid email',
-  service_worker_relative_url:'/OidcServiceWorker.js',
-  service_worker_only:true,
+const configuration={
+    //metadataUrl: "https://hello.vevy.com/realms/DotNetLiguria/.well-known/openid-configuration",
+    authority:"https://hello.vevy.com/realms/DotNetLiguria",
+    client_id:"DotNetLiguriaSpa",
+    redirect_uri:window.location.origin + '/authentication/callback',
+    silent_redirect_uri:window.location.origin + '/authentication/silent-callback',
+    //scope: 'openid profile email api offline_access',
+    scope:'openid email',
+    service_worker_relative_url:'/OidcServiceWorker.js',
+    service_worker_only:true,
 
-  //onSigninCallback: replaceState,
-  //loadUserInfo: true,
+    //onSigninCallback: replaceState,
+    //loadUserInfo: true,
 
-  // mfa => Google Authenticator (TOTP)
-  // hwk => Hardware key (FIDO2)
-  //
-  //acr_values: "pwd",  // just ask username/password
-  //acr_values: "mfa",  // force the request of the OTP (requires the custom flow)
-  //acr_values: "hwk",  // force the request of the OTP (requires the custom flow)
-  extras :{
-    acr_values: "pwd"
-  }
+    // mfa => Google Authenticator (TOTP)
+    // hwk => Hardware key (FIDO2)
+    //
+    //acr_values: "pwd",  // just ask username/password
+    //acr_values: "mfa",  // force the request of the OTP (requires the custom flow)
+    //acr_values: "hwk",  // force the request of the OTP (requires the custom flow)
+    extras:{
+        acr_values:"pwd"
+    }
 };
 
-const root = ReactDOM.createRoot(
+const root=ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
     <React.StrictMode>
-      <BrowserRouter>
-        <OidcProvider configuration={configuration} >
-          <App />
-        </OidcProvider>
-      </BrowserRouter>
+        <BrowserRouter>
+            <OidcProvider configuration={ configuration }>
+                <DevSupport ComponentPreviews={ ComponentPreviews }
+                            useInitialHook={ useInitial }
+                >
+                    <App/>
+                </DevSupport>
+            </OidcProvider>
+        </BrowserRouter>
     </React.StrictMode>
 );
 
