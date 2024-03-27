@@ -3,7 +3,7 @@ import { useOidcFetch } from "@axa-fr/react-oidc";
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import Speaker from '../../models/Speaker';
 import {Typography} from "@mui/material";
-interface AdminSpeakersProps { pagename?: string }
+interface AdminSpeakersProps { pageName?: string }
 
 const AdminSpeakers: FC<AdminSpeakersProps> = () => {
     const { fetch } = useOidcFetch();

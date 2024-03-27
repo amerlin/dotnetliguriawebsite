@@ -16,6 +16,7 @@ import AboutUs from "./components/AboutUs/AboutUs";
 import AdminLayout from "./components/AdminLayout/AdminLayout";
 import HomePage from "./components/HomePage/HomePage";
 import Workshops from "./components/Workshops/Workshops";
+import AdminDownloads from "./components/AdminDownloads/AdminDownloads";
 
 function App() {
     const {isAuthenticated}=useOidc();
@@ -40,12 +41,13 @@ function App() {
                     <Routes>
                         {/*<Route path='/' element={ <HomePage/> }/>*/}
                         <Route element={ <AdminLayout/> }>
-                            <Route path='/admin' element={ <AdminHome pagename={ "Admin Dashboard" }/> }/>
+                            <Route path='/admin' element={ <AdminHome pageName={ "Admin Dashboard" }/> }/>
                             <Route path='/admin/profile/' element={ <AdminProfile/> }/>
-                            <Route path='/admin/speakers/' element={ <AdminSpeakers pagename={ "Speakers" }/> }/>
-                            <Route path='/admin/workshops/' element={ <AdminWorkshops pagename={ "Workshops" }/> }/>
-                            <Route path='/admin/events/' element={ <AdminEvents pagename={ "Events" }/> }/>
-                            <Route path='/admin/feedbacks' element={ <AdminFeedbacks pagename={ "Feedbacks" }/> }/>
+                            <Route path='/admin/speakers/' element={ <AdminSpeakers pageName={ "Speakers" }/> }/>
+                            <Route path='/admin/workshops/' element={ <AdminWorkshops pageName={ "Workshops" }/> }/>
+                            <Route path='/admin/events/' element={ <AdminEvents pageName={ "Events" }/> }/>
+                            <Route path='/admin/feedbacks' element={ <AdminFeedbacks pageName={ "Feedbacks" }/> }/>
+                            <Route path='/admin/downloads' element={ <AdminDownloads pageName={ "Downloads" }/> }/>
                         </Route>
                     </Routes>
                 ) }
@@ -53,8 +55,8 @@ function App() {
                     <Route element={ <Layout/> }>
                         <Route>
                             <Route path='/' element={ <HomePage/> }/>
-                            <Route path="/about-us" element={ <AboutUs pagename={ "About Us" }/> }></Route>
-                            <Route path="/workshops" element={ <Workshops pagename={ "Workshops" }/> }></Route>
+                            <Route path="/about-us" element={ <AboutUs pageName={ "About Us" }/> }></Route>
+                            <Route path="/workshops" element={ <Workshops pageName={ "Workshops" }/> }></Route>
                         </Route>
                     </Route>
                 </Routes>

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import {Typography} from "@mui/material";
 
-interface AdminEventsProps { pagename?: string }
+interface AdminEventsProps { pageName?: string }
 
 const AdminEvents: FC<AdminEventsProps>=() => {
     return (

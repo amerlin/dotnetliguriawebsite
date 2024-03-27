@@ -2,7 +2,7 @@ import React, { FC, useEffect } from 'react';
 import { userProfileLocalStorageStore } from "../../store/userProfileLocalStorageStore";
 import {Typography} from "@mui/material";
 
-interface AdminHomeProps { pagename?: string }
+interface AdminHomeProps { pageName?: string }
 
 const AdminHome: FC<AdminHomeProps> = () => {
 

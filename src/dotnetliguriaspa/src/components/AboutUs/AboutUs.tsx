@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import logo from "../../assets/Logo_H200.png";
 import {Box,Card,CardContent,CardHeader,CardMedia,Container,Grid,Typography} from "@mui/material";
-interface AboutUsProps { pagename:string}
+interface AboutUsProps { pageName:string}
 
 //eslint-disable-next-line @typescript-eslint/no-unused-vars
-const AboutUs: FC<AboutUsProps> = ({pagename}) => {
+const AboutUs: FC<AboutUsProps> = ({pageName}) => {
     return (
       <>
           <Box display={"flex"} flexDirection={'row'} alignItems={'center'} justifyContent={'center'} pt={3}>
