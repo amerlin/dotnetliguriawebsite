@@ -5,6 +5,7 @@ import FeedIcon from '@mui/icons-material/Feed';
 import PersonIcon from '@mui/icons-material/Person';
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import EventNoteIcon from '@mui/icons-material/EventNote';
+import DownloadIcon from '@mui/icons-material/Download';
 import {Link as RouterLink} from "react-router-dom";
 const CustomSideBar: FC = () => { return(
     <>
@@ -17,7 +18,7 @@ const CustomSideBar: FC = () => { return(
             <ListItem><Box display={"flex"} alignItems={"center"}><PersonIcon/><Link pl={1} component={RouterLink} to="/admin/speakers/" underline="none"><Typography fontSize={ 12 }>SPEAKERS</Typography></Link></Box></ListItem>
             <ListItem><Box display={"flex"} alignItems={"center"}><EventNoteIcon/><Link pl={1} component={RouterLink} to="/admin/events/" underline="none"><Typography fontSize={ 12 }>EVENTS</Typography></Link></Box></ListItem>
             <ListItem><Box display={"flex"} alignItems={"center"}><QuestionAnswerIcon/><Link pl={1} component={RouterLink} to="/admin/feedbacks/" underline="none"><Typography fontSize={ 12 }>FEEDBACKS</Typography></Link></Box></ListItem>
-            <ListItem><Box display={"flex"} alignItems={"center"}><QuestionAnswerIcon/><Link pl={1} component={RouterLink} to="/admin/download/" underline="none"><Typography fontSize={ 12 }>DOWNLOADS</Typography></Link></Box></ListItem>
+            <ListItem><Box display={"flex"} alignItems={"center"}><DownloadIcon/><Link pl={1} component={RouterLink} to="/admin/downloads/" underline="none"><Typography fontSize={ 12 }>DOWNLOADS</Typography></Link></Box></ListItem>
             <Divider></Divider>
         </List>
     </Box>

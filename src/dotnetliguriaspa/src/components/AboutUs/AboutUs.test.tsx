@@ -5,7 +5,7 @@ import AboutUs from './AboutUs';
 
 describe('<AboutUs />', () => {
   test('it should mount', () => {
-    render(<AboutUs pagename={""} />);
+    render(<AboutUs pageName={""} />);
     
     const aboutUs = screen.getByTestId('AboutUs');
 

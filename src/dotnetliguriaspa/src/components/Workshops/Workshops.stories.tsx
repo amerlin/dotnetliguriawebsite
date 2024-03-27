@@ -5,7 +5,7 @@ export default {
   title: "Workshops",
 };
 
-export const Default = () => <Workshops pagename={""}/>;
+export const Default = () => <Workshops pageName={"Downloads"}/>;
 
 Default.story = {
   name: 'default',
