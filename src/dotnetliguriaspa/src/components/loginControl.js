@@ -74,7 +74,7 @@ function LoginControl(props) {
         return (
             <Box pl={4} display={"flex"} flex-direction={"row"} alignItems={"flex-start"} component={"div"}>
                 <Typography fontSize={ 12 } pr={2}>Benvenuto, {name}</Typography>
-                <Button color="inherit" onClick={logoutPlain}><Typography fontSize={ 12 }>Logout</Typography></Button>
+                <Button color="inherit" sx={{"padding":"0"}} onClick={logoutPlain}><Typography fontSize={ 12 }>Logout</Typography></Button>
                 {/*<Avatar {...stringAvatar({name})}/>*/}
             </Box>
         );
@@ -82,7 +82,7 @@ function LoginControl(props) {
         return (
             <>
                 <Box display={"flex"} flex-direction={"row"} justifyContent={'flex-end'} component={"div"} align-items={"top"}>
-                    <Button color="inherit" onClick={loginPlain}><Typography fontSize={ 12 }>Log in</Typography></Button>                
+                    <Button color="inherit" onClick={loginPlain} sx={{"padding":"0"}}><Typography fontSize={ 12 }>Log in</Typography></Button>                
                     {/*<Button color="inherit" onClick={loginMfa}><Typography fontSize={ 12 }>Log in [MFA]</Typography></Button>*/}
                 </Box>
                 {/*<span className="helloUser"><a href="#" onClick={loginPlain}></a></span>*/}
