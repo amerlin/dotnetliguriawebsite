@@ -1,7 +1,7 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
-import { useOidc } from "@axa-fr/react-oidc";
-import { Route, Routes } from 'react-router-dom';
+import React,{useEffect,useState} from 'react';
+import {useOidc} from "@axa-fr/react-oidc";
+import {Route,Routes} from 'react-router-dom';
 import Layout from "./components/Layout/Layout";
 import AdminWorkshops from "./pages/AdminWorkshops/AdminWorkshops";
 import AdminSpeakers from "./pages/AdminSpeakers/AdminSpeakers";
@@ -16,51 +16,48 @@ import AboutUs from "./components/AboutUs/AboutUs";
 import AdminLayout from "./components/AdminLayout/AdminLayout";
 import HomePage from "./components/HomePage/HomePage";
 import Workshops from "./components/Workshops/Workshops";
-import TopBar from "./components/TopBar/TopBar";
-import {Height} from "@mui/icons-material";
-import {Box} from "@mui/material";
+
 function App() {
-    const { isAuthenticated } = useOidc();
-    
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [result, setResult] = useState("");
+    const {isAuthenticated}=useOidc();
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [isError, setIsError] = useState(true);
+    const [result,setResult]=useState("");
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [isError,setIsError]=useState(true);
 
     useEffect(() => {
         if (!isAuthenticated) {
             localStorage.removeItem("profileStore");
         }
-        console.log("Auth: ", isAuthenticated);
-    }, [isAuthenticated]);
+        console.log("Auth: ",isAuthenticated);
+    },[isAuthenticated]);
 
     return (
         <div className="App">
             <>
-                { isAuthenticated ? (
+                { isAuthenticated && (
                     <Routes>
-                        <Route path='/' element={ <HomePage/> }/>
+                        {/*<Route path='/' element={ <HomePage/> }/>*/}
                         <Route element={ <AdminLayout/> }>
                             <Route path='/admin' element={ <AdminHome pagename={ "Admin Dashboard" }/> }/>
-                            <Route path='/admin/profile/' element={ <AdminProfile pagename={ "Profile" }/> }/>
+                            <Route path='/admin/profile/' element={ <AdminProfile/> }/>
                             <Route path='/admin/speakers/' element={ <AdminSpeakers pagename={ "Speakers" }/> }/>
                             <Route path='/admin/workshops/' element={ <AdminWorkshops pagename={ "Workshops" }/> }/>
                             <Route path='/admin/events/' element={ <AdminEvents pagename={ "Events" }/> }/>
                             <Route path='/admin/feedbacks' element={ <AdminFeedbacks pagename={ "Feedbacks" }/> }/>
                         </Route>
                     </Routes>
-                ) : (
-                    <Routes>
-                        <Route element={ <Layout/> }>
-                            <Route>
-                                <Route path='/' element={ <HomePage/> }/>
-                                <Route path="/about-us" element={ <AboutUs pagename={ "About Us" }/> }></Route>
-                                <Route path="/workshops" element={ <Workshops pagename={ "Workshops" }/> }></Route>
-                            </Route>
-                        </Route>
-                    </Routes>
                 ) }
+                <Routes>
+                    <Route element={ <Layout/> }>
+                        <Route>
+                            <Route path='/' element={ <HomePage/> }/>
+                            <Route path="/about-us" element={ <AboutUs pagename={ "About Us" }/> }></Route>
+                            <Route path="/workshops" element={ <Workshops pagename={ "Workshops" }/> }></Route>
+                        </Route>
+                    </Route>
+                </Routes>
             </>
         </div>
     );

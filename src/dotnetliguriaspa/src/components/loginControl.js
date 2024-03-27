@@ -72,7 +72,7 @@ function LoginControl(props) {
     if (isAuthenticated) {
         let name = oidcUser == null ? "(none)" : oidcUser.name;
         return (
-            <Box pl={4} display={"flex"} flex-direction={"row"} alignItems={"center"} component={"div"}>
+            <Box pl={4} display={"flex"} flex-direction={"row"} alignItems={"flex-start"} component={"div"}>
                 <Typography fontSize={ 12 } pr={2}>Benvenuto, {name}</Typography>
                 <Button color="inherit" onClick={logoutPlain}><Typography fontSize={ 12 }>Logout</Typography></Button>
                 {/*<Avatar {...stringAvatar({name})}/>*/}
