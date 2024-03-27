@@ -81,20 +81,10 @@ function LoginControl(props) {
     } else {
         return (
             <>
-                <Box display={"flex"} flex-direction={"row"} justifyContent={'flex-end'} component={"div"} align-items={"top"}>
-                    <Button color="inherit" onClick={loginPlain} sx={{"padding":"0"}}><Typography fontSize={ 12 }>Log in</Typography></Button>                
+                <Box display={"flex"} flex-direction={"row"} alignItems={'flex-start'} component={"div"}>
+                    <Button color="inherit" onClick={loginPlain} sx={{"padding":"0"}}><Typography fontSize={12}>Log in</Typography></Button>
                     {/*<Button color="inherit" onClick={loginMfa}><Typography fontSize={ 12 }>Log in [MFA]</Typography></Button>*/}
                 </Box>
-                {/*<span className="helloUser"><a href="#" onClick={loginPlain}></a></span>*/}
-                {/*<span className="helloUser"><a href="#" onClick={loginMfa}>Log in [MFA]</a></span>*/}
-                {/*
-                    The following link is used for the "Super Secret" page
-                    The scenario is when using three levels of Step-Up auth which are:
-                    - Password (pwd)
-                    - TOTP Google Authenticator (mfa)
-                    - Hardware FIDO2 key (hwk)
-                 */}
-                {/* <span className="helloUser"><a href="#" onClick={loginHwk}>Log in [HWK]</a></span> */}
             </>
         );
     }
