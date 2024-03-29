@@ -7,7 +7,7 @@ import {userProfileLocalStorageStore} from '../../store/userProfileLocalStorageS
 import {KeyCloakUserProfile} from '../../models/KeyCloakUserProfile';
 import {useOidcFetch} from "@axa-fr/react-oidc";
 import {jwtDecode} from 'jwt-decode';
-import {Box,Container,Grid,Typography} from "@mui/material";
+import {Box,Container,Grid,TextField,Typography} from "@mui/material";
 import styles from './AdminProfile.module.css';
 const AdminProfile : FC=() => {
 
@@ -54,8 +54,6 @@ const AdminProfile : FC=() => {
     },[oidcUser]);
 
     const onSubmit : SubmitHandler<FormProfileData>=(data) => {
-        
-        console.log("sono dentro al submit");
         
         data.firstname=loggedUser?.given_name || '';
         data.lastname=loggedUser?.family_name || '';
@@ -139,7 +137,8 @@ const AdminProfile : FC=() => {
                                                                                                             id="firstname" { ...register("firstname",{maxLength:50}) }
                                                                                                             value={ loggedUser?.given_name }
                                                                                                             disabled/>{ errors.firstname &&
-                            <span>This field is required</span> }</Box></Grid>
+                            <span>This field is required</span> }
+                        </Box></Grid>
                         <Grid item xs={ 3 } md={ 3 }><Box component={ "div" } display={ 'flex' }
                                                           flexDirection={ 'column' }><label
                             htmlFor="lastname"><Typography fontSize={ 12 }>Cognome</Typography></label><input
