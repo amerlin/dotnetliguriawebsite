@@ -1,0 +1,75 @@
+using DotNetLiguriaCore.Model;
+using DotNetLiguriaCore.Services;
+using Microsoft.AspNetCore.Mvc;
+
+namespace DotNetLiguriaCore.Controllers
+{
+    [Route("api/[controller]/[action]")]
+    [ApiController]
+    public class BoardController : ControllerBase
+    {
+        private readonly BoardService _boardService;
+
+        public BoardController(BoardService boardService)
+        {
+            _boardService = boardService;
+        }
+
+        [HttpGet]
+        public async Task<List<Board>> Get() =>
+            await _boardService.GetAsync();
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Board>> Get(Guid id)
+        {
+            var board = await _boardService.GetAsync(id);
+
+            if (board is null)
+            {
+                return NotFound();
+            }
+
+            return board;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post(Board newBoard)
+        {
+            await _boardService.CreateAsync(newBoard);
+
+            return CreatedAtAction(nameof(Get), new { id = newBoard.BoardId }, newBoard);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(Guid id, Board updateBoard)
+        {
+            var board = await _boardService.GetAsync(id);
+
+            if (board is null)
+            {
+                return NotFound();
+            }
+
+            updateBoard.BoardId = board.BoardId;
+
+            await _boardService.UpdateAsync(id, updateBoard);
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var board = await _boardService.GetAsync(id);
+
+            if (board is null)
+            {
+                return NotFound();
+            }
+
+            await _boardService.RemoveAsync(id);
+
+            return NoContent();
+        }
+    }
+}

@@ -12,8 +12,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors.Infrastructure;
-using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 
 namespace DotNetLiguriaCore;
@@ -64,6 +62,7 @@ public class Program
 
         builder.Services.AddSingleton<WorkshopService>();
         builder.Services.AddSingleton<SpeakerService>();
+        builder.Services.AddSingleton<BoardService>();
 
         var app = builder.Build();
         app.UseCors(CorsPolicy);
@@ -110,7 +109,7 @@ public class Program
         services.Configure<AuthServerConfiguration>(authServerSection);
         var authServerConfig = authServerSection.Get<AuthServerConfiguration>();
 
-        if(authServerConfig == null)
+        if (authServerConfig == null)
         {
             throw new InvalidOperationException(
                 $"The configuraton '{AuthServerSectionName}' cannot be found");
@@ -179,7 +178,7 @@ public class Program
         .AddJwtBearer(options =>
         {
             var jwtHandler = (options.SecurityTokenValidators.FirstOrDefault() as JwtSecurityTokenHandler);
-            if(jwtHandler != null)
+            if (jwtHandler != null)
             {
                 // false: use the short names. For example: "acr"
                 // true: use the long uri type names

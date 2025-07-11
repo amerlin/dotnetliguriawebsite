@@ -1,8 +1,6 @@
 ﻿using DotNetLiguriaCore.Model;
 using DotNetLiguriaCore.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Driver.Core.Operations;
 
 namespace DotNetLiguriaCore.Controllers
 {
