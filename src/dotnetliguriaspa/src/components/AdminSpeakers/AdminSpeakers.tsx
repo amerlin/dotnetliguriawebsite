@@ -1,13 +1,13 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useOidcFetch } from "@axa-fr/react-oidc";
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import Speaker from '../../models/Speaker';
-import {Typography} from "@mui/material";
+import SpeakerModel from '../../models/SpeakerModel';
+import { Typography } from "@mui/material";
 interface AdminSpeakersProps { pageName?: string }
 
 const AdminSpeakers: FC<AdminSpeakersProps> = () => {
     const { fetch } = useOidcFetch();
-    const [dataRows, setDataRows] = useState<Speaker[]>([]);
+    const [dataRows, setDataRows] = useState<SpeakerModel[]>([]);
 
     const columns: GridColDef[] = [
         { field: 'name', headerName: 'Name', width: 180 },

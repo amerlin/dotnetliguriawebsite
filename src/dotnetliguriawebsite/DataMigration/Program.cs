@@ -12,18 +12,22 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        //var db = ConfigurationReader.Read<DbConfig>("DbConfig");
-        //Console.WriteLine();
+        var db = ConfigurationReader.Read<DbConfig>("DbConfig");
+        Console.WriteLine();
 
-        //using var ctx = new DotNetLiguriaContext(db.ConnectionString);
+        using var ctx = new DotNetLiguriaContext(db!.ConnectionString!);
 
-        //var workshops = ctx.Workshops
-        //    .OrderBy(w => w.EventDate)
-        //    //.Include(w => w.WorkshopFiles)
-        //    .ToList();
-        //var workshopFiles = ctx.WorkshopFiles.OrderBy(w => w.FileName).ToList();
-        //var workshopTracks = ctx.Tracks.OrderBy(w => w.WorkshopId).ToList();
-        //var workshopSpeakers = ctx.Speakers.OrderBy(w => w.Name).ToList();
+        var workshops = ctx.Workshops
+           .OrderBy(w => w.EventDate)
+           .Include(w => w.WorkshopFiles)
+           .Include(w => w.Location)
+           .Include(w => w.Tracks)
+             .ThenInclude(w => w.Speakers)
+           .ToList();
+
+        var workshopFiles = ctx.WorkshopFiles!.OrderBy(w => w.FileName).ToList();
+        var workshopTracks = ctx.Tracks!.OrderBy(w => w.WorkshopId).ToList();
+        var workshopSpeakers = ctx.Speakers!.OrderBy(w => w.Name).ToList();
 
         JsonSerializerOptions options = new()
         {
@@ -31,18 +35,50 @@ internal class Program
 
         };
 
-        //var jsonWorkshops = JsonSerializer.Serialize(workshops, options);
-        //var jsonWorkshopFiles = JsonSerializer.Serialize(workshopFiles, options);
-        //var jsonWorkshopTracks = JsonSerializer.Serialize(workshopTracks, options);
-        //var jsonWorkshopSpeakers = JsonSerializer.Serialize(workshopSpeakers, options);
+        //I need to create a dto for workshop and extract only speackers ids
+        foreach (var workshop in workshops)
+        {
+            if (workshop.Tracks != null)
+            {
+                foreach (var track in workshop.Tracks)
+                {
+                    if (track.Speakers != null)
+                    {
+                        track.Speakers = track.Speakers.Select(s => new WorkshopSpeaker
+                        {
+                            WorkshopSpeakerId = s.WorkshopSpeakerId,
+                            Name = s.Name,
+                            ProfileImage = s.ProfileImage,
+                            BlogHtml = s.BlogHtml,
+                            UserName = s.UserName
+                        }).ToList();
+                    }
+                }
+            }
+        }
 
-        //File.WriteAllText("workshops.json", jsonWorkshops);
-        //File.WriteAllText("workshopFiles.json", jsonWorkshopFiles);
-        //File.WriteAllText("workshopTracks.json", jsonWorkshopTracks);
-        //File.WriteAllText("workshopSpeakers.json", jsonWorkshopSpeakers);
+        //I need to serialize into json folder
+        var destinationJsonPath = Path.Combine(Environment.CurrentDirectory, "json");
+        if (!Directory.Exists(destinationJsonPath))
+        {
+            Directory.CreateDirectory(destinationJsonPath);
+        }
+
+        var jsonWorkshops = JsonSerializer.Serialize(workshops, options);
+        var jsonWorkshopFiles = JsonSerializer.Serialize(workshopFiles, options);
+        var jsonWorkshopTracks = JsonSerializer.Serialize(workshopTracks, options);
+        var jsonWorkshopSpeakers = JsonSerializer.Serialize(workshopSpeakers, options);
+
+        // I need to write the json files
+        File.WriteAllText(Path.Combine(destinationJsonPath, "workshops.json"), jsonWorkshops);
+        File.WriteAllText(Path.Combine(destinationJsonPath, "workshopFiles.json"), jsonWorkshopFiles);
+        File.WriteAllText(Path.Combine(destinationJsonPath, "workshopTracks.json"), jsonWorkshopTracks);
+        File.WriteAllText(Path.Combine(destinationJsonPath, "workshopSpeakers.json"), jsonWorkshopSpeakers);
+
 
         var envPath = Environment.CurrentDirectory;
-        string jsonPath = Path.GetFullPath(Path.Combine(envPath, @"json\"));
+
+        string jsonPath = Path.GetFullPath(Path.Combine(envPath, "json\\"));
 
         string fileName = jsonPath + "workshopSpeakers.json";
         string jsonString = File.ReadAllText(fileName);
@@ -51,8 +87,8 @@ internal class Program
 
         fileName = jsonPath + "workshops.json";
         jsonString = File.ReadAllText(fileName);
-        var workshops = JsonSerializer.Deserialize<List<DotNetLiguria.Models.Workshop>>(jsonString, options);
-        if (workshops == null) throw new Exception("Cannot deserialize (result is null)");
+        var workshops1 = JsonSerializer.Deserialize<List<DotNetLiguria.Models.Workshop>>(jsonString, options);
+        if (workshops1 == null) throw new Exception("Cannot deserialize (result is null)");
 
         var mongoDBDatabaseSettings = ConfigurationReader.Read<DotNetLiguriaDatabaseSettings>("DotNetLiguriaDatabase");
 
@@ -82,31 +118,156 @@ internal class Program
                 }
             }
 
-            IMongoCollection<DotNetLiguria.MongoDBModel.Workshop> _workshopCollection
-                = mongoDatabase.GetCollection<DotNetLiguria.MongoDBModel.Workshop>(mongoDBDatabaseSettings.WorkshopCollectionName);
 
-            foreach (var item in workshops)
+            IMongoCollection<DotNetLiguria.MongoDBModel.WorkshopFile> _workshopFileCollection
+                = mongoDatabase.GetCollection<DotNetLiguria.MongoDBModel.WorkshopFile>(mongoDBDatabaseSettings.WorkshopFileCollectionName);
+
+            foreach (var item in workshopFiles)
             {
-                var alreadyPresent = _workshopCollection.Find(x => x.WorkshopId == item.WorkshopId).FirstOrDefault();
+                var alreadyPresent = _workshopFileCollection.Find(x => x.WorkshopFileId == item.WorkshopFileId).FirstOrDefault();
 
                 if (alreadyPresent == null)
                 {
-                    DotNetLiguria.MongoDBModel.Workshop workshop = new DotNetLiguria.MongoDBModel.Workshop();
-                    workshop.WorkshopId = item.WorkshopId;
-                    workshop.Title = item.Title;
-                    workshop.Description = item.Description;
-                    workshop.Image = item.Image;
-                    workshop.OnlyHtml = item.OnlyHtml;
-                    workshop.BlogHtml = item.BlogHtml;
-                    workshop.Published = item.Published;
-                    workshop.CreationDate = item.CreationDate;
-                    workshop.EventDate = item.EventDate;
-                    workshop.IsExternalEvent = item.IsExternalEvent;
-                    workshop.ExternalRegistration = item.ExternalRegistration;
-                    workshop.ExternalRegistrationLink = item.ExternalRegistrationLink;
-                    workshop.Tags = item.Tags;
-                    workshop.Slug = "";
-                    workshop.OldUrl = $"https://dotnetliguria.net/Workshops/Detail?WorkshopId={item.WorkshopId}";
+                    DotNetLiguria.MongoDBModel.WorkshopFile workshopFile = new DotNetLiguria.MongoDBModel.WorkshopFile
+                    {
+                        WorkshopFileId = item.WorkshopFileId,
+                        WorkshopId = item.Workshop_WorkshopId ?? Guid.Empty,
+                        Title = item.Title,
+                        FileName = item.FileName,
+                        FullPath = item.FullPath,
+                        FileType = item.FileType ?? DotNetLiguria.Models.WorkshopFileType.Other
+                    };
+
+                    _workshopFileCollection.InsertOne(workshopFile);
+                }
+            }
+
+            IMongoCollection<DotNetLiguria.MongoDBModel.Board> _boardCollection
+                = mongoDatabase.GetCollection<DotNetLiguria.MongoDBModel.Board>(mongoDBDatabaseSettings.BoardCollectionName);
+
+            var board = new List<DotNetLiguria.MongoDBModel.Board>
+            {
+                new() {
+                    BoardId = Guid.NewGuid(),
+                    Name = "Raffaele Rialdi",
+                    ProfileImageUrl ="profile/raffaele-rialdi.jpg",
+                    Description = "Presidente",
+                    ProfileBio="Mi occupo professionalmente di sviluppo software dal 1987. Mi sono specializzato nelle tecnologie di sviluppo basaste su piattaforma Microsoft che nel 2003 mi ha riconosciuto il premio \"Most Valuable Professional\" grazie al quale posso rimanere in contatto con i team di sviluppo del campus a Redmond dove mi reco ogni anno. Quest'anno ho festeggiato il 9^ award MVP. Il mio lavoro consiste nel progettare, coordinare e realizzare software utilizzando le tecnologie che più amo come il Framework.NET, C#, C++ e più recentemente WinRT. Oltre a questo sono consulente, teacher in corsi e speaker in conferenze del settore."
+                },
+                new() {
+                    BoardId = Guid.NewGuid(),
+                    Name = "Alessandro Gambaro",
+                    ProfileImageUrl ="profile/alessandro-gambaro.jpg",
+                    Description = "Vice Presidente",
+                    ProfileBio ="Con la passione per l'informatica sin dal 1985 quando ero un bambino con il mio ZX Spectrum, sono tuttora entusiasta e appassionato di IT, laureato in ingegneria informatica nel 2000 a Genova ho avuto la possibilità di costruire i miei skills lavorando e studiando (nessuno nasce imparato dico io :) ) durante tutta la mia carriera lavorativa.Partito con il C++ ho poi lavorato diversi anni in ambiente Java (linguaggio che tuttora utilizzo anche se raramente), da qualche anno utilizzo C# .Net che reputo una ottima piattaforma, che mi appassione e mi stimola a creare architetture sempre più complete (a parer mio). Nel mio lavoro oltre che progettare, coordinare lo sviluppo del software mi occupo anche di Agile Development e Scrum."
+                },
+                   new() {
+                    BoardId = Guid.NewGuid(),
+                    Name = "Marco D'Alessandro",
+                    ProfileImageUrl ="profile/marco-dalessandro.jpg",
+                    Description = "Consigliere, Tesoriere, Web Designer",
+                    ProfileBio="Sono nato e vivo a Genova. Sono un programmatore orientato principalmente su piattaforma Framework .Net della microsoft, C#, WinForm e Service, Web Service e Asp.net. Lavoro come Software Engineer/Architect presso Softeco Sismat."
+                },
+                new() {
+                    BoardId = Guid.NewGuid(),
+                    Name = "Andrea Belloni",
+                    ProfileImageUrl ="profile/andrea-belloni.jpg",
+                    Description = "Consigliere",
+                    ProfileBio="Vivo e lavoro a Imperia come libero professionista, mi occupo di consulenza in ambito Microsoft.NET, C#, VB.Net, ASP.Net, WPF, WCF. Appassionato di architettura del software, di database (SQLServer) e accesso ai dati (EntityFramework, Linq2SQL, ADO.NET) … curo lo sviluppo del software per alcune società della zona. Il mio tempo libero... Famiglia e free climibing."
+                },
+                 new() {
+                    BoardId = Guid.NewGuid(),
+                    Name = "Alessio Gogna",
+                    ProfileImageUrl ="profile/alessio-gogna.jpg",
+                    Description = "Consigliere",
+                    ProfileBio="Microsoft Professional Developer, consulente IT, appassionato di .NET Framework, nostalgico programmatore C++, novello agilista, sostenitore del Free Software e inguaribile nerd. La mia passione è programmare: ho iniziato a 8 anni con un C=64 e non mi sono ancora fermato. Oggi mi dedico soprattutto a tecnologie Web-Oriented basate su .Net Framework."
+                },
+                new() {
+                    BoardId = Guid.NewGuid(),
+                    Name = "Claudio Masieri",
+                    ProfileImageUrl ="profile/claudio-masieri.jpg",
+                    Description = "Consigliere",
+                    ProfileBio="Libero professionista, ho lavorato come consulente presso molte realtà Genovesi (Elsag, Costa, Selex, TSF...). Saltuariamente tengo qualche corso in ambito Microsoft.Net, c#, vb, asp.net, WCF e Workflow Foundation e talvolta scrivo qualche articolo per la Wrox, o su Codeproject."
+                },
+                new() { BoardId = Guid.NewGuid(),
+                    Name = "Alberto Baroni",
+                    ProfileImageUrl ="profile/alberto-baroni.jpg",
+                    Description = "Consigliere",
+                    ProfileBio="Sono nato e vivo a Genova. Per 10 anni mi sono occupato di soluzioni IT in ambito energetico. Ho collaborato alla progettazione e realizzazione di alcune delle più importanti soluzioni informatiche utilizzate dagli Operatori Energetici. Dal 2013 sono co-fondatore di Sinergetica Srl società leader nelle soluzioni software per il mercato enegetico"
+                },
+                new() { BoardId = Guid.NewGuid(),
+                    Name = "Andrea Sassetti",
+                    ProfileImageUrl ="profile/andrea-sassetti.jpg",
+                    Description = "Consigliere",
+                    ProfileBio="Laureato in Ingegneria Informatica presso l'Università degli studi di Genova nel 2008. Sin dal 2004 mi occupo della tecnologia Microsoft.NET. Sono Microsoft Professional Developer e lavoro come software engineer nel campo dell'automazione industriale. Utilizzo principalmente C# e quando c'è bisogno di scolpire il metallo C++ :). Appassionato di tutto quello che gravita intorno alle NUI."
+                }
+            };
+
+            foreach (var item in board)
+            {
+                var alreadyPresent = _boardCollection.Find(x => x.BoardId == item.BoardId).FirstOrDefault();
+
+                if (alreadyPresent == null)
+                {
+                    _boardCollection.InsertOne(item);
+                }
+            }
+
+
+            IMongoCollection<DotNetLiguria.MongoDBModel.FileType> _workshopTrackCollection
+                = mongoDatabase.GetCollection<DotNetLiguria.MongoDBModel.FileType>(mongoDBDatabaseSettings.FileTypeCollectionName);
+
+            var fileTypes = Enum.GetValues<WorkshopFileType>()
+                .Cast<DotNetLiguria.Models.WorkshopFileType>()
+                .Select(x => new DotNetLiguria.MongoDBModel.FileType
+                {
+                    FileTypeId = (int)x,
+                    Name = x.ToString()
+                }).ToList();
+
+            foreach (var item in fileTypes)
+            {
+                var alreadyPresent = _workshopTrackCollection.Find(x => x.FileTypeId == item.FileTypeId).FirstOrDefault();
+
+                if (alreadyPresent == null)
+                {
+                    _workshopTrackCollection.InsertOne(item);
+                }
+            }
+
+            IMongoCollection<DotNetLiguria.MongoDBModel.Workshop> _workshopCollection
+                = mongoDatabase.GetCollection<DotNetLiguria.MongoDBModel.Workshop>(mongoDBDatabaseSettings.WorkshopCollectionName);
+
+            var number = 1;
+            foreach (var item in workshops1)
+            {
+                var alreadyPresent = _workshopCollection.Find(x => x.WorkshopId == item.WorkshopId).FirstOrDefault();
+
+                //create a number with 3 digits from number
+                var workshopFolderName = $"workshop{number:000}";
+
+                if (alreadyPresent == null)
+                {
+                    DotNetLiguria.MongoDBModel.Workshop workshop = new()
+                    {
+                        WorkshopId = item.WorkshopId,
+                        Title = item.Title,
+                        Description = item.Description,
+                        ImageOld = item.Image,
+                        Image = $"/workshops/{workshopFolderName}/workshop.png",
+                        ImageThumbnail = $"/workshops/{workshopFolderName}/workshop_thumb.png",
+                        OnlyHtml = item.OnlyHtml,
+                        BlogHtml = item.BlogHtml,
+                        Published = item.Published,
+                        CreationDate = item.CreationDate,
+                        EventDate = item.EventDate,
+                        IsExternalEvent = item.IsExternalEvent,
+                        ExternalRegistration = item.ExternalRegistration,
+                        ExternalRegistrationLink = item.ExternalRegistrationLink,
+                        Tags = item.Tags,
+                        Slug = "",
+                        OldUrl = $"https://dotnetliguria.net/Workshops/Detail?WorkshopId={item.WorkshopId}"
+                    };
 
                     if (item.Location != null)
                     {
@@ -139,6 +300,8 @@ internal class Program
 
                     _workshopCollection.InsertOne(workshop);
                 }
+
+                number++;
             }
         }
 

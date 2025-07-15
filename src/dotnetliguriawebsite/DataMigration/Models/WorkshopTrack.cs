@@ -25,7 +25,7 @@ namespace DotNetLiguria.Models
 
         public WorkshopTrack()
         {
-            this.Speakers = new List<WorkshopSpeaker>();
+            this.Speakers = [];
         }
     }
 }

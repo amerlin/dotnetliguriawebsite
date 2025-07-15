@@ -1,15 +1,15 @@
-import React, {FC} from 'react';
+import React, { FC } from 'react';
 import styles from './ShowPermissions.module.css';
-import {useOidcUser} from "@axa-fr/react-oidc";
-import {UserInfoExtended} from "../../models/UserInfoExtended";
+import { useOidcUser } from "@axa-fr/react-oidc";
+import { UserInfoExtendedModel } from "../../models/UserInfoExtendedModel";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface ShowPermissionsProps {
 }
 
 const ShowPermissions: FC<ShowPermissionsProps> = () => {
-    const {oidcUser, oidcUserLoadingState} = useOidcUser();
-    const userInfoExtended = oidcUser as UserInfoExtended;
+    const { oidcUser, oidcUserLoadingState } = useOidcUser();
+    const userInfoExtended = oidcUser as UserInfoExtendedModel;
     console.log("OidcUser: ", oidcUser);
     console.log("OidcUserExtended: ", userInfoExtended);
     return (

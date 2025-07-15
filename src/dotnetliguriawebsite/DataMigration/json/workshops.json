@@ -13,7 +13,12 @@
     "ExternalRegistration": false,
     "ExternalRegistrationLink": null,
     "OnlyHtml": false,
-    "Location": null,
+    "Location": {
+      "Name": "Softeco Sismat",
+      "Coordinates": null,
+      "Address": "Torre WTC - Via De Marini 1, 6^ piano, Genova Sampierdarena",
+      "MaximumSpaces": 0
+    },
     "Tracks": [
       {
         "WorkshopTrackId": "109fac26-0769-4fd0-b317-850e77b5da58",
@@ -23,7 +28,16 @@
         "EndTime": "2011-05-27T20:00:00",
         "Abstract": "A partire dalla prossima versione WCF ci metter\u00E0 a disposizione nuove librerie per permetterci un vero sviluppo cross-platform. Il primo filone riguarda i nuovi RIA services e un set di plugin jQuery. I RIA, nati per Silverlight, sono stati modificati in modo da poter essere utilizzati con la stessa direttamente da javascript e jQuery. Nel contempo un set di plugin jQuery ci permettono di avere template, binding, e molte altre caratteristiche che prima erano esclusiva di Silverlight.\r\n\r\nA contorno dello sviluppo web vedremo come sta evolvendo lo sviluppo dello standard Websockets di HTML5\r\n\r\nL\u0027altro interessante filone \u00E8 quello delle nuove librerie WCF WebAPI che permettono di sfruttare completamente il protcollo HTTP in tutta la sua semantica. Durante la presentazione vedremo i perch\u00E9 di questa rilevanza e come funziona la pre-release delle librerie su cui Microsoft sta lavorando.\r\n",
         "Level": 300,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "8fcac0da-44e0-44cc-9261-9ee3621e53e9"
       }
     ],
@@ -33,7 +47,8 @@
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/8fcac0da-44e0-44cc-9261-9ee3621e53e9\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "8fcac0da-44e0-44cc-9261-9ee3621e53e9"
       }
     ],
     "Workshopsubscribed": null
@@ -52,7 +67,12 @@
     "ExternalRegistration": false,
     "ExternalRegistrationLink": null,
     "OnlyHtml": false,
-    "Location": null,
+    "Location": {
+      "Name": "Softeco Sismat ",
+      "Coordinates": null,
+      "Address": "Torre WTC - Via De Marini 1, 6^ piano, Genova Sampierdarena",
+      "MaximumSpaces": 0
+    },
     "Tracks": [
       {
         "WorkshopTrackId": "33f0a727-1323-492d-9fd6-7031f427fd89",
@@ -62,7 +82,16 @@
         "EndTime": "2011-07-01T19:30:00",
         "Abstract": "Con la nuova versione di Entity Framework sono state introdotte due nuove funzionalit\u00E0: l\u0027API DbContext e \u0022Code First\u0022. Il primo \u00E8 un\u0027astrazione semplificata dell\u0027ObjectContest esistente, ottimizzata per attivit\u00E0 comuni e modelli di programmazione. La seconda: \u0022Code First\u0022 \u00E8 un nuovo modello di sviluppo di Entity Framework che si affianca ai due modelli esistenti \u0022Database First\u0022 e \u0022Model First\u0022; Code First permette di definire il modello mediante classi CLR senza l\u0027utilizzo di un designer. Nella sessione vedremo nei dettagli come scrivere mapping con \u0022Code First\u0022.\r\n\r\n\r\nSeguir\u00E0 una tavola rotonda con discussioni sugli argomenti di Entity Framework 4.1 e sul precedente workshop WCF vNext\r\n",
         "Level": 200,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "8ba0441a-3124-4f03-99e6-6f3b5ba76f89",
+            "Name": "Andrea Belloni",
+            "ProfileImage": "/Uploads/speakers/andreabelloni[1].PNG",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "99bf031c-7768-4902-8efb-5b40dca38282"
       }
     ],
@@ -72,7 +101,8 @@
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/99bf031c-7768-4902-8efb-5b40dca38282\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "99bf031c-7768-4902-8efb-5b40dca38282"
       }
     ],
     "Workshopsubscribed": null
@@ -91,17 +121,31 @@
     "ExternalRegistration": false,
     "ExternalRegistrationLink": null,
     "OnlyHtml": false,
-    "Location": null,
+    "Location": {
+      "Name": "Virtu Sestri",
+      "Coordinates": null,
+      "Address": "Via Vado 21/2 Genova Sestri Ponente",
+      "MaximumSpaces": 0
+    },
     "Tracks": [
       {
-        "WorkshopTrackId": "221862ab-5e42-4c76-a6c1-e18b9b8bf511",
-        "Title": "Dependency Injection e IoC in .Net",
+        "WorkshopTrackId": "98443726-0b79-4256-b038-57b55e2c2580",
+        "Title": "Roundtable \u0022//build/\u0022",
         "Image": null,
-        "StartTime": "2011-09-30T19:00:00",
-        "EndTime": "2011-09-30T20:00:00",
-        "Abstract": "Per IoC si intende un pattern di programmazione secondo il quale si tende a tener disaccoppiati i singoli componenti di un sistema, in cui le eventuali dipendenze non vengonoscritte all\u0027interno del componente stesso, ma gli vengono iniettate dall\u0027esterno. La Dependency Injection \u00E8 una delle tecniche con le quali si pu\u00F2 attuare l\u0027IOC; Essa prende il controllo su tutti gli aspetti di creazione degli oggetti e delle loro dipendenze. Alessandro ci far\u00E0 vedere con esempi di codice quali siano i vantaggi, vedremo inoltre come utilizzare in particolare Unity Application Block che \u00E8 un DI Container.",
-        "Level": 300,
-        "Speakers": [],
+        "StartTime": "2011-09-30T17:00:00",
+        "EndTime": "2011-09-30T18:00:00",
+        "Abstract": "Discussione aperta tra tutti i partecipanti e Raffaele Rialdi che ha partecipato alla //build/ conference. Tavola rotonda sulle novit\u00E0 presentate alla \u201CBuild\u201D di Los Anageles: Windows 8, WinRT , le novit\u00E0 legate allo sviluppo Visual Studio 2011, le applicazioni metro style, HTML5, ecc.",
+        "Level": 200,
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "0d2b7baa-7032-41d4-823c-232df495f841"
       },
       {
@@ -112,18 +156,36 @@
         "EndTime": "2011-09-30T19:00:00",
         "Abstract": "La nuova generazione di applicazioni Metro per Windows 8 sar\u00E0 interamente basata sul nuovo runtime chiamato WinRT, costruita con codice nativo derivato da COM. WinRT costituisce una reale rivoluzione in Windows, esponendo le funzionalit\u00E0 del sistema operativo, una volta prerogativa esclusiva di Win32, in modo object oriented e permettendo una reale equit\u00E0 di trattamento a linguaggi come C\u002B\u002B, C#, VB.NET e Javascript. La libreria di WinRT integra anche un nuovo motore di rendering XAML che permette a questi linguaggi di usufruire di questo linguaggio di markup.Durante la sessione analizzeremo con cura l\u0027architettura di questo nuovo runtime e quale sia il futuro delle applicazioni e dello sviluppo sotto Windows.",
         "Level": 200,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "0d2b7baa-7032-41d4-823c-232df495f841"
       },
       {
-        "WorkshopTrackId": "98443726-0b79-4256-b038-57b55e2c2580",
-        "Title": "Roundtable \u0022//build/\u0022",
+        "WorkshopTrackId": "221862ab-5e42-4c76-a6c1-e18b9b8bf511",
+        "Title": "Dependency Injection e IoC in .Net",
         "Image": null,
-        "StartTime": "2011-09-30T17:00:00",
-        "EndTime": "2011-09-30T18:00:00",
-        "Abstract": "Discussione aperta tra tutti i partecipanti e Raffaele Rialdi che ha partecipato alla //build/ conference. Tavola rotonda sulle novit\u00E0 presentate alla \u201CBuild\u201D di Los Anageles: Windows 8, WinRT , le novit\u00E0 legate allo sviluppo Visual Studio 2011, le applicazioni metro style, HTML5, ecc.",
-        "Level": 200,
-        "Speakers": [],
+        "StartTime": "2011-09-30T19:00:00",
+        "EndTime": "2011-09-30T20:00:00",
+        "Abstract": "Per IoC si intende un pattern di programmazione secondo il quale si tende a tener disaccoppiati i singoli componenti di un sistema, in cui le eventuali dipendenze non vengonoscritte all\u0027interno del componente stesso, ma gli vengono iniettate dall\u0027esterno. La Dependency Injection \u00E8 una delle tecniche con le quali si pu\u00F2 attuare l\u0027IOC; Essa prende il controllo su tutti gli aspetti di creazione degli oggetti e delle loro dipendenze. Alessandro ci far\u00E0 vedere con esempi di codice quali siano i vantaggi, vedremo inoltre come utilizzare in particolare Unity Application Block che \u00E8 un DI Container.",
+        "Level": 300,
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "6f3d049f-358e-4653-bae0-0785a60442b2",
+            "Name": "Alessandro Gambaro",
+            "ProfileImage": "/Uploads/speakers/AAEAAQAAAAAAAAe0AAAAJDU1ZjhkZTY5LTMwODktNGVmMy04ZjdiLTdlNjRkYjRjZDViZQ[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "0d2b7baa-7032-41d4-823c-232df495f841"
       }
     ],
@@ -133,7 +195,8 @@
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/0d2b7baa-7032-41d4-823c-232df495f841\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "0d2b7baa-7032-41d4-823c-232df495f841"
       }
     ],
     "Workshopsubscribed": null
@@ -152,7 +215,12 @@
     "ExternalRegistration": false,
     "ExternalRegistrationLink": null,
     "OnlyHtml": false,
-    "Location": null,
+    "Location": {
+      "Name": "Virtu Sestri ",
+      "Coordinates": null,
+      "Address": "Via Vado 21/2 Genova Sestri Ponente)",
+      "MaximumSpaces": 50
+    },
     "Tracks": [
       {
         "WorkshopTrackId": "b7e5e24f-8b4d-4a8b-9e92-61d4143b3b8d",
@@ -162,7 +230,16 @@
         "EndTime": "2012-01-27T19:00:00",
         "Abstract": "Visual Studio LightSwitch 2011 \u00E8 il nuovo tool di casa Microsoft per lo sviluppo rapido di applicazioni line-of-business moderne e scalabili per il desktop, il Web, la Cloud. In questa sessione verr\u00E0 introdotto LightSwitch e vedremo come sia semplice e veloce creare applicazioni data-centric con tecniche coding-optional e in cui l\u2019unico codice che verr\u00E0 scritto \u00E8 l\u2019unico codice che \u00E8 possibile scrivere in LightSwitch: la gestione della logica di business.",
         "Level": 200,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "816ee9ea-2c0e-4eaf-a114-148ea42d4507",
+            "Name": "Alessandro Del Sole",
+            "ProfileImage": "/Uploads/speakers/41UKfIjBjOL._UX250_[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "96869722-9aa7-4ef6-be1b-7d6139b0a37f"
       },
       {
@@ -173,7 +250,16 @@
         "EndTime": "2012-01-27T18:00:00",
         "Abstract": "Discussione aperta tra tutti i partecipanti. Tavola rotonda sul futuro di Silverlight e sulle tecnologie di sviluppo client e web. Temi centrali: Silverlight vs Html5, Kit di sviluppo per applicazioni mobile (phonegap, etc.), Silverlight vs WinRT vs WPF per lo sviluppo Windows, ecc.",
         "Level": 200,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "96869722-9aa7-4ef6-be1b-7d6139b0a37f"
       },
       {
@@ -184,24 +270,35 @@
         "EndTime": "2012-01-27T20:00:00",
         "Abstract": "Fare testing oggi non \u00E8 semplice e spesso manca tempo e risorse per scrivere test approfonditi o per lo meno essenziali. I *code contracts *sono uno strumento che mira a rendere pi\u00F9 robusto il codice assicurando la validit\u00E0 dei parametri e del risultato di una funzione, o lo stato corretto di un oggetto, permettendo di avere informazioni automatizzate sul suo utilizzo.",
         "Level": 200,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "5b893948-5fbf-46a1-bd24-2abe2f6bbe8b",
+            "Name": "Claudio Masieri",
+            "ProfileImage": "/Uploads/speakers/photo[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "96869722-9aa7-4ef6-be1b-7d6139b0a37f"
       }
     ],
     "WorkshopFiles": [
       {
-        "WorkshopFileId": "4577b282-f0b7-4bc5-b439-bcc7215cf354",
-        "Title": "Presentazione LightSwitch",
-        "FileName": "adsLightSwitchTourDotNetLiguria_27012012.pdf",
-        "FullPath": "/Uploads/workshops/96869722-9aa7-4ef6-be1b-7d6139b0a37f\\adsLightSwitchTourDotNetLiguria_27012012.pdf",
-        "FileType": 4
-      },
-      {
         "WorkshopFileId": "05b70b44-450d-4865-8662-37256c99bc25",
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/96869722-9aa7-4ef6-be1b-7d6139b0a37f\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "96869722-9aa7-4ef6-be1b-7d6139b0a37f"
+      },
+      {
+        "WorkshopFileId": "4577b282-f0b7-4bc5-b439-bcc7215cf354",
+        "Title": "Presentazione LightSwitch",
+        "FileName": "adsLightSwitchTourDotNetLiguria_27012012.pdf",
+        "FullPath": "/Uploads/workshops/96869722-9aa7-4ef6-be1b-7d6139b0a37f\\adsLightSwitchTourDotNetLiguria_27012012.pdf",
+        "FileType": 4,
+        "Workshop_WorkshopId": "96869722-9aa7-4ef6-be1b-7d6139b0a37f"
       }
     ],
     "Workshopsubscribed": null
@@ -235,7 +332,16 @@
         "EndTime": "2012-04-13T18:00:00",
         "Abstract": "L\u0027evento inizia con una prima parte interattiva dove prenderemo in esame il nuovo Visual Studio 11 Beta 1 e le nuove caratteristiche per sviluppare applicazioni Metro.\r\nVedremo la struttura del codice creata dai wizard di Visual Studio e come questo possa essere facilmente modificato per supportare il prezioso pattern MVVM.",
         "Level": 200,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "2aead87a-4320-45d1-9376-bdae2e38973c"
       },
       {
@@ -246,7 +352,16 @@
         "EndTime": "2012-04-13T20:00:00",
         "Abstract": "C# 5.0 introduce due nuove keyword che rivoluzioneranno il modo di scrivere codice multithreading. Le novit\u00E0 toccano sia le attuali applicazioni desktop e server che il nuovo mondo Metro dove le funzioni di libreria che potrebbero impiegare pi\u00F9 di 50ms sono esposte solo come asincrone.\r\nLa sessione comincer\u00E0 con una veloce panoramica sui Task gi\u00E0 presenti nel Framework 4.0.\r\n\r\nQuindi vedremo nel dettaglio come si usano le keywork async/await, e diversi casi d\u0027uso classici come la gestione delle eccezioni, l\u0027annullamento dell\u0027esecuzione, la gestione del progresso ed altri interessanti usi.\r\n",
         "Level": 200,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "2aead87a-4320-45d1-9376-bdae2e38973c"
       },
       {
@@ -257,7 +372,16 @@
         "EndTime": "2012-04-13T19:00:00",
         "Abstract": "La sessione inizier\u00E0 con una rapida panoramica all\u0027architettura di WinRT.\r\nProseguiremo quindi analizzando il codice delle demo gi\u00E0 viste durante la roundtable per capire le motivazioni e le implicazioni a livello di architettura del Windows Runtime.",
         "Level": 200,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "2aead87a-4320-45d1-9376-bdae2e38973c"
       }
     ],
@@ -267,7 +391,8 @@
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/2aead87a-4320-45d1-9376-bdae2e38973c\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "2aead87a-4320-45d1-9376-bdae2e38973c"
       }
     ],
     "Workshopsubscribed": null
@@ -286,15 +411,21 @@
     "ExternalRegistration": false,
     "ExternalRegistrationLink": null,
     "OnlyHtml": false,
-    "Location": null,
-    "Tracks": null,
+    "Location": {
+      "Name": "Selex Elsag",
+      "Coordinates": null,
+      "Address": "Via Puccini, 2",
+      "MaximumSpaces": 0
+    },
+    "Tracks": [],
     "WorkshopFiles": [
       {
         "WorkshopFileId": "22810b9e-211b-4d27-adca-58b79ea26a16",
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/93a89b68-0651-4c4c-9343-c4eb9d114896\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "93a89b68-0651-4c4c-9343-c4eb9d114896"
       }
     ],
     "Workshopsubscribed": null
@@ -313,17 +444,31 @@
     "ExternalRegistration": false,
     "ExternalRegistrationLink": null,
     "OnlyHtml": false,
-    "Location": null,
+    "Location": {
+      "Name": "Selex Elsag",
+      "Coordinates": null,
+      "Address": "Via Puccini 2, Sestri Ponente",
+      "MaximumSpaces": 100
+    },
     "Tracks": [
       {
-        "WorkshopTrackId": "02ad67a3-2ab7-49d7-b49a-c428beaa79af",
-        "Title": "I vantaggi di ASP.NET MVC",
+        "WorkshopTrackId": "018fdb53-9a26-4fe6-b2fa-880442f1bf55",
+        "Title": "NoSql: come, quando e perch\u00E9",
         "Image": null,
-        "StartTime": "2012-09-28T19:00:00",
-        "EndTime": "2012-09-28T20:00:00",
-        "Abstract": "Il model-View-Controller sviluppato da Microsoft, nasce come aggiunta ad ASP.NET, offrendo un\u0027alternativa al modello ASP.NET Web Forms.  Utilizzato quindi per la creazione di applicazioni web, in breve tempo e maturando nelle versioni, oggi si pu\u00F2 dire che abbia preso il posto  del classico Web Forms dando allo sviluppatore una libert\u00E0 di sviluppo mai avuta prima con tecnologia Microsoft.",
+        "StartTime": "2012-09-28T18:00:00",
+        "EndTime": "2012-09-28T19:00:00",
+        "Abstract": "Obiettivo della sessione \u00E8 confrontare sul campo vantaggi e svantaggi dei modelli relazione e documentale, mettendo a confronto il modello relazionale con quello documentale. Affronteremo le complessit\u00E0 e i vantaggi che il modello documentale offre e capiremo quando ha senso scegliere uno piuttosto che l\u0027altro o quando ha molto senso farli convivere per sfruttare i vantaggi offerti da entrambi i modelli. Spazieremo da RavenDB a MongoDB ad Azure Table Storage.",
         "Level": 200,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "abcfb5f0-927c-4733-ae8c-3401f0ee73a3",
+            "Name": "Mauro Servienti",
+            "ProfileImage": "/Uploads/speakers/MauroServienti[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "a1fdfa6a-1607-45d5-92a6-8263e344afa7"
       },
       {
@@ -334,42 +479,63 @@
         "EndTime": "2012-09-28T18:00:00",
         "Abstract": "nosql vs database relazionali.\r\nDiscussione aperta tra tutti i partecipanti.",
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "a1fdfa6a-1607-45d5-92a6-8263e344afa7"
       },
       {
-        "WorkshopTrackId": "018fdb53-9a26-4fe6-b2fa-880442f1bf55",
-        "Title": "NoSql: come, quando e perch\u00E9",
+        "WorkshopTrackId": "02ad67a3-2ab7-49d7-b49a-c428beaa79af",
+        "Title": "I vantaggi di ASP.NET MVC",
         "Image": null,
-        "StartTime": "2012-09-28T18:00:00",
-        "EndTime": "2012-09-28T19:00:00",
-        "Abstract": "Obiettivo della sessione \u00E8 confrontare sul campo vantaggi e svantaggi dei modelli relazione e documentale, mettendo a confronto il modello relazionale con quello documentale. Affronteremo le complessit\u00E0 e i vantaggi che il modello documentale offre e capiremo quando ha senso scegliere uno piuttosto che l\u0027altro o quando ha molto senso farli convivere per sfruttare i vantaggi offerti da entrambi i modelli. Spazieremo da RavenDB a MongoDB ad Azure Table Storage.",
+        "StartTime": "2012-09-28T19:00:00",
+        "EndTime": "2012-09-28T20:00:00",
+        "Abstract": "Il model-View-Controller sviluppato da Microsoft, nasce come aggiunta ad ASP.NET, offrendo un\u0027alternativa al modello ASP.NET Web Forms.  Utilizzato quindi per la creazione di applicazioni web, in breve tempo e maturando nelle versioni, oggi si pu\u00F2 dire che abbia preso il posto  del classico Web Forms dando allo sviluppatore una libert\u00E0 di sviluppo mai avuta prima con tecnologia Microsoft.",
         "Level": 200,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "6f3d049f-358e-4653-bae0-0785a60442b2",
+            "Name": "Alessandro Gambaro",
+            "ProfileImage": "/Uploads/speakers/AAEAAQAAAAAAAAe0AAAAJDU1ZjhkZTY5LTMwODktNGVmMy04ZjdiLTdlNjRkYjRjZDViZQ[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "a1fdfa6a-1607-45d5-92a6-8263e344afa7"
       }
     ],
     "WorkshopFiles": [
       {
-        "WorkshopFileId": "5429f7dc-93ff-4671-ab80-bb11fbd045b2",
-        "Title": "I vantaggi di ASP.NET MVC",
-        "FileName": "ASPNETMVC.rar",
-        "FullPath": "/Uploads/workshops/a1fdfa6a-1607-45d5-92a6-8263e344afa7\\ASPNETMVC.rar",
-        "FileType": 4
-      },
-      {
         "WorkshopFileId": "bbbec624-8a52-446a-8c0c-09c96aac906e",
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/a1fdfa6a-1607-45d5-92a6-8263e344afa7\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "a1fdfa6a-1607-45d5-92a6-8263e344afa7"
       },
       {
         "WorkshopFileId": "e6c0d9ee-6329-4689-a313-4d2e2e6eef54",
         "Title": "NoSql: come, quando e perch\u00E9",
         "FileName": "RavenDB.zip",
         "FullPath": "/Uploads/workshops/a1fdfa6a-1607-45d5-92a6-8263e344afa7\\RavenDB.zip",
-        "FileType": 4
+        "FileType": 4,
+        "Workshop_WorkshopId": "a1fdfa6a-1607-45d5-92a6-8263e344afa7"
+      },
+      {
+        "WorkshopFileId": "5429f7dc-93ff-4671-ab80-bb11fbd045b2",
+        "Title": "I vantaggi di ASP.NET MVC",
+        "FileName": "ASPNETMVC.rar",
+        "FullPath": "/Uploads/workshops/a1fdfa6a-1607-45d5-92a6-8263e344afa7\\ASPNETMVC.rar",
+        "FileType": 4,
+        "Workshop_WorkshopId": "a1fdfa6a-1607-45d5-92a6-8263e344afa7"
       }
     ],
     "Workshopsubscribed": null
@@ -394,8 +560,8 @@
       "Address": "Via Puccini 2, Sestri Ponente",
       "MaximumSpaces": 100
     },
-    "Tracks": null,
-    "WorkshopFiles": null,
+    "Tracks": [],
+    "WorkshopFiles": [],
     "Workshopsubscribed": null
   },
   {
@@ -420,17 +586,6 @@
     },
     "Tracks": [
       {
-        "WorkshopTrackId": "0df62d32-fff1-4ccf-b19f-49da448f7b2c",
-        "Title": "Roundtable - Sviluppo nativo o managed: quale futuro ?",
-        "Image": "http://sivertimes.com/wp-content/uploads/2015/04/round_table_meeting_.jpg",
-        "StartTime": "2013-04-05T16:30:00",
-        "EndTime": "2013-04-05T17:30:00",
-        "Abstract": "Con l\u2019approvazione dello standard C\u002B\u002B11 e di ulteriori novit\u00E0 nel futuro C\u002B\u002B14 lo sviluppo nativo ha ripreso vigore non solo per motivi di performance o di consumo della batteria dei dispositivi portatili. Cosa spaventa lo sviluppatore nell\u2019affrontare lo sviluppo nativo? Sintassi, librerie, intellisense, compilatore, tools o produttivit\u00E0? Nel corso della roundtable raccoglieremo suggerimenti su un eventuale futuro evento dedicato al mondo nativo).",
-        "Level": 100,
-        "Speakers": [],
-        "WorkshopId": "d4a675b7-e631-4201-a55e-8778e2d8edf2"
-      },
-      {
         "WorkshopTrackId": "c890d21b-7420-40e6-be54-10e8db0de589",
         "Title": "HTML5 - Web (r)evolution",
         "Image": "http://www.w3.org/html/logo/downloads/HTML5_Badge_512.png",
@@ -438,7 +593,16 @@
         "EndTime": "2013-04-05T18:30:00",
         "Abstract": "Il nuovo standard HTML non introduce soltanto nuovi tags, ma un modo profondamente diverso di approcciare allo sviluppo di pagine web. In questa sessione cercheremo di analizzare le fondamentali differenze con lo standard precedente per arrivare alle ragioni che stanno dietro a tali cambiamenti.",
         "Level": 200,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "6ba9932e-df58-4810-bfd8-6ad490aa9b56",
+            "Name": "Alessio Gogna",
+            "ProfileImage": "/Uploads/speakers/_XNLjgXu_400x400[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "d4a675b7-e631-4201-a55e-8778e2d8edf2"
       },
       {
@@ -449,7 +613,36 @@
         "EndTime": "2013-04-05T20:00:00",
         "Abstract": "Al giorno d\u0027oggi si cerca di portare tutto quello che era applicazione desktop su web, fino a ieri il real time era una nota dolente, oggi qualcosa \u00E8 cambiato e possiamo pensare di avere un sistem real time anche su web. SignalR \u00E8 una libreria che permette le notifiche in real-time sul web verso client desktop, brower di vecchia e nuova generazione e dispositivi mobile. Che siano disponibili le websocket o meno SignalR fornisce in modo trasparente la sua funzionalit\u00E0 senza richiedere alcuna modifica al codice.",
         "Level": 300,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "6f3d049f-358e-4653-bae0-0785a60442b2",
+            "Name": "Alessandro Gambaro",
+            "ProfileImage": "/Uploads/speakers/AAEAAQAAAAAAAAe0AAAAJDU1ZjhkZTY5LTMwODktNGVmMy04ZjdiLTdlNjRkYjRjZDViZQ[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
+        "WorkshopId": "d4a675b7-e631-4201-a55e-8778e2d8edf2"
+      },
+      {
+        "WorkshopTrackId": "0df62d32-fff1-4ccf-b19f-49da448f7b2c",
+        "Title": "Roundtable - Sviluppo nativo o managed: quale futuro ?",
+        "Image": "http://sivertimes.com/wp-content/uploads/2015/04/round_table_meeting_.jpg",
+        "StartTime": "2013-04-05T16:30:00",
+        "EndTime": "2013-04-05T17:30:00",
+        "Abstract": "Con l\u2019approvazione dello standard C\u002B\u002B11 e di ulteriori novit\u00E0 nel futuro C\u002B\u002B14 lo sviluppo nativo ha ripreso vigore non solo per motivi di performance o di consumo della batteria dei dispositivi portatili. Cosa spaventa lo sviluppatore nell\u2019affrontare lo sviluppo nativo? Sintassi, librerie, intellisense, compilatore, tools o produttivit\u00E0? Nel corso della roundtable raccoglieremo suggerimenti su un eventuale futuro evento dedicato al mondo nativo).",
+        "Level": 100,
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "d4a675b7-e631-4201-a55e-8778e2d8edf2"
       },
       {
@@ -460,11 +653,20 @@
         "EndTime": "2013-04-05T19:15:00",
         "Abstract": "Il nuovo standard HTML non introduce soltanto nuovi tags, ma un modo profondamente diverso di approcciare allo sviluppo di pagine web. In questa sessione cercheremo di analizzare le fondamentali differenze con lo standard precedente per arrivare alle ragioni che stanno dietro a tali cambiamenti.",
         "Level": 300,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "8ba0441a-3124-4f03-99e6-6f3b5ba76f89",
+            "Name": "Andrea Belloni",
+            "ProfileImage": "/Uploads/speakers/andreabelloni[1].PNG",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "d4a675b7-e631-4201-a55e-8778e2d8edf2"
       }
     ],
-    "WorkshopFiles": null,
+    "WorkshopFiles": [],
     "Workshopsubscribed": null
   },
   {
@@ -489,17 +691,6 @@
     },
     "Tracks": [
       {
-        "WorkshopTrackId": "98c6176b-08bf-41df-89e1-a7d6ef126f0f",
-        "Title": "Windows Phone 8 e Windows 8.1 Store apps \u2013 Uno scenario Line of Business",
-        "Image": "http://www.digitato.it/files/Windows-Phone-8.jpg",
-        "StartTime": "2013-12-05T18:30:00",
-        "EndTime": "2013-12-05T20:00:00",
-        "Abstract": "\u201CNon solo consumer\u201D \u00E8 il tema di questa sessione dove le nuove feature presenti in Windows Phone 8 e in Windows 8.1 permettono di gestire uno scenario LOB. Attraverso il pieno supporto a Bluetooth, NFC, HID e MultiView vedremo come gestire facilmente il processo che dal picking di magazzino porta alla generazione di un documento di trasporto. Una sessione ricca di codice per quello che vuole esse-re un case study che integra un\u2019ampia gamma di novit\u00E0 (Windows Store apps, Windows Phone 8 apps, SignalR and more)! ",
-        "Level": 300,
-        "Speakers": [],
-        "WorkshopId": "96915916-61ef-4a96-aaa9-dcd6a6670a6c"
-      },
-      {
         "WorkshopTrackId": "614c9e8e-db75-46f4-a7d8-5e4fc2dd673a",
         "Title": "Le novit\u00E0 di WinRT in Windows 8.1",
         "Image": "https://miapple.me/wp-content/uploads/2013/07/Windows-8.1-Logo.jpg",
@@ -507,11 +698,56 @@
         "EndTime": "2013-12-05T18:30:00",
         "Abstract": "Grazie all\u2019aggiornamento gratuito a Windows 8.1 ci sono circa 5000 nuove API a disposizione degli sviluppatori di Windows Store applications. Durante la sessione vedremo innanzitutto i meccanismi che permettono a WinRT di poter evolvere nel versioning senza causare problemi di retro-compatibilit\u00E0. Scenderemo poi nei dettagli per analizzare le tante novit\u00E0 dei controlli XAML, le viste multiple e altre interessanti API.  ",
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
+        "WorkshopId": "96915916-61ef-4a96-aaa9-dcd6a6670a6c"
+      },
+      {
+        "WorkshopTrackId": "98c6176b-08bf-41df-89e1-a7d6ef126f0f",
+        "Title": "Windows Phone 8 e Windows 8.1 Store apps \u2013 Uno scenario Line of Business",
+        "Image": "http://www.digitato.it/files/Windows-Phone-8.jpg",
+        "StartTime": "2013-12-05T18:30:00",
+        "EndTime": "2013-12-05T20:00:00",
+        "Abstract": "\u201CNon solo consumer\u201D \u00E8 il tema di questa sessione dove le nuove feature presenti in Windows Phone 8 e in Windows 8.1 permettono di gestire uno scenario LOB. Attraverso il pieno supporto a Bluetooth, NFC, HID e MultiView vedremo come gestire facilmente il processo che dal picking di magazzino porta alla generazione di un documento di trasporto. Una sessione ricca di codice per quello che vuole esse-re un case study che integra un\u2019ampia gamma di novit\u00E0 (Windows Store apps, Windows Phone 8 apps, SignalR and more)! ",
+        "Level": 300,
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "8ba0441a-3124-4f03-99e6-6f3b5ba76f89",
+            "Name": "Andrea Belloni",
+            "ProfileImage": "/Uploads/speakers/andreabelloni[1].PNG",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "d2b09dd9-f51a-4c9d-aca7-78cf7a4f778b",
+            "Name": "Marco Dal Pino",
+            "ProfileImage": "/Uploads/speakers/AAEAAQAAAAAAAAfFAAAAJDg2MTA4MGRkLWIwOTAtNDM5MC1hZGJkLWQ5Njc0NTQ3MjAwZg[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "b0fe21e2-c407-412f-aed0-c8374139c3bc",
+            "Name": "Marco Minerva",
+            "ProfileImage": "/Uploads/speakers/1cefe7d[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "96915916-61ef-4a96-aaa9-dcd6a6670a6c"
       }
     ],
-    "WorkshopFiles": null,
+    "WorkshopFiles": [],
     "Workshopsubscribed": null
   },
   {
@@ -536,6 +772,34 @@
     },
     "Tracks": [
       {
+        "WorkshopTrackId": "35f5e6cf-83de-4eea-b5cb-1f864a20a394",
+        "Title": "Roundtable",
+        "Image": "http://www.tlnt.com/media/2011/05/Roundtable-200x200.jpg",
+        "StartTime": "2014-06-05T17:00:00",
+        "EndTime": "2014-06-05T18:00:00",
+        "Abstract": "Le novit\u00E0 presentate alla conferenza build 2014 di San Francisco",
+        "Level": 100,
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "6ba9932e-df58-4810-bfd8-6ad490aa9b56",
+            "Name": "Alessio Gogna",
+            "ProfileImage": "/Uploads/speakers/_XNLjgXu_400x400[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
+        "WorkshopId": "10a15e32-8206-431b-9bbb-bb5ebf952aa8"
+      },
+      {
         "WorkshopTrackId": "f5cec52c-2952-4c2c-adc5-2ea8b84e910d",
         "Title": "Il compilatore di C# diventa programmabile: il progetto Roslyn",
         "Image": "http://phoenixcoded.com/images/photo_1389636992_quiz_image_temp.png",
@@ -543,7 +807,16 @@
         "EndTime": "2014-06-05T19:00:00",
         "Abstract": "Il progetto Roslyn \u00E8 il nuovo compilatore C# (e VB) dove le API interne sono diventate pubbliche e perci\u00F2 qualsiasi applicazione pu\u00F2 trarre beneficio dei servizi del compilatore. Paradossalmente il nuovo compilatore \u00E8 pi\u00F9 interessante per queste funzionalit\u00E0 rispetto alle nuove funzionalit\u00E0 che verranno aggiunte nell\u0027imminente C# 6.0. Grazie a Roslyn gli sviluppatori possono creare tool, analizzare i sorgenti ed estrarre dal codice sorgente di testo tutte le informazioni sintattiche e semantiche. Durante la sessione vedremo diversi esempi di come poter trarre beneficio di queste API, dai semplici tool alla pi\u00F9 complessa integrazione con il refactoring di Visual Studio.",
         "Level": 300,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "10a15e32-8206-431b-9bbb-bb5ebf952aa8"
       },
       {
@@ -554,18 +827,16 @@
         "EndTime": "2014-06-05T20:00:00",
         "Abstract": "Lo sviluppo web evolve rapidamente, e Visual Studio e ASP.NET cercano di tenere il passo, puntando ad essere sempre di pi\u00F9 l\u0027IDE di riferimento per gli sviluppatori web di tutti i tipi. Daremo un\u0027occhiata alle nuove funzionalit\u00E0 introdotte in ASP.NET, le nuove idee in sviluppo web front-end, le novit\u00E0 delle Web Essentials e un po\u0027 del futuro ASP.NET.",
         "Level": 200,
-        "Speakers": [],
-        "WorkshopId": "10a15e32-8206-431b-9bbb-bb5ebf952aa8"
-      },
-      {
-        "WorkshopTrackId": "35f5e6cf-83de-4eea-b5cb-1f864a20a394",
-        "Title": "Roundtable",
-        "Image": "http://www.tlnt.com/media/2011/05/Roundtable-200x200.jpg",
-        "StartTime": "2014-06-05T17:00:00",
-        "EndTime": "2014-06-05T18:00:00",
-        "Abstract": "Le novit\u00E0 presentate alla conferenza build 2014 di San Francisco",
-        "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "6ba9932e-df58-4810-bfd8-6ad490aa9b56",
+            "Name": "Alessio Gogna",
+            "ProfileImage": "/Uploads/speakers/_XNLjgXu_400x400[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "10a15e32-8206-431b-9bbb-bb5ebf952aa8"
       }
     ],
@@ -575,7 +846,8 @@
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/10a15e32-8206-431b-9bbb-bb5ebf952aa8\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "10a15e32-8206-431b-9bbb-bb5ebf952aa8"
       }
     ],
     "Workshopsubscribed": null
@@ -602,17 +874,6 @@
     },
     "Tracks": [
       {
-        "WorkshopTrackId": "d21b574b-95a1-4733-9f38-77375cfd40e8",
-        "Title": "Sviluppare Servizi Web Con WebApi E OData",
-        "Image": "http://www.cloudtalk.it/wp-content/uploads/2012/05/logo-odata1.png",
-        "StartTime": "2014-10-09T17:00:00",
-        "EndTime": "2014-10-09T18:30:00",
-        "Abstract": "Con la crescita del mercato dei device \u00E8 cresciuta la necessit\u00E0 di creare servizi web in grado di erogare dati privi di rappresentazione HTML e lo stile architetturale REST \u00E8 quello che risponde meglio a tale necessit\u00E0. Nel mondo .NET le WebApi permettono di costruire servizi web REST-style con semplicit\u00E0 e potenza grazie ad una pipeline molto espandibile. Sopra questa solida API Microsoft ha sviluppato il protocollo oData, oggi standard OASIS, che permette di produrre rapidamente servizi di accesso ai dati in modalit\u00E0 CRUD. Nella sessione vedremo esempi dei due tipi di servizi, di cosa offra l\u0027estendibilit\u00E0 e degli utilizzi al di fuori dello scenario web.",
-        "Level": 300,
-        "Speakers": [],
-        "WorkshopId": "36abf553-6b14-46e3-b81a-3fa8292d1c55"
-      },
-      {
         "WorkshopTrackId": "641567b2-2596-485c-b19c-4f85a5b9986b",
         "Title": "AngularJS In Practice",
         "Image": "https://lh6.googleusercontent.com/-TlY7amsfzPs/T9ZgLXXK1cI/AAAAAAABK-c/Ki-inmeYNKk/w749-h794/AngularJS-Shield-large.png",
@@ -620,7 +881,36 @@
         "EndTime": "2014-10-09T20:00:00",
         "Abstract": "Vista la diffusione e la proliferazione di frameworks JavaScript full stack e la sempre crescente necessit\u00E0 di avere applicazioni responsive e multi platform, volevamo condividere l\u0027esperienza day by day di uno sviluppatore che ha gi\u00E0 lavorato con uno dei pi\u00F9 robusti e in voga: angularjs. Una overview su pattern, directives, controllers, interazione con un back-end json , gli strumenti per lo sviluppo e l\u0027integrazione con la libreria Bootstrap.",
         "Level": 400,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c76bcd92-559d-4d66-8e99-4332852b7709",
+            "Name": "Guido Noceti",
+            "ProfileImage": "/Uploads/speakers/unknown-person[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
+        "WorkshopId": "36abf553-6b14-46e3-b81a-3fa8292d1c55"
+      },
+      {
+        "WorkshopTrackId": "d21b574b-95a1-4733-9f38-77375cfd40e8",
+        "Title": "Sviluppare Servizi Web Con WebApi E OData",
+        "Image": "http://www.cloudtalk.it/wp-content/uploads/2012/05/logo-odata1.png",
+        "StartTime": "2014-10-09T17:00:00",
+        "EndTime": "2014-10-09T18:30:00",
+        "Abstract": "Con la crescita del mercato dei device \u00E8 cresciuta la necessit\u00E0 di creare servizi web in grado di erogare dati privi di rappresentazione HTML e lo stile architetturale REST \u00E8 quello che risponde meglio a tale necessit\u00E0. Nel mondo .NET le WebApi permettono di costruire servizi web REST-style con semplicit\u00E0 e potenza grazie ad una pipeline molto espandibile. Sopra questa solida API Microsoft ha sviluppato il protocollo oData, oggi standard OASIS, che permette di produrre rapidamente servizi di accesso ai dati in modalit\u00E0 CRUD. Nella sessione vedremo esempi dei due tipi di servizi, di cosa offra l\u0027estendibilit\u00E0 e degli utilizzi al di fuori dello scenario web.",
+        "Level": 300,
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "36abf553-6b14-46e3-b81a-3fa8292d1c55"
       }
     ],
@@ -630,14 +920,16 @@
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/36abf553-6b14-46e3-b81a-3fa8292d1c55\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "36abf553-6b14-46e3-b81a-3fa8292d1c55"
       },
       {
         "WorkshopFileId": "324508db-38eb-4ed4-b622-1bc9f314ecb9",
         "Title": "Web api and OData",
         "FileName": "WebApiAndOData.pdf",
         "FullPath": "/Uploads/workshops/36abf553-6b14-46e3-b81a-3fa8292d1c55\\WebApiAndOData.pdf",
-        "FileType": 4
+        "FileType": 4,
+        "Workshop_WorkshopId": "36abf553-6b14-46e3-b81a-3fa8292d1c55"
       }
     ],
     "Workshopsubscribed": null
@@ -664,17 +956,6 @@
     },
     "Tracks": [
       {
-        "WorkshopTrackId": "610a3810-80a8-41d6-b0ce-bbdf91abb497",
-        "Title": "Gestire Il Data Layer Attraverso Un Database Documentale: Esempi In Mongodb",
-        "Image": "http://www.hostingtalk.it/wp-content/uploads/2013/11/mongodb_logo.png",
-        "StartTime": "2015-03-03T19:00:00",
-        "EndTime": "2015-03-03T20:00:00",
-        "Abstract": "Negli ultimi anni grazie anche alla drastica riduzione dei costi dello storage ed al crescente bisogno di memorizzare sempre pi\u00F9 grandi quantitativi di dati, sono tornati alla ribalta i database documentali, \u00E8 quindi per noi developer necessario ed obbligatorio averne una conoscenza per poterli utilizzare nel momento giusto. In questa presentazione vedremo perch\u00E8 vanno usati, dove e come... ci saranno anche esempi di codice, ovviamente con linguaggio C# .Net.",
-        "Level": 200,
-        "Speakers": [],
-        "WorkshopId": "399be155-60a5-4787-9ea6-3ea8be704dd0"
-      },
-      {
         "WorkshopTrackId": "9c814683-3f43-4e1a-9022-b3382f2a1d56",
         "Title": "L\u2019utilizzo Di Frontend Basate Su Microsoft Office Utilizzando OOXml",
         "Image": "https://sharepointsamurai.files.wordpress.com/2014/04/2008040211105590dad1.gif",
@@ -682,7 +963,44 @@
         "EndTime": "2015-03-03T18:00:00",
         "Abstract": "Office OpenXML \u00E8 il formato standard ISO DIS 29500 usato a partire da Office 2007 (file con estensione docx, xlsx e pptx). Microsoft fornisce un SDK basato sul Framework.NET che permette la generazione di documenti senza necessit\u00E0 di installare Office, aprendo cos\u00EC a una moltitudine di automazioni. Nel corso della presentazione verr\u00E0 analizzato il formato del file, gli strumenti per poterlo manipolare e una serie di esempi su come generare o modificare documenti docx (Word) e xlsx (Excel). Infine, vista la popolarit\u00E0 del formato xlsx, verr\u00E0 fatto un confronto con una libreria basata su questi strumenti e che consente la generazione degli spreadsheet ancora pi\u00F9 rapidamente.",
         "Level": 200,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "5e65b5e5-08c7-488f-9185-58c7652dd821",
+            "Name": "Alberto Baroni",
+            "ProfileImage": "/Uploads/speakers/3516c39[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
+        "WorkshopId": "399be155-60a5-4787-9ea6-3ea8be704dd0"
+      },
+      {
+        "WorkshopTrackId": "610a3810-80a8-41d6-b0ce-bbdf91abb497",
+        "Title": "Gestire Il Data Layer Attraverso Un Database Documentale: Esempi In Mongodb",
+        "Image": "http://www.hostingtalk.it/wp-content/uploads/2013/11/mongodb_logo.png",
+        "StartTime": "2015-03-03T19:00:00",
+        "EndTime": "2015-03-03T20:00:00",
+        "Abstract": "Negli ultimi anni grazie anche alla drastica riduzione dei costi dello storage ed al crescente bisogno di memorizzare sempre pi\u00F9 grandi quantitativi di dati, sono tornati alla ribalta i database documentali, \u00E8 quindi per noi developer necessario ed obbligatorio averne una conoscenza per poterli utilizzare nel momento giusto. In questa presentazione vedremo perch\u00E8 vanno usati, dove e come... ci saranno anche esempi di codice, ovviamente con linguaggio C# .Net.",
+        "Level": 200,
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "6f3d049f-358e-4653-bae0-0785a60442b2",
+            "Name": "Alessandro Gambaro",
+            "ProfileImage": "/Uploads/speakers/AAEAAQAAAAAAAAe0AAAAJDU1ZjhkZTY5LTMwODktNGVmMy04ZjdiLTdlNjRkYjRjZDViZQ[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "399be155-60a5-4787-9ea6-3ea8be704dd0"
       },
       {
@@ -693,7 +1011,24 @@
         "EndTime": "2015-03-03T19:00:00",
         "Abstract": "Sviluppare un Domain Model pu\u00F2 nascondere alcune insidie: quando i comportamenti del nostro dominio iniziano a diventare complessi dobbiamo fare delle scelte strutturali, di performance, di design. Una soluzione \u00E8 CQRS (Command and Query Responsibility Segregation), un\u0027architettura a stack asimmetrici che separa i comandi dalle queries di lettura. Ma CQRS spesso fa coppia con Event Sourcing e vedremo pro e contro nell\u0027utilizzare dabase documentali per persistere il Domain Model.",
         "Level": 400,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "5b893948-5fbf-46a1-bd24-2abe2f6bbe8b",
+            "Name": "Claudio Masieri",
+            "ProfileImage": "/Uploads/speakers/photo[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "8ba0441a-3124-4f03-99e6-6f3b5ba76f89",
+            "Name": "Andrea Belloni",
+            "ProfileImage": "/Uploads/speakers/andreabelloni[1].PNG",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "399be155-60a5-4787-9ea6-3ea8be704dd0"
       }
     ],
@@ -703,28 +1038,32 @@
         "Title": "CQRS Powerpoint",
         "FileName": "CQRS-ES.pptx",
         "FullPath": "/Uploads/workshops/399be155-60a5-4787-9ea6-3ea8be704dd0\\CQRS-ES.pptx",
-        "FileType": 4
-      },
-      {
-        "WorkshopFileId": "e6854b47-bed8-4241-89f1-51914aa06b25",
-        "Title": "Demo Closed XML",
-        "FileName": "DemoClosedXml.zip",
-        "FullPath": "/Uploads/workshops/399be155-60a5-4787-9ea6-3ea8be704dd0\\DemoClosedXml.zip",
-        "FileType": 4
+        "FileType": 4,
+        "Workshop_WorkshopId": "399be155-60a5-4787-9ea6-3ea8be704dd0"
       },
       {
         "WorkshopFileId": "a1e4b9f2-53ce-4b19-ac9f-27aa6344228e",
         "Title": "Demo MongoDB",
         "FileName": "MongoDB.zip",
         "FullPath": "/Uploads/workshops/399be155-60a5-4787-9ea6-3ea8be704dd0\\MongoDB.zip",
-        "FileType": 4
+        "FileType": 4,
+        "Workshop_WorkshopId": "399be155-60a5-4787-9ea6-3ea8be704dd0"
+      },
+      {
+        "WorkshopFileId": "e6854b47-bed8-4241-89f1-51914aa06b25",
+        "Title": "Demo Closed XML",
+        "FileName": "DemoClosedXml.zip",
+        "FullPath": "/Uploads/workshops/399be155-60a5-4787-9ea6-3ea8be704dd0\\DemoClosedXml.zip",
+        "FileType": 4,
+        "Workshop_WorkshopId": "399be155-60a5-4787-9ea6-3ea8be704dd0"
       },
       {
         "WorkshopFileId": "ad0583c7-34b7-464e-96d8-ba12378b918f",
         "Title": "Slides OOXML",
         "FileName": "Slides OOXML.zip",
         "FullPath": "/Uploads/workshops/399be155-60a5-4787-9ea6-3ea8be704dd0\\Slides OOXML.zip",
-        "FileType": 4
+        "FileType": 4,
+        "Workshop_WorkshopId": "399be155-60a5-4787-9ea6-3ea8be704dd0"
       }
     ],
     "Workshopsubscribed": null
@@ -743,7 +1082,12 @@
     "ExternalRegistration": false,
     "ExternalRegistrationLink": null,
     "OnlyHtml": false,
-    "Location": null,
+    "Location": {
+      "Name": "Teatro Carlo Felice",
+      "Coordinates": null,
+      "Address": "Piazza de Ferrari",
+      "MaximumSpaces": 0
+    },
     "Tracks": [
       {
         "WorkshopTrackId": "416995af-cc35-4262-9715-65385ba67357",
@@ -753,7 +1097,24 @@
         "EndTime": "2015-10-08T15:00:00",
         "Abstract": "IoT o \u0022Internet of Things\u0022 (Internet delle cose) \u00E8 solo una moda o una nuova rivoluzione digitale? In questa breve introduzione introdurremo il mondo di IoT e vedremo quali sono i dati allo stato attuale, le previsioni di mercato e le possibili opportunit\u00E0 per chi opera nel campo software e hardware.",
         "Level": 200,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "b69a22ff-1647-4b5f-a910-7b5360d6d883",
+            "Name": "Erica Barone",
+            "ProfileImage": "/Uploads/speakers/3000ddc[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "d47bb696-4dd1-4c6a-9f40-eba84257fa2c"
       },
       {
@@ -764,29 +1125,16 @@
         "EndTime": "2015-10-08T19:10:00",
         "Abstract": "L\u0027Internet of Things permette di ottenere un valore a partire dai dati raccolti utilizzando device di vario tipo. Il cloud assume un\u0027importanza fondamentale in questo contesto, legato alla sua capacit\u00E0 di ingestion di grandi quantit\u00E0 di dati, di elaborazione real time e di presentazione delle informazioni cos\u00EC ottenute. Microsoft Azure offre diversi servizi per gestire al meglio queste necessit\u00E0, prestando particolare attenzione alla sicurezza del dato durante la trasmissione. Nel corso di questa sessione sfrutteremo un esempio di telemetria per mostrare come funzionano i principali servizi di Azure legati al mondo IoT: Event Hubs per l\u0027ingestion dei dati, Stream Analytics per l\u0027elaborazione, PowerBI per la presentazione.",
         "Level": 200,
-        "Speakers": [],
-        "WorkshopId": "d47bb696-4dd1-4c6a-9f40-eba84257fa2c"
-      },
-      {
-        "WorkshopTrackId": "f0b0acaf-6794-46e5-8bcb-b95e1ed3134d",
-        "Title": "Windows 10 per IoT",
-        "Image": null,
-        "StartTime": "2015-10-08T16:15:00",
-        "EndTime": "2015-10-08T17:15:00",
-        "Abstract": "Con l\u2019ultima versione, Microsoft ha trasformato il suo sistema operativo in una piattaforma universale.\r\nNoi \u201Csviluppatori Windows\u201D possiamo cos\u00EC finalmente espandere le nostre frontiere ed entrate a pieno titolo anche nel mondo IoT. Ma in che modo possiamo sfruttare questo nuovo mondo di opportunit\u00E0? Sia che si tratti di un nuovo progetto che di arricchirne uno gi\u00E0 consolidato, qual \u00E8 il \u201Cprezzo\u201D da pagare? Quali vantaggi comporta la scelta di Windows 10 rispetto ad altre soluzioni pi\u00F9 tradizionali? Per quali scenari si pu\u00F2 considerare la scelta vincente?Queste le principali domande a cui cercher\u00F2 di dare risposta in modo pratico e magari divertente, in una sessione fatta di codice e fili.",
-        "Level": 300,
-        "Speakers": [],
-        "WorkshopId": "d47bb696-4dd1-4c6a-9f40-eba84257fa2c"
-      },
-      {
-        "WorkshopTrackId": "eea9a49d-a314-4162-bcc1-ba3b08ef1682",
-        "Title": "Internet of Things: I devices",
-        "Image": null,
-        "StartTime": "2015-10-08T15:00:00",
-        "EndTime": "2015-10-08T16:00:00",
-        "Abstract": "I dispositivi hardware sono il cuore pulsante del mondo IoT ma la scelta \u00E8 tutt\u0027altro che triviale. Microcontrollore o PC? Quale kit di sviluppo utilizzare? Device complesso e costoso o semplice ed economico? Come comunicare tra device? E quali sono i problemi sulla sicurezza?\r\nNel corso della sessione vedremo alcune tra le piattaforme hardware pi\u00F9 note come Arduino e Raspberry ma anche dei microcontrollori, analizzando i differenti punti di forza, i sistemi di sviluppo e naturalmente tanti prototipi e sensori.",
-        "Level": 200,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "b69a22ff-1647-4b5f-a910-7b5360d6d883",
+            "Name": "Erica Barone",
+            "ProfileImage": "/Uploads/speakers/3000ddc[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "d47bb696-4dd1-4c6a-9f40-eba84257fa2c"
       },
       {
@@ -797,87 +1145,155 @@
         "EndTime": "2015-10-08T18:15:00",
         "Abstract": "Al giorno d\u0027oggi, l\u0027utilizzo di NUI (Natural User Interface) rendono possibili nuove modalit\u00E0 di interazione tra utente e dispositivo. Vediamo come Microsoft Kinect e Intel Realsense ed I relastivi SDK rendono possibile l\u2019implementazione di queste tecnologie nelle nostre applicazioni, nonche\u2019 le recenti applicazioni di autenticazione biometrica introdotte in Windows 10.",
         "Level": 200,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "2194e596-73a8-4b2f-bd68-4655b6afa8ce",
+            "Name": "Andrea Sassetti",
+            "ProfileImage": "/Uploads/speakers/0334a91[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "d2b09dd9-f51a-4c9d-aca7-78cf7a4f778b",
+            "Name": "Marco Dal Pino",
+            "ProfileImage": "/Uploads/speakers/AAEAAQAAAAAAAAfFAAAAJDg2MTA4MGRkLWIwOTAtNDM5MC1hZGJkLWQ5Njc0NTQ3MjAwZg[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
+        "WorkshopId": "d47bb696-4dd1-4c6a-9f40-eba84257fa2c"
+      },
+      {
+        "WorkshopTrackId": "f0b0acaf-6794-46e5-8bcb-b95e1ed3134d",
+        "Title": "Windows 10 per IoT",
+        "Image": null,
+        "StartTime": "2015-10-08T16:15:00",
+        "EndTime": "2015-10-08T17:15:00",
+        "Abstract": "Con l\u2019ultima versione, Microsoft ha trasformato il suo sistema operativo in una piattaforma universale.\r\nNoi \u201Csviluppatori Windows\u201D possiamo cos\u00EC finalmente espandere le nostre frontiere ed entrate a pieno titolo anche nel mondo IoT. Ma in che modo possiamo sfruttare questo nuovo mondo di opportunit\u00E0? Sia che si tratti di un nuovo progetto che di arricchirne uno gi\u00E0 consolidato, qual \u00E8 il \u201Cprezzo\u201D da pagare? Quali vantaggi comporta la scelta di Windows 10 rispetto ad altre soluzioni pi\u00F9 tradizionali? Per quali scenari si pu\u00F2 considerare la scelta vincente?Queste le principali domande a cui cercher\u00F2 di dare risposta in modo pratico e magari divertente, in una sessione fatta di codice e fili.",
+        "Level": 300,
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "6ba9932e-df58-4810-bfd8-6ad490aa9b56",
+            "Name": "Alessio Gogna",
+            "ProfileImage": "/Uploads/speakers/_XNLjgXu_400x400[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
+        "WorkshopId": "d47bb696-4dd1-4c6a-9f40-eba84257fa2c"
+      },
+      {
+        "WorkshopTrackId": "eea9a49d-a314-4162-bcc1-ba3b08ef1682",
+        "Title": "Internet of Things: I devices",
+        "Image": null,
+        "StartTime": "2015-10-08T15:00:00",
+        "EndTime": "2015-10-08T16:00:00",
+        "Abstract": "I dispositivi hardware sono il cuore pulsante del mondo IoT ma la scelta \u00E8 tutt\u0027altro che triviale. Microcontrollore o PC? Quale kit di sviluppo utilizzare? Device complesso e costoso o semplice ed economico? Come comunicare tra device? E quali sono i problemi sulla sicurezza?\r\nNel corso della sessione vedremo alcune tra le piattaforme hardware pi\u00F9 note come Arduino e Raspberry ma anche dei microcontrollori, analizzando i differenti punti di forza, i sistemi di sviluppo e naturalmente tanti prototipi e sensori.",
+        "Level": 200,
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "d47bb696-4dd1-4c6a-9f40-eba84257fa2c"
       }
     ],
     "WorkshopFiles": [
       {
-        "WorkshopFileId": "9fbde7ca-a7ab-4402-a860-b218d0c6d607",
-        "Title": "Il Ruolo Del Cloud Nell\u0027Internet Of Things",
-        "FileName": "Cloud_IoT.pptx",
-        "FullPath": "/Uploads/workshops/d47bb696-4dd1-4c6a-9f40-eba84257fa2c\\Cloud_IoT.pptx",
-        "FileType": 4
-      },
-      {
-        "WorkshopFileId": "cfb6d128-ed21-42fb-ac27-c82ea9664e0b",
-        "Title": "Introduzione IoT",
-        "FileName": "Intro-IoT.pdf",
-        "FullPath": "/Uploads/workshops/d47bb696-4dd1-4c6a-9f40-eba84257fa2c\\Intro-IoT.pdf",
-        "FileType": 4
-      },
-      {
-        "WorkshopFileId": "6ef8b282-1b9b-4db9-a568-ee7d3fed2386",
-        "Title": "logo.png",
-        "FileName": "logo.png",
-        "FullPath": "/Uploads/workshops/d47bb696-4dd1-4c6a-9f40-eba84257fa2c\\logo.png",
-        "FileType": 1
-      },
-      {
-        "WorkshopFileId": "2b90d172-b241-4b80-8957-d58ba0cd91ce",
-        "Title": "NUI E Biometrics In Windows 10",
-        "FileName": "NUI e Biometrics in Windows 10.pptx",
-        "FullPath": "/Uploads/workshops/d47bb696-4dd1-4c6a-9f40-eba84257fa2c\\NUI e Biometrics in Windows 10.pptx",
-        "FileType": 4
-      },
-      {
         "WorkshopFileId": "976784d8-dc41-42b9-a469-0c52c64f0b21",
         "Title": "Internet Of Things: I Devices",
         "FileName": "Raf_Hardware.pdf",
         "FullPath": "/Uploads/workshops/d47bb696-4dd1-4c6a-9f40-eba84257fa2c\\Raf_Hardware.pdf",
-        "FileType": 4
-      },
-      {
-        "WorkshopFileId": "faf77bc3-667e-4bb9-814f-1fe9aab1e51c",
-        "Title": "Windows 10 e IoT",
-        "FileName": "Windows 10 per IoT.ppsx",
-        "FullPath": "/Uploads/workshops/d47bb696-4dd1-4c6a-9f40-eba84257fa2c\\Windows 10 per IoT.ppsx",
-        "FileType": 4
-      },
-      {
-        "WorkshopFileId": "a3e81865-6e1d-41cc-9d6f-d912a4ee5370",
-        "Title": "Sala piena",
-        "FileName": "WP_20151008_14_28_24_Pro (2).jpg",
-        "FullPath": "/Uploads/workshops/d47bb696-4dd1-4c6a-9f40-eba84257fa2c\\WP_20151008_14_28_24_Pro (2).jpg",
-        "FileType": 2
-      },
-      {
-        "WorkshopFileId": "b75eec4e-0626-46b6-a7e3-33c9c1194e13",
-        "Title": "Rialdi \u0026 Barone",
-        "FileName": "WP_20151008_14_28_33_Pro.jpg",
-        "FullPath": "/Uploads/workshops/d47bb696-4dd1-4c6a-9f40-eba84257fa2c\\WP_20151008_14_28_33_Pro.jpg",
-        "FileType": 2
-      },
-      {
-        "WorkshopFileId": "7b9f5399-cb0a-4a0e-a5e3-f08db9aa90ec",
-        "Title": "Dal Pino",
-        "FileName": "WP_20151008_15_48_41_Pro.jpg",
-        "FullPath": "/Uploads/workshops/d47bb696-4dd1-4c6a-9f40-eba84257fa2c\\WP_20151008_15_48_41_Pro.jpg",
-        "FileType": 2
-      },
-      {
-        "WorkshopFileId": "5f5d7897-458b-4953-aab3-614d060dfef8",
-        "Title": "Gogna",
-        "FileName": "WP_20151008_15_51_46_Pro.jpg",
-        "FullPath": "/Uploads/workshops/d47bb696-4dd1-4c6a-9f40-eba84257fa2c\\WP_20151008_15_51_46_Pro.jpg",
-        "FileType": 2
+        "FileType": 4,
+        "Workshop_WorkshopId": "d47bb696-4dd1-4c6a-9f40-eba84257fa2c"
       },
       {
         "WorkshopFileId": "d2e8b5b4-694b-4ed1-b6e8-10213a8362be",
         "Title": "Rialdi \u0026 Barone 2",
         "FileName": "WP_20151008_19_30_48_Pro.jpg",
         "FullPath": "/Uploads/workshops/d47bb696-4dd1-4c6a-9f40-eba84257fa2c\\WP_20151008_19_30_48_Pro.jpg",
-        "FileType": 2
+        "FileType": 2,
+        "Workshop_WorkshopId": "d47bb696-4dd1-4c6a-9f40-eba84257fa2c"
+      },
+      {
+        "WorkshopFileId": "faf77bc3-667e-4bb9-814f-1fe9aab1e51c",
+        "Title": "Windows 10 e IoT",
+        "FileName": "Windows 10 per IoT.ppsx",
+        "FullPath": "/Uploads/workshops/d47bb696-4dd1-4c6a-9f40-eba84257fa2c\\Windows 10 per IoT.ppsx",
+        "FileType": 4,
+        "Workshop_WorkshopId": "d47bb696-4dd1-4c6a-9f40-eba84257fa2c"
+      },
+      {
+        "WorkshopFileId": "b75eec4e-0626-46b6-a7e3-33c9c1194e13",
+        "Title": "Rialdi \u0026 Barone",
+        "FileName": "WP_20151008_14_28_33_Pro.jpg",
+        "FullPath": "/Uploads/workshops/d47bb696-4dd1-4c6a-9f40-eba84257fa2c\\WP_20151008_14_28_33_Pro.jpg",
+        "FileType": 2,
+        "Workshop_WorkshopId": "d47bb696-4dd1-4c6a-9f40-eba84257fa2c"
+      },
+      {
+        "WorkshopFileId": "5f5d7897-458b-4953-aab3-614d060dfef8",
+        "Title": "Gogna",
+        "FileName": "WP_20151008_15_51_46_Pro.jpg",
+        "FullPath": "/Uploads/workshops/d47bb696-4dd1-4c6a-9f40-eba84257fa2c\\WP_20151008_15_51_46_Pro.jpg",
+        "FileType": 2,
+        "Workshop_WorkshopId": "d47bb696-4dd1-4c6a-9f40-eba84257fa2c"
+      },
+      {
+        "WorkshopFileId": "9fbde7ca-a7ab-4402-a860-b218d0c6d607",
+        "Title": "Il Ruolo Del Cloud Nell\u0027Internet Of Things",
+        "FileName": "Cloud_IoT.pptx",
+        "FullPath": "/Uploads/workshops/d47bb696-4dd1-4c6a-9f40-eba84257fa2c\\Cloud_IoT.pptx",
+        "FileType": 4,
+        "Workshop_WorkshopId": "d47bb696-4dd1-4c6a-9f40-eba84257fa2c"
+      },
+      {
+        "WorkshopFileId": "cfb6d128-ed21-42fb-ac27-c82ea9664e0b",
+        "Title": "Introduzione IoT",
+        "FileName": "Intro-IoT.pdf",
+        "FullPath": "/Uploads/workshops/d47bb696-4dd1-4c6a-9f40-eba84257fa2c\\Intro-IoT.pdf",
+        "FileType": 4,
+        "Workshop_WorkshopId": "d47bb696-4dd1-4c6a-9f40-eba84257fa2c"
+      },
+      {
+        "WorkshopFileId": "2b90d172-b241-4b80-8957-d58ba0cd91ce",
+        "Title": "NUI E Biometrics In Windows 10",
+        "FileName": "NUI e Biometrics in Windows 10.pptx",
+        "FullPath": "/Uploads/workshops/d47bb696-4dd1-4c6a-9f40-eba84257fa2c\\NUI e Biometrics in Windows 10.pptx",
+        "FileType": 4,
+        "Workshop_WorkshopId": "d47bb696-4dd1-4c6a-9f40-eba84257fa2c"
+      },
+      {
+        "WorkshopFileId": "a3e81865-6e1d-41cc-9d6f-d912a4ee5370",
+        "Title": "Sala piena",
+        "FileName": "WP_20151008_14_28_24_Pro (2).jpg",
+        "FullPath": "/Uploads/workshops/d47bb696-4dd1-4c6a-9f40-eba84257fa2c\\WP_20151008_14_28_24_Pro (2).jpg",
+        "FileType": 2,
+        "Workshop_WorkshopId": "d47bb696-4dd1-4c6a-9f40-eba84257fa2c"
+      },
+      {
+        "WorkshopFileId": "6ef8b282-1b9b-4db9-a568-ee7d3fed2386",
+        "Title": "logo.png",
+        "FileName": "logo.png",
+        "FullPath": "/Uploads/workshops/d47bb696-4dd1-4c6a-9f40-eba84257fa2c\\logo.png",
+        "FileType": 1,
+        "Workshop_WorkshopId": "d47bb696-4dd1-4c6a-9f40-eba84257fa2c"
+      },
+      {
+        "WorkshopFileId": "7b9f5399-cb0a-4a0e-a5e3-f08db9aa90ec",
+        "Title": "Dal Pino",
+        "FileName": "WP_20151008_15_48_41_Pro.jpg",
+        "FullPath": "/Uploads/workshops/d47bb696-4dd1-4c6a-9f40-eba84257fa2c\\WP_20151008_15_48_41_Pro.jpg",
+        "FileType": 2,
+        "Workshop_WorkshopId": "d47bb696-4dd1-4c6a-9f40-eba84257fa2c"
       }
     ],
     "Workshopsubscribed": null
@@ -896,28 +1312,31 @@
     "ExternalRegistration": false,
     "ExternalRegistrationLink": null,
     "OnlyHtml": false,
-    "Location": null,
+    "Location": {
+      "Name": "Ordine degli Ingegneri di Genova",
+      "Coordinates": null,
+      "Address": "Piazza della Vittoria 11/10",
+      "MaximumSpaces": 100
+    },
     "Tracks": [
       {
-        "WorkshopTrackId": "584c5a96-e7a9-4803-8888-92095a25968e",
-        "Title": "Introduzione",
+        "WorkshopTrackId": "7e99d6b8-c5db-458e-bda6-2d468f274618",
+        "Title": "ServiceFabric: microservices in salsa Azure",
         "Image": null,
-        "StartTime": "2016-03-18T16:00:00",
-        "EndTime": "2016-03-18T16:30:00",
-        "Abstract": "Raffaele Rialdi (DotNetLiguria) e Claudio Firpo (Ordine degli Ingegneri di Genova)",
-        "Level": 0,
-        "Speakers": [],
-        "WorkshopId": "af37706a-0be1-497e-9c27-f1bad19f5aeb"
-      },
-      {
-        "WorkshopTrackId": "3de90e0f-a685-4f6c-87ba-d26668c012f3",
-        "Title": "Introduzione a DotNetCore",
-        "Image": null,
-        "StartTime": "2016-03-18T16:30:00",
-        "EndTime": "2016-03-18T17:30:00",
-        "Abstract": "La grande famiglia del Framework.NET una nuova variante di CLR e librerie chiamata DotNetCore. Si tratta di un fork del pi\u00F9 noto .NET che annovera 1.8 miliardi di installazioni. Le motivazioni di questa grande svolta sono la necessit\u00E0 di sviluppare cross-platform, cross-device e soprattutto la possibilit\u00E0 di abbattere le dipendenze al minimo, tanto che ogni namespace del framework viene installato separatamente e on-demand tramite nuget.\r\nQuali sono le implicazioni delle odierne applicazioni? Quali sono i vantaggi nell\u0027approdare a DotNetCore? Quali sono i vantaggi architetturali che ne derivano?\r\nNel corso della sessione vedremo alcuni esempi basati sugli attuali \u00ABApplication Model\u00BB ASP.NET Core e Universal Windows Platform e vedremo diversi scenari di utilizzo.",
-        "Level": 100,
-        "Speakers": [],
+        "StartTime": "2016-03-18T18:35:00",
+        "EndTime": "2016-03-18T19:35:00",
+        "Abstract": "Una delle buzzword del momento \u00E8 sicuramente \u0022microservices\u0022. Chi si \u00E8 avventurato in questo \u0022mondo\u0022 ha sicuramente avuto a che fare con diversi problemi sia implementativi sia di gestione dell\u0027infrastruttura necessaria per garantire all\u0027intero sistema caratteristiche quali per esempio scalabilit\u00E0 e alta affidabilit\u00E0\u0027. Service Fabric \u00E8 la risposta di Azure a questo genere di scenari. In questa sessione analizzeremo le caratteristiche di Service Fabric, introducendo il concetto di \u0022Actor Model\u0022 per poi entrare nel dettaglio di come strutturare e scrivere applicazioni che ne possano sfruttare le potenzialit\u00E0.",
+        "Level": 300,
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "f12a3500-57fb-42d7-ad25-a1603c8a1f12",
+            "Name": "Alessandro Melchiori",
+            "ProfileImage": "/Uploads/speakers/f21e909a1ffb3b4fa0c10f5b4745a1e1_400x400[1].jpeg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "af37706a-0be1-497e-9c27-f1bad19f5aeb"
       },
       {
@@ -928,18 +1347,56 @@
         "EndTime": "2016-03-18T18:35:00",
         "Abstract": "Microservice \u00E8 sulla bocca di tutti, ma sappiamo veramente cosa sono i microservice e che problema vogliono risolvere? E ancora quanto deve essere micro un microservice per poter essere definito tale? Tutte domande interessanti che prima di essere risposte impongono di comprendere quale sia la genesi dei microservice.\r\nObiettivo di questa sessione \u00E8 introdurre i concetti alla base di SOA, capire la relazione tra SOA e DDD e infine comprendere come si incastra il concetto di microservice presentando una possibile implementazione con un\u0027architettura basata su messaggi.",
         "Level": 200,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "abcfb5f0-927c-4733-ae8c-3401f0ee73a3",
+            "Name": "Mauro Servienti",
+            "ProfileImage": "/Uploads/speakers/MauroServienti[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "af37706a-0be1-497e-9c27-f1bad19f5aeb"
       },
       {
-        "WorkshopTrackId": "7e99d6b8-c5db-458e-bda6-2d468f274618",
-        "Title": "ServiceFabric: microservices in salsa Azure",
+        "WorkshopTrackId": "584c5a96-e7a9-4803-8888-92095a25968e",
+        "Title": "Introduzione",
         "Image": null,
-        "StartTime": "2016-03-18T18:35:00",
-        "EndTime": "2016-03-18T19:35:00",
-        "Abstract": "Una delle buzzword del momento \u00E8 sicuramente \u0022microservices\u0022. Chi si \u00E8 avventurato in questo \u0022mondo\u0022 ha sicuramente avuto a che fare con diversi problemi sia implementativi sia di gestione dell\u0027infrastruttura necessaria per garantire all\u0027intero sistema caratteristiche quali per esempio scalabilit\u00E0 e alta affidabilit\u00E0\u0027. Service Fabric \u00E8 la risposta di Azure a questo genere di scenari. In questa sessione analizzeremo le caratteristiche di Service Fabric, introducendo il concetto di \u0022Actor Model\u0022 per poi entrare nel dettaglio di come strutturare e scrivere applicazioni che ne possano sfruttare le potenzialit\u00E0.",
-        "Level": 300,
-        "Speakers": [],
+        "StartTime": "2016-03-18T16:00:00",
+        "EndTime": "2016-03-18T16:30:00",
+        "Abstract": "Raffaele Rialdi (DotNetLiguria) e Claudio Firpo (Ordine degli Ingegneri di Genova)",
+        "Level": 0,
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
+        "WorkshopId": "af37706a-0be1-497e-9c27-f1bad19f5aeb"
+      },
+      {
+        "WorkshopTrackId": "3de90e0f-a685-4f6c-87ba-d26668c012f3",
+        "Title": "Introduzione a DotNetCore",
+        "Image": null,
+        "StartTime": "2016-03-18T16:30:00",
+        "EndTime": "2016-03-18T17:30:00",
+        "Abstract": "La grande famiglia del Framework.NET una nuova variante di CLR e librerie chiamata DotNetCore. Si tratta di un fork del pi\u00F9 noto .NET che annovera 1.8 miliardi di installazioni. Le motivazioni di questa grande svolta sono la necessit\u00E0 di sviluppare cross-platform, cross-device e soprattutto la possibilit\u00E0 di abbattere le dipendenze al minimo, tanto che ogni namespace del framework viene installato separatamente e on-demand tramite nuget.\r\nQuali sono le implicazioni delle odierne applicazioni? Quali sono i vantaggi nell\u0027approdare a DotNetCore? Quali sono i vantaggi architetturali che ne derivano?\r\nNel corso della sessione vedremo alcuni esempi basati sugli attuali \u00ABApplication Model\u00BB ASP.NET Core e Universal Windows Platform e vedremo diversi scenari di utilizzo.",
+        "Level": 100,
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "af37706a-0be1-497e-9c27-f1bad19f5aeb"
       }
     ],
@@ -949,28 +1406,32 @@
         "Title": "ServiceFabric: microservices in salsa Azure",
         "FileName": "Azure Service Fabric.pdf",
         "FullPath": "/Uploads/workshops/af37706a-0be1-497e-9c27-f1bad19f5aeb\\Azure Service Fabric.pdf",
-        "FileType": 4
+        "FileType": 4,
+        "Workshop_WorkshopId": "af37706a-0be1-497e-9c27-f1bad19f5aeb"
       },
       {
         "WorkshopFileId": "3ea167dd-7e69-4b17-8998-22014966715a",
         "Title": "Introduzione a DotNetCore",
         "FileName": "IntroduzioneADotNetCore.pdf",
         "FullPath": "/Uploads/workshops/af37706a-0be1-497e-9c27-f1bad19f5aeb\\IntroduzioneADotNetCore.pdf",
-        "FileType": 4
+        "FileType": 4,
+        "Workshop_WorkshopId": "af37706a-0be1-497e-9c27-f1bad19f5aeb"
       },
       {
         "WorkshopFileId": "70df8c17-4224-4de9-90b8-31018ef9f3f2",
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/af37706a-0be1-497e-9c27-f1bad19f5aeb\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "af37706a-0be1-497e-9c27-f1bad19f5aeb"
       },
       {
         "WorkshopFileId": "9a6c0171-10f7-4531-a6fb-7249790131e8",
         "Title": "Microservice: SOA e DDD alla massima potenza",
         "FileName": "soa-microservices.zip",
         "FullPath": "/Uploads/workshops/af37706a-0be1-497e-9c27-f1bad19f5aeb\\soa-microservices.zip",
-        "FileType": 4
+        "FileType": 4,
+        "Workshop_WorkshopId": "af37706a-0be1-497e-9c27-f1bad19f5aeb"
       }
     ],
     "Workshopsubscribed": null
@@ -989,15 +1450,21 @@
     "ExternalRegistration": true,
     "ExternalRegistrationLink": "www.futuredecoded.it/",
     "OnlyHtml": false,
-    "Location": null,
-    "Tracks": null,
+    "Location": {
+      "Name": null,
+      "Coordinates": null,
+      "Address": null,
+      "MaximumSpaces": 0
+    },
+    "Tracks": [],
     "WorkshopFiles": [
       {
         "WorkshopFileId": "f0f3caac-2dc3-4d4d-a91a-34ca05867fcd",
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/c1887472-5e24-4923-9503-205439b2f447\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "c1887472-5e24-4923-9503-205439b2f447"
       }
     ],
     "Workshopsubscribed": null
@@ -1024,25 +1491,23 @@
     },
     "Tracks": [
       {
-        "WorkshopTrackId": "abf86395-3729-4543-bd50-d1109a4e3d31",
-        "Title": " Il nuovo volto dello standard C\u002B\u002B nelle applicazioni UWP e DirectX.",
+        "WorkshopTrackId": "b073e334-3d07-4484-90cb-1d851f1be8e2",
+        "Title": "Hololens e la realt\u00E0 aumentata nel contesto industriale",
         "Image": null,
-        "StartTime": "2017-03-09T16:35:00",
-        "EndTime": "2017-03-09T17:40:00",
-        "Abstract": "Dopo una breve introduzione ai grossi cambiamenti che sono arrivati nello standard del linguaggio C\u002B\u002B, vedremo come poter realizzare applicazioni Windows per sfruttare i cognitive service di Azure da C\u002B\u002B.\r\n\r\nInfine entreremo nel mondo di DirectX con piacevoli sorprese rispetto al passato, allo scopo di capire quali siano le alternative al mondo di Unity",
-        "Level": 300,
-        "Speakers": [],
-        "WorkshopId": "efdb07d8-5993-485e-94b3-7bd84dbca18a"
-      },
-      {
-        "WorkshopTrackId": "9335d93a-c80f-4d12-9760-f69958902829",
-        "Title": "Cognitive Services: dai alle tue app un lato umano",
-        "Image": null,
-        "StartTime": "2017-03-09T15:25:00",
-        "EndTime": "2017-03-09T16:30:00",
-        "Abstract": "Riconoscere i contesti, le emozioni, i volti e i testi: questa \u00E8 solo una piccola parte della potenza dei Cognitive Services. Sfruttando tali servizi possiamo realizzare applicazioni in grado di vedere il mondo. Nel corso di questa sessioni mostreremo come sfruttarli in un ambiente cross-platform con Xamarin e come realizzare un dispositivo wearable basato su Windows 10 IoT Core in grado di aiutare le persone con difficolt\u00E0 visive.",
+        "StartTime": "2017-04-13T17:45:00",
+        "EndTime": "2017-04-13T18:50:00",
+        "Abstract": "La Realt\u00E0 Aumentata sar\u00E0 uno dei trend topic delle nuove tecnologie interattive. In questa sessione dopo una breve introduzione sulle varie realt\u00E0 ci concentreremmo su Hololens, il device di realt\u00E0 autentata di Microsoft. Dopo averne esaminato le caratteristiche svilupperemo una applicazione sfruttando il middleware di gioco Unity.",
         "Level": 200,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "2194e596-73a8-4b2f-bd68-4655b6afa8ce",
+            "Name": "Andrea Sassetti",
+            "ProfileImage": "/Uploads/speakers/0334a91[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "efdb07d8-5993-485e-94b3-7bd84dbca18a"
       },
       {
@@ -1053,7 +1518,16 @@
         "EndTime": "2017-04-13T19:00:00",
         "Abstract": "Dalla teoria alla pratica...",
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "2194e596-73a8-4b2f-bd68-4655b6afa8ce",
+            "Name": "Andrea Sassetti",
+            "ProfileImage": "/Uploads/speakers/0334a91[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "efdb07d8-5993-485e-94b3-7bd84dbca18a"
       },
       {
@@ -1064,7 +1538,16 @@
         "EndTime": "2017-03-09T14:15:00",
         "Abstract": "Introduzione all\u0027evento a cura di Raffaele Rialdi (DotNetLiguria) e Claudio Firpo (Ordine degli Ingegneri di Genova)",
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "efdb07d8-5993-485e-94b3-7bd84dbca18a"
       },
       {
@@ -1075,18 +1558,64 @@
         "EndTime": "2017-03-09T15:20:00",
         "Abstract": "Vediamo cosa \u0022C\u0027e\u0027 dentro\u0022 a Hololens, come funziona e qual\u0027e\u0027 la piattaforma di sviluppo su cui si basa, approfondiamo anche la conoscenza con la holographic platform che caratterizzera\u0027 i device per la realta\u0027 aumentata, virtuale e mista nel prossimo futuro..",
         "Level": 200,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "d2b09dd9-f51a-4c9d-aca7-78cf7a4f778b",
+            "Name": "Marco Dal Pino",
+            "ProfileImage": "/Uploads/speakers/AAEAAQAAAAAAAAfFAAAAJDg2MTA4MGRkLWIwOTAtNDM5MC1hZGJkLWQ5Njc0NTQ3MjAwZg[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "efdb07d8-5993-485e-94b3-7bd84dbca18a"
       },
       {
-        "WorkshopTrackId": "b073e334-3d07-4484-90cb-1d851f1be8e2",
-        "Title": "Hololens e la realt\u00E0 aumentata nel contesto industriale",
+        "WorkshopTrackId": "abf86395-3729-4543-bd50-d1109a4e3d31",
+        "Title": " Il nuovo volto dello standard C\u002B\u002B nelle applicazioni UWP e DirectX.",
         "Image": null,
-        "StartTime": "2017-04-13T17:45:00",
-        "EndTime": "2017-04-13T18:50:00",
-        "Abstract": "La Realt\u00E0 Aumentata sar\u00E0 uno dei trend topic delle nuove tecnologie interattive. In questa sessione dopo una breve introduzione sulle varie realt\u00E0 ci concentreremmo su Hololens, il device di realt\u00E0 autentata di Microsoft. Dopo averne esaminato le caratteristiche svilupperemo una applicazione sfruttando il middleware di gioco Unity.",
+        "StartTime": "2017-03-09T16:35:00",
+        "EndTime": "2017-03-09T17:40:00",
+        "Abstract": "Dopo una breve introduzione ai grossi cambiamenti che sono arrivati nello standard del linguaggio C\u002B\u002B, vedremo come poter realizzare applicazioni Windows per sfruttare i cognitive service di Azure da C\u002B\u002B.\r\n\r\nInfine entreremo nel mondo di DirectX con piacevoli sorprese rispetto al passato, allo scopo di capire quali siano le alternative al mondo di Unity",
+        "Level": 300,
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
+        "WorkshopId": "efdb07d8-5993-485e-94b3-7bd84dbca18a"
+      },
+      {
+        "WorkshopTrackId": "9335d93a-c80f-4d12-9760-f69958902829",
+        "Title": "Cognitive Services: dai alle tue app un lato umano",
+        "Image": null,
+        "StartTime": "2017-03-09T15:25:00",
+        "EndTime": "2017-03-09T16:30:00",
+        "Abstract": "Riconoscere i contesti, le emozioni, i volti e i testi: questa \u00E8 solo una piccola parte della potenza dei Cognitive Services. Sfruttando tali servizi possiamo realizzare applicazioni in grado di vedere il mondo. Nel corso di questa sessioni mostreremo come sfruttarli in un ambiente cross-platform con Xamarin e come realizzare un dispositivo wearable basato su Windows 10 IoT Core in grado di aiutare le persone con difficolt\u00E0 visive.",
         "Level": 200,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "b0fe21e2-c407-412f-aed0-c8374139c3bc",
+            "Name": "Marco Minerva",
+            "ProfileImage": "/Uploads/speakers/1cefe7d[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "492b1659-0c8d-46ab-b9aa-e1e77d7a9098",
+            "Name": "Riccardo Cappello",
+            "ProfileImage": "/Uploads/speakers/capello.jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "efdb07d8-5993-485e-94b3-7bd84dbca18a"
       }
     ],
@@ -1096,7 +1625,8 @@
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/efdb07d8-5993-485e-94b3-7bd84dbca18a\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "efdb07d8-5993-485e-94b3-7bd84dbca18a"
       }
     ],
     "Workshopsubscribed": null
@@ -1121,14 +1651,15 @@
       "Address": "Ancona",
       "MaximumSpaces": 0
     },
-    "Tracks": null,
+    "Tracks": [],
     "WorkshopFiles": [
       {
         "WorkshopFileId": "246b01c0-1e1c-42b5-bfba-105e8033becb",
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/57b37940-0607-42db-b0fa-2604e46c25f4\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "57b37940-0607-42db-b0fa-2604e46c25f4"
       }
     ],
     "Workshopsubscribed": null
@@ -1153,14 +1684,15 @@
       "Address": "Via Dodecaneso, 35",
       "MaximumSpaces": 200
     },
-    "Tracks": null,
+    "Tracks": [],
     "WorkshopFiles": [
       {
         "WorkshopFileId": "eddad428-a385-4c11-93c2-d3c4141e09ee",
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/1c642730-ba30-4195-b6dc-c557bb7284d0\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "1c642730-ba30-4195-b6dc-c557bb7284d0"
       }
     ],
     "Workshopsubscribed": null
@@ -1185,14 +1717,15 @@
       "Address": "Strada 1 Palazzo WTC (2\u00B0 piano) 20090 Assago - Milano",
       "MaximumSpaces": 600
     },
-    "Tracks": null,
+    "Tracks": [],
     "WorkshopFiles": [
       {
         "WorkshopFileId": "73473347-b6a5-40d9-a81f-c66eebbc35b7",
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/148b9a4e-c91f-4172-9b19-9ff632f07157\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "148b9a4e-c91f-4172-9b19-9ff632f07157"
       }
     ],
     "Workshopsubscribed": null
@@ -1217,14 +1750,15 @@
       "Address": "Via Dodecaneso 35, 16146 Genova GE",
       "MaximumSpaces": 200
     },
-    "Tracks": null,
+    "Tracks": [],
     "WorkshopFiles": [
       {
         "WorkshopFileId": "cb4116c2-0174-4fd1-88ad-fdb050832f80",
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/2eaba9c5-973a-4fb7-b51c-d1262ec494b1\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "2eaba9c5-973a-4fb7-b51c-d1262ec494b1"
       }
     ],
     "Workshopsubscribed": null
@@ -1251,14 +1785,23 @@
     },
     "Tracks": [
       {
-        "WorkshopTrackId": "0afb1426-c350-4a89-9301-db0d896dc15d",
-        "Title": "Progettare software in linea con il nuovo regolamento GDPR",
+        "WorkshopTrackId": "40eaa028-13e2-4080-9cf6-0f49c90b45df",
+        "Title": "Introduzione ",
         "Image": null,
-        "StartTime": "2018-02-15T16:05:00",
-        "EndTime": "2018-02-15T17:05:00",
-        "Abstract": "La security nel software non \u00E8 nulla di nuovo e gli articoli della GDPR sono stati chiaramente influenzati dalle prassi gi\u00E0 consolidate in quest\u0027area.\r\nNel corso della sessione vedremo un parallelo tra le prassi gi\u00E0 note di Microsoft SDL (Security Development Lifecycle) e i requisiti GDPR (General Data Protection Regulation), discutendo le differenze e quali possano essere le contromisure da mettere in campo prima della scadenza di maggio.",
-        "Level": 200,
-        "Speakers": [],
+        "StartTime": "2018-02-15T16:00:00",
+        "EndTime": "2018-02-15T16:05:00",
+        "Abstract": null,
+        "Level": 1,
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "20e60600-15c2-4f34-ba18-5b0027f294a9",
+            "Name": "Matteo Gentile",
+            "ProfileImage": null,
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "275a1299-dd43-4791-96f4-3531d4dcb7f8"
       },
       {
@@ -1269,7 +1812,16 @@
         "EndTime": "2018-02-15T19:40:00",
         "Abstract": "L\u0027identificazione dei confini di sicurezza \u00E8 uno dei punti fondamentali che deve essere svolto prima di scrivere codice, va quindi identificato in fase di architettura.\r\nQuali sono allora questi confini? Analizziamo quindi la pi\u00F9 recente architettura del sistema operativo Windows che forse tutti non sanno sia evoluta in due kernel.\r\nNel corso della sessione vedremo i meccanismi utili a proteggere le nostre applicazioni e come poterli sfruttare nelle applicazioni reali.",
         "Level": 300,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "275a1299-dd43-4791-96f4-3531d4dcb7f8"
       },
       {
@@ -1280,98 +1832,127 @@
         "EndTime": "2018-02-15T18:40:00",
         "Abstract": "Con l\u0027avvicinarsi della scadenza per il recepimento del regolamento generale sulla protezione dei dati (GDPR, General Data Protection Regulation), ma anche per il continuo e preoccupante aumento del numero di crimini informatici, il tema della protezione dei dati diventa sempre pi\u00F9 importante. Gli RDBMS sono tradizionalmente uno degli obiettivi principali di attacchi informatici e SQL Server offre svariate tecnologie sia per proteggere i dati in transito e a riposo, che per monitorare in maniera proattiva i tentativi di aggirare i meccanismi di protezione. Lungi dal voler esaurire l\u0027argomento GDPR, che spesso \u00E8 pi\u00F9 una questione di processi che di tecnologia, in questa sessione vedremo quali sono le tecnologie che possono aiutarci nel recepimento del regolamento scendendo pi\u00F9 in dettaglio sulle nuove funzionalit\u00E0 introdotte con SQL Server 2016 e faremo anche alcuni cenni alle tecnologie per mitigare i rischi di perdita dei dati.",
         "Level": 300,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "66c3b4af-bf22-40f5-a46b-6d5ff3eaff5b",
+            "Name": "Gianluca Hotz",
+            "ProfileImage": "/Uploads/speakers/hotz.jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "275a1299-dd43-4791-96f4-3531d4dcb7f8"
       },
       {
-        "WorkshopTrackId": "40eaa028-13e2-4080-9cf6-0f49c90b45df",
-        "Title": "Introduzione ",
+        "WorkshopTrackId": "0afb1426-c350-4a89-9301-db0d896dc15d",
+        "Title": "Progettare software in linea con il nuovo regolamento GDPR",
         "Image": null,
-        "StartTime": "2018-02-15T16:00:00",
-        "EndTime": "2018-02-15T16:05:00",
-        "Abstract": null,
-        "Level": 1,
-        "Speakers": [],
+        "StartTime": "2018-02-15T16:05:00",
+        "EndTime": "2018-02-15T17:05:00",
+        "Abstract": "La security nel software non \u00E8 nulla di nuovo e gli articoli della GDPR sono stati chiaramente influenzati dalle prassi gi\u00E0 consolidate in quest\u0027area.\r\nNel corso della sessione vedremo un parallelo tra le prassi gi\u00E0 note di Microsoft SDL (Security Development Lifecycle) e i requisiti GDPR (General Data Protection Regulation), discutendo le differenze e quali possano essere le contromisure da mettere in campo prima della scadenza di maggio.",
+        "Level": 200,
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "275a1299-dd43-4791-96f4-3531d4dcb7f8"
       }
     ],
     "WorkshopFiles": [
       {
-        "WorkshopFileId": "25961fda-46c7-4675-897a-d4535b60d84d",
-        "Title": "4",
-        "FileName": "27868123_10155415843392149_9011296995563714849_n[1].jpg",
-        "FullPath": "/Uploads/workshops/275a1299-dd43-4791-96f4-3531d4dcb7f8\\27868123_10155415843392149_9011296995563714849_n[1].jpg",
-        "FileType": 2
-      },
-      {
-        "WorkshopFileId": "5dd79f83-68dc-4de6-b3d0-77adf02788f9",
-        "Title": "2",
-        "FileName": "28055898_10155415843472149_5174918610243088988_n[1].jpg",
-        "FullPath": "/Uploads/workshops/275a1299-dd43-4791-96f4-3531d4dcb7f8\\28055898_10155415843472149_5174918610243088988_n[1].jpg",
-        "FileType": 2
-      },
-      {
-        "WorkshopFileId": "6ca87434-e96c-475f-978e-da7a4b2536ba",
-        "Title": "1",
-        "FileName": "28279468_10155415843332149_1013777799393309606_n[1].jpg",
-        "FullPath": "/Uploads/workshops/275a1299-dd43-4791-96f4-3531d4dcb7f8\\28279468_10155415843332149_1013777799393309606_n[1].jpg",
-        "FileType": 2
-      },
-      {
-        "WorkshopFileId": "ab940ddd-8504-4fda-b3d1-8a30728dfff4",
-        "Title": "5",
-        "FileName": "28336561_10215532637818500_4679481944690013199_o[1].jpg",
-        "FullPath": "/Uploads/workshops/275a1299-dd43-4791-96f4-3531d4dcb7f8\\28336561_10215532637818500_4679481944690013199_o[1].jpg",
-        "FileType": 2
-      },
-      {
-        "WorkshopFileId": "34f360a5-ff9e-417a-914f-7ff04be0df5c",
-        "Title": "3",
-        "FileName": "28378179_10155415843602149_4058790471643824557_n[1].jpg",
-        "FullPath": "/Uploads/workshops/275a1299-dd43-4791-96f4-3531d4dcb7f8\\28378179_10155415843602149_4058790471643824557_n[1].jpg",
-        "FileType": 2
-      },
-      {
-        "WorkshopFileId": "1fa99eb6-0688-4d0f-ae2b-7989b1dc45bd",
-        "Title": "GDPR Security",
-        "FileName": "GDPR Security.pdf",
-        "FullPath": "/Uploads/workshops/275a1299-dd43-4791-96f4-3531d4dcb7f8\\GDPR Security.pdf",
-        "FileType": 4
-      },
-      {
-        "WorkshopFileId": "0f5be9f7-1efb-4ddd-a13d-f2ef1bbe7273",
-        "Title": "logo.png",
-        "FileName": "logo.png",
-        "FullPath": "/Uploads/workshops/275a1299-dd43-4791-96f4-3531d4dcb7f8\\logo.png",
-        "FileType": 1
-      },
-      {
         "WorkshopFileId": "1881c448-3cd0-4d91-ba88-129245d3a317",
         "Title": "Ritorno ai fondamenti",
         "FileName": "Ritorno ai fondamenti.pdf",
         "FullPath": "/Uploads/workshops/275a1299-dd43-4791-96f4-3531d4dcb7f8\\Ritorno ai fondamenti.pdf",
-        "FileType": 4
-      },
-      {
-        "WorkshopFileId": "1765e349-72e6-44e1-a37b-f7fccbb259ec",
-        "Title": "Demo SQL Server and GDPR",
-        "FileName": "SQL Server and GDPR - Demos.zip",
-        "FullPath": "/Uploads/workshops/275a1299-dd43-4791-96f4-3531d4dcb7f8\\SQL Server and GDPR - Demos.zip",
-        "FileType": 4
-      },
-      {
-        "WorkshopFileId": "91ff09f0-1b68-4d03-a33d-5fd06036b280",
-        "Title": "SQL Server \u0026 GDPR",
-        "FileName": "SQL Server and GDPR.pptx",
-        "FullPath": "/Uploads/workshops/275a1299-dd43-4791-96f4-3531d4dcb7f8\\SQL Server and GDPR.pptx",
-        "FileType": 4
+        "FileType": 4,
+        "Workshop_WorkshopId": "275a1299-dd43-4791-96f4-3531d4dcb7f8"
       },
       {
         "WorkshopFileId": "273bac72-75da-49e2-8613-598a374f931a",
         "Title": "Progettare software",
         "FileName": "ThreatModeling_GDPR.PDF",
         "FullPath": "/Uploads/workshops/275a1299-dd43-4791-96f4-3531d4dcb7f8\\ThreatModeling_GDPR.PDF",
-        "FileType": 4
+        "FileType": 4,
+        "Workshop_WorkshopId": "275a1299-dd43-4791-96f4-3531d4dcb7f8"
+      },
+      {
+        "WorkshopFileId": "91ff09f0-1b68-4d03-a33d-5fd06036b280",
+        "Title": "SQL Server \u0026 GDPR",
+        "FileName": "SQL Server and GDPR.pptx",
+        "FullPath": "/Uploads/workshops/275a1299-dd43-4791-96f4-3531d4dcb7f8\\SQL Server and GDPR.pptx",
+        "FileType": 4,
+        "Workshop_WorkshopId": "275a1299-dd43-4791-96f4-3531d4dcb7f8"
+      },
+      {
+        "WorkshopFileId": "5dd79f83-68dc-4de6-b3d0-77adf02788f9",
+        "Title": "2",
+        "FileName": "28055898_10155415843472149_5174918610243088988_n[1].jpg",
+        "FullPath": "/Uploads/workshops/275a1299-dd43-4791-96f4-3531d4dcb7f8\\28055898_10155415843472149_5174918610243088988_n[1].jpg",
+        "FileType": 2,
+        "Workshop_WorkshopId": "275a1299-dd43-4791-96f4-3531d4dcb7f8"
+      },
+      {
+        "WorkshopFileId": "1fa99eb6-0688-4d0f-ae2b-7989b1dc45bd",
+        "Title": "GDPR Security",
+        "FileName": "GDPR Security.pdf",
+        "FullPath": "/Uploads/workshops/275a1299-dd43-4791-96f4-3531d4dcb7f8\\GDPR Security.pdf",
+        "FileType": 4,
+        "Workshop_WorkshopId": "275a1299-dd43-4791-96f4-3531d4dcb7f8"
+      },
+      {
+        "WorkshopFileId": "34f360a5-ff9e-417a-914f-7ff04be0df5c",
+        "Title": "3",
+        "FileName": "28378179_10155415843602149_4058790471643824557_n[1].jpg",
+        "FullPath": "/Uploads/workshops/275a1299-dd43-4791-96f4-3531d4dcb7f8\\28378179_10155415843602149_4058790471643824557_n[1].jpg",
+        "FileType": 2,
+        "Workshop_WorkshopId": "275a1299-dd43-4791-96f4-3531d4dcb7f8"
+      },
+      {
+        "WorkshopFileId": "ab940ddd-8504-4fda-b3d1-8a30728dfff4",
+        "Title": "5",
+        "FileName": "28336561_10215532637818500_4679481944690013199_o[1].jpg",
+        "FullPath": "/Uploads/workshops/275a1299-dd43-4791-96f4-3531d4dcb7f8\\28336561_10215532637818500_4679481944690013199_o[1].jpg",
+        "FileType": 2,
+        "Workshop_WorkshopId": "275a1299-dd43-4791-96f4-3531d4dcb7f8"
+      },
+      {
+        "WorkshopFileId": "25961fda-46c7-4675-897a-d4535b60d84d",
+        "Title": "4",
+        "FileName": "27868123_10155415843392149_9011296995563714849_n[1].jpg",
+        "FullPath": "/Uploads/workshops/275a1299-dd43-4791-96f4-3531d4dcb7f8\\27868123_10155415843392149_9011296995563714849_n[1].jpg",
+        "FileType": 2,
+        "Workshop_WorkshopId": "275a1299-dd43-4791-96f4-3531d4dcb7f8"
+      },
+      {
+        "WorkshopFileId": "6ca87434-e96c-475f-978e-da7a4b2536ba",
+        "Title": "1",
+        "FileName": "28279468_10155415843332149_1013777799393309606_n[1].jpg",
+        "FullPath": "/Uploads/workshops/275a1299-dd43-4791-96f4-3531d4dcb7f8\\28279468_10155415843332149_1013777799393309606_n[1].jpg",
+        "FileType": 2,
+        "Workshop_WorkshopId": "275a1299-dd43-4791-96f4-3531d4dcb7f8"
+      },
+      {
+        "WorkshopFileId": "0f5be9f7-1efb-4ddd-a13d-f2ef1bbe7273",
+        "Title": "logo.png",
+        "FileName": "logo.png",
+        "FullPath": "/Uploads/workshops/275a1299-dd43-4791-96f4-3531d4dcb7f8\\logo.png",
+        "FileType": 1,
+        "Workshop_WorkshopId": "275a1299-dd43-4791-96f4-3531d4dcb7f8"
+      },
+      {
+        "WorkshopFileId": "1765e349-72e6-44e1-a37b-f7fccbb259ec",
+        "Title": "Demo SQL Server and GDPR",
+        "FileName": "SQL Server and GDPR - Demos.zip",
+        "FullPath": "/Uploads/workshops/275a1299-dd43-4791-96f4-3531d4dcb7f8\\SQL Server and GDPR - Demos.zip",
+        "FileType": 4,
+        "Workshop_WorkshopId": "275a1299-dd43-4791-96f4-3531d4dcb7f8"
       }
     ],
     "Workshopsubscribed": null
@@ -1405,7 +1986,16 @@
         "EndTime": "2018-06-19T18:35:00",
         "Abstract": "Riconoscere i contesti, le emozioni, i volti e i testi: questa \u00E8 solo una piccola parte della potenza dei Cognitive Services di Microsoft, che permettono di integrare con estrema facilit\u00E0 potenti algoritmi di intelligenza artificiale nei nostri sistemi. Nel corso di questa sessione mostreremo come sfruttarli con Xamarin per dare un vero valore aggiunto alle nostre app.",
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "b0fe21e2-c407-412f-aed0-c8374139c3bc",
+            "Name": "Marco Minerva",
+            "ProfileImage": "/Uploads/speakers/1cefe7d[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
       },
       {
@@ -1416,7 +2006,16 @@
         "EndTime": "2018-06-19T17:00:00",
         "Abstract": "Lo sviluppo di una applicazione android nativa attraverso android studio. Nel talk vedremo come realizzare una semplice APP, che permetta di visualizzare e inviare dati a Firebase.",
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "cc1716ef-8a90-444d-930e-fc1d1bddbe15",
+            "Name": "Andrea De Gaetano ",
+            "ProfileImage": null,
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
       },
       {
@@ -1427,7 +2026,16 @@
         "EndTime": "2018-06-19T17:50:00",
         "Abstract": "Utilizzo degli Azure Mobile APp, e relativo SDK, per realizzare una app cross-platform dotata di autenticazione e utilizzo dei dati in un contesto offline sync",
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "aa70afc7-ea86-41c6-9277-9664db6687e3",
+            "Name": "Giampaolo Tucci ",
+            "ProfileImage": null,
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
       },
       {
@@ -1438,7 +2046,16 @@
         "EndTime": "2018-06-19T17:00:00",
         "Abstract": "Introduzione sullo sviluppo di app mobile per Augmented Reality con  demo  in Unity e Vuforia.",
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "337b5fef-3f22-4e97-8bb3-902d9b9b5092",
+            "Name": "Manuela Chessa",
+            "ProfileImage": null,
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
       },
       {
@@ -1449,7 +2066,16 @@
         "EndTime": "2018-06-19T17:50:00",
         "Abstract": "React Native \u00E8 un framework Javascript basato su ReactJS per lo sviluppo crossplatform di applicazioni mobile.\r\nNel talk vedremo i prinicipi di base ed alcuni esempi di funzionamento del framework.",
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "cde2b4ef-093d-41da-bd3d-a11607ddce26",
+            "Name": "Federico Salvi",
+            "ProfileImage": null,
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
       },
       {
@@ -1460,18 +2086,16 @@
         "EndTime": "2018-06-19T18:35:00",
         "Abstract": "Nativescript: setup iniziale e realizzazione pratica di una app",
         "Level": 0,
-        "Speakers": [],
-        "WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
-      },
-      {
-        "WorkshopTrackId": "d5b3e58e-edf5-4ff5-9709-9f692dd1af70",
-        "Title": "[Secondary Room] Ionic Framework \u2013 Progressive and Native apps in poche mosse",
-        "Image": null,
-        "StartTime": "2018-06-19T15:05:00",
-        "EndTime": "2018-06-19T15:55:00",
-        "Abstract": "Ionic \u00E8 un framework Open Source per lo sviluppo di app mobile basato su Cordova e Angular, ed eseguita all\u2019interno di una applicazione nativa per interagire con le funzionalit\u00E0 del dispositivo.\r\nVedremo come creare un nuovo progetto e le principali linee guida da adottare.",
-        "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
       },
       {
@@ -1482,7 +2106,16 @@
         "EndTime": "2018-06-19T15:55:00",
         "Abstract": "Introduzione a .NET standard, AppCenter e sviluppo mobile con Visual Studio Online",
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "5babc702-3106-4199-bf12-80957d54ef10",
+            "Name": "Gianluca Bertelli",
+            "ProfileImage": "/Uploads/speakers/gibert[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
       },
       {
@@ -1493,7 +2126,16 @@
         "EndTime": "2018-06-19T15:00:00",
         "Abstract": "Breve introduzione al mondo delle Progressive Web App con esempi di sviluppo \r\nbasato sulla libreria per configurare Service Worker in Javascript.",
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "becdd777-5f02-41b8-b328-7d20367db509",
+            "Name": "Angelo Ferrando",
+            "ProfileImage": null,
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
       },
       {
@@ -1504,7 +2146,36 @@
         "EndTime": "2018-06-19T14:10:00",
         "Abstract": null,
         "Level": 1000,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
+        "WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
+      },
+      {
+        "WorkshopTrackId": "d5b3e58e-edf5-4ff5-9709-9f692dd1af70",
+        "Title": "[Secondary Room] Ionic Framework \u2013 Progressive and Native apps in poche mosse",
+        "Image": null,
+        "StartTime": "2018-06-19T15:05:00",
+        "EndTime": "2018-06-19T15:55:00",
+        "Abstract": "Ionic \u00E8 un framework Open Source per lo sviluppo di app mobile basato su Cordova e Angular, ed eseguita all\u2019interno di una applicazione nativa per interagire con le funzionalit\u00E0 del dispositivo.\r\nVedremo come creare un nuovo progetto e le principali linee guida da adottare.",
+        "Level": 100,
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "8ba0441a-3124-4f03-99e6-6f3b5ba76f89",
+            "Name": "Andrea Belloni",
+            "ProfileImage": "/Uploads/speakers/andreabelloni[1].PNG",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
       },
       {
@@ -1515,7 +2186,16 @@
         "EndTime": "2018-06-19T15:00:00",
         "Abstract": "Xamarin.iOS e Xamarin.Android abilitano lo sviluppo di applicazioni mobile native cross-platform utilizzando C# (o F#). In questa sessione vedremmo come vengano implementate queste funzionalit\u00E0, perch\u00E9\u2019 le applicazioni sono native e quali sono gli aspetti da tenere in conto in un ambiente dove il runtime .Net viene iniettato dentro il processo nativo della applicazione.",
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "d54f9ccf-86fa-4033-b04c-af6e07627bbf",
+            "Name": "Dan Ardelean ",
+            "ProfileImage": null,
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
       },
       {
@@ -1526,80 +2206,99 @@
         "EndTime": "2018-06-19T18:40:00",
         "Abstract": null,
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
       }
     ],
     "WorkshopFiles": [
       {
-        "WorkshopFileId": "56d29b9e-b98a-4252-857c-ab3e601f168e",
-        "Title": "Pappa",
-        "FileName": "1498127a-caab-4ed5-9d70-a36f9612ec93.jpg",
-        "FullPath": "/Uploads/workshops/d6112500-8a5d-44c6-8a22-74b290b571f0\\1498127a-caab-4ed5-9d70-a36f9612ec93.jpg",
-        "FileType": 2
+        "WorkshopFileId": "6ea6bddc-7b3a-4d6c-957b-0a7bafe7bf5e",
+        "Title": "Xamarin Sotto Il Cofano",
+        "FileName": "Xamarin -Ge.Mobi Dan Ardelean.zip",
+        "FullPath": "/Uploads/workshops/d6112500-8a5d-44c6-8a22-74b290b571f0\\Xamarin -Ge.Mobi Dan Ardelean.zip",
+        "FileType": 4,
+        "Workshop_WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
       },
       {
         "WorkshopFileId": "bc7ff733-402c-4914-9c7a-4a4449bff05c",
         "Title": " Ionic Framework \u2013 Progressive And Native Apps In Poche Mosse",
         "FileName": "2018-1 Ionic.zip",
         "FullPath": "/Uploads/workshops/d6112500-8a5d-44c6-8a22-74b290b571f0\\2018-1 Ionic.zip",
-        "FileType": 4
-      },
-      {
-        "WorkshopFileId": "5dfdb60b-da3b-4c2d-a665-f92d0b073f85",
-        "Title": "Raf",
-        "FileName": "300e7363-73b0-449a-8254-d2a0f49ae824.jpg",
-        "FullPath": "/Uploads/workshops/d6112500-8a5d-44c6-8a22-74b290b571f0\\300e7363-73b0-449a-8254-d2a0f49ae824.jpg",
-        "FileType": 2
-      },
-      {
-        "WorkshopFileId": "d627b4c5-7125-4469-9651-dfd41b72a5db",
-        "Title": "Andrea Belloni",
-        "FileName": "60da3f8c-0b3f-466f-9cf1-33ca4e2751e3.jpg",
-        "FullPath": "/Uploads/workshops/d6112500-8a5d-44c6-8a22-74b290b571f0\\60da3f8c-0b3f-466f-9cf1-33ca4e2751e3.jpg",
-        "FileType": 2
-      },
-      {
-        "WorkshopFileId": "74ea5898-ae28-465f-a55b-d5b1980c83df",
-        "Title": "Sviluppi Mobile Con Visual Studio OnLine",
-        "FileName": "GeMobile.pptx",
-        "FullPath": "/Uploads/workshops/d6112500-8a5d-44c6-8a22-74b290b571f0\\GeMobile.pptx",
-        "FileType": 4
-      },
-      {
-        "WorkshopFileId": "14bfd9a2-2dcd-4e9e-b47a-d52cb625b975",
-        "Title": "logo.png",
-        "FileName": "logo.png",
-        "FullPath": "/Uploads/workshops/d6112500-8a5d-44c6-8a22-74b290b571f0\\logo.png",
-        "FileType": 1
-      },
-      {
-        "WorkshopFileId": "51851340-81be-42d0-aea6-e6377e4aaff7",
-        "Title": "Azure Mobile App",
-        "FileName": "MobileAppService.ppt  -  Compatibility Mode.pdf",
-        "FullPath": "/Uploads/workshops/d6112500-8a5d-44c6-8a22-74b290b571f0\\MobileAppService.ppt  -  Compatibility Mode.pdf",
-        "FileType": 4
-      },
-      {
-        "WorkshopFileId": "ef9a406c-8d90-4f0e-89b6-7906f968b750",
-        "Title": "Sviluppo Di Una App Mobile Con Nativescript",
-        "FileName": "Nativescript.pdf",
-        "FullPath": "/Uploads/workshops/d6112500-8a5d-44c6-8a22-74b290b571f0\\Nativescript.pdf",
-        "FileType": 4
+        "FileType": 4,
+        "Workshop_WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
       },
       {
         "WorkshopFileId": "014d12d9-d8f6-4c7e-9070-705627289ace",
         "Title": "Sviluppo Di App Mobile Per Augmented Reality",
         "FileName": "Sviluppo Di App Mobile Per Augmented Reality_DotNetLiguria19Giugno2018.pdf",
         "FullPath": "/Uploads/workshops/d6112500-8a5d-44c6-8a22-74b290b571f0\\Sviluppo Di App Mobile Per Augmented Reality_DotNetLiguria19Giugno2018.pdf",
-        "FileType": 4
+        "FileType": 4,
+        "Workshop_WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
       },
       {
-        "WorkshopFileId": "6ea6bddc-7b3a-4d6c-957b-0a7bafe7bf5e",
-        "Title": "Xamarin Sotto Il Cofano",
-        "FileName": "Xamarin -Ge.Mobi Dan Ardelean.zip",
-        "FullPath": "/Uploads/workshops/d6112500-8a5d-44c6-8a22-74b290b571f0\\Xamarin -Ge.Mobi Dan Ardelean.zip",
-        "FileType": 4
+        "WorkshopFileId": "ef9a406c-8d90-4f0e-89b6-7906f968b750",
+        "Title": "Sviluppo Di Una App Mobile Con Nativescript",
+        "FileName": "Nativescript.pdf",
+        "FullPath": "/Uploads/workshops/d6112500-8a5d-44c6-8a22-74b290b571f0\\Nativescript.pdf",
+        "FileType": 4,
+        "Workshop_WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
+      },
+      {
+        "WorkshopFileId": "56d29b9e-b98a-4252-857c-ab3e601f168e",
+        "Title": "Pappa",
+        "FileName": "1498127a-caab-4ed5-9d70-a36f9612ec93.jpg",
+        "FullPath": "/Uploads/workshops/d6112500-8a5d-44c6-8a22-74b290b571f0\\1498127a-caab-4ed5-9d70-a36f9612ec93.jpg",
+        "FileType": 2,
+        "Workshop_WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
+      },
+      {
+        "WorkshopFileId": "14bfd9a2-2dcd-4e9e-b47a-d52cb625b975",
+        "Title": "logo.png",
+        "FileName": "logo.png",
+        "FullPath": "/Uploads/workshops/d6112500-8a5d-44c6-8a22-74b290b571f0\\logo.png",
+        "FileType": 1,
+        "Workshop_WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
+      },
+      {
+        "WorkshopFileId": "74ea5898-ae28-465f-a55b-d5b1980c83df",
+        "Title": "Sviluppi Mobile Con Visual Studio OnLine",
+        "FileName": "GeMobile.pptx",
+        "FullPath": "/Uploads/workshops/d6112500-8a5d-44c6-8a22-74b290b571f0\\GeMobile.pptx",
+        "FileType": 4,
+        "Workshop_WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
+      },
+      {
+        "WorkshopFileId": "d627b4c5-7125-4469-9651-dfd41b72a5db",
+        "Title": "Andrea Belloni",
+        "FileName": "60da3f8c-0b3f-466f-9cf1-33ca4e2751e3.jpg",
+        "FullPath": "/Uploads/workshops/d6112500-8a5d-44c6-8a22-74b290b571f0\\60da3f8c-0b3f-466f-9cf1-33ca4e2751e3.jpg",
+        "FileType": 2,
+        "Workshop_WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
+      },
+      {
+        "WorkshopFileId": "51851340-81be-42d0-aea6-e6377e4aaff7",
+        "Title": "Azure Mobile App",
+        "FileName": "MobileAppService.ppt  -  Compatibility Mode.pdf",
+        "FullPath": "/Uploads/workshops/d6112500-8a5d-44c6-8a22-74b290b571f0\\MobileAppService.ppt  -  Compatibility Mode.pdf",
+        "FileType": 4,
+        "Workshop_WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
+      },
+      {
+        "WorkshopFileId": "5dfdb60b-da3b-4c2d-a665-f92d0b073f85",
+        "Title": "Raf",
+        "FileName": "300e7363-73b0-449a-8254-d2a0f49ae824.jpg",
+        "FullPath": "/Uploads/workshops/d6112500-8a5d-44c6-8a22-74b290b571f0\\300e7363-73b0-449a-8254-d2a0f49ae824.jpg",
+        "FileType": 2,
+        "Workshop_WorkshopId": "d6112500-8a5d-44c6-8a22-74b290b571f0"
       }
     ],
     "Workshopsubscribed": null
@@ -1633,7 +2332,16 @@
         "EndTime": "2019-04-18T18:30:00",
         "Abstract": "In questa sessione entreremo nel vivo dello sviluppo di un backend con ASP.NET Core mostrando come realizzare efficacemente delle API per un\u0027app mobile: dall\u0027autenticazione fino all\u0027accesso ai dati, passando per la gestione degli errori e il versionamento.\r\nIn pratica esporremo come adottare il meglio delle varie soluzioni offerte da ASP.NET Core, illustrandone i pro e i contro.",
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "b0fe21e2-c407-412f-aed0-c8374139c3bc",
+            "Name": "Marco Minerva",
+            "ProfileImage": "/Uploads/speakers/1cefe7d[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "9f7725e4-479b-4dff-ace5-1ee3b599c08c"
       },
       {
@@ -1644,7 +2352,24 @@
         "EndTime": "2019-04-18T16:30:00",
         "Abstract": "Introduzione all\u0027evento",
         "Level": 0,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "20e60600-15c2-4f34-ba18-5b0027f294a9",
+            "Name": "Matteo Gentile",
+            "ProfileImage": null,
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "9f7725e4-479b-4dff-ace5-1ee3b599c08c"
       },
       {
@@ -1655,7 +2380,16 @@
         "EndTime": "2019-04-18T19:30:00",
         "Abstract": "Riutilizzare le proprie skill di sviluppo web per realizzare applicazioni native per IOS e Android tramite l\u2019utilizzo di Nativescript.\r\nVedremo come realizzare una semplice applicazione cross platform per interrogare un servizio WebApi basato su ASP.NET Core.",
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "8ba0441a-3124-4f03-99e6-6f3b5ba76f89",
+            "Name": "Andrea Belloni",
+            "ProfileImage": "/Uploads/speakers/andreabelloni[1].PNG",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "9f7725e4-479b-4dff-ace5-1ee3b599c08c"
       },
       {
@@ -1666,38 +2400,51 @@
         "EndTime": "2019-04-18T17:30:00",
         "Abstract": "ASP.NET Core \u00E8 una totale riscrittura del precedente ASP.NET che ha permesso una drastica semplificazione e performance mai viste prima.\r\nDopo una breve introduzione al mondo di .NET Core e netstandard saranno analizzate le nuove architetture e servizi offerti, come la dependency injection integrata, il logging e la gestione delle configurazioni.\r\nInoltre saranno esposte le diverse possibili alternative per creare un backend basato sullo stile architetturale REST, nonch\u00E9 l\u0027uso delle websocket.",
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "9f7725e4-479b-4dff-ace5-1ee3b599c08c"
       }
     ],
     "WorkshopFiles": [
       {
-        "WorkshopFileId": "cbb65b65-bab5-44f0-8631-616af8046aa3",
-        "Title": "ASP.NET Core Web API all\u0027opera",
-        "FileName": "ASP.NET Core Web API all\u0027opera.pptx",
-        "FullPath": "/Uploads/workshops/9f7725e4-479b-4dff-ace5-1ee3b599c08c\\ASP.NET Core Web API all\u0027opera.pptx",
-        "FileType": 4
+        "WorkshopFileId": "c6d915f1-783d-4298-8e2e-47bf94c91d2f",
+        "Title": "NativeScript",
+        "FileName": "NativeScript.pdf",
+        "FullPath": "/Uploads/workshops/9f7725e4-479b-4dff-ace5-1ee3b599c08c\\NativeScript.pdf",
+        "FileType": 4,
+        "Workshop_WorkshopId": "9f7725e4-479b-4dff-ace5-1ee3b599c08c"
       },
       {
         "WorkshopFileId": "f2ecdc09-0fc4-4a20-b311-56a632540873",
         "Title": "La rivoluzione di Asp.net",
         "FileName": "La rivoluzione di ASP.NET Core nel mondo delle Web API.pdf",
         "FullPath": "/Uploads/workshops/9f7725e4-479b-4dff-ace5-1ee3b599c08c\\La rivoluzione di ASP.NET Core nel mondo delle Web API.pdf",
-        "FileType": 4
+        "FileType": 4,
+        "Workshop_WorkshopId": "9f7725e4-479b-4dff-ace5-1ee3b599c08c"
+      },
+      {
+        "WorkshopFileId": "cbb65b65-bab5-44f0-8631-616af8046aa3",
+        "Title": "ASP.NET Core Web API all\u0027opera",
+        "FileName": "ASP.NET Core Web API all\u0027opera.pptx",
+        "FullPath": "/Uploads/workshops/9f7725e4-479b-4dff-ace5-1ee3b599c08c\\ASP.NET Core Web API all\u0027opera.pptx",
+        "FileType": 4,
+        "Workshop_WorkshopId": "9f7725e4-479b-4dff-ace5-1ee3b599c08c"
       },
       {
         "WorkshopFileId": "ad6247ab-3315-4dec-954a-c5338048dd1e",
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/9f7725e4-479b-4dff-ace5-1ee3b599c08c\\logo.png",
-        "FileType": 1
-      },
-      {
-        "WorkshopFileId": "c6d915f1-783d-4298-8e2e-47bf94c91d2f",
-        "Title": "NativeScript",
-        "FileName": "NativeScript.pdf",
-        "FullPath": "/Uploads/workshops/9f7725e4-479b-4dff-ace5-1ee3b599c08c\\NativeScript.pdf",
-        "FileType": 4
+        "FileType": 1,
+        "Workshop_WorkshopId": "9f7725e4-479b-4dff-ace5-1ee3b599c08c"
       }
     ],
     "Workshopsubscribed": null
@@ -1724,17 +2471,6 @@
     },
     "Tracks": [
       {
-        "WorkshopTrackId": "0c540cf6-a692-4495-8b22-56b7a7482315",
-        "Title": "Domande \u0026 Risposte",
-        "Image": null,
-        "StartTime": "2019-12-13T18:00:00",
-        "EndTime": "2019-12-13T18:30:00",
-        "Abstract": null,
-        "Level": 0,
-        "Speakers": [],
-        "WorkshopId": "fd14a523-1bcb-4782-a139-25e48dc4dcae"
-      },
-      {
         "WorkshopTrackId": "6df427ef-328b-40eb-8e25-207d913ae23b",
         "Title": "La rivoluzione di Blazor nello sviluppo di web-app",
         "Image": null,
@@ -1742,18 +2478,52 @@
         "EndTime": "2019-12-13T18:00:00",
         "Abstract": null,
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "aa70afc7-ea86-41c6-9277-9664db6687e3",
+            "Name": "Giampaolo Tucci ",
+            "ProfileImage": null,
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "fd14a523-1bcb-4782-a139-25e48dc4dcae"
       },
       {
-        "WorkshopTrackId": "4e64da21-4fa1-492f-b59d-8391d4cffae2",
-        "Title": "Uno sguardo allo sviluppo di Web API in ASP.NET Core ",
+        "WorkshopTrackId": "0c540cf6-a692-4495-8b22-56b7a7482315",
+        "Title": "Domande \u0026 Risposte",
         "Image": null,
-        "StartTime": "2019-12-13T16:00:00",
-        "EndTime": "2019-12-13T17:00:00",
+        "StartTime": "2019-12-13T18:00:00",
+        "EndTime": "2019-12-13T18:30:00",
         "Abstract": null,
-        "Level": 100,
-        "Speakers": [],
+        "Level": 0,
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "aa70afc7-ea86-41c6-9277-9664db6687e3",
+            "Name": "Giampaolo Tucci ",
+            "ProfileImage": null,
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "b0fe21e2-c407-412f-aed0-c8374139c3bc",
+            "Name": "Marco Minerva",
+            "ProfileImage": "/Uploads/speakers/1cefe7d[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "fd14a523-1bcb-4782-a139-25e48dc4dcae"
       },
       {
@@ -1764,7 +2534,36 @@
         "EndTime": "2019-12-13T15:00:00",
         "Abstract": "Abbiamo una piccola sorpresa in un video per chi sar\u00E0 presente....",
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
+        "WorkshopId": "fd14a523-1bcb-4782-a139-25e48dc4dcae"
+      },
+      {
+        "WorkshopTrackId": "4e64da21-4fa1-492f-b59d-8391d4cffae2",
+        "Title": "Uno sguardo allo sviluppo di Web API in ASP.NET Core ",
+        "Image": null,
+        "StartTime": "2019-12-13T16:00:00",
+        "EndTime": "2019-12-13T17:00:00",
+        "Abstract": null,
+        "Level": 100,
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "b0fe21e2-c407-412f-aed0-c8374139c3bc",
+            "Name": "Marco Minerva",
+            "ProfileImage": "/Uploads/speakers/1cefe7d[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "fd14a523-1bcb-4782-a139-25e48dc4dcae"
       },
       {
@@ -1775,59 +2574,75 @@
         "EndTime": "2019-12-13T16:00:00",
         "Abstract": null,
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "fd14a523-1bcb-4782-a139-25e48dc4dcae"
       }
     ],
     "WorkshopFiles": [
       {
-        "WorkshopFileId": "9c2f1826-5f42-42ac-9af2-6136e9c15ac9",
-        "Title": "La Rivoluzione Di Blazor Nello Sviluppo Di Web-App",
-        "FileName": "BlazorGPT-GE.pdf",
-        "FullPath": "/Uploads/workshops/fd14a523-1bcb-4782-a139-25e48dc4dcae\\BlazorGPT-GE.pdf",
-        "FileType": 4
-      },
-      {
-        "WorkshopFileId": "1981cede-ff39-4c68-9138-b62bd2659710",
-        "Title": "Photo4",
-        "FileName": "IMG_20191213_144250.jpg",
-        "FullPath": "/Uploads/workshops/fd14a523-1bcb-4782-a139-25e48dc4dcae\\IMG_20191213_144250.jpg",
-        "FileType": 2
-      },
-      {
-        "WorkshopFileId": "65bfb018-eae3-4d89-bb9d-41673f799289",
-        "Title": "Photo2",
-        "FileName": "IMG_20191213_150431.jpg",
-        "FullPath": "/Uploads/workshops/fd14a523-1bcb-4782-a139-25e48dc4dcae\\IMG_20191213_150431.jpg",
-        "FileType": 2
-      },
-      {
-        "WorkshopFileId": "15c073bc-f038-442c-9dd4-b27663dad987",
-        "Title": "Photo1",
-        "FileName": "IMG_20191213_171529.jpg",
-        "FullPath": "/Uploads/workshops/fd14a523-1bcb-4782-a139-25e48dc4dcae\\IMG_20191213_171529.jpg",
-        "FileType": 2
-      },
-      {
-        "WorkshopFileId": "bddeb0bc-c4eb-4255-8c9d-d12a4fed8428",
-        "Title": "Photo3",
-        "FileName": "IMG-20191213-WA0002.jpg",
-        "FullPath": "/Uploads/workshops/fd14a523-1bcb-4782-a139-25e48dc4dcae\\IMG-20191213-WA0002.jpg",
-        "FileType": 2
-      },
-      {
         "WorkshopFileId": "69a1b24c-b508-46c2-9d99-031a86b4b169",
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/fd14a523-1bcb-4782-a139-25e48dc4dcae\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "fd14a523-1bcb-4782-a139-25e48dc4dcae"
       },
       {
         "WorkshopFileId": "8a0bfdea-da6b-485b-a249-326beb675d20",
         "Title": "Uno Sguardo Allo Sviluppo Di Web API In ASP.NET Core",
         "FileName": "PowerPoint Presentation.pdf",
         "FullPath": "/Uploads/workshops/fd14a523-1bcb-4782-a139-25e48dc4dcae\\PowerPoint Presentation.pdf",
-        "FileType": 4
+        "FileType": 4,
+        "Workshop_WorkshopId": "fd14a523-1bcb-4782-a139-25e48dc4dcae"
+      },
+      {
+        "WorkshopFileId": "65bfb018-eae3-4d89-bb9d-41673f799289",
+        "Title": "Photo2",
+        "FileName": "IMG_20191213_150431.jpg",
+        "FullPath": "/Uploads/workshops/fd14a523-1bcb-4782-a139-25e48dc4dcae\\IMG_20191213_150431.jpg",
+        "FileType": 2,
+        "Workshop_WorkshopId": "fd14a523-1bcb-4782-a139-25e48dc4dcae"
+      },
+      {
+        "WorkshopFileId": "9c2f1826-5f42-42ac-9af2-6136e9c15ac9",
+        "Title": "La Rivoluzione Di Blazor Nello Sviluppo Di Web-App",
+        "FileName": "BlazorGPT-GE.pdf",
+        "FullPath": "/Uploads/workshops/fd14a523-1bcb-4782-a139-25e48dc4dcae\\BlazorGPT-GE.pdf",
+        "FileType": 4,
+        "Workshop_WorkshopId": "fd14a523-1bcb-4782-a139-25e48dc4dcae"
+      },
+      {
+        "WorkshopFileId": "15c073bc-f038-442c-9dd4-b27663dad987",
+        "Title": "Photo1",
+        "FileName": "IMG_20191213_171529.jpg",
+        "FullPath": "/Uploads/workshops/fd14a523-1bcb-4782-a139-25e48dc4dcae\\IMG_20191213_171529.jpg",
+        "FileType": 2,
+        "Workshop_WorkshopId": "fd14a523-1bcb-4782-a139-25e48dc4dcae"
+      },
+      {
+        "WorkshopFileId": "1981cede-ff39-4c68-9138-b62bd2659710",
+        "Title": "Photo4",
+        "FileName": "IMG_20191213_144250.jpg",
+        "FullPath": "/Uploads/workshops/fd14a523-1bcb-4782-a139-25e48dc4dcae\\IMG_20191213_144250.jpg",
+        "FileType": 2,
+        "Workshop_WorkshopId": "fd14a523-1bcb-4782-a139-25e48dc4dcae"
+      },
+      {
+        "WorkshopFileId": "bddeb0bc-c4eb-4255-8c9d-d12a4fed8428",
+        "Title": "Photo3",
+        "FileName": "IMG-20191213-WA0002.jpg",
+        "FullPath": "/Uploads/workshops/fd14a523-1bcb-4782-a139-25e48dc4dcae\\IMG-20191213-WA0002.jpg",
+        "FileType": 2,
+        "Workshop_WorkshopId": "fd14a523-1bcb-4782-a139-25e48dc4dcae"
       }
     ],
     "Workshopsubscribed": null
@@ -1861,7 +2676,16 @@
         "EndTime": "2020-01-24T15:00:00",
         "Abstract": "Registrazione",
         "Level": 0,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "b0fe21e2-c407-412f-aed0-c8374139c3bc",
+            "Name": "Marco Minerva",
+            "ProfileImage": "/Uploads/speakers/1cefe7d[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "1f322045-c9d2-4e9e-9c82-17ab57721eb2"
       },
       {
@@ -1872,7 +2696,16 @@
         "EndTime": "2020-01-24T18:00:00",
         "Abstract": null,
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "b0fe21e2-c407-412f-aed0-c8374139c3bc",
+            "Name": "Marco Minerva",
+            "ProfileImage": "/Uploads/speakers/1cefe7d[1].jpg",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "1f322045-c9d2-4e9e-9c82-17ab57721eb2"
       },
       {
@@ -1883,7 +2716,16 @@
         "EndTime": "2020-01-24T16:00:00",
         "Abstract": null,
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "8641361c-36e3-48ab-a6c0-0db7ecf43714",
+            "Name": "Marco Zamana",
+            "ProfileImage": null,
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "1f322045-c9d2-4e9e-9c82-17ab57721eb2"
       },
       {
@@ -1894,52 +2736,75 @@
         "EndTime": "2020-01-24T17:00:00",
         "Abstract": null,
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "2dedf6e9-d62b-470d-a0e8-34d0e8314c2e",
+            "Name": "Dante Ciambella",
+            "ProfileImage": null,
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "a9494639-b04f-4849-9237-b744e792c032",
+            "Name": "Stefano Semeria",
+            "ProfileImage": null,
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "1f322045-c9d2-4e9e-9c82-17ab57721eb2"
       }
     ],
     "WorkshopFiles": [
       {
+        "WorkshopFileId": "c0cf42f6-1fa8-48fd-9374-21da6b15c224",
+        "Title": "1",
+        "FileName": "IMG_20200124_172243.jpg",
+        "FullPath": "/Uploads/workshops/1f322045-c9d2-4e9e-9c82-17ab57721eb2\\IMG_20200124_172243.jpg",
+        "FileType": 2,
+        "Workshop_WorkshopId": "1f322045-c9d2-4e9e-9c82-17ab57721eb2"
+      },
+      {
         "WorkshopFileId": "4a0cfd5a-4979-4914-9445-44da744fe43e",
         "Title": "Cognitive Services",
         "FileName": "Cognitive Services.pdf",
         "FullPath": "/Uploads/workshops/1f322045-c9d2-4e9e-9c82-17ab57721eb2\\Cognitive Services.pdf",
-        "FileType": 4
-      },
-      {
-        "WorkshopFileId": "f9908e95-d628-4112-90da-7bdd83ba27c4",
-        "Title": "Give our apps a human side with the AI - No video",
-        "FileName": "Give our apps a human side with the AI - No video.pdf",
-        "FullPath": "/Uploads/workshops/1f322045-c9d2-4e9e-9c82-17ab57721eb2\\Give our apps a human side with the AI - No video.pdf",
-        "FileType": 4
-      },
-      {
-        "WorkshopFileId": "d8f791b8-8c6e-44ec-a782-d333d83b63c3",
-        "Title": "3",
-        "FileName": "IMG_20200124_144712.jpg",
-        "FullPath": "/Uploads/workshops/1f322045-c9d2-4e9e-9c82-17ab57721eb2\\IMG_20200124_144712.jpg",
-        "FileType": 2
+        "FileType": 4,
+        "Workshop_WorkshopId": "1f322045-c9d2-4e9e-9c82-17ab57721eb2"
       },
       {
         "WorkshopFileId": "75adb365-f423-491d-970c-4b556e23fb96",
         "Title": "2",
         "FileName": "IMG_20200124_145500.jpg",
         "FullPath": "/Uploads/workshops/1f322045-c9d2-4e9e-9c82-17ab57721eb2\\IMG_20200124_145500.jpg",
-        "FileType": 2
+        "FileType": 2,
+        "Workshop_WorkshopId": "1f322045-c9d2-4e9e-9c82-17ab57721eb2"
       },
       {
-        "WorkshopFileId": "c0cf42f6-1fa8-48fd-9374-21da6b15c224",
-        "Title": "1",
-        "FileName": "IMG_20200124_172243.jpg",
-        "FullPath": "/Uploads/workshops/1f322045-c9d2-4e9e-9c82-17ab57721eb2\\IMG_20200124_172243.jpg",
-        "FileType": 2
+        "WorkshopFileId": "f9908e95-d628-4112-90da-7bdd83ba27c4",
+        "Title": "Give our apps a human side with the AI - No video",
+        "FileName": "Give our apps a human side with the AI - No video.pdf",
+        "FullPath": "/Uploads/workshops/1f322045-c9d2-4e9e-9c82-17ab57721eb2\\Give our apps a human side with the AI - No video.pdf",
+        "FileType": 4,
+        "Workshop_WorkshopId": "1f322045-c9d2-4e9e-9c82-17ab57721eb2"
       },
       {
         "WorkshopFileId": "f54060a9-9f57-4c5f-8fac-b890f0a4eaa2",
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/1f322045-c9d2-4e9e-9c82-17ab57721eb2\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "1f322045-c9d2-4e9e-9c82-17ab57721eb2"
+      },
+      {
+        "WorkshopFileId": "d8f791b8-8c6e-44ec-a782-d333d83b63c3",
+        "Title": "3",
+        "FileName": "IMG_20200124_144712.jpg",
+        "FullPath": "/Uploads/workshops/1f322045-c9d2-4e9e-9c82-17ab57721eb2\\IMG_20200124_144712.jpg",
+        "FileType": 2,
+        "Workshop_WorkshopId": "1f322045-c9d2-4e9e-9c82-17ab57721eb2"
       }
     ],
     "Workshopsubscribed": null
@@ -1964,14 +2829,15 @@
       "Address": "Vico di S. Donato",
       "MaximumSpaces": 200
     },
-    "Tracks": null,
+    "Tracks": [],
     "WorkshopFiles": [
       {
         "WorkshopFileId": "6ae5ff03-637b-474a-b6cc-5d08d7e9d821",
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/ff05d51b-d28a-47d6-ab51-f3247cd9caac\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "ff05d51b-d28a-47d6-ab51-f3247cd9caac"
       }
     ],
     "Workshopsubscribed": null
@@ -1990,15 +2856,21 @@
     "ExternalRegistration": true,
     "ExternalRegistrationLink": null,
     "OnlyHtml": false,
-    "Location": null,
-    "Tracks": null,
+    "Location": {
+      "Name": null,
+      "Coordinates": null,
+      "Address": null,
+      "MaximumSpaces": 0
+    },
+    "Tracks": [],
     "WorkshopFiles": [
       {
         "WorkshopFileId": "3c692f38-be2f-40d2-90a1-74ecbb0d83b6",
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/d8e198b9-8e74-4991-be47-16da650bd34c\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "d8e198b9-8e74-4991-be47-16da650bd34c"
       }
     ],
     "Workshopsubscribed": null
@@ -2032,7 +2904,16 @@
         "EndTime": "2022-04-22T19:30:00",
         "Abstract": " Quale tecnologia scegliere \u00E8 forse la domanda pi\u00F9 frequente quando si vuole realizzare una nuova applicazione web, in questa sessione vedremo una panoramica degli strumenti e delle metodologie attuali per lo sviluppo di applicazioni web analizzandone le principali differenze. Parleremo di Web Api, ASP.NET, sviluppo client ma anche di templates, frameworks, e un po\u0060 di css. ",
         "Level": 0,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "8ba0441a-3124-4f03-99e6-6f3b5ba76f89",
+            "Name": "Andrea Belloni",
+            "ProfileImage": "/Uploads/speakers/andreabelloni[1].PNG",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "ab94d719-785f-4878-8284-6e3b276179e3"
       },
       {
@@ -2043,7 +2924,16 @@
         "EndTime": "2022-04-22T18:30:00",
         "Abstract": "Gli ultimi anni hanno visto una vera e propria rivoluzione nel modo di sviluppare applicazioni (sia lato server che client). In questa sessione vedremo una panoramica degli strumenti da usare e quali librerie oggi abbiamo a disposizione per accorciare i tempi di sviluppo in modo molto significativo.",
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "ab94d719-785f-4878-8284-6e3b276179e3"
       },
       {
@@ -2054,7 +2944,16 @@
         "EndTime": "2022-04-22T17:30:00",
         "Abstract": "Introduzione all\u0027evento, presidente :NET Liguria Raffaele Rialdi",
         "Level": 100,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "ab94d719-785f-4878-8284-6e3b276179e3"
       }
     ],
@@ -2064,14 +2963,16 @@
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/ab94d719-785f-4878-8284-6e3b276179e3\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "ab94d719-785f-4878-8284-6e3b276179e3"
       },
       {
         "WorkshopFileId": "3319080c-4c8e-4f5b-96a7-f1f87df4f890",
         "Title": "Locandina",
         "FileName": "Workshop 1 Anno 2022.png",
         "FullPath": "/Uploads/workshops/ab94d719-785f-4878-8284-6e3b276179e3\\Workshop 1 Anno 2022.png",
-        "FileType": 2
+        "FileType": 2,
+        "Workshop_WorkshopId": "ab94d719-785f-4878-8284-6e3b276179e3"
       }
     ],
     "Workshopsubscribed": null
@@ -2098,14 +2999,39 @@
     },
     "Tracks": [
       {
-        "WorkshopTrackId": "cfd866e1-d450-4095-a3b3-992da86c33b0",
-        "Title": "Le novit\u00E0 importanti",
+        "WorkshopTrackId": "0a336129-c062-4a42-8b51-25a7df871d0c",
+        "Title": "Question?",
         "Image": null,
-        "StartTime": "2022-07-04T17:15:00",
-        "EndTime": "2022-07-04T18:00:00",
-        "Abstract": "Approfondimento sui temi che ci hanno colpito di pi\u00F9 e a cosa potrebbero portare",
+        "StartTime": "2022-07-04T18:00:00",
+        "EndTime": "2022-07-04T18:30:00",
+        "Abstract": "Panel finale - sessione domande e risposte",
         "Level": 0,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "8ba0441a-3124-4f03-99e6-6f3b5ba76f89",
+            "Name": "Andrea Belloni",
+            "ProfileImage": "/Uploads/speakers/andreabelloni[1].PNG",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "aa70afc7-ea86-41c6-9277-9664db6687e3",
+            "Name": "Giampaolo Tucci ",
+            "ProfileImage": null,
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "97b2851a-8a1e-4d7a-8a19-1a822b914b51"
       },
       {
@@ -2116,18 +3042,60 @@
         "EndTime": "2022-07-04T17:15:00",
         "Abstract": "Introduzione agli annunci tecnologici che hanno pi\u00F9 risonanza nel mondo dello sviluppo",
         "Level": 0,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "aa70afc7-ea86-41c6-9277-9664db6687e3",
+            "Name": "Giampaolo Tucci ",
+            "ProfileImage": null,
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "97b2851a-8a1e-4d7a-8a19-1a822b914b51"
       },
       {
-        "WorkshopTrackId": "0a336129-c062-4a42-8b51-25a7df871d0c",
-        "Title": "Question?",
+        "WorkshopTrackId": "cfd866e1-d450-4095-a3b3-992da86c33b0",
+        "Title": "Le novit\u00E0 importanti",
         "Image": null,
-        "StartTime": "2022-07-04T18:00:00",
-        "EndTime": "2022-07-04T18:30:00",
-        "Abstract": "Panel finale - sessione domande e risposte",
+        "StartTime": "2022-07-04T17:15:00",
+        "EndTime": "2022-07-04T18:00:00",
+        "Abstract": "Approfondimento sui temi che ci hanno colpito di pi\u00F9 e a cosa potrebbero portare",
         "Level": 0,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "8ba0441a-3124-4f03-99e6-6f3b5ba76f89",
+            "Name": "Andrea Belloni",
+            "ProfileImage": "/Uploads/speakers/andreabelloni[1].PNG",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "aa70afc7-ea86-41c6-9277-9664db6687e3",
+            "Name": "Giampaolo Tucci ",
+            "ProfileImage": null,
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "97b2851a-8a1e-4d7a-8a19-1a822b914b51"
       }
     ],
@@ -2137,7 +3105,8 @@
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/97b2851a-8a1e-4d7a-8a19-1a822b914b51\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "97b2851a-8a1e-4d7a-8a19-1a822b914b51"
       }
     ],
     "Workshopsubscribed": null
@@ -2164,25 +3133,23 @@
     },
     "Tracks": [
       {
-        "WorkshopTrackId": "b4484268-9a4f-4dff-b799-ea3ecc829aaa",
-        "Title": "Entity Framework 7",
+        "WorkshopTrackId": "f51cf0be-f7b0-49a0-993c-059aed945069",
+        "Title": "Migrare da AspNet a AspNet Core utilizzando Yarp",
         "Image": null,
-        "StartTime": "2022-12-14T16:45:00",
-        "EndTime": "2022-12-14T17:40:00",
-        "Abstract": "Entity Framework 7 \u00E8 il successore di Entity Framework Core 6 e non di Entity Framework 6 come ci porterebbe a pensare, come per le ultime versioni i cambiamenti non sono molti, ma la qualit\u00E0 e i miglioramenti di questo ORM sono sempre superiori e in questa sessione vedremo le piccole novit\u00E0 introdotte e i miglioramenti in tante sue parti. Nelle performance, nella completa gestione dell\u0027ereditariet\u00E0, nell\u0027introduzione delle colonne JSON, delle Bulk update e delete.",
+        "StartTime": "2022-12-14T15:45:00",
+        "EndTime": "2022-12-14T16:40:00",
+        "Abstract": "In questa sessione verranno affrontate le tematiche relative alla migrazione di applicazioni Asp ad AspNet Core. Nella prima parte verranno descritti alcuni vantaggi dell\u0027adozione del nuovo framework (sicurezza, multipiattaforma, l\u0027architettura basata su middleware, performance). Inoltre, verranno descritte alcune novit\u00E0 legate al linguaggio c#11 e l\u0027utilizzo di alcune estensioni di visual studio code / visual studio dedicate alle migrazioni. Verranno analizzate tre possibili metodologie di migrazione, ed in particolare analizzeremo il pattern \u0022Strangle Fig Pattern\u0022 che consente di far coesistere codice asp.net con codice aspnet core durante tutte le fasi di migrazione. Utilizzando YARP vedremo un esempio concreto di come realizzare una semplice migrazione, utilizzando alcuni tool messi a disposizione da Microsoft. ",
         "Level": 1,
-        "Speakers": [],
-        "WorkshopId": "85f7131f-7d9d-46d6-913f-738a31edbaf8"
-      },
-      {
-        "WorkshopTrackId": "1d59ae48-f836-4066-ac9a-da04649a98e5",
-        "Title": "Da WebAssembly a Blazor... e ritorno",
-        "Image": null,
-        "StartTime": "2022-12-14T17:45:00",
-        "EndTime": "2022-12-14T18:40:00",
-        "Abstract": "Grazie a Blazor possiamo eseguire codice .NET all\u0027interno di qualsiasi browser, conservando i paradigmi classici delle applicazioni ASP.NET. La tecnologia che lo permette \u00E8 WebAssembly, una sandbox standard che consente di interoperare da moltissimi linguaggi con Javascript ed il modello ad oggetti del browser.\r\n\r\nCon .NET 7 Microsoft ha cominciato a guardare oltre al browser ed utilizzare WebAssembly per poter interoperare con Javascript anche in scenari diversi dal web.\r\n\r\nNella prima parte vediamo cosa ha portato la nuova revisione di .NET per Blazor 7, mentre nella seconda parte approfondiremo WebAssembly, che si sta mostrando efficace anche in altri contesti al di fuori del browser.",
-        "Level": 1,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "75f4df8a-5405-4476-9175-4bbd84a9642c",
+            "Name": "Andrea Merlin",
+            "ProfileImage": "/Uploads/speakers/merlin.JPG",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "85f7131f-7d9d-46d6-913f-738a31edbaf8"
       },
       {
@@ -2193,7 +3160,16 @@
         "EndTime": "2022-12-14T14:50:00",
         "Abstract": null,
         "Level": 0,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "85f7131f-7d9d-46d6-913f-738a31edbaf8"
       },
       {
@@ -2204,7 +3180,40 @@
         "EndTime": "2022-12-14T19:00:00",
         "Abstract": null,
         "Level": 1,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "75f4df8a-5405-4476-9175-4bbd84a9642c",
+            "Name": "Andrea Merlin",
+            "ProfileImage": "/Uploads/speakers/merlin.JPG",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "8ba0441a-3124-4f03-99e6-6f3b5ba76f89",
+            "Name": "Andrea Belloni",
+            "ProfileImage": "/Uploads/speakers/andreabelloni[1].PNG",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "aa70afc7-ea86-41c6-9277-9664db6687e3",
+            "Name": "Giampaolo Tucci ",
+            "ProfileImage": null,
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "85f7131f-7d9d-46d6-913f-738a31edbaf8"
       },
       {
@@ -2215,18 +3224,64 @@
         "EndTime": "2022-12-14T15:40:00",
         "Abstract": "Il team di .NET \u00E8 riuscito a stupire ancora una volta con interessantissime novit\u00E0 sia sul fronte di C# che del runtime e delle librerie.\r\n\r\nLa vera chiave di lettura di questa veloce evoluzione \u00E8 di aumentare drasticamente la produttivit\u00E0 e la performance delle nostre applicazioni e non c\u0027\u00E8 dubbio che ci siano riusciti.\r\n\r\nTra gli argomenti che vedremo ci sono \u0022Generic Math\u0022, le novit\u00E0 di System.Text.Json, i required members di C#, il nuovo modo di chiamare codice nativo, i generatori di regular expressions, i nuovi metodi di System.IO.Stream e le numerosissime novit\u00E0 sulla performance che regalano velocit\u00E0 alle nostre applicazioni.",
         "Level": 1,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "85f7131f-7d9d-46d6-913f-738a31edbaf8"
       },
       {
-        "WorkshopTrackId": "f51cf0be-f7b0-49a0-993c-059aed945069",
-        "Title": "Migrare da AspNet a AspNet Core utilizzando Yarp",
+        "WorkshopTrackId": "1d59ae48-f836-4066-ac9a-da04649a98e5",
+        "Title": "Da WebAssembly a Blazor... e ritorno",
         "Image": null,
-        "StartTime": "2022-12-14T15:45:00",
-        "EndTime": "2022-12-14T16:40:00",
-        "Abstract": "In questa sessione verranno affrontate le tematiche relative alla migrazione di applicazioni Asp ad AspNet Core. Nella prima parte verranno descritti alcuni vantaggi dell\u0027adozione del nuovo framework (sicurezza, multipiattaforma, l\u0027architettura basata su middleware, performance). Inoltre, verranno descritte alcune novit\u00E0 legate al linguaggio c#11 e l\u0027utilizzo di alcune estensioni di visual studio code / visual studio dedicate alle migrazioni. Verranno analizzate tre possibili metodologie di migrazione, ed in particolare analizzeremo il pattern \u0022Strangle Fig Pattern\u0022 che consente di far coesistere codice asp.net con codice aspnet core durante tutte le fasi di migrazione. Utilizzando YARP vedremo un esempio concreto di come realizzare una semplice migrazione, utilizzando alcuni tool messi a disposizione da Microsoft. ",
+        "StartTime": "2022-12-14T17:45:00",
+        "EndTime": "2022-12-14T18:40:00",
+        "Abstract": "Grazie a Blazor possiamo eseguire codice .NET all\u0027interno di qualsiasi browser, conservando i paradigmi classici delle applicazioni ASP.NET. La tecnologia che lo permette \u00E8 WebAssembly, una sandbox standard che consente di interoperare da moltissimi linguaggi con Javascript ed il modello ad oggetti del browser.\r\n\r\nCon .NET 7 Microsoft ha cominciato a guardare oltre al browser ed utilizzare WebAssembly per poter interoperare con Javascript anche in scenari diversi dal web.\r\n\r\nNella prima parte vediamo cosa ha portato la nuova revisione di .NET per Blazor 7, mentre nella seconda parte approfondiremo WebAssembly, che si sta mostrando efficace anche in altri contesti al di fuori del browser.",
         "Level": 1,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "aa70afc7-ea86-41c6-9277-9664db6687e3",
+            "Name": "Giampaolo Tucci ",
+            "ProfileImage": null,
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
+        "WorkshopId": "85f7131f-7d9d-46d6-913f-738a31edbaf8"
+      },
+      {
+        "WorkshopTrackId": "b4484268-9a4f-4dff-b799-ea3ecc829aaa",
+        "Title": "Entity Framework 7",
+        "Image": null,
+        "StartTime": "2022-12-14T16:45:00",
+        "EndTime": "2022-12-14T17:40:00",
+        "Abstract": "Entity Framework 7 \u00E8 il successore di Entity Framework Core 6 e non di Entity Framework 6 come ci porterebbe a pensare, come per le ultime versioni i cambiamenti non sono molti, ma la qualit\u00E0 e i miglioramenti di questo ORM sono sempre superiori e in questa sessione vedremo le piccole novit\u00E0 introdotte e i miglioramenti in tante sue parti. Nelle performance, nella completa gestione dell\u0027ereditariet\u00E0, nell\u0027introduzione delle colonne JSON, delle Bulk update e delete.",
+        "Level": 1,
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "8ba0441a-3124-4f03-99e6-6f3b5ba76f89",
+            "Name": "Andrea Belloni",
+            "ProfileImage": "/Uploads/speakers/andreabelloni[1].PNG",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "85f7131f-7d9d-46d6-913f-738a31edbaf8"
       }
     ],
@@ -2236,7 +3291,8 @@
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/85f7131f-7d9d-46d6-913f-738a31edbaf8\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "85f7131f-7d9d-46d6-913f-738a31edbaf8"
       }
     ],
     "Workshopsubscribed": null
@@ -2263,36 +3319,47 @@
     },
     "Tracks": [
       {
-        "WorkshopTrackId": "e3307565-b95b-424a-a3d6-3bf8dee340e0",
-        "Title": "Migrare da AspNet a AspNet Core utilizzando Yarp",
+        "WorkshopTrackId": "d6270bab-205a-4459-9f2c-01761aa94780",
+        "Title": "Q\u0026A",
         "Image": null,
-        "StartTime": "2023-01-27T15:45:00",
-        "EndTime": "2023-01-27T16:40:00",
-        "Abstract": "Partendo dai vantaggi che sono stati introdotti dal nuovo framework (sicurezza, multipiattaforma, architettura basata su middleware, performance) e dalle novit\u00E0 legate al linguaggio C#11 verranno analizzate alcune estensioni di Visual studio code / Visual studio dedicate alle migrazioni. Nel corso della sessione verranno analizzate tre possibili metodologie di migrazione, soffermandoci in particolare sul pattern \u0022Strangle Fig Pattern\u0022 che consente di far coesistere codice ASP.Net con codice ASP.NET Core durante tutte le fasi di migrazione. Infine, utilizzando YARP vedremo un esempio concreto di come realizzare una semplice migrazione, con l\u0027utilizzo di alcuni tool messi a disposizione da Microsoft.",
-        "Level": 1,
-        "Speakers": [],
-        "WorkshopId": "88376954-190c-4456-960b-8b1635c634e2"
-      },
-      {
-        "WorkshopTrackId": "3488f99e-a814-4961-9344-3ebfa814bc32",
-        "Title": "Introduzione e presentazione evento",
-        "Image": null,
-        "StartTime": "2023-01-27T14:30:00",
-        "EndTime": "2023-01-27T14:50:00",
+        "StartTime": "2023-01-27T18:40:00",
+        "EndTime": "2023-01-27T19:00:00",
         "Abstract": null,
         "Level": 1,
-        "Speakers": [],
-        "WorkshopId": "88376954-190c-4456-960b-8b1635c634e2"
-      },
-      {
-        "WorkshopTrackId": "11022724-c6ce-4b01-8a61-23615e06f725",
-        "Title": "Le novit\u00E0 in C# 11 e .NET 7",
-        "Image": null,
-        "StartTime": "2023-01-27T14:50:00",
-        "EndTime": "2023-01-27T15:40:00",
-        "Abstract": "Il team di .NET \u00E8 riuscito a stupire ancora una volta con interessantissime novit\u00E0 sia sul fronte di C# che del runtime e delle librerie. La vera chiave di lettura di questa veloce evoluzione \u00E8 di aumentare drasticamente la produttivit\u00E0 e la performance delle nostre applicazioni e non c\u0027\u00E8 dubbio che ci siano riusciti. Tra gli argomenti che vedremo ci sono \u0022Generic Math\u0022, le novit\u00E0 di System.Text.Json, i required members di C#, il nuovo modo di chiamare codice nativo, i generatori di regular expressions, i nuovi metodi di System.IO.Stream e le numerosissime novit\u00E0 sulla performance che regalano velocit\u00E0 alle nostre applicazioni.",
-        "Level": 1,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "75f4df8a-5405-4476-9175-4bbd84a9642c",
+            "Name": "Andrea Merlin",
+            "ProfileImage": "/Uploads/speakers/merlin.JPG",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "8ba0441a-3124-4f03-99e6-6f3b5ba76f89",
+            "Name": "Andrea Belloni",
+            "ProfileImage": "/Uploads/speakers/andreabelloni[1].PNG",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "aa70afc7-ea86-41c6-9277-9664db6687e3",
+            "Name": "Giampaolo Tucci ",
+            "ProfileImage": null,
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "88376954-190c-4456-960b-8b1635c634e2"
       },
       {
@@ -2303,18 +3370,76 @@
         "EndTime": "2023-01-27T17:40:00",
         "Abstract": "Entity Framework 7 \u00E8 il successore di Entity Framework Core 6 e non di Entity Framework 6 come ci porterebbe a pensare, come per le ultime versioni i cambiamenti non sono molti, ma la qualit\u00E0 e i miglioramenti di questo ORM sono sempre superiori e in questa sessione vedremo le piccole novit\u00E0 introdotte e i miglioramenti in tante sue parti. Nelle performance, nella completa gestione dell\u0027ereditariet\u00E0, nell\u0027introduzione delle colonne JSON, delle Bulk update e delete.",
         "Level": 1,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "8ba0441a-3124-4f03-99e6-6f3b5ba76f89",
+            "Name": "Andrea Belloni",
+            "ProfileImage": "/Uploads/speakers/andreabelloni[1].PNG",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "88376954-190c-4456-960b-8b1635c634e2"
       },
       {
-        "WorkshopTrackId": "d6270bab-205a-4459-9f2c-01761aa94780",
-        "Title": "Q\u0026A",
+        "WorkshopTrackId": "11022724-c6ce-4b01-8a61-23615e06f725",
+        "Title": "Le novit\u00E0 in C# 11 e .NET 7",
         "Image": null,
-        "StartTime": "2023-01-27T18:40:00",
-        "EndTime": "2023-01-27T19:00:00",
+        "StartTime": "2023-01-27T14:50:00",
+        "EndTime": "2023-01-27T15:40:00",
+        "Abstract": "Il team di .NET \u00E8 riuscito a stupire ancora una volta con interessantissime novit\u00E0 sia sul fronte di C# che del runtime e delle librerie. La vera chiave di lettura di questa veloce evoluzione \u00E8 di aumentare drasticamente la produttivit\u00E0 e la performance delle nostre applicazioni e non c\u0027\u00E8 dubbio che ci siano riusciti. Tra gli argomenti che vedremo ci sono \u0022Generic Math\u0022, le novit\u00E0 di System.Text.Json, i required members di C#, il nuovo modo di chiamare codice nativo, i generatori di regular expressions, i nuovi metodi di System.IO.Stream e le numerosissime novit\u00E0 sulla performance che regalano velocit\u00E0 alle nostre applicazioni.",
+        "Level": 1,
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
+        "WorkshopId": "88376954-190c-4456-960b-8b1635c634e2"
+      },
+      {
+        "WorkshopTrackId": "e3307565-b95b-424a-a3d6-3bf8dee340e0",
+        "Title": "Migrare da AspNet a AspNet Core utilizzando Yarp",
+        "Image": null,
+        "StartTime": "2023-01-27T15:45:00",
+        "EndTime": "2023-01-27T16:40:00",
+        "Abstract": "Partendo dai vantaggi che sono stati introdotti dal nuovo framework (sicurezza, multipiattaforma, architettura basata su middleware, performance) e dalle novit\u00E0 legate al linguaggio C#11 verranno analizzate alcune estensioni di Visual studio code / Visual studio dedicate alle migrazioni. Nel corso della sessione verranno analizzate tre possibili metodologie di migrazione, soffermandoci in particolare sul pattern \u0022Strangle Fig Pattern\u0022 che consente di far coesistere codice ASP.Net con codice ASP.NET Core durante tutte le fasi di migrazione. Infine, utilizzando YARP vedremo un esempio concreto di come realizzare una semplice migrazione, con l\u0027utilizzo di alcuni tool messi a disposizione da Microsoft.",
+        "Level": 1,
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "75f4df8a-5405-4476-9175-4bbd84a9642c",
+            "Name": "Andrea Merlin",
+            "ProfileImage": "/Uploads/speakers/merlin.JPG",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
+        "WorkshopId": "88376954-190c-4456-960b-8b1635c634e2"
+      },
+      {
+        "WorkshopTrackId": "3488f99e-a814-4961-9344-3ebfa814bc32",
+        "Title": "Introduzione e presentazione evento",
+        "Image": null,
+        "StartTime": "2023-01-27T14:30:00",
+        "EndTime": "2023-01-27T14:50:00",
         "Abstract": null,
         "Level": 1,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "88376954-190c-4456-960b-8b1635c634e2"
       },
       {
@@ -2325,66 +3450,91 @@
         "EndTime": "2023-01-27T18:40:00",
         "Abstract": "Blazor \u00E8 lo strumento che permette di eseguire codice scritto in .NET all\u0027interno di qualsiasi browser, conservando i paradigmi classici delle applicazioni ASP.NET. La tecnologia che sottende questa possibilit\u00E0 \u00E8 WebAssembly, che \u00E8 una sandbox standard che consente di interoperare da moltissimi linguaggi con Javascript ed il modello ad oggetti del browser. Con .NET 7 Microsoft ha iniziato a \u0022guardare oltre\u0022 al semplice browser, permettendo di usare WebAssembly per interoperare con Javascript anche in scenari diversi dal web. Nella prima parte dell\u0027intervento vedremo le novit\u00E0 che interessano Blazor 7, mentre nella seconda parte approfondiremo WebAssembly e i suoi utilizzi anche in contesti al di fuori del browser.",
         "Level": 1,
-        "Speakers": [],
+        "Speakers": [
+          {
+            "WorkshopSpeakerId": "c9e6e058-3a50-475f-a6d7-7df072b8e535",
+            "Name": "Raffaele Rialdi",
+            "ProfileImage": "/Uploads/speakers/117f4781-1c5f-49af-853c-1f577139e632_400x400[1].png",
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          },
+          {
+            "WorkshopSpeakerId": "aa70afc7-ea86-41c6-9277-9664db6687e3",
+            "Name": "Giampaolo Tucci ",
+            "ProfileImage": null,
+            "BlogHtml": null,
+            "UserName": null,
+            "Tracks": null
+          }
+        ],
         "WorkshopId": "88376954-190c-4456-960b-8b1635c634e2"
       }
     ],
     "WorkshopFiles": [
       {
-        "WorkshopFileId": "2990e40e-19a5-42d8-8acc-b7c6495427d9",
-        "Title": "MigraredaAspNetaAspNetCore",
-        "FileName": "Dotnet Conf2022 - Imperia.zip",
-        "FullPath": "/Uploads/workshops/88376954-190c-4456-960b-8b1635c634e2\\Dotnet Conf2022 - Imperia.zip",
-        "FileType": 4
+        "WorkshopFileId": "030935b3-e172-4d72-86c9-36ce294d6830",
+        "Title": "Foto1",
+        "FileName": "index.jpg",
+        "FullPath": "/Uploads/workshops/88376954-190c-4456-960b-8b1635c634e2\\index.jpg",
+        "FileType": 2,
+        "Workshop_WorkshopId": "88376954-190c-4456-960b-8b1635c634e2"
       },
       {
         "WorkshopFileId": "57cb156c-d3d5-40cb-b761-49382d4177e3",
         "Title": "WebAssembly",
         "FileName": "DotnetAndWasm_Imperia.pdf",
         "FullPath": "/Uploads/workshops/88376954-190c-4456-960b-8b1635c634e2\\DotnetAndWasm_Imperia.pdf",
-        "FileType": 4
-      },
-      {
-        "WorkshopFileId": "74bc1431-a4bd-4251-a367-7a77fd933ed6",
-        "Title": "DaWebAssemblyaBlazor",
-        "FileName": "drive-download-20230203T093953Z-001.zip",
-        "FullPath": "/Uploads/workshops/88376954-190c-4456-960b-8b1635c634e2\\drive-download-20230203T093953Z-001.zip",
-        "FileType": 4
-      },
-      {
-        "WorkshopFileId": "0327d37a-4a91-47a6-bf86-6ee462467c1a",
-        "Title": "EntityFramework7",
-        "FileName": "EF7.pptx",
-        "FullPath": "/Uploads/workshops/88376954-190c-4456-960b-8b1635c634e2\\EF7.pptx",
-        "FileType": 4
-      },
-      {
-        "WorkshopFileId": "030935b3-e172-4d72-86c9-36ce294d6830",
-        "Title": "Foto1",
-        "FileName": "index.jpg",
-        "FullPath": "/Uploads/workshops/88376954-190c-4456-960b-8b1635c634e2\\index.jpg",
-        "FileType": 2
-      },
-      {
-        "WorkshopFileId": "9c3156df-3433-4258-87c0-c22d72caab16",
-        "Title": "Foto2",
-        "FileName": "index2.jpg",
-        "FullPath": "/Uploads/workshops/88376954-190c-4456-960b-8b1635c634e2\\index2.jpg",
-        "FileType": 2
+        "FileType": 4,
+        "Workshop_WorkshopId": "88376954-190c-4456-960b-8b1635c634e2"
       },
       {
         "WorkshopFileId": "f2657f84-0151-464a-8d4e-5e337de1ce62",
         "Title": "logo.png",
         "FileName": "logo.png",
         "FullPath": "/Uploads/workshops/88376954-190c-4456-960b-8b1635c634e2\\logo.png",
-        "FileType": 1
+        "FileType": 1,
+        "Workshop_WorkshopId": "88376954-190c-4456-960b-8b1635c634e2"
+      },
+      {
+        "WorkshopFileId": "0327d37a-4a91-47a6-bf86-6ee462467c1a",
+        "Title": "EntityFramework7",
+        "FileName": "EF7.pptx",
+        "FullPath": "/Uploads/workshops/88376954-190c-4456-960b-8b1635c634e2\\EF7.pptx",
+        "FileType": 4,
+        "Workshop_WorkshopId": "88376954-190c-4456-960b-8b1635c634e2"
       },
       {
         "WorkshopFileId": "6cd909ba-914c-462d-9270-6f709b8af057",
         "Title": "Lenovit\u00E0dinet7",
         "FileName": "Net7_Imperia.pdf",
         "FullPath": "/Uploads/workshops/88376954-190c-4456-960b-8b1635c634e2\\Net7_Imperia.pdf",
-        "FileType": 4
+        "FileType": 4,
+        "Workshop_WorkshopId": "88376954-190c-4456-960b-8b1635c634e2"
+      },
+      {
+        "WorkshopFileId": "74bc1431-a4bd-4251-a367-7a77fd933ed6",
+        "Title": "DaWebAssemblyaBlazor",
+        "FileName": "drive-download-20230203T093953Z-001.zip",
+        "FullPath": "/Uploads/workshops/88376954-190c-4456-960b-8b1635c634e2\\drive-download-20230203T093953Z-001.zip",
+        "FileType": 4,
+        "Workshop_WorkshopId": "88376954-190c-4456-960b-8b1635c634e2"
+      },
+      {
+        "WorkshopFileId": "2990e40e-19a5-42d8-8acc-b7c6495427d9",
+        "Title": "MigraredaAspNetaAspNetCore",
+        "FileName": "Dotnet Conf2022 - Imperia.zip",
+        "FullPath": "/Uploads/workshops/88376954-190c-4456-960b-8b1635c634e2\\Dotnet Conf2022 - Imperia.zip",
+        "FileType": 4,
+        "Workshop_WorkshopId": "88376954-190c-4456-960b-8b1635c634e2"
+      },
+      {
+        "WorkshopFileId": "9c3156df-3433-4258-87c0-c22d72caab16",
+        "Title": "Foto2",
+        "FileName": "index2.jpg",
+        "FullPath": "/Uploads/workshops/88376954-190c-4456-960b-8b1635c634e2\\index2.jpg",
+        "FileType": 2,
+        "Workshop_WorkshopId": "88376954-190c-4456-960b-8b1635c634e2"
       }
     ],
     "Workshopsubscribed": null

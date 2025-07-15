@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import styles from './AdminWorkshops.module.css';
 import { useOidcFetch } from '@axa-fr/react-oidc';
-import { Workshop } from '../../models/Workshop';
+import { WorkshopModel } from '../../models/WorkshopModel';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
 interface AdminWorkshopsProps { pageName?: string }
@@ -9,7 +9,7 @@ interface AdminWorkshopsProps { pageName?: string }
 const AdminWorkshops: FC<AdminWorkshopsProps> = () => {
 
     const { fetch } = useOidcFetch();
-    const [dataRows, setDataRows] = useState<Workshop[]>([]);
+    const [dataRows, setDataRows] = useState<WorkshopModel[]>([]);
 
     const columns: GridColDef[] = [
         { field: 'workshopId', headerName: 'Id', resizable: true },

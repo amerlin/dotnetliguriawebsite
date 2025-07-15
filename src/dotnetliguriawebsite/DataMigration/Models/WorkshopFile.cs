@@ -16,8 +16,9 @@ namespace DotNetLiguria.Models
         public string? FullPath { get; set; }
         public WorkshopFileType? FileType { get; set; }
 
-        //public Guid? Workshop_WorkshopId { get; set; }
-        //public virtual Guid WorkshopId { get; set; }
+        public Guid? Workshop_WorkshopId { get; set; }
+
+
 
         [JsonIgnore]
         [ForeignKey("Workshop_WorkshopId")]
@@ -27,6 +28,6 @@ namespace DotNetLiguria.Models
 
     public enum WorkshopFileType
     {
-        Image = 1, Photo = 2, Video = 3, Material = 4, Poster = 5, Link = 6
+        Image = 1, Photo = 2, Video = 3, Material = 4, Poster = 5, Link = 6, Other = 7
     }
 }

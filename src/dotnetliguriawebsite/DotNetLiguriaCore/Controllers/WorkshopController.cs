@@ -9,9 +9,11 @@ namespace DotNetLiguriaCore.Controllers
     public class WorkshopController : ControllerBase
     {
         private readonly WorkshopService _workshopService;
+        private readonly SpeakerService _speakerService;
 
-        public WorkshopController(WorkshopService workshopService)
+        public WorkshopController(WorkshopService workshopService, SpeakerService speakerService)
         {
+            _speakerService = speakerService;
             _workshopService = workshopService;
         }
 
@@ -28,6 +30,18 @@ namespace DotNetLiguriaCore.Controllers
             {
                 return NotFound();
             }
+
+            var speakers = await _speakerService.GetAsync();
+            foreach (var track in Workshop.Tracks ?? [])
+            {
+                if (track.Speakers != null && track.Speakers.Count > 0)
+                {
+                    var speakerDetails = speakers.Where(s => track.Speakers.Contains(s.WorkshopSpeakerId)).Select(s => s.Name).Where(name => name != null).Cast<string>().ToList();
+                    track.SpeakersDetails = speakerDetails;
+                    track.SpeakersName = string.Join(", ", speakerDetails);
+                }
+            }
+
 
             return Workshop;
         }

@@ -1,10 +1,4 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MongoDB.Bson.Serialization.Attributes;
 
 namespace DotNetLiguriaCore.Model
 {
@@ -18,6 +12,10 @@ namespace DotNetLiguriaCore.Model
         public DateTime? CreationDate { get; set; }
         public DateTime? EventDate { get; set; }
         public string? BlogHtml { get; set; }
+        public string? ImageOld { get; set; }
+
+        public string? ImageThumbnail { get; set; }
+
         public string? Image { get; set; }
         public string? Tags { get; set; }
         public bool? Published { get; set; }

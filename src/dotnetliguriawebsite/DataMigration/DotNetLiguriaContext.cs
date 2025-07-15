@@ -18,7 +18,7 @@ public class DotNetLiguriaContext : DbContext
     private readonly ILogger<DotNetLiguriaContext>? _logger;
     private static readonly ILoggerFactory _loggerFactory =
         LoggerFactory.Create(builder => { builder.AddConsole(); });
-    private readonly string _connectionString   = string.Empty;
+    private readonly string _connectionString = string.Empty;
 
     public DotNetLiguriaContext(string connectionString)
     {
@@ -62,6 +62,20 @@ public class DotNetLiguriaContext : DbContext
             .ToTable(typeof(WorkshopFile).Name);
         modelBuilder.Entity<WorkshopSpeaker>().ToTable(typeof(WorkshopSpeaker).Name);
         modelBuilder.Entity<WorkshopTrack>().ToTable(typeof(WorkshopTrack).Name);
+
+        // Configure many-to-many relationship between WorkshopTrack and WorkshopSpeaker
+        modelBuilder.Entity<WorkshopTrack>()
+            .HasMany(t => t.Speakers)
+            .WithMany(s => s.Tracks)
+            .UsingEntity<Dictionary<string, object>>(
+                "WorkshopTrackWorkshopSpeaker",
+                j => j.HasOne<WorkshopSpeaker>().WithMany().HasForeignKey("WorkshopSpeaker_WorkshopSpeakerId"),
+                j => j.HasOne<WorkshopTrack>().WithMany().HasForeignKey("WorkshopTrack_WorkshopTrackId"),
+                j =>
+                {
+                    j.HasKey("WorkshopTrack_WorkshopTrackId", "WorkshopSpeaker_WorkshopSpeakerId");
+                    j.ToTable("WorkshopTrackWorkshopSpeaker");
+                });
 
         modelBuilder.Entity<Workshop>().HasMany<WorkshopFile>(w => w.WorkshopFiles);
     }

@@ -21,6 +21,8 @@ namespace DotNetLiguriaCore.Model
         public int Level { get; set; }
 
         public List<Guid>? Speakers { get; set; }
+        public List<string> SpeakersDetails { get; set; } = [];
+
         public string? SpeakersName { get; set; }
     }
 }

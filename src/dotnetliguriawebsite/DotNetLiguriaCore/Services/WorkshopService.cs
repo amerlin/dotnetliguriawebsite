@@ -1,5 +1,6 @@
 ﻿using DotNetLiguriaCore.Model;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace DotNetLiguriaCore.Services
@@ -17,19 +18,54 @@ namespace DotNetLiguriaCore.Services
             _workshopsCollection = mongoDatabase.GetCollection<Workshop>(mongoDBDatabaseSettings.Value.WorkshopCollectionName);
         }
 
-        public async Task<List<Workshop>> GetAsync() =>
-            await _workshopsCollection.Find(_ => true).ToListAsync();
 
-        public async Task<Workshop?> GetAsync(Guid id) =>
-            await _workshopsCollection.Find(x => x.WorkshopId == id).FirstOrDefaultAsync();
+        public async Task<List<Workshop>> GetAsync()
+        {
+            return await _workshopsCollection.Find(a => a.Published == true).ToListAsync();
+        }
 
-        public async Task CreateAsync(Workshop newBook) =>
-            await _workshopsCollection.InsertOneAsync(newBook);
+        public async Task<Workshop?> GetAsync(Guid id)
+        {
+            var returnValue = await FindBBsonIdAsync(id);
 
-        public async Task UpdateAsync(Guid id, Workshop updatedBook) =>
-            await _workshopsCollection.ReplaceOneAsync(x => x.WorkshopId == id, updatedBook);
+            if (returnValue is null)
+            {
+                return null;
+            }
+
+            return returnValue;
+        }
+        public async Task CreateAsync(Workshop newWorkshop) =>
+            await _workshopsCollection.InsertOneAsync(newWorkshop);
+
+        public async Task UpdateAsync(Guid id, Workshop updateWorkshop) =>
+            await _workshopsCollection.ReplaceOneAsync(x => x.WorkshopId == id, updateWorkshop);
 
         public async Task RemoveAsync(Guid id) =>
             await _workshopsCollection.DeleteOneAsync(x => x.WorkshopId == id);
+
+
+        private async Task<Workshop?> FindByBsonIdAsync(string workshopId)
+        {
+            if (!Guid.TryParse(workshopId, out var guidId))
+            {
+                return null;
+            }
+
+            var bsonBinaryData = new BsonBinaryData(guidId, GuidRepresentation.Standard);
+            var filter = Builders<Workshop>.Filter.Eq("_id", bsonBinaryData);
+
+            return await _workshopsCollection.Find(filter).FirstOrDefaultAsync();
+        }
+
+        private async Task<Workshop?> FindBBsonIdAsync(Guid workshopId)
+        {
+
+            var bsonBinaryData = new BsonBinaryData(workshopId, GuidRepresentation.Standard);
+            var filter = Builders<Workshop>.Filter.Eq("_id", bsonBinaryData);
+
+            return await _workshopsCollection.Find(filter).FirstOrDefaultAsync();
+        }
+
     }
 }
