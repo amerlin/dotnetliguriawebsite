@@ -40,6 +40,13 @@ const WorkshopDetail: FC<WorkshopDetailProps> = () => {
       });
    };
 
+   const formatTime = (date: Date) => {
+      return new Date(date).toLocaleTimeString('it-IT', {
+         hour: '2-digit',
+         minute: '2-digit'
+      });
+   };
+
    useEffect(() => {
       const fetchWorkshop = async () => {
          if (!id) {
@@ -88,7 +95,7 @@ const WorkshopDetail: FC<WorkshopDetailProps> = () => {
                   variant="outlined"
                   sx={{ mb: 2 }}
                >
-                  Back to Workshops
+                  Torna ai Workshops
                </Button>
             </Box>
             <Alert severity="error" sx={{ mb: 3 }}>
@@ -117,7 +124,7 @@ const WorkshopDetail: FC<WorkshopDetailProps> = () => {
                variant="outlined"
                sx={{ mb: 2 }}
             >
-               Back to Workshops
+               Torna ai Workshops
             </Button>
          </Box>
 
@@ -173,7 +180,7 @@ const WorkshopDetail: FC<WorkshopDetailProps> = () => {
                {/* Description Section */}
                <Box sx={{ mb: 4 }}>
                   <Typography variant="h5" component="h2" sx={{ mb: 2, fontWeight: 'bold' }}>
-                     Workshop Description
+                     Descrizione
                   </Typography>
                   <Typography
                      variant="body1"
@@ -211,26 +218,36 @@ const WorkshopDetail: FC<WorkshopDetailProps> = () => {
                {workshop.tracks && workshop.tracks.length > 0 && (
                   <Box sx={{ mb: 4 }}>
                      <Typography variant="h5" component="h2" sx={{ mb: 2, fontWeight: 'bold' }}>
-                        Workshop Tracks
+                        Tracks
                      </Typography>
                      <Stack spacing={2}>
-                        {workshop.tracks.map((track, index) => (
-                           <Box key={index} className={styles.trackItem}>
-                              <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 1 }}>
-                                 Track {index + 1}: {track.title || `Track ${index + 1}`}
-                              </Typography>
-                              {track.speakersName && (
-                                 <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 'medium', color: '#1976d2' }}>
-                                    Speaker: {track.speakersName}
+                        {workshop.tracks
+                           .sort((a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime())
+                           .map((track, index) => (
+                              <Box key={index} className={styles.trackItem}>
+                                 <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 1 }}>
+                                    Track {index + 1}: {track.title || `Track ${index + 1}`}
                                  </Typography>
-                              )}
-                              {track.abstract && (
-                                 <Typography variant="body2" color="text.secondary">
-                                    {track.abstract}
-                                 </Typography>
-                              )}
-                           </Box>
-                        ))}
+
+                                 {/* Track Time Information */}
+                                 {track.startTime && track.endTime && (
+                                    <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 'medium', color: '#666', display: 'flex', alignItems: 'center', gap: 1 }}>
+                                       🕒 {formatTime(track.startTime)} - {formatTime(track.endTime)}
+                                    </Typography>
+                                 )}
+
+                                 {track.speakersName && (
+                                    <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 'medium', color: '#1976d2' }}>
+                                       Speaker: {track.speakersName}
+                                    </Typography>
+                                 )}
+                                 {track.abstract && (
+                                    <Typography variant="body2" color="text.secondary">
+                                       {track.abstract}
+                                    </Typography>
+                                 )}
+                              </Box>
+                           ))}
                      </Stack>
                   </Box>
                )}
@@ -255,7 +272,7 @@ const WorkshopDetail: FC<WorkshopDetailProps> = () => {
                )}
 
                {/* Registration Section */}
-               {workshop.externalRegistration && workshop.externalRegistrationLink && (
+               {/* {workshop.externalRegistration && workshop.externalRegistrationLink && (
                   <Box sx={{ textAlign: 'center', mt: 4 }}>
                      <Button
                         variant="contained"
@@ -268,7 +285,7 @@ const WorkshopDetail: FC<WorkshopDetailProps> = () => {
                         Register for Workshop
                      </Button>
                   </Box>
-               )}
+               )} */}
             </CardContent>
          </Card>
       </Container>

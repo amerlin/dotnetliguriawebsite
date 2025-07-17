@@ -17,5 +17,7 @@ namespace DotNetLiguriaCore
         public string SpeakerCollectionName { get; set; } = null!;
 
         public string BoardCollectionName { get; set; } = null!;
+
+        public string CounterCollectionName { get; set; } = null!;
     }
 }

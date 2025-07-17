@@ -48,3 +48,26 @@ export const getWorkshopById = async (id: string): Promise<WorkshopModel> => {
     throw error;
   }
 };
+
+export const getWorkshopsByYear = async (
+  year: number
+): Promise<WorkshopModel[]> => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/Workshop/GetByYear/${year}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const workshops: WorkshopModel[] = await response.json();
+    return workshops;
+  } catch (error) {
+    console.error("Error fetching workshops by year:", error);
+    throw error;
+  }
+};

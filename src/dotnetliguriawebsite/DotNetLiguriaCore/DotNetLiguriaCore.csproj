@@ -7,6 +7,9 @@
         <UserSecretsId>f7de20b3-7c2d-4e15-8c51-4d51dfc9648a</UserSecretsId>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <DockerfileRunArguments>-p "5443:443" -p "5050:80"</DockerfileRunArguments>
+        <!-- Disable browser link and refresh for SPA applications -->
+        <DisableBrowserLink>true</DisableBrowserLink>
+        <DisableBrowserRefresh>true</DisableBrowserRefresh>
     </PropertyGroup>
 
     <ItemGroup>

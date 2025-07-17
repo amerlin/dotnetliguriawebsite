@@ -15,7 +15,6 @@ const AboutUs: FC<AboutUsProps> = ({ pageName }) => {
     const [error, setError] = React.useState<string | null>(null);
 
     useEffect(() => {
-        // Fetch board profiles when the component mounts
         const fetchBoardProfiles = async () => {
             try {
                 setLoading(true);
@@ -39,7 +38,6 @@ const AboutUs: FC<AboutUsProps> = ({ pageName }) => {
             </Box>
 
             <Container component={"div"} sx={{ "padding-top": 4, "padding-bottom": 30 }}>
-                {/* Loading state */}
                 {loading && (
                     <Box display="flex" justifyContent="center" alignItems="center" minHeight="200px">
                         <CircularProgress />

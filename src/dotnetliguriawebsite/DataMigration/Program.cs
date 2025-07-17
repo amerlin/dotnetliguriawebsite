@@ -19,13 +19,11 @@ internal class Program
 
         var workshops = ctx.Workshops
            .OrderBy(w => w.EventDate)
-           .Include(w => w.WorkshopFiles)
            .Include(w => w.Location)
            .Include(w => w.Tracks)
              .ThenInclude(w => w.Speakers)
            .ToList();
 
-        var workshopFiles = ctx.WorkshopFiles!.OrderBy(w => w.FileName).ToList();
         var workshopTracks = ctx.Tracks!.OrderBy(w => w.WorkshopId).ToList();
         var workshopSpeakers = ctx.Speakers!.OrderBy(w => w.Name).ToList();
 
@@ -65,13 +63,11 @@ internal class Program
         }
 
         var jsonWorkshops = JsonSerializer.Serialize(workshops, options);
-        var jsonWorkshopFiles = JsonSerializer.Serialize(workshopFiles, options);
         var jsonWorkshopTracks = JsonSerializer.Serialize(workshopTracks, options);
         var jsonWorkshopSpeakers = JsonSerializer.Serialize(workshopSpeakers, options);
 
         // I need to write the json files
         File.WriteAllText(Path.Combine(destinationJsonPath, "workshops.json"), jsonWorkshops);
-        File.WriteAllText(Path.Combine(destinationJsonPath, "workshopFiles.json"), jsonWorkshopFiles);
         File.WriteAllText(Path.Combine(destinationJsonPath, "workshopTracks.json"), jsonWorkshopTracks);
         File.WriteAllText(Path.Combine(destinationJsonPath, "workshopSpeakers.json"), jsonWorkshopSpeakers);
 
@@ -82,13 +78,16 @@ internal class Program
 
         string fileName = jsonPath + "workshopSpeakers.json";
         string jsonString = File.ReadAllText(fileName);
-        var speakers = JsonSerializer.Deserialize<List<DotNetLiguria.Models.WorkshopSpeaker>>(jsonString, options);
-        if (speakers == null) throw new Exception("Cannot deserialize (result is null)");
+        var speakers = JsonSerializer.Deserialize<List<DotNetLiguria.Models.WorkshopSpeaker>>(jsonString, options) ?? throw new Exception("Cannot deserialize (result is null)");
 
         fileName = jsonPath + "workshops.json";
         jsonString = File.ReadAllText(fileName);
-        var workshops1 = JsonSerializer.Deserialize<List<DotNetLiguria.Models.Workshop>>(jsonString, options);
-        if (workshops1 == null) throw new Exception("Cannot deserialize (result is null)");
+        var workshops1 = JsonSerializer.Deserialize<List<DotNetLiguria.Models.Workshop>>(jsonString, options) ?? throw new Exception("Cannot deserialize (result is null)");
+
+        fileName = jsonPath + "workshopFiles.json";
+        jsonString = File.ReadAllText(fileName);
+        var workshopFiles = JsonSerializer.Deserialize<List<DotNetLiguria.Models.WorkshopFile>>(jsonString, options) ?? throw new Exception("Cannot deserialize (result is null)");
+
 
         var mongoDBDatabaseSettings = ConfigurationReader.Read<DotNetLiguriaDatabaseSettings>("DotNetLiguriaDatabase");
 
@@ -107,45 +106,25 @@ internal class Program
 
                 if (alreadyPresent == null)
                 {
-                    DotNetLiguria.MongoDBModel.WorkshopSpeaker speaker = new DotNetLiguria.MongoDBModel.WorkshopSpeaker();
-                    speaker.WorkshopSpeakerId = item.WorkshopSpeakerId;
-                    speaker.Name = item?.Name;
-                    speaker.UserName = item?.UserName;
-                    speaker.ProfileImage = item?.ProfileImage;
-                    speaker.BlogHtml = item?.BlogHtml;
-
-                    _speakerCollection.InsertOne(speaker);
-                }
-            }
-
-
-            IMongoCollection<DotNetLiguria.MongoDBModel.WorkshopFile> _workshopFileCollection
-                = mongoDatabase.GetCollection<DotNetLiguria.MongoDBModel.WorkshopFile>(mongoDBDatabaseSettings.WorkshopFileCollectionName);
-
-            foreach (var item in workshopFiles)
-            {
-                var alreadyPresent = _workshopFileCollection.Find(x => x.WorkshopFileId == item.WorkshopFileId).FirstOrDefault();
-
-                if (alreadyPresent == null)
-                {
-                    DotNetLiguria.MongoDBModel.WorkshopFile workshopFile = new DotNetLiguria.MongoDBModel.WorkshopFile
+                    DotNetLiguria.MongoDBModel.WorkshopSpeaker speaker = new DotNetLiguria.MongoDBModel.WorkshopSpeaker
                     {
-                        WorkshopFileId = item.WorkshopFileId,
-                        WorkshopId = item.Workshop_WorkshopId ?? Guid.Empty,
-                        Title = item.Title,
-                        FileName = item.FileName,
-                        FullPath = item.FullPath,
-                        FileType = item.FileType ?? DotNetLiguria.Models.WorkshopFileType.Other
+                        WorkshopSpeakerId = item.WorkshopSpeakerId,
+                        Name = item?.Name,
+                        UserName = item?.UserName,
+                        ProfileImage = item?.ProfileImage,
+                        BlogHtml = item?.BlogHtml
                     };
 
-                    _workshopFileCollection.InsertOne(workshopFile);
+                    _speakerCollection.InsertOne(speaker);
                 }
             }
 
             IMongoCollection<DotNetLiguria.MongoDBModel.Board> _boardCollection
                 = mongoDatabase.GetCollection<DotNetLiguria.MongoDBModel.Board>(mongoDBDatabaseSettings.BoardCollectionName);
 
-            var board = new List<DotNetLiguria.MongoDBModel.Board>
+            if (_boardCollection.CountDocuments(_ => true) == 0)
+            {
+                var board = new List<DotNetLiguria.MongoDBModel.Board>
             {
                 new() {
                     BoardId = Guid.NewGuid(),
@@ -203,16 +182,16 @@ internal class Program
                 }
             };
 
-            foreach (var item in board)
-            {
-                var alreadyPresent = _boardCollection.Find(x => x.BoardId == item.BoardId).FirstOrDefault();
-
-                if (alreadyPresent == null)
+                foreach (var item in board)
                 {
-                    _boardCollection.InsertOne(item);
+                    var alreadyPresent = _boardCollection.Find(x => x.BoardId == item.BoardId).FirstOrDefault();
+
+                    if (alreadyPresent == null)
+                    {
+                        _boardCollection.InsertOne(item);
+                    }
                 }
             }
-
 
             IMongoCollection<DotNetLiguria.MongoDBModel.FileType> _workshopTrackCollection
                 = mongoDatabase.GetCollection<DotNetLiguria.MongoDBModel.FileType>(mongoDBDatabaseSettings.FileTypeCollectionName);
@@ -254,6 +233,7 @@ internal class Program
                         Title = item.Title,
                         Description = item.Description,
                         ImageOld = item.Image,
+                        FolderName = workshopFolderName,
                         Image = $"/workshops/{workshopFolderName}/workshop.png",
                         ImageThumbnail = $"/workshops/{workshopFolderName}/workshop_thumb.png",
                         OnlyHtml = item.OnlyHtml,
@@ -280,7 +260,7 @@ internal class Program
                         };
                     }
 
-                    if (item.Tracks != null && item.Tracks.Count() > 0)
+                    if (item.Tracks != null && item.Tracks.Count > 0)
                     {
                         foreach (var track in item.Tracks)
                         {
@@ -303,7 +283,42 @@ internal class Program
 
                 number++;
             }
+
+            IMongoCollection<DotNetLiguria.MongoDBModel.WorkshopFile> _workshopFileCollection
+              = mongoDatabase.GetCollection<DotNetLiguria.MongoDBModel.WorkshopFile>(mongoDBDatabaseSettings.WorkshopFileCollectionName);
+
+            var allWorkshops = _workshopCollection.Find(_ => true).ToList();
+
+            if (_workshopFileCollection.CountDocuments(_ => true) == 0)
+            {
+                foreach (var item in workshopFiles)
+                {
+                    var workshopId = allWorkshops.FirstOrDefault(w => w.FolderName == item.FolderName)?.WorkshopId ?? Guid.Empty;
+
+                    var destFolder = item.FileType switch
+                    {
+                        DotNetLiguria.Models.WorkshopFileType.Material => "tracks",
+                        DotNetLiguria.Models.WorkshopFileType.Photo => "photos",
+                        _ => "other"
+                    };
+
+                    var fullPath = $"/workshops/{item.WorkshopFolder}/{destFolder}/{item.FileName}";
+                    DotNetLiguria.MongoDBModel.WorkshopFile workshopFile = new DotNetLiguria.MongoDBModel.WorkshopFile
+                    {
+                        WorkshopFileId = workshopId,
+                        WorkshopId = item.Workshop_WorkshopId ?? Guid.Empty,
+                        Title = item.Title,
+                        FileName = item.FileName,
+                        FullPath = fullPath,
+                        FileType = item.FileType ?? DotNetLiguria.Models.WorkshopFileType.Other
+                    };
+
+                    _workshopFileCollection.InsertOne(workshopFile);
+                }
+            }
         }
 
+
     }
+
 }

@@ -63,6 +63,7 @@ public class Program
         builder.Services.AddSingleton<WorkshopService>();
         builder.Services.AddSingleton<SpeakerService>();
         builder.Services.AddSingleton<BoardService>();
+        builder.Services.AddSingleton<CounterService>();
 
         var app = builder.Build();
         app.UseCors(CorsPolicy);
@@ -71,7 +72,13 @@ public class Program
         {
             app.UseSwagger();
             app.UseSwaggerUI();
+            app.UseDeveloperExceptionPage();
             //app.UseHsts();
+        }
+        else
+        {
+            app.UseExceptionHandler("/Error");
+            app.UseHsts();
         }
 
         app.UseHttpsRedirection();
@@ -80,8 +87,42 @@ public class Program
         app.UseRouting();
 
         app.UseAuthorization();
+
+        // Map API controllers first
         app.MapControllers();
-        app.MapDefaultControllerRoute();
+
+        // Handle development-time browser scripts
+        if (app.Environment.IsDevelopment())
+        {
+            // Handle browser refresh script
+            app.MapGet("/_framework/aspnetcore-browser-refresh.js", async context =>
+            {
+                context.Response.ContentType = "application/javascript; charset=utf-8";
+                await context.Response.WriteAsync("// ASP.NET Core browser refresh disabled for SPA");
+            });
+
+            // Handle browser link script and related endpoints
+            app.MapGet("/_vs/browserLink", async context =>
+            {
+                context.Response.ContentType = "application/javascript; charset=utf-8";
+                await context.Response.WriteAsync("// Browser Link disabled for SPA");
+            });
+
+            app.MapPost("/_vs/browserLink", async context =>
+            {
+                context.Response.StatusCode = 200;
+                await context.Response.WriteAsync("OK");
+            });
+
+            // Handle any other _vs/ requests
+            app.MapFallback("/_vs/{**path}", async context =>
+            {
+                context.Response.StatusCode = 200;
+                await context.Response.WriteAsync("OK");
+            });
+        }
+
+        // Map SPA fallback last - this ensures API routes are handled before fallback
         app.MapFallbackToFile("/index.html");
         //    .WithMetadata(new HttpMethodMetadata(new[] { "GET" }));   // specify more verbs on static pages
 

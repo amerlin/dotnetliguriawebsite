@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using Microsoft.Identity.Client;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace DotNetLiguria.MongoDBModel
 {
@@ -6,6 +7,8 @@ namespace DotNetLiguria.MongoDBModel
     {
         [BsonId]
         public Guid WorkshopId { get; set; }
+
+        public string FolderName { get; set; } = string.Empty;
 
         public string? Title { get; set; }
         public string? Description { get; set; }

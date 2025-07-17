@@ -21,7 +21,21 @@ namespace DotNetLiguriaCore.Services
 
         public async Task<List<Workshop>> GetAsync()
         {
-            return await _workshopsCollection.Find(a => a.Published == true).ToListAsync();
+            return await _workshopsCollection
+            .Find(a => a.Published == true)
+            .SortByDescending(w => w.EventDate)
+            .ToListAsync();
+        }
+
+        public async Task<List<Workshop>> GetByYearAsync(int year)
+        {
+            var startDate = new DateTime(year, 1, 1);
+            var endDate = new DateTime(year + 1, 1, 1);
+
+            return await _workshopsCollection
+                .Find(w => w.Published == true && w.EventDate >= startDate && w.EventDate < endDate)
+                .SortByDescending(w => w.EventDate)
+                .ToListAsync();
         }
 
         public async Task<Workshop?> GetAsync(Guid id)

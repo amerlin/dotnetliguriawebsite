@@ -46,6 +46,10 @@ namespace DotNetLiguriaCore.Controllers
             return Workshop;
         }
 
+        [HttpGet("{year}")]
+        public async Task<List<Workshop>> GetByYear(int year) =>
+            await _workshopService.GetByYearAsync(year);
+
         [HttpPost]
         public async Task<IActionResult> Post(Workshop newWorkshop)
         {
