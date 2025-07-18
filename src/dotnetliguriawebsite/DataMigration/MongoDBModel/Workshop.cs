@@ -1,5 +1,6 @@
 ﻿using Microsoft.Identity.Client;
 using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
 
 namespace DotNetLiguria.MongoDBModel
 {
@@ -36,7 +37,7 @@ namespace DotNetLiguria.MongoDBModel
 
         public Workshop()
         {
-            Tracks = new List<WorkshopTrack>();
+            Tracks = [];
         }
 
     }

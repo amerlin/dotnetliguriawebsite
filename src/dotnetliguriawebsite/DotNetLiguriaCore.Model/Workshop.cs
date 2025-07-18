@@ -32,5 +32,8 @@ namespace DotNetLiguriaCore.Model
         public string? OldUrl { get; set; }
         public string? Slug { get; set; }
 
+        public List<WorkshopFile> Materials { get; set; } = [];
+        public List<WorkshopFile> Photos { get; set; } = [];
+
     }
 }

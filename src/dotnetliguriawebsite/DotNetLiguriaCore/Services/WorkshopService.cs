@@ -12,12 +12,9 @@ namespace DotNetLiguriaCore.Services
         public WorkshopService(IOptions<DotNetLiguriaDatabaseSettings> mongoDBDatabaseSettings)
         {
             var mongoClient = new MongoClient(mongoDBDatabaseSettings.Value.ConnectionString);
-
             var mongoDatabase = mongoClient.GetDatabase(mongoDBDatabaseSettings.Value.DatabaseName);
-
             _workshopsCollection = mongoDatabase.GetCollection<Workshop>(mongoDBDatabaseSettings.Value.WorkshopCollectionName);
         }
-
 
         public async Task<List<Workshop>> GetAsync()
         {
@@ -59,25 +56,11 @@ namespace DotNetLiguriaCore.Services
             await _workshopsCollection.DeleteOneAsync(x => x.WorkshopId == id);
 
 
-        private async Task<Workshop?> FindByBsonIdAsync(string workshopId)
-        {
-            if (!Guid.TryParse(workshopId, out var guidId))
-            {
-                return null;
-            }
-
-            var bsonBinaryData = new BsonBinaryData(guidId, GuidRepresentation.Standard);
-            var filter = Builders<Workshop>.Filter.Eq("_id", bsonBinaryData);
-
-            return await _workshopsCollection.Find(filter).FirstOrDefaultAsync();
-        }
-
         private async Task<Workshop?> FindBBsonIdAsync(Guid workshopId)
         {
 
             var bsonBinaryData = new BsonBinaryData(workshopId, GuidRepresentation.Standard);
             var filter = Builders<Workshop>.Filter.Eq("_id", bsonBinaryData);
-
             return await _workshopsCollection.Find(filter).FirstOrDefaultAsync();
         }
 

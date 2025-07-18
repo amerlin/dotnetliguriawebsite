@@ -42,14 +42,14 @@ internal class Program
                 {
                     if (track.Speakers != null)
                     {
-                        track.Speakers = track.Speakers.Select(s => new WorkshopSpeaker
+                        track.Speakers = [.. track.Speakers.Select(s => new WorkshopSpeaker
                         {
                             WorkshopSpeakerId = s.WorkshopSpeakerId,
                             Name = s.Name,
                             ProfileImage = s.ProfileImage,
                             BlogHtml = s.BlogHtml,
                             UserName = s.UserName
-                        }).ToList();
+                        })];
                     }
                 }
             }
@@ -70,7 +70,6 @@ internal class Program
         File.WriteAllText(Path.Combine(destinationJsonPath, "workshops.json"), jsonWorkshops);
         File.WriteAllText(Path.Combine(destinationJsonPath, "workshopTracks.json"), jsonWorkshopTracks);
         File.WriteAllText(Path.Combine(destinationJsonPath, "workshopSpeakers.json"), jsonWorkshopSpeakers);
-
 
         var envPath = Environment.CurrentDirectory;
 
@@ -293,8 +292,9 @@ internal class Program
             {
                 foreach (var item in workshopFiles)
                 {
-                    var workshopId = allWorkshops.FirstOrDefault(w => w.FolderName == item.FolderName)?.WorkshopId ?? Guid.Empty;
+                    var workshopId = allWorkshops.FirstOrDefault(w => w.FolderName == item.WorkshopFolder)?.WorkshopId ?? Guid.Empty;
 
+                    // Console.WriteLine($"Processing WorkshopId: {workshopId}, FileName: {item.FileName}");
                     var destFolder = item.FileType switch
                     {
                         DotNetLiguria.Models.WorkshopFileType.Material => "tracks",
@@ -305,8 +305,8 @@ internal class Program
                     var fullPath = $"/workshops/{item.WorkshopFolder}/{destFolder}/{item.FileName}";
                     DotNetLiguria.MongoDBModel.WorkshopFile workshopFile = new DotNetLiguria.MongoDBModel.WorkshopFile
                     {
-                        WorkshopFileId = workshopId,
-                        WorkshopId = item.Workshop_WorkshopId ?? Guid.Empty,
+                        WorkshopFileId = Guid.NewGuid(),
+                        WorkshopId = workshopId,
                         Title = item.Title,
                         FileName = item.FileName,
                         FullPath = fullPath,

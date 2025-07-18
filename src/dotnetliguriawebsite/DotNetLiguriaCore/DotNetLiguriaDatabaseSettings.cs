@@ -19,5 +19,7 @@ namespace DotNetLiguriaCore
         public string BoardCollectionName { get; set; } = null!;
 
         public string CounterCollectionName { get; set; } = null!;
+
+        public string WorkshopFileCollectionName { get; set; } = null!;
     }
 }
