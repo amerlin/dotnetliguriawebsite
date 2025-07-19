@@ -27,6 +27,8 @@ namespace DotNetLiguriaCore.Model
 
         public Location? Location { get; set; }
 
+        public string? FolderName { get; set; }
+
         public List<WorkshopTrack>? Tracks { get; set; }
 
         public string? OldUrl { get; set; }

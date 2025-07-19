@@ -1,7 +1,10 @@
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace DotNetLiguriaCore.Model
 {
 	public class WorkshopFile
 	{
+		[BsonId]
 		public Guid WorkshopFileId { get; set; }
 
 		public Guid WorkshopId { get; set; }

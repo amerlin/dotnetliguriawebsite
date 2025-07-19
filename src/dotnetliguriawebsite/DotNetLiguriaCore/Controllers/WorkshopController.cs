@@ -98,9 +98,7 @@ namespace DotNetLiguriaCore.Controllers
 
         private async Task AddFiles(Workshop workshop)
         {
-            Console.WriteLine("Files WorkshopId: " + workshop.WorkshopId);
             var workshopFiles = await _workshopFileService.GetAsync(workshop.WorkshopId);
-            Console.WriteLine("Files Count: " + workshopFiles.Count);
 
             foreach (var file in workshopFiles)
             {
