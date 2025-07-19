@@ -79,6 +79,37 @@
   background-color: #e3f2fd;
 }
 
+/* Sidebar styles */
+.sidebarCard {
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+.downloadItem {
+  padding: 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.downloadItem:hover {
+  background-color: rgba(25, 118, 210, 0.04);
+}
+
+.downloadButton {
+  text-align: left;
+  justify-content: flex-start;
+  text-transform: none;
+  font-weight: normal;
+  color: #1976d2;
+  width: 100%;
+}
+
+.downloadButton:hover {
+  text-decoration: underline;
+  background-color: transparent;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .cardContent {

@@ -1,5 +1,6 @@
 import { TrackModel } from "./TrackModel";
 import { LocationModel } from "./LocationModel";
+import { WorkshopFileModel } from "./WorkshopFileModel";
 
 export interface WorkshopModel {
   workshopId: string;
@@ -19,4 +20,6 @@ export interface WorkshopModel {
   tracks: TrackModel[];
   oldUrl: string;
   slug: string;
+  materials: WorkshopFileModel[];
+  photos: WorkshopFileModel[];
 }

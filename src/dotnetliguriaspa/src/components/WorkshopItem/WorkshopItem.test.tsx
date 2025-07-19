@@ -27,7 +27,9 @@ describe('<WorkshopItem />', () => {
             },
             tracks: [],
             oldUrl: '',
-            slug: 'test-workshop'
+            slug: 'test-workshop',
+            materials: [],
+            photos: []
         }} />);
 
         const workshopItem = screen.getByTestId('WorkshopItem');

@@ -27,7 +27,9 @@ export const Default = () => <WorkshopItem workshop={{
     },
     tracks: [],
     oldUrl: '',
-    slug: 'react-typescript-workshop'
+    slug: 'react-typescript-workshop',
+    materials: [],
+    photos: []
 }} />;
 
 Default.story = {

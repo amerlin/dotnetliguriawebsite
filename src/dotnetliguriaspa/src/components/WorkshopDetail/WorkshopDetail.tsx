@@ -11,11 +11,19 @@ import {
    CardContent,
    CardMedia,
    Chip,
-   Stack
+   Stack,
+   Grid,
+   List,
+   ListItem,
+   ListItemText,
+   ListItemIcon,
+   Divider
 } from "@mui/material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import DownloadIcon from '@mui/icons-material/Download';
+import DescriptionIcon from '@mui/icons-material/Description';
 import { WorkshopModel } from '../../models/WorkshopModel';
 import { getWorkshopById } from '../../services/workShopService';
 import styles from './WorkshopDetail.module.css';
@@ -117,162 +125,154 @@ const WorkshopDetail: FC<WorkshopDetailProps> = () => {
 
    return (
       <Container maxWidth="lg" className={styles.container}>
-         <Box sx={{ mb: 3 }}>
-            <Button
-               startIcon={<ArrowBackIcon />}
-               onClick={handleBackClick}
-               variant="outlined"
-               sx={{ mb: 2 }}
-            >
-               Torna ai Workshops
-            </Button>
-         </Box>
-
-         <Card className={styles.workshopCard}>
-            {workshop.image && (
-               <CardMedia
-                  component="img"
-                  image={workshop.image}
-                  alt={workshop.title}
-                  className={styles.workshopImage}
-                  sx={{
-                     height: 400,
-                     objectFit: 'cover',
-                     borderRadius: '8px 8px 0 0'
-                  }}
-               />
-            )}
-
-            <CardContent className={styles.cardContent}>
-               {/* Header Section */}
-               <Box sx={{ mb: 4 }}>
-                  <Typography variant="h3" component="h1" className={styles.workshopTitle} sx={{ mb: 2 }}>
-                     {workshop.title}
-                  </Typography>
-
-                  <Stack direction="row" spacing={2} flexWrap="wrap" sx={{ mb: 3 }}>
-                     <Chip
-                        icon={<CalendarTodayIcon />}
-                        label={formatDate(workshop.eventDate)}
-                        variant="outlined"
-                        size="medium"
-                     />
-
-                     {workshop.location && (
-                        <Chip
-                           icon={<LocationOnIcon />}
-                           label={`${workshop.location.name} - ${workshop.location.address}`}
-                           variant="outlined"
-                           size="medium"
-                        />
-                     )}
-
-                     {workshop.tracks && workshop.tracks.length > 0 && (
-                        <Chip
-                           label={`${workshop.tracks.length} ${workshop.tracks.length === 1 ? 'Track' : 'Tracks'}`}
-                           color="primary"
-                           size="medium"
-                        />
-                     )}
-                  </Stack>
-               </Box>
-
-               {/* Description Section */}
-               <Box sx={{ mb: 4 }}>
-                  <Typography variant="h5" component="h2" sx={{ mb: 2, fontWeight: 'bold' }}>
-                     Descrizione
-                  </Typography>
-                  <Typography
-                     variant="body1"
-                     className={styles.workshopDescription}
-                     sx={{
-                        lineHeight: 1.8,
-                        fontSize: '1.1rem',
-                        color: 'text.secondary'
-                     }}
-                  >
-                     {workshop.description}
-                  </Typography>
-               </Box>
-
-               {/* Blog Content Section */}
-               {workshop.blogHtml && (
-                  <Box sx={{ mb: 4 }}>
-                     <Typography variant="h5" component="h2" sx={{ mb: 2, fontWeight: 'bold' }}>
-                        Workshop Details
-                     </Typography>
-                     <Box
-                        className={styles.blogContent}
-                        dangerouslySetInnerHTML={{ __html: workshop.blogHtml }}
+         <Grid container spacing={3}>
+            {/* Main Content */}
+            <Grid item xs={12} md={8}>
+               <Card className={styles.workshopCard}>
+                  {workshop.image && (
+                     <CardMedia
+                        component="img"
+                        image={workshop.image}
+                        alt={workshop.title}
+                        className={styles.workshopImage}
                         sx={{
-                           '& p': { mb: 2, lineHeight: 1.8 },
-                           '& h1, & h2, & h3, & h4, & h5, & h6': { mt: 3, mb: 2 },
-                           '& ul, & ol': { pl: 3, mb: 2 },
-                           '& li': { mb: 1 }
+                           height: 400,
+                           objectFit: 'cover',
+                           borderRadius: '8px 8px 0 0'
                         }}
                      />
-                  </Box>
-               )}
+                  )}
 
-               {/* Tracks Section */}
-               {workshop.tracks && workshop.tracks.length > 0 && (
-                  <Box sx={{ mb: 4 }}>
-                     <Typography variant="h5" component="h2" sx={{ mb: 2, fontWeight: 'bold' }}>
-                        Tracks
-                     </Typography>
-                     <Stack spacing={2}>
-                        {workshop.tracks
-                           .sort((a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime())
-                           .map((track, index) => (
-                              <Box key={index} className={styles.trackItem}>
-                                 <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 1 }}>
-                                    Track {index + 1}: {track.title || `Track ${index + 1}`}
-                                 </Typography>
+                  <CardContent className={styles.cardContent}>
+                     {/* Header Section */}
+                     <Box sx={{ mb: 4 }}>
+                        <Typography variant="h4" component="h1" className={styles.workshopTitle} sx={{ mb: 2 }}>
+                           {workshop.title}
+                        </Typography>
 
-                                 {/* Track Time Information */}
-                                 {track.startTime && track.endTime && (
-                                    <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 'medium', color: '#666', display: 'flex', alignItems: 'center', gap: 1 }}>
-                                       🕒 {formatTime(track.startTime)} - {formatTime(track.endTime)}
-                                    </Typography>
-                                 )}
-
-                                 {track.speakersName && (
-                                    <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 'medium', color: '#1976d2' }}>
-                                       Speaker: {track.speakersName}
-                                    </Typography>
-                                 )}
-                                 {track.abstract && (
-                                    <Typography variant="body2" color="text.secondary">
-                                       {track.abstract}
-                                    </Typography>
-                                 )}
-                              </Box>
-                           ))}
-                     </Stack>
-                  </Box>
-               )}
-
-               {/* Tags Section */}
-               {workshop.tags && (
-                  <Box sx={{ mb: 4 }}>
-                     <Typography variant="h6" component="h3" sx={{ mb: 2 }}>
-                        Tags
-                     </Typography>
-                     <Stack direction="row" spacing={1} flexWrap="wrap">
-                        {workshop.tags.split(',').map((tag, index) => (
+                        <Stack direction="row" spacing={2} flexWrap="wrap" sx={{ mb: 3 }}>
                            <Chip
-                              key={index}
-                              label={tag.trim()}
-                              size="small"
+                              icon={<CalendarTodayIcon />}
+                              label={formatDate(workshop.eventDate)}
                               variant="outlined"
+                              size="medium"
                            />
-                        ))}
-                     </Stack>
-                  </Box>
-               )}
 
-               {/* Registration Section */}
-               {/* {workshop.externalRegistration && workshop.externalRegistrationLink && (
+                           {workshop.location && (
+                              <Chip
+                                 icon={<LocationOnIcon />}
+                                 label={`${workshop.location.name} - ${workshop.location.address}`}
+                                 variant="outlined"
+                                 size="medium"
+                              />
+                           )}
+
+                           {workshop.tracks && workshop.tracks.length > 0 && (
+                              <Chip
+                                 label={`${workshop.tracks.length} ${workshop.tracks.length === 1 ? 'Track' : 'Tracks'}`}
+                                 color="primary"
+                                 size="medium"
+                              />
+                           )}
+                        </Stack>
+                     </Box>
+
+                     {/* Description Section */}
+                     <Box sx={{ mb: 4 }}>
+                        <Typography variant="h5" component="h2" sx={{ mb: 2, fontWeight: 'bold' }}>
+                           Descrizione
+                        </Typography>
+                        <Typography
+                           variant="body1"
+                           className={styles.workshopDescription}
+                           sx={{
+                              lineHeight: 1.8,
+                              fontSize: '1.1rem',
+                              color: 'text.secondary'
+                           }}
+                        >
+                           {workshop.description}
+                        </Typography>
+                     </Box>
+
+                     {/* Blog Content Section */}
+                     {workshop.blogHtml && (
+                        <Box sx={{ mb: 4 }}>
+                           <Typography variant="h5" component="h2" sx={{ mb: 2, fontWeight: 'bold' }}>
+                              Workshop Details
+                           </Typography>
+                           <Box
+                              className={styles.blogContent}
+                              dangerouslySetInnerHTML={{ __html: workshop.blogHtml }}
+                              sx={{
+                                 '& p': { mb: 2, lineHeight: 1.8 },
+                                 '& h1, & h2, & h3, & h4, & h5, & h6': { mt: 3, mb: 2 },
+                                 '& ul, & ol': { pl: 3, mb: 2 },
+                                 '& li': { mb: 1 }
+                              }}
+                           />
+                        </Box>
+                     )}
+
+                     {/* Tracks Section */}
+                     {workshop.tracks && workshop.tracks.length > 0 && (
+                        <Box sx={{ mb: 4 }}>
+                           <Typography variant="h5" component="h2" sx={{ mb: 2, fontWeight: 'bold' }}>
+                              Tracks
+                           </Typography>
+                           <Stack spacing={2}>
+                              {workshop.tracks
+                                 .sort((a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime())
+                                 .map((track, index) => (
+                                    <Box key={index} className={styles.trackItem}>
+                                       <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 1 }}>
+                                          Track {index + 1}: {track.title || `Track ${index + 1}`}
+                                       </Typography>
+
+                                       {/* Track Time Information */}
+                                       {track.startTime && track.endTime && (
+                                          <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 'medium', color: '#666', display: 'flex', alignItems: 'center', gap: 1 }}>
+                                             🕒 {formatTime(track.startTime)} - {formatTime(track.endTime)}
+                                          </Typography>
+                                       )}
+
+                                       {track.speakersName && (
+                                          <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 'medium', color: '#1976d2' }}>
+                                             Speaker: {track.speakersName}
+                                          </Typography>
+                                       )}
+                                       {track.abstract && (
+                                          <Typography variant="body2" color="text.secondary">
+                                             {track.abstract}
+                                          </Typography>
+                                       )}
+                                    </Box>
+                                 ))}
+                           </Stack>
+                        </Box>
+                     )}
+
+                     {/* Tags Section */}
+                     {workshop.tags && (
+                        <Box sx={{ mb: 4 }}>
+                           <Typography variant="h6" component="h3" sx={{ mb: 2 }}>
+                              Tags
+                           </Typography>
+                           <Stack direction="row" spacing={1} flexWrap="wrap">
+                              {workshop.tags.split(',').map((tag, index) => (
+                                 <Chip
+                                    key={index}
+                                    label={tag.trim()}
+                                    size="small"
+                                    variant="outlined"
+                                 />
+                              ))}
+                           </Stack>
+                        </Box>
+                     )}
+
+                     {/* Registration Section */}
+                     {/* {workshop.externalRegistration && workshop.externalRegistrationLink && (
                   <Box sx={{ textAlign: 'center', mt: 4 }}>
                      <Button
                         variant="contained"
@@ -286,8 +286,102 @@ const WorkshopDetail: FC<WorkshopDetailProps> = () => {
                      </Button>
                   </Box>
                )} */}
-            </CardContent>
-         </Card>
+                  </CardContent>
+               </Card>
+            </Grid>
+
+            {/* Right Sidebar */}
+            <Grid item xs={12} md={4}>
+               {/* Back Button */}
+               <Box sx={{ mb: 3 }}>
+                  <Button
+                     startIcon={<ArrowBackIcon />}
+                     onClick={handleBackClick}
+                     variant="outlined"
+                     sx={{ mb: 2, width: '100%' }}
+                  >
+                     Torna ai Workshops
+                  </Button>
+               </Box>
+
+               {/* Downloads Section */}
+               {workshop.materials && workshop.materials.length > 0 && (
+                  <Card className={styles.sidebarCard} sx={{ mb: 3 }}>
+                     <CardContent>
+                        <Typography variant="h6" component="h3" sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+                           <DownloadIcon color="primary" />
+                           Downloads
+                        </Typography>
+                        <Divider sx={{ mb: 2 }} />
+                        <List dense>
+                           {workshop.materials.map((material, index) => (
+                              <ListItem
+                                 key={index}
+                                 className={styles.downloadItem}
+                                 sx={{ px: 0 }}
+                              >
+                                 <ListItemIcon sx={{ minWidth: 36 }}>
+                                    <DescriptionIcon color="action" />
+                                 </ListItemIcon>
+                                 <ListItemText
+                                    primary={
+                                       <Button
+                                          component="a"
+                                          href={material.fullPath}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          variant="text"
+                                          size="small"
+                                          className={styles.downloadButton}
+                                          sx={{ justifyContent: 'flex-start', textAlign: 'left' }}
+                                       >
+                                          {material.title || material.fileName}
+                                       </Button>
+                                    }
+                                    secondary={material.fileName !== material.title ? material.fileName : undefined}
+                                 />
+                              </ListItem>
+                           ))}
+                        </List>
+                     </CardContent>
+                  </Card>
+               )}
+
+               {/* Photos Section */}
+               {workshop.photos && workshop.photos.length > 0 && (
+                  <Card className={styles.sidebarCard}>
+                     <CardContent>
+                        <Typography variant="h6" component="h3" sx={{ mb: 2 }}>
+                           Foto del Workshop
+                        </Typography>
+                        <Divider sx={{ mb: 2 }} />
+                        <Stack spacing={1}>
+                           {workshop.photos.slice(0, 5).map((photo, index) => (
+                              <Button
+                                 key={index}
+                                 component="a"
+                                 href={photo.fullPath}
+                                 target="_blank"
+                                 rel="noopener noreferrer"
+                                 variant="text"
+                                 size="small"
+                                 className={styles.downloadButton}
+                                 sx={{ justifyContent: 'flex-start', textAlign: 'left' }}
+                              >
+                                 {photo.title || `Foto ${index + 1}`}
+                              </Button>
+                           ))}
+                           {workshop.photos.length > 5 && (
+                              <Typography variant="caption" color="text.secondary">
+                                 +{workshop.photos.length - 5} altre foto
+                              </Typography>
+                           )}
+                        </Stack>
+                     </CardContent>
+                  </Card>
+               )}
+            </Grid>
+         </Grid>
       </Container>
    );
 };
