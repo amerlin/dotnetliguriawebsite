@@ -1,5 +1,6 @@
-import React, { FC, useEffect } from 'react';
-import { Alert, Box, CircularProgress, Container, Stack, Typography, Chip } from "@mui/material";
+import React, { FC, useEffect, useState } from 'react';
+import { Alert, Box, CircularProgress, Container, Stack, Typography, Chip, Fab } from "@mui/material";
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import logo from "../../assets/Logo_H200.png";
 import { getWorkshops, getWorkshopsByYear } from '../../services/workShopService';
 import { WorkshopModel } from '../../models/WorkshopModel';
@@ -15,6 +16,26 @@ const Workshops: FC<WorkshopsProps> = ({ pageName }) => {
   const [error, setError] = React.useState<string | null>(null);
   const [availableYears, setAvailableYears] = React.useState<number[]>([]);
   const [selectedYear, setSelectedYear] = React.useState<number | null>(null);
+  const [showScrollToTop, setShowScrollToTop] = useState(false);
+
+  // Handle scroll to top visibility
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show button when user scrolls down more than 300px
+      setShowScrollToTop(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Scroll to top function
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   // Extract unique years from workshops
   const extractYears = (workshopsData: WorkshopModel[]): number[] => {
@@ -147,6 +168,34 @@ const Workshops: FC<WorkshopsProps> = ({ pageName }) => {
         )}
 
       </Container>
+
+      {/* Scroll to Top Button */}
+      {showScrollToTop && (
+        <Fab
+          onClick={scrollToTop}
+          color="primary"
+          aria-label="scroll to top"
+          sx={{
+            position: 'fixed',
+            bottom: 32,
+            right: 32,
+            zIndex: 9999,
+            boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
+            backgroundColor: '#1976d2',
+            color: 'white',
+            width: 56,
+            height: 56,
+            '&:hover': {
+              boxShadow: '0 6px 25px rgba(0,0,0,0.4)',
+              backgroundColor: '#1565c0',
+              transform: 'scale(1.1)',
+            },
+            transition: 'all 0.3s ease-in-out'
+          }}
+        >
+          <KeyboardArrowUpIcon sx={{ fontSize: 28 }} />
+        </Fab>
+      )}
     </>
   )
 };
