@@ -67,9 +67,12 @@ internal class Program
         var jsonWorkshopSpeakers = JsonSerializer.Serialize(workshopSpeakers, options);
 
         // I need to write the json files
-        File.WriteAllText(Path.Combine(destinationJsonPath, "workshops.json"), jsonWorkshops);
-        File.WriteAllText(Path.Combine(destinationJsonPath, "workshopTracks.json"), jsonWorkshopTracks);
-        File.WriteAllText(Path.Combine(destinationJsonPath, "workshopSpeakers.json"), jsonWorkshopSpeakers);
+        // File.WriteAllText(Path.Combine(destinationJsonPath, "workshops.json"), jsonWorkshops);
+        // File.WriteAllText(Path.Combine(destinationJsonPath, "workshopTracks.json"), jsonWorkshopTracks);
+        // File.WriteAllText(Path.Combine(destinationJsonPath, "workshopSpeakers.json"), jsonWorkshopSpeakers);
+
+        // //TOOD: END AT THIS POINT
+        // return;
 
         var envPath = Environment.CurrentDirectory;
 
@@ -216,7 +219,7 @@ internal class Program
             IMongoCollection<DotNetLiguria.MongoDBModel.Workshop> _workshopCollection
                 = mongoDatabase.GetCollection<DotNetLiguria.MongoDBModel.Workshop>(mongoDBDatabaseSettings.WorkshopCollectionName);
 
-            var number = 1;
+            var number = 33;
             foreach (var item in workshops1)
             {
                 var alreadyPresent = _workshopCollection.Find(x => x.WorkshopId == item.WorkshopId).FirstOrDefault();
