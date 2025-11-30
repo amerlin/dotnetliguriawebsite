@@ -1,10 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Alert, Box, CircularProgress, Container, Stack, Typography, Chip, Fab } from "@mui/material";
+import { Alert, Box, CircularProgress, Container, Stack, Typography, Fab, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import logo from "../../assets/Logo_H200.png";
 import { getWorkshops, getWorkshopsByYear } from '../../services/workShopService';
 import { WorkshopModel } from '../../models/WorkshopModel';
 import WorkshopItem from '../WorkshopItem/WorkshopItem';
+import HeroSection from '../HeroSection/HeroSection';
+import './Workshops.css';
 
 interface WorkshopsProps { pageName: string }
 
@@ -82,6 +83,12 @@ const Workshops: FC<WorkshopsProps> = ({ pageName }) => {
     }
   };
 
+  const handleYearChange = (_event: React.MouseEvent<HTMLElement>, newYear: number | null) => {
+    if (newYear !== null) {
+      handleYearFilter(newYear);
+    }
+  };
+
   useEffect(() => {
     fetchAllWorkshops();
   }, []);
@@ -89,85 +96,126 @@ const Workshops: FC<WorkshopsProps> = ({ pageName }) => {
 
   return (
     <>
-      <Box display={"flex"} flexDirection={'row'} alignItems={'center'} justifyContent={'center'} pt={3}>
-        <img src={logo} className="App-logo" alt="logo" />
-      </Box>
+      <HeroSection
+        title="Eventi Passati"
+        logoSrc="/images/logo-default.png"
+        logoAlt="DotNet Liguria Logo"
+      />
 
-      <Container component={"div"} sx={{ "padding-top": 4, "padding-bottom": 30 }}>
-        {loading && (
-          <Box display="flex" justifyContent="center" alignItems="center" minHeight="200px">
-            <CircularProgress />
-            <Typography variant="h6" sx={{ ml: 2 }}>
-              Loading workshops ...
-            </Typography>
-          </Box>
-        )}
-
-        {/* Error state */}
-        {error && !loading && (
-          <Box display="flex" justifyContent="center" sx={{ mt: 4 }}>
-            <Alert severity="error" sx={{ maxWidth: 600 }}>
-              {error}
-            </Alert>
-          </Box>
-        )}
-
-        {!loading && !error && workshops.length > 0 && (
-          <>
-            <Typography
-              variant="h4"
-              component="h2"
-              sx={{
-                textAlign: 'center',
-                mb: 4,
-                fontWeight: 'bold',
-                color: 'primary.main'
-              }}
-            >
-              I nostri Workshops
-            </Typography>
-
-            {/* Year Filter Bar */}
-            {availableYears.length > 1 && (
-              <Box sx={{ mb: 4, display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 1 }}>
-                <Chip
-                  label="Tutti gli anni"
-                  onClick={() => handleYearFilter(null)}
-                  color={selectedYear === null ? 'primary' : 'default'}
-                  variant={selectedYear === null ? 'filled' : 'outlined'}
-                  sx={{ mb: 1 }}
-                />
+      {/* Main Content Section with Green Gradient Background */}
+      <section className="workshops-filter fullscreen-section">
+        <div className="section-content">
+          {/* Year Filter Bar - Full Width */}
+          {!loading && !error && workshops.length > 0 && availableYears.length > 1 && (
+            <Box sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: 3,
+              mb: 4,
+              width: '100%'
+            }}>
+              <ToggleButtonGroup
+                value={selectedYear}
+                exclusive
+                onChange={handleYearChange}
+                aria-label="year filter"
+                sx={{
+                  '& .MuiToggleButton-root': {
+                    color: '#2d5016',
+                    borderColor: '#2d5016',
+                    fontWeight: 600,
+                    px: 3,
+                    py: 1,
+                    fontSize: '1rem',
+                    '&.Mui-selected': {
+                      backgroundColor: '#2d5016',
+                      color: '#ffffff',
+                      '&:hover': {
+                        backgroundColor: '#3d6020',
+                      },
+                    },
+                    '&:hover': {
+                      backgroundColor: 'rgba(45, 80, 22, 0.1)',
+                    },
+                  },
+                }}
+              >
                 {availableYears.map((year) => (
-                  <Chip
-                    key={year}
-                    label={year.toString()}
-                    onClick={() => handleYearFilter(year)}
-                    color={selectedYear === year ? 'primary' : 'default'}
-                    variant={selectedYear === year ? 'filled' : 'outlined'}
-                    sx={{ mb: 1 }}
-                  />
+                  <ToggleButton key={year} value={year}>
+                    {year}
+                  </ToggleButton>
                 ))}
+              </ToggleButtonGroup>
+
+              <ToggleButton
+                value="all"
+                selected={selectedYear === null}
+                onChange={() => handleYearFilter(null)}
+                sx={{
+                  color: selectedYear === null ? '#ffffff !important' : '#2d5016',
+                  backgroundColor: selectedYear === null ? '#2d5016 !important' : 'transparent',
+                  borderColor: '#2d5016 !important',
+                  fontWeight: 600,
+                  px: 3,
+                  py: 1,
+                  fontSize: '1rem',
+                  '&:hover': {
+                    backgroundColor: selectedYear === null ? '#3d6020 !important' : 'rgba(45, 80, 22, 0.1)',
+                  },
+                }}
+              >
+                Tutti gli anni
+              </ToggleButton>
+            </Box>
+          )}
+
+          {/* Workshops Content - Constrained Width */}
+          <Container component={"div"} maxWidth={false} sx={{
+            "padding-top": 0,
+            "padding-bottom": 4,
+            maxWidth: '1400px',
+            width: '100%',
+            margin: '0 auto'
+          }}>
+            {loading && (
+              <Box display="flex" justifyContent="center" alignItems="center" minHeight="200px">
+                <CircularProgress />
+                <Typography variant="h6" sx={{ ml: 2 }}>
+                  Loading workshops ...
+                </Typography>
               </Box>
             )}
 
-            <Stack spacing={3}>
-              {workshops.map((workshop) => (
-                <WorkshopItem key={workshop.workshopId} workshop={workshop} />
-              ))}
-            </Stack>
-          </>
-        )}
+            {/* Error state */}
+            {error && !loading && (
+              <Box display="flex" justifyContent="center" sx={{ mt: 4 }}>
+                <Alert severity="error" sx={{ maxWidth: 600 }}>
+                  {error}
+                </Alert>
+              </Box>
+            )}
 
-        {/* No workshops found */}
-        {!loading && !error && workshops.length === 0 && (
-          <Box display="flex" justifyContent="center" sx={{ mt: 4 }}>
-            <Typography variant="h6" color="text.secondary">
-              Nessun workshop trovato.
-            </Typography>
-          </Box>
-        )}
+            {!loading && !error && workshops.length > 0 && (
+              <Stack spacing={3}>
+                {workshops.map((workshop) => (
+                  <WorkshopItem key={workshop.workshopId} workshop={workshop} />
+                ))}
+              </Stack>
+            )}
 
-      </Container>
+            {/* No workshops found */}
+            {!loading && !error && workshops.length === 0 && (
+              <Box display="flex" justifyContent="center" sx={{ mt: 4 }}>
+                <Typography variant="h6" color="text.secondary">
+                  Nessun workshop trovato.
+                </Typography>
+              </Box>
+            )}
+
+          </Container>
+        </div>
+      </section>
 
       {/* Scroll to Top Button */}
       {showScrollToTop && (

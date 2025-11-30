@@ -1,0 +1,118 @@
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>System.Security.Cryptography.CngKey</T>
+      <T>System.Object</T>
+    </TN>
+    <ToString>System.Security.Cryptography.CngKey</ToString>
+    <Props>
+      <Obj N="Algorithm" RefId="1">
+        <TN RefId="1">
+          <T>System.Security.Cryptography.CngAlgorithm</T>
+          <T>System.Object</T>
+        </TN>
+        <ToString>RSA</ToString>
+        <Props>
+          <S N="Algorithm">RSA</S>
+        </Props>
+      </Obj>
+      <Obj N="AlgorithmGroup" RefId="2">
+        <TN RefId="2">
+          <T>System.Security.Cryptography.CngAlgorithmGroup</T>
+          <T>System.Object</T>
+        </TN>
+        <ToString>RSA</ToString>
+        <Props>
+          <S N="AlgorithmGroup">RSA</S>
+        </Props>
+      </Obj>
+      <Obj N="ExportPolicy" RefId="3">
+        <TN RefId="3">
+          <T>System.Security.Cryptography.CngExportPolicies</T>
+          <T>System.Enum</T>
+          <T>System.ValueType</T>
+          <T>System.Object</T>
+        </TN>
+        <ToString>AllowExport</ToString>
+        <I32>1</I32>
+      </Obj>
+      <Obj N="Handle" RefId="4">
+        <TN RefId="4">
+          <T>Microsoft.Win32.SafeHandles.SafeNCryptKeyHandle</T>
+          <T>Microsoft.Win32.SafeHandles.SafeNCryptHandle</T>
+          <T>Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid</T>
+          <T>System.Runtime.InteropServices.SafeHandle</T>
+          <T>System.Runtime.ConstrainedExecution.CriticalFinalizerObject</T>
+          <T>System.Object</T>
+        </TN>
+        <ToString>Microsoft.Win32.SafeHandles.SafeNCryptKeyHandle</ToString>
+        <Props>
+          <B N="IsInvalid">false</B>
+          <B N="IsClosed">false</B>
+        </Props>
+      </Obj>
+      <B N="IsEphemeral">false</B>
+      <B N="IsMachineKey">false</B>
+      <S N="KeyName">{053F64EF-F1DF-418F-8104-4370C8A5932D}</S>
+      <I32 N="KeySize">2048</I32>
+      <Obj N="KeyUsage" RefId="5">
+        <TN RefId="5">
+          <T>System.Security.Cryptography.CngKeyUsages</T>
+          <T>System.Enum</T>
+          <T>System.ValueType</T>
+          <T>System.Object</T>
+        </TN>
+        <ToString>AllUsages</ToString>
+        <I32>16777215</I32>
+      </Obj>
+      <Obj N="ParentWindowHandle" RefId="6">
+        <TN RefId="6">
+          <T>System.IntPtr</T>
+          <T>System.ValueType</T>
+          <T>System.Object</T>
+        </TN>
+        <ToString>0</ToString>
+      </Obj>
+      <Obj N="Provider" RefId="7">
+        <TN RefId="7">
+          <T>System.Security.Cryptography.CngProvider</T>
+          <T>System.Object</T>
+        </TN>
+        <ToString>Microsoft Software Key Storage Provider</ToString>
+        <Props>
+          <S N="Provider">Microsoft Software Key Storage Provider</S>
+        </Props>
+      </Obj>
+      <Obj N="ProviderHandle" RefId="8">
+        <TN RefId="8">
+          <T>Microsoft.Win32.SafeHandles.SafeNCryptProviderHandle</T>
+          <T>Microsoft.Win32.SafeHandles.SafeNCryptHandle</T>
+          <T>Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid</T>
+          <T>System.Runtime.InteropServices.SafeHandle</T>
+          <T>System.Runtime.ConstrainedExecution.CriticalFinalizerObject</T>
+          <T>System.Object</T>
+        </TN>
+        <ToString>Microsoft.Win32.SafeHandles.SafeNCryptProviderHandle</ToString>
+        <Props>
+          <B N="IsInvalid">false</B>
+          <B N="IsClosed">false</B>
+        </Props>
+      </Obj>
+      <Obj N="UIPolicy" RefId="9">
+        <TN RefId="9">
+          <T>System.Security.Cryptography.CngUIPolicy</T>
+          <T>System.Object</T>
+        </TN>
+        <ToString>System.Security.Cryptography.CngUIPolicy</ToString>
+        <Props>
+          <S N="ProtectionLevel">None</S>
+          <Nil N="FriendlyName" />
+          <Nil N="Description" />
+          <Nil N="UseContext" />
+          <Nil N="CreationTitle" />
+        </Props>
+      </Obj>
+      <S N="UniqueName">d7ecee2904a51498725c7b96df214665_2da99ac1-ee4b-4f5d-a232-7e724e3a6445</S>
+    </Props>
+  </Obj>
+</Objs>

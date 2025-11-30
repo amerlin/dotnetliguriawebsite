@@ -28,6 +28,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import DescriptionIcon from '@mui/icons-material/Description';
 import { WorkshopModel } from '../../models/WorkshopModel';
 import { getWorkshopById } from '../../services/workShopService';
+import HeroSection from '../HeroSection/HeroSection';
 import styles from './WorkshopDetail.module.css';
 
 export interface WorkshopDetailProps {
@@ -147,6 +148,11 @@ const WorkshopDetail: FC<WorkshopDetailProps> = () => {
 
    return (
       <>
+         <HeroSection
+            title={workshop.title}
+            logoSrc="/images/logo-default.png"
+            logoAlt="DotNet Liguria Logo"
+         />
          <Container maxWidth="lg" className={styles.container}>
             <Grid container spacing={3}>
                {/* Main Content */}
@@ -173,31 +179,41 @@ const WorkshopDetail: FC<WorkshopDetailProps> = () => {
                               {workshop.title}
                            </Typography>
 
-                           <Stack direction="row" spacing={2} flexWrap="wrap" sx={{ mb: 3 }}>
-                              <Chip
-                                 icon={<CalendarTodayIcon />}
-                                 label={formatDate(workshop.eventDate)}
-                                 variant="outlined"
-                                 size="medium"
-                              />
+                           <Box sx={{ mb: 3 }}>
+                              <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 1 }}>
+                                 <CalendarTodayIcon sx={{ color: '#72C02C', fontSize: '1.2rem' }} />
+                                 <Typography variant="body1" sx={{ fontWeight: 500, fontSize: '16px !important' }}>
+                                    {formatDate(workshop.eventDate)}
+                                 </Typography>
+                              </Stack>
 
                               {workshop.location && (
-                                 <Chip
-                                    icon={<LocationOnIcon />}
-                                    label={`${workshop.location.name} - ${workshop.location.address}`}
-                                    variant="outlined"
-                                    size="medium"
-                                 />
+                                 <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 2 }}>
+                                    <LocationOnIcon sx={{ color: '#72C02C', fontSize: '1.2rem' }} />
+                                    <Typography variant="body1" sx={{ fontWeight: 500, fontSize: '16px !important' }}>
+                                       {workshop.location.name} - {workshop.location.address}
+                                    </Typography>
+                                 </Stack>
                               )}
 
                               {workshop.tracks && workshop.tracks.length > 0 && (
                                  <Chip
                                     label={`${workshop.tracks.length} ${workshop.tracks.length === 1 ? 'Track' : 'Tracks'}`}
-                                    color="primary"
+                                    sx={{
+                                       backgroundColor: '#72C02C !important',
+                                       color: '#ffffff !important',
+                                       fontWeight: 600,
+                                       '& .MuiChip-label': {
+                                          color: '#ffffff !important'
+                                       },
+                                       '&:hover': {
+                                          backgroundColor: '#5da024 !important'
+                                       }
+                                    }}
                                     size="medium"
                                  />
                               )}
-                           </Stack>
+                           </Box>
                         </Box>
 
                         {/* Description Section */}
@@ -248,24 +264,24 @@ const WorkshopDetail: FC<WorkshopDetailProps> = () => {
                                     .sort((a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime())
                                     .map((track, index) => (
                                        <Box key={index} className={styles.trackItem}>
-                                          <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 1 }}>
+                                          <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 1, fontSize: '20px' }}>
                                              Track {index + 1}: {track.title || `Track ${index + 1}`}
                                           </Typography>
 
                                           {/* Track Time Information */}
                                           {track.startTime && track.endTime && (
-                                             <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 'medium', color: '#666', display: 'flex', alignItems: 'center', gap: 1 }}>
+                                             <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 'medium', color: '#666', display: 'flex', alignItems: 'center', gap: 1, fontSize: '16px' }}>
                                                 🕒 {formatTime(track.startTime)} - {formatTime(track.endTime)}
                                              </Typography>
                                           )}
 
                                           {track.speakersName && (
-                                             <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 'medium', color: '#1976d2' }}>
+                                             <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 'medium', color: '#1976d2', fontSize: '18px' }}>
                                                 Speaker: {track.speakersName}
                                              </Typography>
                                           )}
                                           {track.abstract && (
-                                             <Typography variant="body2" color="text.secondary">
+                                             <Typography variant="body2" color="text.secondary" sx={{ fontSize: '16px', lineHeight: 1.6 }}>
                                                 {track.abstract}
                                              </Typography>
                                           )}

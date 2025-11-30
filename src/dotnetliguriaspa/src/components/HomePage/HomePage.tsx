@@ -1,107 +1,326 @@
-import React,{FC,useState} from 'react';
-import {useOidc,useOidcAccessToken,useOidcFetch,useOidcIdToken} from "@axa-fr/react-oidc";
-import {Box} from "@mui/material";
-import HomeMainBox from "../HomeMainBox/HomeMainBox";
-import Footer from "../Footer/Footer";
+import React, { useState } from 'react';
+import './HomePage.css';
+import { Container, Typography, Box, IconButton } from '@mui/material';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import BusinessIcon from '@mui/icons-material/Business';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import TopBar from '../TopBar/TopBar';
+import Footer from '../Footer/Footer';
+import HeroSection from '../HeroSection/HeroSection';
 
-interface HomePageProps{
-    pageName? : string
-}
-
-interface tokenLevelType{
-    [key : string] : number;
-}
-
-const acr_to_loa : tokenLevelType=Object.freeze({
-    pwd:1,
-    mfa:2,
-    hwk:3,
-});
-
-const HomePage : FC<HomePageProps>=() => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const {login,logout,renewTokens,isAuthenticated}=useOidc();
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const {idToken,idTokenPayload}=useOidcIdToken();
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const {accessToken,accessTokenPayload}=useOidcAccessToken();
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [result,setResult]=useState("");
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [isError,setIsError]=useState(true);
-
-    const {fetch}=useOidcFetch();
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const invokeAPI=async (resource : string,requested_loa : number,previousInvocationOk=true) => {
-        try {
-            console.log(`requesting ${ resource } with loa:${ requested_loa }`);
-
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const token=idToken;
-            if (!isAuthenticated) {
-                setResult("User is not authenticated");
-                setIsError(true);
-                return;
-            }
-
-            const token_loa=acr_to_loa[accessTokenPayload.acr];
-            if (token_loa < requested_loa) {
-                setResult("User need higher privileges: " + Object.keys(acr_to_loa)[requested_loa - 1]);
-                setIsError(true);
-                return;
-            }
-
-            const response=await fetch(window.location.origin + "/api/values/" + resource,{
-                // headers: {
-                //   Authorization: `Bearer ${token}`,
-                // },
-            });
-
-            if (!response.ok) {
-                let message;
-                try {
-                    const authError=response.headers.get("WWW-Authenticate");
-                    message=`Fetch failed with HTTP status ${ response.status } ${ authError }  ${ await response.text() }`;
-                } catch (e) {
-                    message=`Fetch failed with HTTP status ${ response.status } ${ response.statusText }`;
-                }
-
-                setResult(message);
-                setIsError(true);
-                return;
-            }
-
-            setResult(await response.json());
-            setIsError(false);
-        } catch (e) {
-            console.log(e);
-            setResult(e.message);
-            setIsError(true);
-        }
+const teamMembers = [
+    {
+        name: 'Raffaele Rialdi',
+        title: 'Presidente',
+        image: '/profile/raffaele_rialdi.png',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    },
+    {
+        name: 'Giampaolo Tucci',
+        title: 'Vice Presidente',
+        image: '/profile/giampaolo_tucci.png',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    },
+    {
+        name: 'Andrea Belloni',
+        title: '',
+        image: 'https://ui-avatars.com/api/?name=Andrea+Belloni&background=ccc&color=fff&size=300',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    },
+    {
+        name: "Marco D'Alessandro",
+        title: '',
+        image: 'https://ui-avatars.com/api/?name=Marco+D%27Alessandro&background=ccc&color=fff&size=300',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    },
+    {
+        name: "Andrea Merlin",
+        title: '',
+        image: '/profile/andrea_merlin.png',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    },
+    {
+        name: "Lorenzo Billi",
+        title: '',
+        image: '/profile/lorenzo_billi.png',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    },
+    {
+        name: "Diego Zunino",
+        title: '',
+        image: '/profile/diego_zunino.png',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     }
+];
 
-    //eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const loggedOut=() => {
-        setResult("");
-        localStorage.removeItem("profileStore");
-        setIsError(true);
-    }
+function TeamMemberCard({ member }: { member: typeof teamMembers[0] }) {
+    const [showDescription, setShowDescription] = useState(false);
 
     return (
-        <>
-            <Box display={ "flex" } flexDirection={ 'row' } alignItems={ 'center' } justifyContent={ 'center' }
-                 pt={ 3 }>
-                <img src={"./images/DotNetLiguriaImperia.jpg"} width={"50%"} alt={"Evento imperia"}/>
-            </Box>
-            <HomeMainBox pagename={ "homepage" }/>
-            <Footer/>
-        </>
-)
-};
+        <div className="flip-card">
+            <div
+                className={`flip-card-inner ${showDescription ? 'flipped' : ''}`}
+                onClick={() => setShowDescription(!showDescription)}
+            >
+                {/* Front side */}
+                <div className="flip-card-front">
+                    <img
+                        src={member.image}
+                        alt={member.name}
+                        style={{
+                            width: 205,
+                            height: 205,
+                            borderRadius: '8px',
+                            marginBottom: 12,
+                            objectFit: 'cover',
+                            boxShadow: '0 2px 8px rgba(0,0,0,0.07)',
+                        }}
+                    />
+                    <Typography variant="h6" sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, fontSize: '1.25rem', marginBottom: 1 }}>
+                        {member.name}
+                    </Typography>
+                    <Typography variant="body2" sx={{ fontFamily: "'Titillium Web', sans-serif", color: '#666', marginBottom: 1 }}>
+                        {member.title}
+                    </Typography>
+                    <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1, marginTop: 'auto' }}>
+                        <IconButton href="#" target="_blank" rel="noopener" onClick={(e) => e.stopPropagation()}>
+                            <LinkedInIcon />
+                        </IconButton>
+                        <IconButton href="#" target="_blank" rel="noopener" onClick={(e) => e.stopPropagation()}>
+                            <TwitterIcon />
+                        </IconButton>
+                        <IconButton href="#" target="_blank" rel="noopener" onClick={(e) => e.stopPropagation()}>
+                            <FacebookIcon />
+                        </IconButton>
+                        <IconButton href="#" target="_blank" rel="noopener" onClick={(e) => e.stopPropagation()}>
+                            <InstagramIcon />
+                        </IconButton>
+                    </Box>
+                </div>
 
-export default HomePage;
+                {/* Back side */}
+                <div className="flip-card-back">
+                    <Typography variant="h6" sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, fontSize: '1.25rem', marginBottom: 2 }}>
+                        {member.name}
+                    </Typography>
+                    <Typography variant="body2" sx={{ fontFamily: "'Titillium Web', sans-serif", fontSize: '1rem', textAlign: 'center', color: '#333' }}>
+                        {member.description}
+                    </Typography>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default function Home() {
+    return (
+        <>
+            <TopBar showMenu={true} />
+            <main className="home-container">
+                <HeroSection
+                    title="La prima community .NET della Liguria"
+                    logoSrc="/images/logo-default.png"
+                    logoAlt="DotNet Liguria Logo"
+                />
+                <section className="about fullscreen-section" id="about">
+                    <div className="section-content" style={{ paddingTop: '1rem', paddingBottom: '1rem' }}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                            {/* <Typography variant="h3" align="center" sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, marginBottom: 0 }}>
+								Chi siamo
+							</Typography> */}
+                            <Box sx={{ width: '100%', px: 4 }}>
+                                <Typography variant="body1" align="center" sx={{ fontFamily: "'Titillium Web', sans-serif", fontSize: '1.25rem', width: '100%' }}>
+                                    DotNet Liguria è la prima community .NET della Liguria, nata per promuovere la condivisione di conoscenze, esperienze e networking tra sviluppatori, professionisti e appassionati del mondo Microsoft .NET. Organizziamo eventi, workshop e incontri per favorire la crescita tecnica e la collaborazione sul territorio.
+                                </Typography>
+                            </Box>
+                        </Box>
+                    </div>
+                </section>
+                <section className="dotnet-conf fullscreen-section" id="dotnet-conf">
+                    <Container maxWidth={false} className="section-content" style={{ padding: '0 4rem', paddingTop: '30px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <Typography variant="h2" align="center" gutterBottom sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, marginTop: 0, marginBottom: 3, width: '100%' }}>
+                            .NET Conf 2025 - Le Novità di .NET 10
+                        </Typography>
+                        <Box sx={{ marginBottom: 3 }}>
+                            <img src="/images/Locandina Evento Dicembre 2025.png" alt="Locandina Evento .NET Conf 2025" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)' }} />
+                        </Box>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                                <CalendarTodayIcon sx={{ color: '#72C02C' }} />
+                                <Typography variant="body1" sx={{ fontFamily: "'Titillium Web', sans-serif", fontSize: '24px' }}>
+                                    12 dicembre 2025
+                                </Typography>
+                            </Box>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                                <BusinessIcon sx={{ color: '#72C02C' }} />
+                                <Typography variant="body1" sx={{ fontFamily: "'Titillium Web', sans-serif", fontSize: '24px' }}>
+                                    Ordine Ingegneri Genova
+                                </Typography>
+                            </Box>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, marginTop: '-8px' }}>
+                                <LocationOnIcon sx={{ color: '#72C02C' }} />
+                                <Typography variant="body1" sx={{ fontFamily: "'Titillium Web', sans-serif", fontSize: '24px', color: '#444' }}>
+                                    Sede Ordine Genova Piazza della Vittoria 11/10, 16121 Genova (GE) Genova
+                                </Typography>
+                            </Box>
+                            {/* Rimosso: sede evento ripetuta */}
+                        </Box>
+                        <Box sx={{ marginTop: 4, width: '100%' }}>
+                            <Typography variant="h4" align="center" sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, marginBottom: 3 }}>
+                                Programma
+                            </Typography>
+                            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                                <Box sx={{ padding: 2, backgroundColor: '#f5f5f5', borderRadius: '8px', maxWidth: '900px', margin: '0 auto' }}>
+                                    <Typography variant="h6" sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, fontSize: '1.6rem' }}>
+                                        Raffaele Rialdi
+                                    </Typography>
+                                    <Typography variant="body1" sx={{ fontFamily: "'Titillium Web', sans-serif", color: '#666', marginBottom: 1, fontSize: '1.35rem' }}>
+                                        09:15 - 09:30
+                                    </Typography>
+                                    <Typography variant="subtitle1" sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, marginTop: 1, marginBottom: 1, fontSize: '1.35rem' }}>
+                                        Introduzione e benvenuto
+                                    </Typography>
+                                    <Typography variant="body2" sx={{ fontFamily: "'Titillium Web', sans-serif", textAlign: 'justify', fontSize: '1.22rem' }}>
+                                        L&apos;evento di quest&apos;anno è un evento combinato che incrocia il lancio della Long Term Support (LTS) di .NET 10 e C# 14 con le nuove librerie per aggiungere la potenza della AI generativa alle applicazioni .NET, grazie anche al nuovo protocollo standard Model Context Protocol (MCP) che aggiungono potenza ai Copilot e alle nostre applicazioni. Gli argomenti della giornata spazieranno dalle novità della nuova versione di .NET alle librerie più interessanti del ricco ecosistema.
+                                    </Typography>
+                                </Box>
+                                <Box sx={{ padding: 2, backgroundColor: '#f5f5f5', borderRadius: '8px', maxWidth: '900px', margin: '0 auto' }}>
+                                    <Typography variant="h6" sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, fontSize: '1.6rem' }}>
+                                        Raffaele Rialdi
+                                    </Typography>
+                                    <Typography variant="body1" sx={{ fontFamily: "'Titillium Web', sans-serif", color: '#666', marginBottom: 1, fontSize: '1.35rem' }}>
+                                        09:30 - 10:20
+                                    </Typography>
+                                    <Typography variant="subtitle1" sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, marginTop: 1, marginBottom: 1, fontSize: '1.35rem' }}>
+                                        Le novità di C# 14 e .NET 10
+                                    </Typography>
+                                    <Typography variant="body2" sx={{ fontFamily: "'Titillium Web', sans-serif", textAlign: 'justify', fontSize: '1.22rem' }}>
+                                        Eccoci a una nuova versione di .NET, che porta con sé numerose novità sia per il linguaggio C# sia per il runtime e le librerie. Sul fronte C# vedremo come estendere le proprietà di un tipo, l&apos;introduzione della keyword field e alcune utili semplificazioni sintattiche. Per quanto riguarda il runtime, esploreremo i miglioramenti in termini di performance, le nuove caratteristiche del Garbage Collector e una selezione delle più interessanti innovazioni nelle librerie.
+                                    </Typography>
+                                </Box>
+                                <Box sx={{ padding: 2, backgroundColor: '#f5f5f5', borderRadius: '8px', maxWidth: '900px', margin: '0 auto' }}>
+                                    <Typography variant="h6" sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, fontSize: '1.6rem' }}>
+                                        Giampaolo Tucci
+                                    </Typography>
+                                    <Typography variant="body1" sx={{ fontFamily: "'Titillium Web', sans-serif", color: '#666', marginBottom: 1, fontSize: '1.35rem' }}>
+                                        10:25 - 11:15
+                                    </Typography>
+                                    <Typography variant="subtitle1" sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, marginTop: 1, marginBottom: 1, fontSize: '1.35rem' }}>
+                                        Le novità di MAUI 10
+                                    </Typography>
+                                    <Typography variant="body2" sx={{ fontFamily: "'Titillium Web', sans-serif", textAlign: 'justify', fontSize: '1.22rem' }}>
+                                        La nuova versione di MAUI porta alcune novità interessanti che riaguardano l&apos;interazione con Aspire, nonchè nell&apos;ambito delle Hybrid View: a completare la revisione alcune API sono state marcate come deprecate. Nella sessione vedremo un pò più nel dettaglio queste novità, soffermandoci sui risvolti pratici e sulle varie particolarita.
+                                    </Typography>
+                                </Box>
+                                <Box sx={{ padding: 2, backgroundColor: '#f5f5f5', borderRadius: '8px', maxWidth: '900px', margin: '0 auto' }}>
+                                    <Typography variant="h6" sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, fontSize: '1.6rem' }}>
+                                        Jody Donetti
+                                    </Typography>
+                                    <Typography variant="body1" sx={{ fontFamily: "'Titillium Web', sans-serif", color: '#666', marginBottom: 1, fontSize: '1.35rem' }}>
+                                        11:20 - 12:20
+                                    </Typography>
+                                    <Typography variant="subtitle1" sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, marginTop: 1, marginBottom: 1, fontSize: '1.35rem' }}>
+                                        Caching in .NET: prestazioni, resilienza e soluzioni ibride
+                                    </Typography>
+                                    <Typography variant="body2" sx={{ fontFamily: "'Titillium Web', sans-serif", textAlign: 'justify', fontSize: '1.22rem' }}>
+                                        Il caching è fondamentale per creare software performante, robusto e resiliente. In questa sessione esploreremo cosa significa fare caching in .NET, quali alternative abbiamo a disposizione: in memoria, distribuita e ibrida. Per le cache ibride approfondiremo sia la nuova HybridCache di Microsoft che FusionCache. Esploreremo scenari comuni, problemi ricorrenti e soprattutto come risolverli, concentrandoci su soluzioni pragmatiche immediatamente applicabili nel mondo reale. FusionCache è il mio progetto free+OSS: è utilizzato da svariati progetti e aziende, inclusa Microsoft stessa (esempio: Data API Builder). E&apos; inoltre stata la prima implementazione production-ready di HybridCache in assoluto, anche prima di Microsoft stessa. Resilienza, prestazioni e scalabilità saranno centrali.
+                                    </Typography>
+                                </Box>
+                                <Box sx={{ padding: 2, backgroundColor: '#f5f5f5', borderRadius: '8px', maxWidth: '900px', margin: '0 auto' }}>
+                                    <Typography variant="h6" sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, fontSize: '1.6rem' }}>
+                                        Jody Donetti
+                                    </Typography>
+                                    <Typography variant="body1" sx={{ fontFamily: "'Titillium Web', sans-serif", color: '#666', marginBottom: 1, fontSize: '1.35rem' }}>
+                                        14:00 - 15:00
+                                    </Typography>
+                                    <Typography variant="subtitle1" sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, marginTop: 1, marginBottom: 1, fontSize: '1.35rem' }}>
+                                        Oltre HybridCache: FusionCache
+                                    </Typography>
+                                    <Typography variant="body2" sx={{ fontFamily: "'Titillium Web', sans-serif", textAlign: 'justify', fontSize: '1.22rem' }}>
+                                        Con la nuova HybridCache di Microsoft, ora disponiamo di una cache ibrida 1st party che possiamo utilizzare per ottenere il meglio di entrambi i mondi: caching in memoria e distribuito. E&apos; quindi la fine del nostro viaggio nel mondo del caching? No, decisamente no. In questa sessione vedremo come, tramite FusionCache, possiamo spingerci ben oltre i limiti di HybridCache e ottenere maggiore flessibilità, prestazioni, scalabilità e soprattutto resilienza. FusionCache è il mio progetto free+OSS: è utilizzato da svariati progetti e aziende, inclusa Microsoft stessa (esempio: Data API Builder). E&apos; inoltre stata la prima implementazione production-ready di HybridCache in assoluto, anche prima di Microsoft stessa. Ci saranno demo, lezioni apprese direttamente sul campo, e best practice per ottenere prestazioni spettacolari oltre a resilienza e scalabilità avanzate. Bonus: vedremo anche com&apos;è possibile andare oltre i limiti di HybridCache usando... HybridCache stessa
+                                    </Typography>
+                                </Box>
+                                <Box sx={{ padding: 2, backgroundColor: '#f5f5f5', borderRadius: '8px', maxWidth: '900px', margin: '0 auto' }}>
+                                    <Typography variant="h6" sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, fontSize: '1.6rem' }}>
+                                        Lorenzo Billi
+                                    </Typography>
+                                    <Typography variant="body1" sx={{ fontFamily: "'Titillium Web', sans-serif", color: '#666', marginBottom: 1, fontSize: '1.35rem' }}>
+                                        15:05 - 16:55
+                                    </Typography>
+                                    <Typography variant="subtitle1" sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, marginTop: 1, marginBottom: 1, fontSize: '1.35rem' }}>
+                                        Le novità in Visual Studio 2026
+                                    </Typography>
+                                    <Typography variant="body2" sx={{ fontFamily: "'Titillium Web', sans-serif", textAlign: 'justify', fontSize: '1.22rem' }}>
+                                        La prossima versione di Visual Studio è in arrivo, e con essa una profonda rivisitazione dell’interfaccia grafica ora basata sul Fluent design, con supporto a temi e finestre di dialogo e configurazione completamente ridisegnate. In questa sessione esploreremo le principali novità di Visual Studio 2026, tra cui la maggiore integrazione con Copilot, i miglioramenti prestazionali di compilazione e di Hot Reload, il nuovo formato predefinito SLNX per le solution, nonché l’estensione della funzionalità di code coverage a tutte le edizioni di Visual Studio.
+                                    </Typography>
+                                </Box>
+                                <Box sx={{ padding: 2, backgroundColor: '#f5f5f5', borderRadius: '8px', maxWidth: '900px', margin: '0 auto' }}>
+                                    <Typography variant="h6" sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, fontSize: '1.6rem' }}>
+                                        Andrea Merlin
+                                    </Typography>
+                                    <Typography variant="body1" sx={{ fontFamily: "'Titillium Web', sans-serif", color: '#666', marginBottom: 1, fontSize: '1.35rem' }}>
+                                        17:00 - 17:50
+                                    </Typography>
+                                    <Typography variant="subtitle1" sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, marginTop: 1, marginBottom: 1, fontSize: '1.35rem' }}>
+                                        Le Novità Essenziali di Entity Framework Core 10
+                                    </Typography>
+                                    <Typography variant="body2" sx={{ fontFamily: "'Titillium Web', sans-serif", textAlign: 'justify', fontSize: '1.22rem' }}>
+                                        Questa sessione è dedicata all&apos;analisi delle novità introdotte in Entity Framework Core 10 (EF10), la major release presentata con .NET 10. Verrà analizzato come Entity Framework Core 10 semplifica la gestione dei dati grazie alla mappatura diretta di tipi complessi su colonne JSON, agli operatori LINQ per join più intuitivi e a una API ottimizzata per gli aggiornamenti bulk. Verranno inoltre presentati i miglioramenti nella ricerca su Azure Cosmos DB, tra cui full-text search e hybrid search, oltre al consolidamento della ricerca vettoriale. Tutto questo, rende EF10 uno strumento ancora più efficiente per lo sviluppo di applicazioni dati moderne.
+                                    </Typography>
+                                </Box>
+                                <Box sx={{ marginTop: 4, width: '100%', maxWidth: '900px', margin: '2rem auto 0' }}>
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2887.2644!2d8.9432739!3d44.4029438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d343e7f3f3f3f3%3A0x0!2sP.za%20della%20Vittoria%2C%2011%2C%2016121%20Genova%20GE!5e0!3m2!1sit!2sit!4v1234567890"
+                                        width="100%"
+                                        height="400"
+                                        style={{ border: 0, borderRadius: '8px' }}
+                                        allowFullScreen
+                                        loading="lazy"
+                                        referrerPolicy="no-referrer-when-downgrade"
+                                        title="Piazza della Vittoria 11/10, 16121 Genova"
+                                    ></iframe>
+                                </Box>
+                            </Box>
+                            {/* Rimosso: sede evento ripetuta */}
+                        </Box>
+                    </Container>
+                </section>
+                <section className="board fullscreen-section" id="team">
+                    <div className="section-content" style={{ flexDirection: 'column', paddingTop: '30px', paddingBottom: '50px' }}>
+                        <Typography variant="h3" align="center" sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, marginBottom: 3, width: '100%' }}>
+                            Il Team
+                        </Typography>
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '32px', width: '100%' }}>
+                            <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', flexWrap: 'wrap' }}>
+                                {teamMembers.slice(0, 4).map(member => (
+                                    <TeamMemberCard key={member.name} member={member} />
+                                ))}
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', flexWrap: 'wrap' }}>
+                                {teamMembers.slice(4).map(member => (
+                                    <TeamMemberCard key={member.name} member={member} />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <Footer />
+                {/* Rimuove completamente la sezione "Eventi & Novità" */}
+                {/* <section className="events fullscreen-section" id="events">
+  <div className="section-content">
+    <h2>Eventi & Novità</h2>
+    <ul>
+      <li>Prossimo meetup: dicembre 2025 - Genova</li>
+      <li>Workshop Azure Fundamentals - gennaio 2026</li>
+      <li>Seguici su <a href="https://twitter.com/dotnetliguria" target="_blank" rel="noopener">Twitter</a> e <a href="https://www.linkedin.com/company/dotnet-liguria/" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+  </div>
+</section> */}
+            </main>
+        </>
+    );
+}

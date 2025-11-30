@@ -1,28 +1,27 @@
 import React, { FC } from 'react';
-import {Box,Container,styled,Typography} from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 
 const Footer: FC = () => {
-    // eslint-disable-next-line  @typescript-eslint/no-unused-vars
-    const BoxFooter=styled(Box)(({theme}) => ({
-        backgroundColor: "#648B2D",
-        padding:2,
-        position:'fixed',
-        bottom:0,
-        left:0,
-        right:0,
-        color: 'white'
-    }));
-
-    return(
-        <BoxFooter component="footer">
-            <Container>
-                <Typography align="center" fontWeight={100} fontSize={12}>
-                    {"Copyright © "}
-                    DotNet Liguria -
-                    {new Date().getFullYear()}
-                </Typography>
+    return (
+        <footer style={{
+            backgroundColor: '#333',
+            color: '#fff',
+            padding: '1rem 0',
+            textAlign: 'center'
+        }}>
+            <Container maxWidth={false}>
+                <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 3, flexWrap: 'wrap' }}>
+                    <Typography variant="body2" sx={{ color: '#ccc' }}>
+                        © {new Date().getFullYear()} DotNet Liguria. All rights reserved.
+                    </Typography>
+                    <span style={{ color: '#666' }}>|</span>
+                    <a href="#" style={{ color: '#fff', textDecoration: 'none', fontSize: '0.875rem' }}>Privacy Policy</a>
+                    <span style={{ color: '#666' }}>|</span>
+                    <a href="#" style={{ color: '#fff', textDecoration: 'none', fontSize: '0.875rem' }}>Terms of Service</a>
+                </Box>
             </Container>
-        </BoxFooter>
-)};
+        </footer>
+    );
+};
 
 export default Footer;

@@ -9,10 +9,6 @@ import AdminHome from './components/AdminHome/AdminHome';
 import AdminProfile from './components/AdminProfile/AdminProfile';
 import AdminFeedbacks from './components/AdminFeedbacks/AdminFeedbacks';
 import AdminEvents from './components/AdminEvents/AdminEvents';
-import "@fontsource/roboto";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/400-italic.css";
-import AboutUs from "./components/AboutUs/AboutUs";
 import AdminLayout from "./components/AdminLayout/AdminLayout";
 import HomePage from "./components/HomePage/HomePage";
 import Workshops from "./components/Workshops/Workshops";
@@ -53,10 +49,9 @@ function App() {
                     </Routes>
                 )}
                 <Routes>
+                    <Route path='/' element={<HomePage />} />
                     <Route element={<Layout />}>
                         <Route>
-                            <Route path='/' element={<HomePage />} />
-                            <Route path="/about-us" element={<AboutUs pageName={"About Us"} />}></Route>
                             <Route path="/workshops" element={<Workshops pageName={"Workshops"} />}></Route>
                             <Route path="/workshop/:id" element={<WorkshopDetail pageName={"Workshop Detail"} />}></Route>
                         </Route>

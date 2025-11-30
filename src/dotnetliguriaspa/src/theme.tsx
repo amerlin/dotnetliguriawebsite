@@ -1,9 +1,10 @@
 ﻿import { createTheme } from "@mui/material";
 
 const theme = createTheme({
-    typography:{
+    typography: {
+        fontFamily: '"Titillium Web", Arial, sans-serif',
         body2: {
-            color:"red"
+            color: "red"
         }
     },
     palette: {

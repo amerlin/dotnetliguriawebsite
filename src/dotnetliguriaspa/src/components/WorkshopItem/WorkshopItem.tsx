@@ -90,7 +90,7 @@ const WorkshopItem: FC<WorkshopItemProps> = ({ workshop }) => {
                         <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#1976d2' }}>
                             {workshop.tracks ? workshop.tracks.length : 0}
                         </Typography>
-                        <Typography variant="caption" sx={{ textAlign: 'center' }}>
+                        <Typography variant="body2" sx={{ textAlign: 'center', fontWeight: 600 }}>
                             {workshop.tracks && workshop.tracks.length === 1 ? 'Track' : 'Tracks'}
                         </Typography>
                     </Box>
@@ -109,12 +109,12 @@ const WorkshopItem: FC<WorkshopItemProps> = ({ workshop }) => {
                                 backgroundColor: '#e3f2fd',
                                 borderRadius: '8px'
                             }}>
-                                <Typography variant="caption" sx={{ fontWeight: 'bold', color: '#1976d2', textAlign: 'center' }}>
+                                <Typography variant="body2" sx={{ fontWeight: 'bold', color: '#1976d2', textAlign: 'center' }}>
                                     {formatTime(timeRange.start)}
                                 </Typography>
                                 <Typography variant="caption" sx={{ color: '#666', fontSize: '0.7rem' }}>
                                 </Typography>
-                                <Typography variant="caption" sx={{ fontWeight: 'bold', color: '#1976d2', textAlign: 'center' }}>
+                                <Typography variant="body2" sx={{ fontWeight: 'bold', color: '#1976d2', textAlign: 'center' }}>
                                     {formatTime(timeRange.end)}
                                 </Typography>
                             </Box>
@@ -138,11 +138,11 @@ const WorkshopItem: FC<WorkshopItemProps> = ({ workshop }) => {
                     {/* Title and Date row */}
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                         <Link to={`/workshop/${workshop.workshopId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                            <Typography variant="h6" className={styles.workshopItemTitle} sx={{ '&:hover': { textDecoration: 'underline', cursor: 'pointer' } }}>
+                            <Typography variant="h6" className={styles.workshopItemTitle}>
                                 {workshop.title}
                             </Typography>
                         </Link>
-                        <Typography variant="h6" className={styles.workshopItemTitle}>
+                        <Typography variant="h6" className={styles.workshopItemDate}>
                             -  {formatDate(workshop.eventDate)}
                         </Typography>
                     </Box>
@@ -159,14 +159,7 @@ const WorkshopItem: FC<WorkshopItemProps> = ({ workshop }) => {
                             marginTop: 1,
                             backgroundColor: '#f5f5f5',
                             padding: '8px',
-                            borderRadius: '4px',
-                            height: calculateDescriptionHeight(workshop.description || ''),
-                            minHeight: '1.5em',
-                            maxHeight: 'none',
-                            overflow: 'visible',
-                            whiteSpace: 'normal',
-                            wordWrap: 'break-word',
-                            lineHeight: 1.5
+                            borderRadius: '4px'
                         }}
                     >
                         {workshop.description}
