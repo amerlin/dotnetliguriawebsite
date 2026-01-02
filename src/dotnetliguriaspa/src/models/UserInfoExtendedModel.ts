@@ -1,4 +1,4 @@
-﻿import { OidcUserInfo } from "@axa-fr/react-oidc/dist/vanilla/vanillaOidc";
+﻿import { OidcUserInfo } from "@axa-fr/react-oidc";
 
 export interface UserInfoExtendedModel extends OidcUserInfo {
   roles: string[];

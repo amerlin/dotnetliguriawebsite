@@ -3,19 +3,83 @@ import styles from './AdminWorkshops.module.css';
 import { useOidcFetch } from '@axa-fr/react-oidc';
 import { WorkshopModel } from '../../models/WorkshopModel';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { Box, IconButton, Typography } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+import { useNavigate } from 'react-router-dom';
 
 interface AdminWorkshopsProps { pageName?: string }
 
 const AdminWorkshops: FC<AdminWorkshopsProps> = () => {
 
     const { fetch } = useOidcFetch();
+    const navigate = useNavigate();
     const [dataRows, setDataRows] = useState<WorkshopModel[]>([]);
 
+    const handleViewDetails = (workshopId: string) => {
+        navigate(`/admin/workshop/${workshopId}`);
+    };
+
     const columns: GridColDef[] = [
-        { field: 'workshopId', headerName: 'Id', resizable: true },
-        { field: 'title', headerName: 'Title', width: 200, resizable: true },
-        { field: 'eventDate', headerName: 'Event Date', width: 200, resizable: true },
-        { field: 'published', headerName: 'Published', width: 130, resizable: true },
+        { field: 'title', headerName: 'Title', width: 350, resizable: true, flex: 1 },
+        {
+            field: 'eventDate',
+            headerName: 'Event Date',
+            width: 200,
+            resizable: true,
+            valueFormatter: (params) => {
+                if (params.value) {
+                    const date = new Date(params.value);
+                    return date.toLocaleDateString();
+                }
+                return '';
+            }
+        },
+        {
+            field: 'published',
+            headerName: 'Published',
+            width: 130,
+            resizable: true,
+            renderCell: (params) => (
+                <Box
+                    sx={{
+                        width: 16,
+                        height: 16,
+                        borderRadius: '50%',
+                        backgroundColor: params.value ? '#4caf50' : '#f44336',
+                    }}
+                />
+            )
+        },
+        {
+            field: 'in_Homepage',
+            headerName: 'In Homepage',
+            width: 130,
+            resizable: true,
+            renderCell: (params) => (
+                <Box
+                    sx={{
+                        width: 16,
+                        height: 16,
+                        borderRadius: '50%',
+                        backgroundColor: params.value ? '#4caf50' : '#f44336',
+                    }}
+                />
+            )
+        },
+        {
+            field: 'actions',
+            headerName: 'Actions',
+            width: 100,
+            sortable: false,
+            renderCell: (params) => (
+                <IconButton
+                    color="success"
+                    onClick={() => handleViewDetails(params.row.workshopId)}
+                >
+                    <SearchIcon />
+                </IconButton>
+            ),
+        },
     ];
 
     useEffect(() => {
@@ -30,9 +94,11 @@ const AdminWorkshops: FC<AdminWorkshopsProps> = () => {
     }, []);
 
     return (
-        <div className={styles.AdminWorkshops}>
-            <div className={styles.Title}>Workshops</div>
-            <div>
+        <Box sx={{ width: '100%', p: 3 }}>
+            <Typography variant="h4" sx={{ mb: 3 }}>
+                Workshops
+            </Typography>
+            <Box sx={{ height: 365, width: '100%' }}>
                 <DataGrid
                     style={{ height: 365, width: "80%" }}
                     getRowId={(data) => data.workshopId}
@@ -44,8 +110,8 @@ const AdminWorkshops: FC<AdminWorkshopsProps> = () => {
                         },
                     }}
                 />
-            </div>
-        </div>
+            </Box>
+        </Box>
     )
 };
 

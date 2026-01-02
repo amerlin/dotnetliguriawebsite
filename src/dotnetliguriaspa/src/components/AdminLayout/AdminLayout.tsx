@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 import TopBar from "../TopBar/TopBar";
-import {Box} from "@mui/material";
+import { Box } from "@mui/material";
 import CustomSideBar from "../CustomSideBar/CustomSideBar";
-import {Outlet} from "react-router-dom";
-interface AdminLayoutProps {pageName?: string;}
+import { Outlet } from "react-router-dom";
+interface AdminLayoutProps { pageName?: string; }
 
-const AdminLayout: FC<AdminLayoutProps> = ({pageName}) => (
+const AdminLayout: FC<AdminLayoutProps> = ({ pageName }) => (
     <>
-        <TopBar pageName={""} showMenu={false}/>
-        <Box component={"div"} display={"flex"}>
+        <TopBar pageName={""} showMenu={false} />
+        <Box component={"div"} display={"flex"} sx={{ marginTop: '60px' }}>
             <CustomSideBar />
             <Outlet />
         </Box>

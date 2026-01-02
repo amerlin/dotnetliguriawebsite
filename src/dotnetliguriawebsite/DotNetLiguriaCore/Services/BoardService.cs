@@ -16,8 +16,19 @@ namespace DotNetLiguriaCore.Services
             _boardCollection = mongoDatabase.GetCollection<Board>(mongoDBDatabaseSettings.Value.BoardCollectionName);
         }
 
-        public async Task<List<Board>> GetAsync() =>
-            await _boardCollection.Find(_ => true).ToListAsync();
+        public async Task<List<Board>> GetAsync()
+        {
+            var visibleBoards = await _boardCollection
+                .Find(x => x.IsActive == true)
+                .SortBy(x => x.Order)
+                .ToListAsync();
+
+            var invisibleBoards = await _boardCollection
+                .Find(x => x.IsActive == false)
+                .ToListAsync();
+
+            return visibleBoards.Concat(invisibleBoards).ToList();
+        }
 
         public async Task<Board?> GetAsync(Guid id) =>
             await _boardCollection.Find(x => x.BoardId == id).FirstOrDefaultAsync();

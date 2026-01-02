@@ -2,49 +2,65 @@ import React, { FC, useEffect, useState } from 'react';
 import { useOidcFetch } from "@axa-fr/react-oidc";
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import SpeakerModel from '../../models/SpeakerModel';
-import { Typography } from "@mui/material";
+import { Avatar, Box, Typography } from "@mui/material";
 interface AdminSpeakersProps { pageName?: string }
 
 const AdminSpeakers: FC<AdminSpeakersProps> = () => {
     const { fetch } = useOidcFetch();
     const [dataRows, setDataRows] = useState<SpeakerModel[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
 
     const columns: GridColDef[] = [
-        { field: 'name', headerName: 'Name', width: 180 },
-        { field: 'profileImage', headerName: 'Profile Image', width: 360 },
+        {
+            field: 'profileImage',
+            headerName: 'Image',
+            width: 100,
+            renderCell: (params) => (
+                <Avatar
+                    src={params.value as string}
+                    alt={params.row.name}
+                    sx={{ width: 50, height: 50 }}
+                />
+            ),
+            sortable: false,
+        },
+        { field: 'name', headerName: 'Name', width: 250, flex: 1 },
+        { field: 'userName', headerName: 'Username', width: 200, flex: 1 },
     ];
 
     useEffect(() => {
-        const loadWorkshops = async () => {
-            await fetch("https://localhost:64561/api/Speaker/Get")
-                .then(response => response.json())
-                .then(data => {
-                    setDataRows(data);
-                }
-                )
-                .catch(error => console.error('Error:', error));
+        const loadSpeakers = async () => {
+            setLoading(true);
+            try {
+                const response = await fetch("https://localhost:64561/api/Speaker/Get");
+                const data = await response.json();
+                setDataRows(data);
+            } catch (error) {
+                console.error('Error loading speakers:', error);
+            } finally {
+                setLoading(false);
+            }
         }
-        loadWorkshops().catch(console.error);
-    }, []);
+        loadSpeakers();
+    }, [fetch]);
 
     return (
-        <>
-            <Typography font-size={12}> SPEAKERS
-                {/*<div>*/}
-                {/*    <DataGrid*/}
-                {/*        style={{ height: 373, width: "80%" }}*/}
-                {/*        getRowId={(data) => data.name}*/}
-                {/*        rows={dataRows}*/}
-                {/*        columns={columns}*/}
-                {/*        initialState={{*/}
-                {/*            pagination: {*/}
-                {/*                page: 0, pageSize: 5*/}
-                {/*            },*/}
-                {/*        }}*/}
-                {/*    />*/}
-                {/*</div>*/}
+        <Box sx={{ width: '100%', p: 3 }}>
+            <Typography variant="h4" sx={{ mb: 3 }}>
+                Speakers
             </Typography>
-        </>
+            <Box sx={{ height: 600, width: '100%' }}>
+                <DataGrid
+                    getRowId={(row) => row.workshopSpeakerId}
+                    rows={dataRows}
+                    columns={columns}
+                    loading={loading}
+                    pageSize={10}
+                    rowsPerPageOptions={[5, 10, 25]}
+                    disableSelectionOnClick
+                />
+            </Box>
+        </Box>
     )
 
 };

@@ -6,14 +6,9 @@ namespace DotNetLiguriaCore.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class BoardController : ControllerBase
+    public class BoardController(BoardService boardService) : ControllerBase
     {
-        private readonly BoardService _boardService;
-
-        public BoardController(BoardService boardService)
-        {
-            _boardService = boardService;
-        }
+        private readonly BoardService _boardService = boardService;
 
         [HttpGet]
         public async Task<List<Board>> Get() =>
@@ -35,8 +30,8 @@ namespace DotNetLiguriaCore.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(Board newBoard)
         {
+            newBoard.BoardId = Guid.NewGuid();
             await _boardService.CreateAsync(newBoard);
-
             return CreatedAtAction(nameof(Get), new { id = newBoard.BoardId }, newBoard);
         }
 

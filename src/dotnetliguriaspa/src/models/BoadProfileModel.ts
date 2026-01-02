@@ -1,6 +1,8 @@
 export interface BoardProfileModel {
   id: string;
+  boardId: string;
   name: string;
+  order?: number;
   email: string;
   imageUrl: string;
   profileImageUrl: string;
@@ -9,4 +11,5 @@ export interface BoardProfileModel {
   linkedinUrl?: string;
   githubUrl?: string;
   facebookUrl?: string;
+  isActive?: boolean;
 }

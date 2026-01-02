@@ -16,12 +16,20 @@
     justify-content: center;
     gap: 30px;
     margin: 0;
-    padding: 0;
+    padding: 0 40px;
+    position: relative;
 }
 
 .main-menu li {
     font-family: 'Titillium Web', sans-serif;
     font-weight: 600;
+}
+
+.main-menu li.login-item {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .main-menu a {

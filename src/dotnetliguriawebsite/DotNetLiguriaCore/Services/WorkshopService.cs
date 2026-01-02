@@ -46,6 +46,22 @@ namespace DotNetLiguriaCore.Services
 
             return returnValue;
         }
+
+        public async Task<Workshop?> GetInHomePageAsync()
+        {
+            var returnValue = await _workshopsCollection
+                .Find(w => w.Published == true && w.In_homepage == true)
+                .SortByDescending(w => w.EventDate)
+                .FirstOrDefaultAsync();
+
+            if (returnValue is null)
+            {
+                return null;
+            }
+
+            return returnValue;
+        }
+
         public async Task CreateAsync(Workshop newWorkshop) =>
             await _workshopsCollection.InsertOneAsync(newWorkshop);
 

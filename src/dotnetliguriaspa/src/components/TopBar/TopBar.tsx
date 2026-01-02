@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Link as RouterLink, useNavigate } from "react-router-dom";
+import LoginControl from '../loginControl';
 import './TopBar.css';
 
 interface TopBarProps {
@@ -67,6 +68,9 @@ const TopBar: FC<TopBarProps> = ({ showMenu, pageName }) => {
                         )}
                     </li>
                 ))}
+                <li className="login-item">
+                    <LoginControl onLogout={() => navigate('/')} />
+                </li>
             </ul>
         </nav>
     );

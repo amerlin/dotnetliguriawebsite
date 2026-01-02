@@ -74,10 +74,13 @@ function TeamMemberCard({ member }: { member: typeof teamMembers[0] }) {
                         style={{
                             width: 205,
                             height: 205,
+                            minHeight: 205,
+                            maxHeight: 205,
                             borderRadius: '8px',
                             marginBottom: 12,
                             objectFit: 'cover',
                             boxShadow: '0 2px 8px rgba(0,0,0,0.07)',
+                            display: 'block',
                         }}
                     />
                     <Typography variant="h6" sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, fontSize: '1.25rem', marginBottom: 1 }}>

@@ -6,18 +6,11 @@ namespace DotNetLiguriaCore.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class WorkshopController : ControllerBase
+    public class WorkshopController(WorkshopService workshopService, SpeakerService speakerService, WorkshopFileService workshopFileService) : ControllerBase
     {
-        private readonly WorkshopService _workshopService;
-        private readonly SpeakerService _speakerService;
-        private readonly WorkshopFileService _workshopFileService;
-
-        public WorkshopController(WorkshopService workshopService, SpeakerService speakerService, WorkshopFileService workshopFileService)
-        {
-            _speakerService = speakerService;
-            _workshopService = workshopService;
-            _workshopFileService = workshopFileService;
-        }
+        private readonly WorkshopService _workshopService = workshopService;
+        private readonly SpeakerService _speakerService = speakerService;
+        private readonly WorkshopFileService _workshopFileService = workshopFileService;
 
         [HttpGet]
         public async Task<List<Workshop>> Get()
@@ -37,7 +30,6 @@ namespace DotNetLiguriaCore.Controllers
         {
             var workshop = await _workshopService.GetAsync(id);
 
-
             if (workshop is null)
             {
                 return NotFound();
@@ -49,7 +41,21 @@ namespace DotNetLiguriaCore.Controllers
             return workshop;
         }
 
+        [HttpGet("HomePage")]
+        public async Task<ActionResult<Workshop>> GetInHomePage()
+        {
+            var workshop = await _workshopService.GetInHomePageAsync();
 
+            if (workshop is null)
+            {
+                return NotFound();
+            }
+
+            await AddSpeakers(workshop);
+            await AddFiles(workshop);
+
+            return workshop;
+        }
 
         [HttpGet("{year}")]
         public async Task<List<Workshop>> GetByYear(int year) =>
@@ -94,7 +100,6 @@ namespace DotNetLiguriaCore.Controllers
 
             return NoContent();
         }
-
 
         private async Task AddFiles(Workshop workshop)
         {

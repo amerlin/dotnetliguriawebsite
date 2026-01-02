@@ -10,10 +10,7 @@ namespace DotNetLiguriaCore.Controllers
     {
         private readonly SpeakerService _speakerService;
 
-        public SpeakerController(SpeakerService speakerService)
-        {
-            _speakerService = speakerService;
-        }
+        public SpeakerController(SpeakerService speakerService) => _speakerService = speakerService;
 
         [HttpGet]
         public async Task<List<WorkshopSpeaker>> Get() =>

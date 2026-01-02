@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-// import './loginControl.css';
+import './loginControl.css';
 import { useOidc, useOidcIdToken } from "@axa-fr/react-oidc";
 import { useOidcUser } from '@axa-fr/react-oidc';
-import {Avatar, Box, Button, Typography} from "@mui/material";
+import { Avatar, Box, Button, Typography } from "@mui/material";
+import { Link as RouterLink } from 'react-router-dom';
 function LoginControl(props) {
     const { login, logout, isAuthenticated } = useOidc();
     const { oidcUser, oidcUserLoadingState } = useOidcUser();
@@ -52,14 +53,14 @@ function LoginControl(props) {
     const stringAvatar = (name) => {
         const currentName = String(name);
         console.log(currentName);
-        if(currentName===null || currentName===undefined || currentName===''){
+        if (currentName === null || currentName === undefined || currentName === '') {
             return "DN";
         }
         return {
             children: `${currentName.split(' ')[0][0]}${currentName.split(' ')[1][0]}`,
         };
     }
-    
+
     const logoutAndRevoke = async () => {
         await logout();
         //await auth.revokeTokens(["access_token", "refresh_token"]);
@@ -72,20 +73,35 @@ function LoginControl(props) {
     if (isAuthenticated) {
         let name = oidcUser == null ? "(none)" : oidcUser.name;
         return (
-            <Box pl={4} display={"flex"} flex-direction={"row"} alignItems={"flex-start"} component={"div"}>
-                <Typography fontSize={ 12 } pr={2}>Benvenuto, {name}</Typography>
-                <Button color="inherit" sx={{"padding":"0"}} onClick={logoutPlain}><Typography fontSize={ 12 }>Logout</Typography></Button>
-                {/*<Avatar {...stringAvatar({name})}/>*/}
+            <Box display={"flex"} flexDirection={"row"} alignItems={"center"} gap={1} component={"div"}>
+                <Typography fontSize="1.1rem" fontFamily="Titillium Web" fontWeight={600} color="white">
+                    Benvenuto,{' '}
+                </Typography>
+                <RouterLink
+                    to="/admin"
+                    style={{
+                        color: 'white',
+                        textDecoration: 'none',
+                        fontSize: '1.1rem',
+                        fontFamily: 'Titillium Web',
+                        fontWeight: 600
+                    }}
+                    className="user-name-link"
+                >
+                    {name}
+                </RouterLink>
+                <Button color="inherit" sx={{ padding: "0", minWidth: 'auto', ml: 1 }} onClick={logoutPlain}>
+                    <Typography fontSize="1.1rem" fontFamily="Titillium Web" fontWeight={600} color="white">Logout</Typography>
+                </Button>
             </Box>
         );
     } else {
         return (
-            <>
-                <Box display={"flex"} flex-direction={"row"} alignItems={'flex-start'} component={"div"}>
-                    <Button color="inherit" onClick={loginPlain} sx={{"padding-top":"1"}}><Typography fontSize={12}>Log in</Typography></Button>
-                    {/*<Button color="inherit" onClick={loginMfa}><Typography fontSize={ 12 }>Log in [MFA]</Typography></Button>*/}
-                </Box>
-            </>
+            <Box display={"flex"} flexDirection={"row"} alignItems={'center'} component={"div"}>
+                <Button color="inherit" onClick={loginPlain} sx={{ padding: "0", minWidth: 'auto', lineHeight: 1 }}>
+                    <Typography fontSize="1.1rem" fontFamily="Titillium Web" fontWeight={600} color="white">Area Personale</Typography>
+                </Button>
+            </Box>
         );
     }
 }

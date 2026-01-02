@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { userProfileLocalStorageStore } from "../../store/userProfileLocalStorageStore";
-import {Typography} from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 interface AdminHomeProps { pageName?: string }
 
@@ -15,9 +15,11 @@ const AdminHome: FC<AdminHomeProps> = () => {
     }, []);
 
     return (
-       <>
-       <Typography font-size={12}>Admin</Typography>
-       </>
+        <Box sx={{ width: '100%', p: 3 }}>
+            <Typography variant="h4" sx={{ mb: 3 }}>
+                Admin Dashboard
+            </Typography>
+        </Box>
     )
 };
 

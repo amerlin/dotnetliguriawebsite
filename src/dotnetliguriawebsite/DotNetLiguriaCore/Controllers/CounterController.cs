@@ -10,12 +10,9 @@ namespace DotNetLiguriaCore.Controllers
 	{
 		private readonly CounterService _counterService;
 
-		public CounterController(CounterService counterService)
-		{
-			_counterService = counterService;
-		}
+        public CounterController(CounterService counterService) => _counterService = counterService;
 
-		[HttpGet]
+        [HttpGet]
 		public async Task<List<Counter>> Get() =>
 			await _counterService.GetAsync();
 
