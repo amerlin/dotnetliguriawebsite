@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Box, Typography, Avatar, Grid, Paper, CircularProgress, Card, TextField, Button, IconButton, Snackbar, Alert, Switch, FormControlLabel } from "@mui/material";
+import { Box, Typography, Grid, Paper, CircularProgress, TextField, IconButton, Snackbar, Alert, Switch, FormControlLabel } from "@mui/material";
 import { useParams, useNavigate } from 'react-router-dom';
 import { useOidcFetch } from '@axa-fr/react-oidc';
 import EditIcon from '@mui/icons-material/Edit';
@@ -70,7 +70,6 @@ const AdminBoardDetail: FC<AdminBoardDetailProps> = () => {
 	const [editedFacebook, setEditedFacebook] = useState<string>('');
 	const [isEditingInstagram, setIsEditingInstagram] = useState<boolean>(false);
 	const [editedInstagram, setEditedInstagram] = useState<string>('');
-	const [showDescription, setShowDescription] = useState<boolean>(false);
 	const [snackbarOpen, setSnackbarOpen] = useState<boolean>(false);
 	const [snackbarMessage, setSnackbarMessage] = useState<string>('');
 	const [snackbarSeverity, setSnackbarSeverity] = useState<'success' | 'error'>('success');

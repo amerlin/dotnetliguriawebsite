@@ -6,14 +6,12 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { userProfileLocalStorageStore } from '../../store/userProfileLocalStorageStore';
 import { KeyCloakUserProfile } from '../../models/KeyCloakUserProfile';
 import { useOidcFetch } from "@axa-fr/react-oidc";
-import { jwtDecode } from 'jwt-decode';
-import { Box, Button, Container, Grid, TextField, Typography } from "@mui/material";
+// import { jwtDecode } from 'jwt-decode';
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import styles from './AdminProfile.module.css';
 const AdminProfile: FC = () => {
 
-    // const esempio = "esempio";
-
-    const { idToken } = useOidcIdToken();
+    // const { idToken } = useOidcIdToken();
     // const { accessToken } = useOidcAccessToken();
     const { fetch } = useOidcFetch();
     const { setProfileSaved } = userProfileLocalStorageStore();
@@ -40,7 +38,7 @@ const AdminProfile: FC = () => {
             };
             setLoggedUser(currentUser);
 
-            const decodedToken = jwtDecode(idToken);
+            //const decodedToken = jwtDecode(idToken);
             setValue("city", "citta di prova");
             setValue("prov", "provincia");
             setValue("factory", "azienda");

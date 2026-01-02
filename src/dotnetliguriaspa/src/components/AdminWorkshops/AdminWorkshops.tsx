@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useState } from 'react';
-import styles from './AdminWorkshops.module.css';
 import { useOidcFetch } from '@axa-fr/react-oidc';
 import { WorkshopModel } from '../../models/WorkshopModel';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
