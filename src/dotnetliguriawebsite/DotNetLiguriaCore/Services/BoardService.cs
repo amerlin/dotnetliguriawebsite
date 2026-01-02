@@ -16,12 +16,17 @@ namespace DotNetLiguriaCore.Services
             _boardCollection = mongoDatabase.GetCollection<Board>(mongoDBDatabaseSettings.Value.BoardCollectionName);
         }
 
-        public async Task<List<Board>> GetAsync()
+        public async Task<List<Board>> GetAsync(bool onlyActive = false)
         {
             var visibleBoards = await _boardCollection
                 .Find(x => x.IsActive == true)
                 .SortBy(x => x.Order)
                 .ToListAsync();
+
+            if (onlyActive)
+            {
+                return visibleBoards;
+            }
 
             var invisibleBoards = await _boardCollection
                 .Find(x => x.IsActive == false)

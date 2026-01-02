@@ -11,8 +11,8 @@ namespace DotNetLiguriaCore.Controllers
         private readonly BoardService _boardService = boardService;
 
         [HttpGet]
-        public async Task<List<Board>> Get() =>
-            await _boardService.GetAsync();
+        public async Task<List<Board>> Get([FromQuery] bool onlyActive = false) =>
+            await _boardService.GetAsync(onlyActive);
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Board>> Get(Guid id)

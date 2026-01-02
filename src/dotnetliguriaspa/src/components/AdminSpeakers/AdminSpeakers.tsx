@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
+import { API_BASE_URL } from '../../config/apiConfig';
 import { useOidcFetch } from "@axa-fr/react-oidc";
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import SpeakerModel from '../../models/SpeakerModel';
@@ -32,7 +33,7 @@ const AdminSpeakers: FC<AdminSpeakersProps> = () => {
         const loadSpeakers = async () => {
             setLoading(true);
             try {
-                const response = await fetch("https://localhost:64561/api/Speaker/Get");
+                const response = await fetch("${API_BASE_URL}/Speaker/Get");
                 const data = await response.json();
                 setDataRows(data);
             } catch (error) {
@@ -66,3 +67,4 @@ const AdminSpeakers: FC<AdminSpeakersProps> = () => {
 };
 
 export default AdminSpeakers;
+

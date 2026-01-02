@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import { Box, Typography, Grid, Paper, CircularProgress, TextField, IconButton, Snackbar, Alert, Switch, FormControlLabel } from "@mui/material";
 import { useParams, useNavigate } from 'react-router-dom';
 import { useOidcFetch } from '@axa-fr/react-oidc';
+import { API_BASE_URL } from '../../config/apiConfig';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
@@ -78,7 +79,7 @@ const AdminBoardDetail: FC<AdminBoardDetailProps> = () => {
 		const loadBoardMember = async () => {
 			try {
 				setLoading(true);
-				const response = await fetch(`https://localhost:64561/api/Board/Get/${id}`);
+				const response = await fetch(`${API_BASE_URL}/Board/Get/${id}`);
 				const data = await response.json();
 				setBoardMember(data);
 				setEditedName(data.name);
@@ -112,7 +113,7 @@ const AdminBoardDetail: FC<AdminBoardDetailProps> = () => {
 	const handleSaveName = async () => {
 		if (boardMember) {
 			try {
-				const response = await fetch(`https://localhost:64561/api/Board/Update/${boardMember.boardId}`, {
+				const response = await fetch(`${API_BASE_URL}/Board/Update/${boardMember.boardId}`, {
 					method: 'PUT',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({ ...boardMember, name: editedName })
@@ -147,7 +148,7 @@ const AdminBoardDetail: FC<AdminBoardDetailProps> = () => {
 	const handleSaveOrder = async () => {
 		if (boardMember) {
 			try {
-				const response = await fetch(`https://localhost:64561/api/Board/Update/${boardMember.boardId}`, {
+				const response = await fetch(`${API_BASE_URL}/Board/Update/${boardMember.boardId}`, {
 					method: 'PUT',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({ ...boardMember, order: editedOrder })
@@ -182,7 +183,7 @@ const AdminBoardDetail: FC<AdminBoardDetailProps> = () => {
 	const handleSaveDescription = async () => {
 		if (boardMember) {
 			try {
-				const response = await fetch(`https://localhost:64561/api/Board/Update/${boardMember.boardId}`, {
+				const response = await fetch(`${API_BASE_URL}/Board/Update/${boardMember.boardId}`, {
 					method: 'PUT',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({ ...boardMember, description: editedDescription })
@@ -217,7 +218,7 @@ const AdminBoardDetail: FC<AdminBoardDetailProps> = () => {
 	const handleSaveEmail = async () => {
 		if (boardMember) {
 			try {
-				const response = await fetch(`https://localhost:64561/api/Board/Update/${boardMember.boardId}`, {
+				const response = await fetch(`${API_BASE_URL}/Board/Update/${boardMember.boardId}`, {
 					method: 'PUT',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({ ...boardMember, email: editedEmail })
@@ -252,7 +253,7 @@ const AdminBoardDetail: FC<AdminBoardDetailProps> = () => {
 	const handleSaveShortBio = async () => {
 		if (boardMember) {
 			try {
-				const response = await fetch(`https://localhost:64561/api/Board/Update/${boardMember.boardId}`, {
+				const response = await fetch(`${API_BASE_URL}/Board/Update/${boardMember.boardId}`, {
 					method: 'PUT',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({ ...boardMember, shortBio: editedShortBio })
@@ -287,7 +288,7 @@ const AdminBoardDetail: FC<AdminBoardDetailProps> = () => {
 	const handleSaveFullBio = async () => {
 		if (boardMember) {
 			try {
-				const response = await fetch(`https://localhost:64561/api/Board/Update/${boardMember.boardId}`, {
+				const response = await fetch(`${API_BASE_URL}/Board/Update/${boardMember.boardId}`, {
 					method: 'PUT',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({ ...boardMember, fullBio: editedFullBio })
@@ -319,7 +320,7 @@ const AdminBoardDetail: FC<AdminBoardDetailProps> = () => {
 	const handleSaveBlogHtml = async () => {
 		if (boardMember) {
 			try {
-				const response = await fetch(`https://localhost:64561/api/Board/Update/${boardMember.boardId}`, {
+				const response = await fetch(`${API_BASE_URL}/Board/Update/${boardMember.boardId}`, {
 					method: 'PUT',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({ ...boardMember, blogHtml: editedBlogHtml })
@@ -350,7 +351,7 @@ const AdminBoardDetail: FC<AdminBoardDetailProps> = () => {
 	const handleSaveLinkedIn = async () => {
 		if (boardMember) {
 			try {
-				const response = await fetch(`https://localhost:64561/api/Board/Update/${boardMember.boardId}`, {
+				const response = await fetch(`${API_BASE_URL}/Board/Update/${boardMember.boardId}`, {
 					method: 'PUT',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({ ...boardMember, lInkedinUrl: editedLinkedIn })
@@ -381,7 +382,7 @@ const AdminBoardDetail: FC<AdminBoardDetailProps> = () => {
 	const handleSaveGitHub = async () => {
 		if (boardMember) {
 			try {
-				const response = await fetch(`https://localhost:64561/api/Board/Update/${boardMember.boardId}`, {
+				const response = await fetch(`${API_BASE_URL}/Board/Update/${boardMember.boardId}`, {
 					method: 'PUT',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({ ...boardMember, gitHubUrl: editedGitHub })
@@ -412,7 +413,7 @@ const AdminBoardDetail: FC<AdminBoardDetailProps> = () => {
 	const handleSaveTwitter = async () => {
 		if (boardMember) {
 			try {
-				const response = await fetch(`https://localhost:64561/api/Board/Update/${boardMember.boardId}`, {
+				const response = await fetch(`${API_BASE_URL}/Board/Update/${boardMember.boardId}`, {
 					method: 'PUT',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({ ...boardMember, twitterUrl: editedTwitter })
@@ -443,7 +444,7 @@ const AdminBoardDetail: FC<AdminBoardDetailProps> = () => {
 	const handleSaveFacebook = async () => {
 		if (boardMember) {
 			try {
-				const response = await fetch(`https://localhost:64561/api/Board/Update/${boardMember.boardId}`, {
+				const response = await fetch(`${API_BASE_URL}/Board/Update/${boardMember.boardId}`, {
 					method: 'PUT',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({ ...boardMember, faceboookUrl: editedFacebook })
@@ -474,7 +475,7 @@ const AdminBoardDetail: FC<AdminBoardDetailProps> = () => {
 	const handleSaveInstagram = async () => {
 		if (boardMember) {
 			try {
-				const response = await fetch(`https://localhost:64561/api/Board/Update/${boardMember.boardId}`, {
+				const response = await fetch(`${API_BASE_URL}/Board/Update/${boardMember.boardId}`, {
 					method: 'PUT',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({ ...boardMember, instagramUrl: editedInstagram })
@@ -615,7 +616,7 @@ const AdminBoardDetail: FC<AdminBoardDetailProps> = () => {
 										onChange={async (e) => {
 											const newValue = e.target.checked;
 											try {
-												const response = await fetch(`https://localhost:64561/api/Board/Update/${boardMember.boardId}`, {
+												const response = await fetch(`${API_BASE_URL}/Board/Update/${boardMember.boardId}`, {
 													method: 'PUT',
 													headers: { 'Content-Type': 'application/json' },
 													body: JSON.stringify({ ...boardMember, isActive: newValue })
@@ -1036,3 +1037,4 @@ const AdminBoardDetail: FC<AdminBoardDetailProps> = () => {
 };
 
 export default AdminBoardDetail;
+

@@ -5,6 +5,7 @@ import { BoardProfileModel } from '../../models/BoadProfileModel';
 import { Box, IconButton, Typography } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../../config/apiConfig';
 
 interface AdminBoardProps {
 	pageName?: string;
@@ -60,7 +61,7 @@ const AdminBoard: FC<AdminBoardProps> = () => {
 		const loadBoardMembers = async () => {
 			setLoading(true);
 			try {
-				const response = await fetch("https://localhost:64561/api/Board/Get");
+				const response = await fetch(`${API_BASE_URL}/Board/Get`);
 				const data = await response.json();
 				// Ensure each row has a unique id
 				const dataWithIds = data.map((item: BoardProfileModel, index: number) => ({

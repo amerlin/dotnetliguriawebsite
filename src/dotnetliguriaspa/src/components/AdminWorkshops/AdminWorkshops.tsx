@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
+import { API_BASE_URL } from '../../config/apiConfig';
 import { useOidcFetch } from '@axa-fr/react-oidc';
 import { WorkshopModel } from '../../models/WorkshopModel';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
@@ -83,7 +84,7 @@ const AdminWorkshops: FC<AdminWorkshopsProps> = () => {
 
     useEffect(() => {
         const loadWorkshops = async () => {
-            await fetch("https://localhost:64561/api/Workshop/Get")
+            await fetch("${API_BASE_URL}/Workshop/Get")
                 .then(response => response.json())
                 .then(data => {
                     setDataRows(data);
@@ -115,3 +116,4 @@ const AdminWorkshops: FC<AdminWorkshopsProps> = () => {
 };
 
 export default AdminWorkshops;
+
