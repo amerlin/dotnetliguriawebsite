@@ -3,7 +3,7 @@ import { useOidcFetch } from "@axa-fr/react-oidc";
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { BoardProfileModel } from '../../models/BoadProfileModel';
 import { Box, IconButton, Typography } from "@mui/material";
-import SearchIcon from '@mui/icons-material/Search';
+import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router-dom';
 import { API_BASE_URL } from '../../config/apiConfig';
 
@@ -48,10 +48,10 @@ const AdminBoard: FC<AdminBoardProps> = () => {
 			sortable: false,
 			renderCell: (params) => (
 				<IconButton
-					color="success"
+					color="primary"
 					onClick={() => handleViewDetails(params.row.id)}
 				>
-					<SearchIcon />
+					<EditIcon />
 				</IconButton>
 			),
 		},

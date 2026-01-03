@@ -546,479 +546,575 @@ const AdminBoardDetail: FC<AdminBoardDetailProps> = () => {
 						/>
 					</Grid>
 					<Grid item xs={12} md={9}>
-						<Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 2 }}>
-							<Box sx={{ display: 'flex', alignItems: 'center' }}>
-								{isEditingName ? (
-									<>
-										<TextField
-											value={editedName}
-											onChange={(e) => setEditedName(e.target.value)}
-											variant="outlined"
-											size="small"
-											sx={{ mr: 1 }}
-										/>
-										<IconButton onClick={handleSaveName} color="primary" size="small">
-											<SaveIcon />
-										</IconButton>
-										<IconButton onClick={handleCancelEdit} color="error" size="small">
-											<CancelIcon />
-										</IconButton>
-									</>
-								) : (
-									<>
-										<Typography variant="h5">
-											{boardMember.name}
-										</Typography>
-										<IconButton onClick={handleEditName} size="small" sx={{ ml: 1 }}>
-											<EditIcon />
-										</IconButton>
-									</>
-								)}
-							</Box>
-							<Box sx={{ display: 'flex', alignItems: 'center', mx: 2 }}>
-								{isEditingOrder ? (
-									<>
-										<TextField
-											value={editedOrder}
-											onChange={(e) => {
-												const value = parseInt(e.target.value) || 0;
-												setEditedOrder(value < 0 ? 0 : value);
-											}}
-											variant="outlined"
-											size="small"
-											type="number"
-											inputProps={{ min: 0 }}
-											sx={{ mr: 1, width: '80px' }}
-										/>
-										<IconButton onClick={handleSaveOrder} color="primary" size="small">
-											<SaveIcon />
-										</IconButton>
-										<IconButton onClick={handleCancelEditOrder} color="error" size="small">
-											<CancelIcon />
-										</IconButton>
-									</>
-								) : (
-									<>
-										<Typography variant="body2" sx={{ mr: 0.5 }}>Order:</Typography>
-										<Typography variant="body2" sx={{ fontWeight: 'bold', mr: 1 }}>
-											{boardMember.order}
-										</Typography>
-										<IconButton onClick={handleEditOrder} size="small">
-											<EditIcon fontSize="small" />
-										</IconButton>
-									</>
-								)}
-							</Box>
-							<FormControlLabel
-								control={
-									<Switch
-										checked={boardMember.isActive}
-										onChange={async (e) => {
-											const newValue = e.target.checked;
-											try {
-												const response = await fetch(`${API_BASE_URL}/Board/Update/${boardMember.boardId}`, {
-													method: 'PUT',
-													headers: { 'Content-Type': 'application/json' },
-													body: JSON.stringify({ ...boardMember, isActive: newValue })
-												});
-												if (response.ok) {
-													setBoardMember({ ...boardMember, isActive: newValue });
-													setSnackbarMessage('Visibility updated successfully');
-													setSnackbarSeverity('success');
-												} else {
-													setSnackbarMessage('Failed to update visibility');
-													setSnackbarSeverity('error');
-												}
-												setSnackbarOpen(true);
-											} catch (error) {
-												setSnackbarMessage('Error updating visibility');
-												setSnackbarSeverity('error');
-												setSnackbarOpen(true);
-											}
-										}}
-										color="primary"
-									/>
-								}
-								label="Visibile"
-							/>
-						</Box>
-						<Grid container spacing={2} sx={{ mb: 2 }}>
-							<Grid item xs={12} md={6}>
-								<Box sx={{ display: 'flex', alignItems: 'center' }}>
-									{isEditingDescription ? (
+						{/* INFORMAZIONI BASE */}
+						<Paper elevation={1} sx={{ p: 2, mb: 3, backgroundColor: '#f8f9fa' }}>
+							<Typography variant="h6" sx={{ mb: 2, color: 'primary.main', fontWeight: 600 }}>
+								Informazioni Base
+							</Typography>
+							<Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 2 }}>
+								<Box sx={{ display: 'flex', alignItems: 'center', flex: 1 }}>
+									{isEditingName ? (
 										<>
 											<TextField
-												value={editedDescription}
-												onChange={(e) => setEditedDescription(e.target.value)}
+												value={editedName}
+												onChange={(e) => setEditedName(e.target.value)}
 												variant="outlined"
 												size="small"
 												fullWidth
-												sx={{ mr: 1 }}
+												sx={{
+													mr: 1,
+													'& .MuiOutlinedInput-root': {
+														backgroundColor: '#fff',
+														'& fieldset': { borderColor: 'primary.main', borderWidth: 2 }
+													}
+												}}
 											/>
-											<IconButton onClick={handleSaveDescription} color="primary" size="small">
+											<IconButton onClick={handleSaveName} color="primary" size="small">
 												<SaveIcon />
 											</IconButton>
-											<IconButton onClick={handleCancelEditDescription} color="error" size="small">
+											<IconButton onClick={handleCancelEdit} color="error" size="small">
 												<CancelIcon />
 											</IconButton>
 										</>
 									) : (
 										<>
-											<Typography variant="h6" color="text.secondary" sx={{ flex: 1 }}>
-												{boardMember.description || 'Insert description'}
+											<Typography variant="h5" sx={{ flex: 1 }}>
+												{boardMember.name}
 											</Typography>
-											<IconButton onClick={handleEditDescription} size="small" sx={{ ml: 1 }}>
+											<IconButton onClick={handleEditName} size="small" sx={{ ml: 1 }}>
 												<EditIcon />
 											</IconButton>
 										</>
 									)}
 								</Box>
+							</Box>
+							<Grid container spacing={2} sx={{ mt: 1 }}>
+								<Grid item xs={12} md={4}>
+									<Box sx={{ display: 'flex', alignItems: 'center' }}>
+										<Typography variant="body2" sx={{ mr: 1, fontWeight: 600 }}>Order:</Typography>
+										{isEditingOrder ? (
+											<>
+												<TextField
+													value={editedOrder}
+													onChange={(e) => {
+														const value = parseInt(e.target.value) || 0;
+														setEditedOrder(value < 0 ? 0 : value);
+													}}
+													variant="outlined"
+													size="small"
+													type="number"
+													inputProps={{ min: 0 }}
+													sx={{
+														mr: 1,
+														width: '80px',
+														'& .MuiOutlinedInput-root': {
+															backgroundColor: '#fff',
+															'& fieldset': { borderColor: 'primary.main', borderWidth: 2 }
+														}
+													}}
+												/>
+												<IconButton onClick={handleSaveOrder} color="primary" size="small">
+													<SaveIcon />
+												</IconButton>
+												<IconButton onClick={handleCancelEditOrder} color="error" size="small">
+													<CancelIcon />
+												</IconButton>
+											</>
+										) : (
+											<>
+												<Typography variant="body2" sx={{ fontWeight: 'bold', mr: 1 }}>
+													{boardMember.order}
+												</Typography>
+												<IconButton onClick={handleEditOrder} size="small">
+													<EditIcon fontSize="small" />
+												</IconButton>
+											</>
+										)}
+									</Box>
+								</Grid>
+								<Grid item xs={12} md={4}>
+									<FormControlLabel
+										control={
+											<Switch
+												checked={boardMember.isActive}
+												onChange={async (e) => {
+													const newValue = e.target.checked;
+													try {
+														const response = await fetch(`${API_BASE_URL}/Board/Update/${boardMember.boardId}`, {
+															method: 'PUT',
+															headers: { 'Content-Type': 'application/json' },
+															body: JSON.stringify({ ...boardMember, isActive: newValue })
+														});
+														if (response.ok) {
+															setBoardMember({ ...boardMember, isActive: newValue });
+															setSnackbarMessage('Visibility updated successfully');
+															setSnackbarSeverity('success');
+														} else {
+															setSnackbarMessage('Failed to update visibility');
+															setSnackbarSeverity('error');
+														}
+														setSnackbarOpen(true);
+													} catch (error) {
+														setSnackbarMessage('Error updating visibility');
+														setSnackbarSeverity('error');
+														setSnackbarOpen(true);
+													}
+												}}
+												color="primary"
+											/>
+										}
+										label="Visibile"
+									/>
+								</Grid>
 							</Grid>
-							<Grid item xs={12} md={6}>
-								<Box sx={{ display: 'flex', alignItems: 'center' }}>
-									{isEditingEmail ? (
+							<Grid container spacing={2} sx={{ mt: 1 }}>
+								<Grid item xs={12} md={6}>
+									<Typography variant="body2" sx={{ mb: 0.5, fontWeight: 600 }}>Description (Role)</Typography>
+									<Box sx={{ display: 'flex', alignItems: 'center' }}>
+										{isEditingDescription ? (
+											<>
+												<TextField
+													value={editedDescription}
+													onChange={(e) => setEditedDescription(e.target.value)}
+													variant="outlined"
+													size="small"
+													fullWidth
+													placeholder="Insert description"
+													sx={{
+														mr: 1,
+														'& .MuiOutlinedInput-root': {
+															backgroundColor: '#fff',
+															'& fieldset': { borderColor: 'primary.main', borderWidth: 2 }
+														}
+													}}
+												/>
+												<IconButton onClick={handleSaveDescription} color="primary" size="small">
+													<SaveIcon />
+												</IconButton>
+												<IconButton onClick={handleCancelEditDescription} color="error" size="small">
+													<CancelIcon />
+												</IconButton>
+											</>
+										) : (
+											<>
+												<Typography variant="body1" color="text.secondary" sx={{ flex: 1 }}>
+													{boardMember.description || 'Insert description'}
+												</Typography>
+												<IconButton onClick={handleEditDescription} size="small" sx={{ ml: 1 }}>
+													<EditIcon />
+												</IconButton>
+											</>
+										)}
+									</Box>
+								</Grid>
+								<Grid item xs={12} md={6}>
+									<Typography variant="body2" sx={{ mb: 0.5, fontWeight: 600 }}>Email</Typography>
+									<Box sx={{ display: 'flex', alignItems: 'center' }}>
+										{isEditingEmail ? (
+											<>
+												<TextField
+													value={editedEmail}
+													onChange={(e) => setEditedEmail(e.target.value)}
+													variant="outlined"
+													size="small"
+													type="email"
+													placeholder="Insert email"
+													fullWidth
+													sx={{
+														mr: 1,
+														'& .MuiOutlinedInput-root': {
+															backgroundColor: '#fff',
+															'& fieldset': { borderColor: 'primary.main', borderWidth: 2 }
+														}
+													}}
+												/>
+												<IconButton onClick={handleSaveEmail} color="primary" size="small">
+													<SaveIcon />
+												</IconButton>
+												<IconButton onClick={handleCancelEditEmail} color="error" size="small">
+													<CancelIcon />
+												</IconButton>
+											</>
+										) : (
+											<>
+												<Typography variant="body1" color="text.secondary" sx={{ flex: 1 }}>
+													{boardMember.email || 'Insert email'}
+												</Typography>
+												<IconButton onClick={handleEditEmail} size="small" sx={{ ml: 1 }}>
+													<EditIcon />
+												</IconButton>
+											</>
+										)}
+									</Box>
+								</Grid>
+							</Grid>
+						</Paper>
+						{/* BIOGRAFIA */}
+						<Paper elevation={1} sx={{ p: 2, mb: 3, backgroundColor: '#f8f9fa' }}>
+							<Typography variant="h6" sx={{ mb: 2, color: 'primary.main', fontWeight: 600 }}>
+								Biography
+							</Typography>
+							{boardMember.role && (
+								<Typography variant="body2" sx={{ mb: 1 }}>
+									<strong>Role:</strong> {boardMember.role}
+								</Typography>
+							)}
+							{boardMember.userName && (
+								<Typography variant="body2" sx={{ mb: 2 }}>
+									<strong>Username:</strong> {boardMember.userName}
+								</Typography>
+							)}
+							<Box sx={{ mb: 2 }}>
+								<Typography variant="body2" sx={{ mb: 0.5, fontWeight: 600 }}>Short Bio (Displayed on flip card)</Typography>
+								<Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
+									{isEditingShortBio ? (
 										<>
 											<TextField
-												value={editedEmail}
-												onChange={(e) => setEditedEmail(e.target.value)}
+												value={editedShortBio}
+												onChange={(e) => setEditedShortBio(e.target.value)}
 												variant="outlined"
 												size="small"
-												type="email"
-												placeholder="Email"
+												multiline
+												rows={3}
 												fullWidth
-												sx={{ mr: 1 }}
+												placeholder="Insert short bio"
+												sx={{
+													mr: 1,
+													'& .MuiOutlinedInput-root': {
+														backgroundColor: '#fff',
+														'& fieldset': { borderColor: 'primary.main', borderWidth: 2 }
+													}
+												}}
 											/>
-											<IconButton onClick={handleSaveEmail} color="primary" size="small">
-												<SaveIcon />
-											</IconButton>
-											<IconButton onClick={handleCancelEditEmail} color="error" size="small">
-												<CancelIcon />
-											</IconButton>
+											<Box>
+												<IconButton onClick={handleSaveShortBio} color="primary" size="small">
+													<SaveIcon />
+												</IconButton>
+												<IconButton onClick={handleCancelEditShortBio} color="error" size="small">
+													<CancelIcon />
+												</IconButton>
+											</Box>
 										</>
 									) : (
 										<>
-											<Typography variant="h6" color="text.secondary" sx={{ flex: 1 }}>
-												{boardMember.email || 'Insert email'}
+											<Typography variant="body2" sx={{ flex: 1 }}>
+												{boardMember.shortBio || 'Insert short bio'}
 											</Typography>
-											<IconButton onClick={handleEditEmail} size="small" sx={{ ml: 1 }}>
+											<IconButton onClick={handleEditShortBio} size="small" sx={{ ml: 1 }}>
 												<EditIcon />
 											</IconButton>
 										</>
 									)}
 								</Box>
-							</Grid>
-						</Grid>
-						{boardMember.role && (
-							<Typography variant="body1" sx={{ mb: 1 }}>
-								<strong>Role:</strong> {boardMember.role}
-							</Typography>
+							</Box>
+							<Box>
+								<Typography variant="body2" sx={{ mb: 0.5, fontWeight: 600 }}>Full Bio</Typography>
+								<Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
+									{isEditingFullBio ? (
+										<>
+											<TextField
+												value={editedFullBio}
+												onChange={(e) => setEditedFullBio(e.target.value)}
+												variant="outlined"
+												size="small"
+												multiline
+												rows={5}
+												fullWidth
+												placeholder="Insert full bio"
+												sx={{
+													mr: 1,
+													'& .MuiOutlinedInput-root': {
+														backgroundColor: '#fff',
+														'& fieldset': { borderColor: 'primary.main', borderWidth: 2 }
+													}
+												}}
+											/>
+											<Box>
+												<IconButton onClick={handleSaveFullBio} color="primary" size="small">
+													<SaveIcon />
+												</IconButton>
+												<IconButton onClick={handleCancelEditFullBio} color="error" size="small">
+													<CancelIcon />
+												</IconButton>
+											</Box>
+										</>
+									) : (
+										<>
+											<Typography variant="body1" sx={{ flex: 1 }}>
+												{boardMember.fullBio || 'Insert full bio'}
+											</Typography>
+											<IconButton onClick={handleEditFullBio} size="small" sx={{ ml: 1 }}>
+												<EditIcon />
+											</IconButton>
+										</>
+									)}
+								</Box>
+							</Box>
+						</Paper>
+
+						{boardMember.profileBio && (
+							<Paper elevation={1} sx={{ p: 2, mb: 3, backgroundColor: '#fff3e0' }}>
+								<Typography variant="body2" sx={{ mb: 0.5, fontWeight: 600, color: '#e65100' }}>
+									Profile Bio (Sistema)
+								</Typography>
+								<Typography variant="body2">
+									{boardMember.profileBio}
+								</Typography>
+							</Paper>
 						)}
-						{boardMember.userName && (
-							<Typography variant="body1" sx={{ mb: 1 }}>
-								<strong>Username:</strong> {boardMember.userName}
-							</Typography>
-						)}
 
-						{/* Short Bio */}
-						<Box sx={{ display: 'flex', alignItems: 'flex-start', mt: 2 }}>
-							{isEditingShortBio ? (
-								<>
-									<TextField
-										value={editedShortBio}
-										onChange={(e) => setEditedShortBio(e.target.value)}
-										variant="outlined"
-										size="small"
-										multiline
-										rows={3}
-										fullWidth
-										sx={{ mr: 1 }}
-									/>
-									<Box>
-										<IconButton onClick={handleSaveShortBio} color="primary" size="small">
-											<SaveIcon />
-										</IconButton>
-										<IconButton onClick={handleCancelEditShortBio} color="error" size="small">
-											<CancelIcon />
-										</IconButton>
+						{/* BLOG & SOCIAL LINKS */}
+						<Paper elevation={1} sx={{ p: 2, backgroundColor: '#f8f9fa' }}>
+							<Typography variant="h6" sx={{ mb: 2, color: 'primary.main', fontWeight: 600 }}>
+								Blog & Social Links
+							</Typography>
+							<Grid container spacing={2}>
+								<Grid item xs={12} sm={6} md={4}>
+									<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+										<ArticleIcon sx={{ fontSize: 24, color: '#FF6B6B' }} />
+										{isEditingBlogHtml ? (
+											<Box sx={{ display: 'flex', alignItems: 'center' }}>
+												<TextField
+													value={editedBlogHtml}
+													onChange={(e) => setEditedBlogHtml(e.target.value)}
+													variant="outlined"
+													size="small"
+													placeholder="Insert blog URL"
+													fullWidth
+													sx={{
+														mr: 0.5,
+														'& .MuiOutlinedInput-root': {
+															backgroundColor: '#fff',
+															'& fieldset': { borderColor: 'primary.main', borderWidth: 2 }
+														}
+													}}
+													inputProps={{ maxLength: 150 }}
+												/>
+												<IconButton onClick={handleSaveBlogHtml} color="primary" size="small">
+													<SaveIcon fontSize="small" />
+												</IconButton>
+												<IconButton onClick={handleCancelEditBlogHtml} color="error" size="small">
+													<CancelIcon fontSize="small" />
+												</IconButton>
+											</Box>
+										) : (
+											<>
+												<Typography variant="body2" sx={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+													{boardMember.blogHtml || 'Insert blog URL'}
+												</Typography>
+												<IconButton onClick={handleEditBlogHtml} size="small">
+													<EditIcon fontSize="small" />
+												</IconButton>
+											</>
+										)}
 									</Box>
-								</>
-							) : (
-								<>
-									<Typography variant="body1" sx={{ flex: 1 }}>
-										<strong>Short Bio:</strong> {boardMember.shortBio || 'Insert short bio'}
-									</Typography>
-									<IconButton onClick={handleEditShortBio} size="small" sx={{ ml: 1 }}>
-										<EditIcon />
-									</IconButton>
-								</>
-							)}
-						</Box>
-					</Grid>
+								</Grid>
 
-					<Grid item xs={12}>
-						<Typography variant="h6" sx={{ mb: 1 }}>
-							Full Bio
-						</Typography>
-						<Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
-							{isEditingFullBio ? (
-								<>
-									<TextField
-										value={editedFullBio}
-										onChange={(e) => setEditedFullBio(e.target.value)}
-										variant="outlined"
-										size="small"
-										multiline
-										rows={5}
-										fullWidth
-										sx={{ mr: 1 }}
-									/>
-									<Box>
-										<IconButton onClick={handleSaveFullBio} color="primary" size="small">
-											<SaveIcon />
-										</IconButton>
-										<IconButton onClick={handleCancelEditFullBio} color="error" size="small">
-											<CancelIcon />
-										</IconButton>
+								<Grid item xs={12} sm={6} md={4}>
+									<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+										<LinkedInIcon sx={{ fontSize: 24, color: '#0077b5' }} />
+										{isEditingLinkedIn ? (
+											<Box sx={{ display: 'flex', alignItems: 'center' }}>
+												<TextField
+													value={editedLinkedIn}
+													onChange={(e) => setEditedLinkedIn(e.target.value)}
+													variant="outlined"
+													size="small"
+													placeholder="Insert LinkedIn URL"
+													fullWidth
+													sx={{
+														mr: 0.5,
+														'& .MuiOutlinedInput-root': {
+															backgroundColor: '#fff',
+															'& fieldset': { borderColor: 'primary.main', borderWidth: 2 }
+														}
+													}}
+													inputProps={{ maxLength: 150 }}
+												/>
+												<IconButton onClick={handleSaveLinkedIn} color="primary" size="small">
+													<SaveIcon fontSize="small" />
+												</IconButton>
+												<IconButton onClick={handleCancelEditLinkedIn} color="error" size="small">
+													<CancelIcon fontSize="small" />
+												</IconButton>
+											</Box>
+										) : (
+											<>
+												<Typography variant="body2" sx={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+													{boardMember.lInkedinUrl || 'Insert LinkedIn URL'}
+												</Typography>
+												<IconButton onClick={handleEditLinkedIn} size="small">
+													<EditIcon fontSize="small" />
+												</IconButton>
+											</>
+										)}
 									</Box>
-								</>
-							) : (
-								<>
-									<Typography variant="body1" sx={{ flex: 1 }}>
-										{boardMember.fullBio || 'Insert full bio'}
-									</Typography>
-									<IconButton onClick={handleEditFullBio} size="small" sx={{ ml: 1 }}>
-										<EditIcon />
-									</IconButton>
-								</>
-							)}
-						</Box>
-					</Grid>
+								</Grid>
 
-					{boardMember.profileBio && (
-						<Grid item xs={12}>
-							<Typography variant="h6" sx={{ mb: 1 }}>
-								Profile Bio
-							</Typography>
-							<Typography variant="body1">
-								{boardMember.profileBio}
-							</Typography>
-						</Grid>
-					)}
+								<Grid item xs={12} sm={6} md={4}>
+									<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+										<GitHubIcon sx={{ fontSize: 24, color: '#333' }} />
+										{isEditingGitHub ? (
+											<Box sx={{ display: 'flex', alignItems: 'center' }}>
+												<TextField
+													value={editedGitHub}
+													onChange={(e) => setEditedGitHub(e.target.value)}
+													variant="outlined"
+													size="small"
+													placeholder="Insert GitHub URL"
+													fullWidth
+													sx={{
+														mr: 0.5,
+														'& .MuiOutlinedInput-root': {
+															backgroundColor: '#fff',
+															'& fieldset': { borderColor: 'primary.main', borderWidth: 2 }
+														}
+													}}
+													inputProps={{ maxLength: 150 }}
+												/>
+												<IconButton onClick={handleSaveGitHub} color="primary" size="small">
+													<SaveIcon fontSize="small" />
+												</IconButton>
+												<IconButton onClick={handleCancelEditGitHub} color="error" size="small">
+													<CancelIcon fontSize="small" />
+												</IconButton>
+											</Box>
+										) : (
+											<>
+												<Typography variant="body2" sx={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+													{boardMember.gitHubUrl || 'Insert GitHub URL'}
+												</Typography>
+												<IconButton onClick={handleEditGitHub} size="small">
+													<EditIcon fontSize="small" />
+												</IconButton>
+											</>
+										)}
+									</Box>
+								</Grid>
 
-					<Grid item xs={12}>
-						<Typography variant="h6" sx={{ mb: 2 }}>
-							Blog & Social Links
-						</Typography>
-						<Grid container spacing={1}>
-							<Grid item xs={12} sm={6} md={3}>
-								<Box sx={{ display: 'flex', alignItems: 'center' }}>
-									<ArticleIcon sx={{ mr: 0.5, fontSize: 20, color: '#757575' }} />
-									{isEditingBlogHtml ? (
-										<>
-											<TextField
-												value={editedBlogHtml}
-												onChange={(e) => setEditedBlogHtml(e.target.value)}
-												variant="outlined"
-												size="small"
-												placeholder="Blog"
-												fullWidth
-												sx={{ mr: 0.5, '& .MuiInputBase-input': { fontSize: 14 } }}
-												inputProps={{ maxLength: 150 }}
-											/>
-											<IconButton onClick={handleSaveBlogHtml} color="primary" size="small" sx={{ p: 0.5 }}>
-												<SaveIcon fontSize="small" />
-											</IconButton>
-											<IconButton onClick={handleCancelEditBlogHtml} color="error" size="small" sx={{ p: 0.5 }}>
-												<CancelIcon fontSize="small" />
-											</IconButton>
-										</>
-									) : (
-										<>
-											<Typography variant="body2" sx={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-												{boardMember.blogHtml || 'Insert blog URL'}
-											</Typography>
-											<IconButton onClick={handleEditBlogHtml} size="small" sx={{ p: 0.5 }}>
-												<EditIcon fontSize="small" />
-											</IconButton>
-										</>
-									)}
-								</Box>
-							</Grid>
+								<Grid item xs={12} sm={6} md={4}>
+									<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+										<TwitterIcon sx={{ fontSize: 24, color: '#1DA1F2' }} />
+										{isEditingTwitter ? (
+											<Box sx={{ display: 'flex', alignItems: 'center' }}>
+												<TextField
+													value={editedTwitter}
+													onChange={(e) => setEditedTwitter(e.target.value)}
+													variant="outlined"
+													size="small"
+													placeholder="Insert Twitter URL"
+													fullWidth
+													sx={{
+														mr: 0.5,
+														'& .MuiOutlinedInput-root': {
+															backgroundColor: '#fff',
+															'& fieldset': { borderColor: 'primary.main', borderWidth: 2 }
+														}
+													}}
+													inputProps={{ maxLength: 150 }}
+												/>
+												<IconButton onClick={handleSaveTwitter} color="primary" size="small">
+													<SaveIcon fontSize="small" />
+												</IconButton>
+												<IconButton onClick={handleCancelEditTwitter} color="error" size="small">
+													<CancelIcon fontSize="small" />
+												</IconButton>
+											</Box>
+										) : (
+											<>
+												<Typography variant="body2" sx={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+													{boardMember.twitterUrl || 'Insert Twitter URL'}
+												</Typography>
+												<IconButton onClick={handleEditTwitter} size="small">
+													<EditIcon fontSize="small" />
+												</IconButton>
+											</>
+										)}
+									</Box>
+								</Grid>
 
-							<Grid item xs={12} sm={6} md={3}>
-								<Box sx={{ display: 'flex', alignItems: 'center' }}>
-									<LinkedInIcon sx={{ mr: 0.5, fontSize: 20, color: '#0077b5' }} />
-									{isEditingLinkedIn ? (
-										<>
-											<TextField
-												value={editedLinkedIn}
-												onChange={(e) => setEditedLinkedIn(e.target.value)}
-												variant="outlined"
-												size="small"
-												placeholder="LinkedIn"
-												fullWidth
-												sx={{ mr: 0.5, '& .MuiInputBase-input': { fontSize: 14 } }}
-												inputProps={{ maxLength: 150 }}
-											/>
-											<IconButton onClick={handleSaveLinkedIn} color="primary" size="small" sx={{ p: 0.5 }}>
-												<SaveIcon fontSize="small" />
-											</IconButton>
-											<IconButton onClick={handleCancelEditLinkedIn} color="error" size="small" sx={{ p: 0.5 }}>
-												<CancelIcon fontSize="small" />
-											</IconButton>
-										</>
-									) : (
-										<>
-											<Typography variant="body2" sx={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-												{boardMember.lInkedinUrl || 'Insert LinkedIn URL'}
-											</Typography>
-											<IconButton onClick={handleEditLinkedIn} size="small" sx={{ p: 0.5 }}>
-												<EditIcon fontSize="small" />
-											</IconButton>
-										</>
-									)}
-								</Box>
+								<Grid item xs={12} sm={6} md={4}>
+									<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+										<FacebookIcon sx={{ fontSize: 24, color: '#1877f2' }} />
+										{isEditingFacebook ? (
+											<Box sx={{ display: 'flex', alignItems: 'center' }}>
+												<TextField
+													value={editedFacebook}
+													onChange={(e) => setEditedFacebook(e.target.value)}
+													variant="outlined"
+													size="small"
+													placeholder="Insert Facebook URL"
+													fullWidth
+													sx={{
+														mr: 0.5,
+														'& .MuiOutlinedInput-root': {
+															backgroundColor: '#fff',
+															'& fieldset': { borderColor: 'primary.main', borderWidth: 2 }
+														}
+													}}
+													inputProps={{ maxLength: 150 }}
+												/>
+												<IconButton onClick={handleSaveFacebook} color="primary" size="small">
+													<SaveIcon fontSize="small" />
+												</IconButton>
+												<IconButton onClick={handleCancelEditFacebook} color="error" size="small">
+													<CancelIcon fontSize="small" />
+												</IconButton>
+											</Box>
+										) : (
+											<>
+												<Typography variant="body2" sx={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+													{boardMember.faceboookUrl || 'Insert Facebook URL'}
+												</Typography>
+												<IconButton onClick={handleEditFacebook} size="small">
+													<EditIcon fontSize="small" />
+												</IconButton>
+											</>
+										)}
+									</Box>
+								</Grid>
+								<Grid item xs={12} sm={6} md={4}>
+									<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+										<InstagramIcon sx={{ fontSize: 24, color: '#E4405F' }} />
+										{isEditingInstagram ? (
+											<Box sx={{ display: 'flex', alignItems: 'center' }}>
+												<TextField
+													value={editedInstagram}
+													onChange={(e) => setEditedInstagram(e.target.value)}
+													variant="outlined"
+													size="small"
+													placeholder="Insert Instagram URL"
+													fullWidth
+													sx={{
+														mr: 0.5,
+														'& .MuiOutlinedInput-root': {
+															backgroundColor: '#fff',
+															'& fieldset': { borderColor: 'primary.main', borderWidth: 2 }
+														}
+													}}
+													inputProps={{ maxLength: 150 }}
+												/>
+												<IconButton onClick={handleSaveInstagram} color="primary" size="small">
+													<SaveIcon fontSize="small" />
+												</IconButton>
+												<IconButton onClick={handleCancelEditInstagram} color="error" size="small">
+													<CancelIcon fontSize="small" />
+												</IconButton>
+											</Box>
+										) : (
+											<>
+												<Typography variant="body2" sx={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+													{boardMember.instagramUrl || 'Insert Instagram URL'}
+												</Typography>
+												<IconButton onClick={handleEditInstagram} size="small">
+													<EditIcon fontSize="small" />
+												</IconButton>
+											</>
+										)}
+									</Box>
+								</Grid>
 							</Grid>
-
-							<Grid item xs={12} sm={6} md={3}>
-								<Box sx={{ display: 'flex', alignItems: 'center' }}>
-									<GitHubIcon sx={{ mr: 0.5, fontSize: 20, color: '#333' }} />
-									{isEditingGitHub ? (
-										<>
-											<TextField
-												value={editedGitHub}
-												onChange={(e) => setEditedGitHub(e.target.value)}
-												variant="outlined"
-												size="small"
-												placeholder="GitHub"
-												fullWidth
-												sx={{ mr: 0.5, '& .MuiInputBase-input': { fontSize: 14 } }}
-												inputProps={{ maxLength: 150 }}
-											/>
-											<IconButton onClick={handleSaveGitHub} color="primary" size="small" sx={{ p: 0.5 }}>
-												<SaveIcon fontSize="small" />
-											</IconButton>
-											<IconButton onClick={handleCancelEditGitHub} color="error" size="small" sx={{ p: 0.5 }}>
-												<CancelIcon fontSize="small" />
-											</IconButton>
-										</>
-									) : (
-										<>
-											<Typography variant="body2" sx={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-												{boardMember.gitHubUrl || 'Insert GitHub URL'}
-											</Typography>
-											<IconButton onClick={handleEditGitHub} size="small" sx={{ p: 0.5 }}>
-												<EditIcon fontSize="small" />
-											</IconButton>
-										</>
-									)}
-								</Box>
-							</Grid>
-
-							<Grid item xs={12} sm={6} md={3}>
-								<Box sx={{ display: 'flex', alignItems: 'center' }}>
-									<TwitterIcon sx={{ mr: 0.5, fontSize: 20, color: '#1DA1F2' }} />
-									{isEditingTwitter ? (
-										<>
-											<TextField
-												value={editedTwitter}
-												onChange={(e) => setEditedTwitter(e.target.value)}
-												variant="outlined"
-												size="small"
-												placeholder="Twitter"
-												fullWidth
-												sx={{ mr: 0.5, '& .MuiInputBase-input': { fontSize: 14 } }}
-												inputProps={{ maxLength: 150 }}
-											/>
-											<IconButton onClick={handleSaveTwitter} color="primary" size="small" sx={{ p: 0.5 }}>
-												<SaveIcon fontSize="small" />
-											</IconButton>
-											<IconButton onClick={handleCancelEditTwitter} color="error" size="small" sx={{ p: 0.5 }}>
-												<CancelIcon fontSize="small" />
-											</IconButton>
-										</>
-									) : (
-										<>
-											<Typography variant="body2" sx={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-												{boardMember.twitterUrl || 'Insert Twitter URL'}
-											</Typography>
-											<IconButton onClick={handleEditTwitter} size="small" sx={{ p: 0.5 }}>
-												<EditIcon fontSize="small" />
-											</IconButton>
-										</>
-									)}
-								</Box>
-							</Grid>
-
-							<Grid item xs={12} sm={6} md={3}>
-								<Box sx={{ display: 'flex', alignItems: 'center' }}>
-									<FacebookIcon sx={{ mr: 0.5, fontSize: 20, color: '#1877f2' }} />
-									{isEditingFacebook ? (
-										<>
-											<TextField
-												value={editedFacebook}
-												onChange={(e) => setEditedFacebook(e.target.value)}
-												variant="outlined"
-												size="small"
-												placeholder="Facebook"
-												fullWidth
-												sx={{ mr: 0.5, '& .MuiInputBase-input': { fontSize: 14 } }}
-												inputProps={{ maxLength: 150 }}
-											/>
-											<IconButton onClick={handleSaveFacebook} color="primary" size="small" sx={{ p: 0.5 }}>
-												<SaveIcon fontSize="small" />
-											</IconButton>
-											<IconButton onClick={handleCancelEditFacebook} color="error" size="small" sx={{ p: 0.5 }}>
-												<CancelIcon fontSize="small" />
-											</IconButton>
-										</>
-									) : (
-										<>
-											<Typography variant="body2" sx={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-												{boardMember.faceboookUrl || 'Insert Facebook URL'}
-											</Typography>
-											<IconButton onClick={handleEditFacebook} size="small" sx={{ p: 0.5 }}>
-												<EditIcon fontSize="small" />
-											</IconButton>
-										</>
-									)}
-								</Box>
-							</Grid>
-							<Grid item xs={12} sm={6} md={3}>
-								<Box sx={{ display: 'flex', alignItems: 'center' }}>
-									<InstagramIcon sx={{ mr: 0.5, fontSize: 20, color: '#E4405F' }} />
-									{isEditingInstagram ? (
-										<>
-											<TextField
-												value={editedInstagram}
-												onChange={(e) => setEditedInstagram(e.target.value)}
-												variant="outlined"
-												size="small"
-												placeholder="Instagram"
-												fullWidth
-												sx={{ mr: 0.5, '& .MuiInputBase-input': { fontSize: 14 } }}
-												inputProps={{ maxLength: 150 }}
-											/>
-											<IconButton onClick={handleSaveInstagram} color="primary" size="small" sx={{ p: 0.5 }}>
-												<SaveIcon fontSize="small" />
-											</IconButton>
-											<IconButton onClick={handleCancelEditInstagram} color="error" size="small" sx={{ p: 0.5 }}>
-												<CancelIcon fontSize="small" />
-											</IconButton>
-										</>
-									) : (
-										<>
-											<Typography variant="body2" sx={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-												{boardMember.instagramUrl || 'Insert Instagram URL'}
-											</Typography>
-											<IconButton onClick={handleEditInstagram} size="small" sx={{ p: 0.5 }}>
-												<EditIcon fontSize="small" />
-											</IconButton>
-										</>
-									)}
-								</Box>
-							</Grid>
-						</Grid>
+						</Paper>
 					</Grid>
 				</Grid>
 			</Paper>
