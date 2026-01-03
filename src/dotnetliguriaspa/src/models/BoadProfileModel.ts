@@ -7,9 +7,13 @@ export interface BoardProfileModel {
   imageUrl: string;
   profileImageUrl: string;
   profileBio: string;
+  shortBio?: string;
   description?: string;
-  linkedinUrl?: string;
-  githubUrl?: string;
-  facebookUrl?: string;
+  lInkedinUrl?: string;
+  gitHubUrl?: string;
+  faceboookUrl?: string;
+  twitterUrl?: string;
+  instagramUrl?: string;
+  blogHtml?: string;
   isActive?: boolean;
 }

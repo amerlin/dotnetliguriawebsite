@@ -1,63 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './HomePage.css';
 import { Container, Typography, Box, IconButton } from '@mui/material';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import TwitterIcon from '@mui/icons-material/Twitter';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import ArticleIcon from '@mui/icons-material/Article';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import BusinessIcon from '@mui/icons-material/Business';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import TopBar from '../TopBar/TopBar';
 import Footer from '../Footer/Footer';
 import HeroSection from '../HeroSection/HeroSection';
+import { getActiveBoardProfiles } from '../../services/boardProfileService';
+import { BoardProfileModel } from '../../models/BoadProfileModel';
 
-const teamMembers = [
-    {
-        name: 'Raffaele Rialdi',
-        title: 'Presidente',
-        image: '/profile/raffaele_rialdi.png',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-        name: 'Giampaolo Tucci',
-        title: 'Vice Presidente',
-        image: '/profile/giampaolo_tucci.png',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-        name: 'Andrea Belloni',
-        title: '',
-        image: 'https://ui-avatars.com/api/?name=Andrea+Belloni&background=ccc&color=fff&size=300',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-        name: "Marco D'Alessandro",
-        title: '',
-        image: 'https://ui-avatars.com/api/?name=Marco+D%27Alessandro&background=ccc&color=fff&size=300',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-        name: "Andrea Merlin",
-        title: '',
-        image: '/profile/andrea_merlin.png',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-        name: "Lorenzo Billi",
-        title: '',
-        image: '/profile/lorenzo_billi.png',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-        name: "Diego Zunino",
-        title: '',
-        image: '/profile/diego_zunino.png',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    }
-];
+interface TeamMember {
+    name: string;
+    title: string;
+    image: string;
+    description: string;
+    shortBio?: string;
+    blogUrl?: string;
+    linkedinUrl?: string;
+    githubUrl?: string;
+    facebookUrl?: string;
+    twitterUrl?: string;
+    instagramUrl?: string;
+}
 
-function TeamMemberCard({ member }: { member: typeof teamMembers[0] }) {
+function TeamMemberCard({ member }: { member: TeamMember }) {
     const [showDescription, setShowDescription] = useState(false);
 
     return (
@@ -89,18 +62,78 @@ function TeamMemberCard({ member }: { member: typeof teamMembers[0] }) {
                     <Typography variant="body2" sx={{ fontFamily: "'Titillium Web', sans-serif", color: '#666', marginBottom: 1 }}>
                         {member.title}
                     </Typography>
-                    <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1, marginTop: 'auto' }}>
-                        <IconButton href="#" target="_blank" rel="noopener" onClick={(e) => e.stopPropagation()}>
-                            <LinkedInIcon />
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 0.5, marginTop: 'auto' }}>
+                        <IconButton
+                            size="small"
+                            component={member.blogUrl ? "a" : "button"}
+                            href={member.blogUrl || undefined}
+                            target={member.blogUrl ? "_blank" : undefined}
+                            rel={member.blogUrl ? "noopener" : undefined}
+                            onClick={(e: React.MouseEvent) => e.stopPropagation()}
+                            disabled={!member.blogUrl}
+                            sx={{ padding: 0.5 }}
+                        >
+                            <ArticleIcon sx={{ fontSize: 20, color: member.blogUrl ? '#FF6B6B' : '#ccc' }} />
                         </IconButton>
-                        <IconButton href="#" target="_blank" rel="noopener" onClick={(e) => e.stopPropagation()}>
-                            <TwitterIcon />
+                        <IconButton
+                            size="small"
+                            component={member.linkedinUrl ? "a" : "button"}
+                            href={member.linkedinUrl || undefined}
+                            target={member.linkedinUrl ? "_blank" : undefined}
+                            rel={member.linkedinUrl ? "noopener" : undefined}
+                            onClick={(e: React.MouseEvent) => e.stopPropagation()}
+                            disabled={!member.linkedinUrl}
+                            sx={{ padding: 0.5 }}
+                        >
+                            <LinkedInIcon sx={{ fontSize: 20, color: member.linkedinUrl ? '#0077B5' : '#ccc' }} />
                         </IconButton>
-                        <IconButton href="#" target="_blank" rel="noopener" onClick={(e) => e.stopPropagation()}>
-                            <FacebookIcon />
+                        <IconButton
+                            size="small"
+                            component={member.githubUrl ? "a" : "button"}
+                            href={member.githubUrl || undefined}
+                            target={member.githubUrl ? "_blank" : undefined}
+                            rel={member.githubUrl ? "noopener" : undefined}
+                            onClick={(e: React.MouseEvent) => e.stopPropagation()}
+                            disabled={!member.githubUrl}
+                            sx={{ padding: 0.5 }}
+                        >
+                            <GitHubIcon sx={{ fontSize: 20, color: member.githubUrl ? '#333' : '#ccc' }} />
                         </IconButton>
-                        <IconButton href="#" target="_blank" rel="noopener" onClick={(e) => e.stopPropagation()}>
-                            <InstagramIcon />
+                        <IconButton
+                            size="small"
+                            component={member.facebookUrl ? "a" : "button"}
+                            href={member.facebookUrl || undefined}
+                            target={member.facebookUrl ? "_blank" : undefined}
+                            rel={member.facebookUrl ? "noopener" : undefined}
+                            onClick={(e: React.MouseEvent) => e.stopPropagation()}
+                            disabled={!member.facebookUrl}
+                            sx={{ padding: 0.5 }}
+                        >
+                            <FacebookIcon sx={{ fontSize: 20, color: member.facebookUrl ? '#1877F2' : '#ccc' }} />
+                        </IconButton>
+                        <IconButton
+                            size="small"
+                            component={member.twitterUrl ? "a" : "button"}
+                            href={member.twitterUrl || undefined}
+                            target={member.twitterUrl ? "_blank" : undefined}
+                            rel={member.twitterUrl ? "noopener" : undefined}
+                            onClick={(e: React.MouseEvent) => e.stopPropagation()}
+                            disabled={!member.twitterUrl}
+                            sx={{ padding: 0.5 }}
+                        >
+                            <TwitterIcon sx={{ fontSize: 20, color: member.twitterUrl ? '#1DA1F2' : '#ccc' }} />
+                        </IconButton>
+                        <IconButton
+                            size="small"
+                            component={member.instagramUrl ? "a" : "button"}
+                            href={member.instagramUrl || undefined}
+                            target={member.instagramUrl ? "_blank" : undefined}
+                            rel={member.instagramUrl ? "noopener" : undefined}
+                            onClick={(e: React.MouseEvent) => e.stopPropagation()}
+                            disabled={!member.instagramUrl}
+                            sx={{ padding: 0.5 }}
+                        >
+                            <InstagramIcon sx={{ fontSize: 20, color: member.instagramUrl ? '#E4405F' : '#ccc' }} />
                         </IconButton>
                     </Box>
                 </div>
@@ -111,7 +144,7 @@ function TeamMemberCard({ member }: { member: typeof teamMembers[0] }) {
                         {member.name}
                     </Typography>
                     <Typography variant="body2" sx={{ fontFamily: "'Titillium Web', sans-serif", fontSize: '1rem', textAlign: 'center', color: '#333' }}>
-                        {member.description}
+                        {member.shortBio || member.description}
                     </Typography>
                 </div>
             </div>
@@ -120,6 +153,39 @@ function TeamMemberCard({ member }: { member: typeof teamMembers[0] }) {
 }
 
 export default function Home() {
+    const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const loadTeamMembers = async () => {
+            try {
+                const boardProfiles = await getActiveBoardProfiles();
+                const members: TeamMember[] = boardProfiles
+                    .sort((a, b) => (a.order || 0) - (b.order || 0))
+                    .map((profile: BoardProfileModel) => ({
+                        name: profile.name,
+                        title: profile.description || '',
+                        image: profile.profileImageUrl ? `/${profile.profileImageUrl}` : `https://ui-avatars.com/api/?name=${encodeURIComponent(profile.name)}&background=ccc&color=fff&size=300`,
+                        description: profile.profileBio || '',
+                        shortBio: profile.shortBio,
+                        blogUrl: profile.blogHtml,
+                        linkedinUrl: profile.lInkedinUrl,
+                        githubUrl: profile.gitHubUrl,
+                        facebookUrl: profile.faceboookUrl,
+                        twitterUrl: profile.twitterUrl,
+                        instagramUrl: profile.instagramUrl
+                    }));
+                setTeamMembers(members);
+            } catch (error) {
+                console.error('Error loading team members:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        loadTeamMembers();
+    }, []);
+
     return (
         <>
             <TopBar showMenu={true} />
@@ -297,18 +363,30 @@ export default function Home() {
                         <Typography variant="h3" align="center" sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, marginBottom: 3, width: '100%' }}>
                             Il Team
                         </Typography>
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '32px', width: '100%' }}>
-                            <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', flexWrap: 'wrap' }}>
-                                {teamMembers.slice(0, 4).map(member => (
-                                    <TeamMemberCard key={member.name} member={member} />
-                                ))}
+                        {loading ? (
+                            <Typography variant="body1" align="center" sx={{ fontFamily: "'Titillium Web', sans-serif", color: '#666' }}>
+                                Caricamento...
+                            </Typography>
+                        ) : teamMembers.length === 0 ? (
+                            <Typography variant="body1" align="center" sx={{ fontFamily: "'Titillium Web', sans-serif", color: '#666' }}>
+                                Nessun membro del team disponibile
+                            </Typography>
+                        ) : (
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '32px', width: '100%' }}>
+                                <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', flexWrap: 'wrap' }}>
+                                    {teamMembers.slice(0, 4).map(member => (
+                                        <TeamMemberCard key={member.name} member={member} />
+                                    ))}
+                                </div>
+                                {teamMembers.length > 4 && (
+                                    <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', flexWrap: 'wrap' }}>
+                                        {teamMembers.slice(4).map(member => (
+                                            <TeamMemberCard key={member.name} member={member} />
+                                        ))}
+                                    </div>
+                                )}
                             </div>
-                            <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', flexWrap: 'wrap' }}>
-                                {teamMembers.slice(4).map(member => (
-                                    <TeamMemberCard key={member.name} member={member} />
-                                ))}
-                            </div>
-                        </div>
+                        )}
                     </div>
                 </section>
                 <Footer />
