@@ -14,9 +14,9 @@ namespace DotNetLiguriaCore.Controllers
         private readonly IWebHostEnvironment _environment = environment;
 
         [HttpGet]
-        public async Task<List<Workshop>> Get()
+        public async Task<List<Workshop>> Get([FromQuery] bool onlyPublished = false)
         {
-            var returnValue = await _workshopService.GetAsync();
+            var returnValue = await _workshopService.GetAsync(onlyPublished);
             foreach (var workshop in returnValue)
             {
                 await AddSpeakers(workshop);

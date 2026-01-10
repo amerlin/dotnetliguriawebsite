@@ -6,12 +6,15 @@ const API_BASE_URL =
 
 export const getWorkshops = async (): Promise<WorkshopModel[]> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/Workshop/Get`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      `${API_BASE_URL}/Workshop/Get?onlyPublished=true`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -53,12 +56,15 @@ export const getWorkshopsByYear = async (
   year: number
 ): Promise<WorkshopModel[]> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/Workshop/GetByYear/${year}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      `${API_BASE_URL}/Workshop/GetByYear/${year}?onlyPublished=true`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

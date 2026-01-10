@@ -24,5 +24,11 @@ namespace DotNetLiguriaCore.Services
 			return await _workshopFilesCollection.Find(file => file.WorkshopId == workshopId).ToListAsync();
 		}
 
+		public async Task CreateAsync(WorkshopFile newWorkshopFile) =>
+			await _workshopFilesCollection.InsertOneAsync(newWorkshopFile);
+
+		public async Task DeleteAsync(Guid workshopFileId) =>
+			await _workshopFilesCollection.DeleteOneAsync(x => x.WorkshopFileId == workshopFileId);
+
 	}
 }

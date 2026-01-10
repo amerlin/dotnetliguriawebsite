@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Box, Typography, Paper, Grid, TextField, IconButton, Button, Snackbar, Alert, CircularProgress, Card, CardContent, Divider, Dialog, DialogTitle, DialogContent, DialogActions, Autocomplete, Switch, FormControlLabel, Fab } from "@mui/material";
+import { Box, Typography, Paper, Grid, TextField, IconButton, Button, Snackbar, Alert, CircularProgress, Card, CardContent, Divider, Dialog, DialogTitle, DialogContent, DialogActions, Autocomplete, Switch, FormControlLabel, Fab, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import { useParams, useNavigate } from 'react-router-dom';
 import { useOidcFetch } from '@axa-fr/react-oidc';
 import { API_BASE_URL } from '../../config/apiConfig';
@@ -15,6 +15,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import DescriptionIcon from '@mui/icons-material/Description';
 import PhotoIcon from '@mui/icons-material/Photo';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 interface AdminWorkshopDetailProps {
 	pageName?: string;
@@ -57,13 +58,13 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 	const [photoDialogOpen, setPhotoDialogOpen] = useState(false);
 	const [photoTitle, setPhotoTitle] = useState('');
 	const [photoFile, setPhotoFile] = useState<File | null>(null);
+	const [expandedTrackId, setExpandedTrackId] = useState<string | false>(false);
+	const [workshopImageFile, setWorkshopImageFile] = useState<File | null>(null);
 
 	useEffect(() => {
 		const loadSpeakers = async () => {
 			try {
-				const response = await fetch(`${API_BASE_URL}/Speaker/Get`);
-				const data: SpeakerModel[] = await response.json();
-				setAvailableSpeakers(data);
+				const response = await fetch(`${API_BASE_URL}/Speaker/Get?onlyActive=true`);
 			} catch (error) {
 				console.error('Error loading speakers:', error);
 			}
@@ -95,10 +96,12 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 			if (!id) return;
 
 			try {
-				const response = await fetch(`${API_BASE_URL}/workshopmaterial/${id}?fileType=4`);
+				const response = await fetch(`${API_BASE_URL}/workshopfile/${id}`);
 				if (response.ok) {
 					const data: WorkshopFileModel[] = await response.json();
-					setMaterials(data);
+					// Filtro per fileType 4 (materials)
+					const materialsData = data.filter(file => file.fileType === 4);
+					setMaterials(materialsData);
 				}
 			} catch (error) {
 				console.error('Error loading materials:', error);
@@ -109,10 +112,12 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 			if (!id) return;
 
 			try {
-				const response = await fetch(`${API_BASE_URL}/workshopmaterial/${id}?fileType=2`);
+				const response = await fetch(`${API_BASE_URL}/workshopfile/${id}`);
 				if (response.ok) {
 					const data: WorkshopFileModel[] = await response.json();
-					setPhotos(data);
+					// Filtro per fileType 2 (photos)
+					const photosData = data.filter(file => file.fileType === 2);
+					setPhotos(photosData);
 				}
 			} catch (error) {
 				console.error('Error loading photos:', error);
@@ -280,6 +285,10 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 		setTrackDialogOpen(true);
 	};
 
+	const handleTrackAccordionChange = (trackId: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+		setExpandedTrackId(isExpanded ? trackId : false);
+	};
+
 	const handleEditTrack = (track: TrackModel) => {
 		console.log('Editing track:', track.workshopTrackId, track.title);
 		setEditingTrackId(track.workshopTrackId);
@@ -322,6 +331,67 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 		setPhotoDialogOpen(false);
 		setPhotoTitle('');
 		setPhotoFile(null);
+	};
+
+	const handleWorkshopImageUpload = async (file: File) => {
+		if (!workshop || !file) return;
+
+		try {
+			const formData = new FormData();
+			formData.append('file', file);
+			formData.append('workshopId', workshop.workshopId);
+
+			const response = await fetch(`${API_BASE_URL}/workshopfile/uploadworkshopimage`, {
+				method: 'POST',
+				body: formData,
+			});
+
+			if (response.ok) {
+				setSnackbarMessage('Workshop image uploaded successfully');
+				setSnackbarSeverity('success');
+				setSnackbarOpen(true);
+				setWorkshopImageFile(file);
+			} else {
+				throw new Error('Failed to upload workshop image');
+			}
+		} catch (error) {
+			console.error('Error uploading workshop image:', error);
+			setSnackbarMessage('Error uploading workshop image');
+			setSnackbarSeverity('error');
+			setSnackbarOpen(true);
+		}
+	};
+
+	const handleDeleteFile = async (workshopFileId: string, fileType: 'material' | 'photo') => {
+		if (!window.confirm(`Are you sure you want to delete this ${fileType}?`)) {
+			return;
+		}
+
+		try {
+			const response = await fetch(`${API_BASE_URL}/workshopfile/${workshopFileId}`, {
+				method: 'DELETE',
+			});
+
+			if (response.ok) {
+				setSnackbarMessage(`${fileType.charAt(0).toUpperCase() + fileType.slice(1)} deleted successfully`);
+				setSnackbarSeverity('success');
+				setSnackbarOpen(true);
+
+				// Refresh the list
+				if (fileType === 'material') {
+					setMaterials(materials.filter(m => m.workshopFileId !== workshopFileId));
+				} else {
+					setPhotos(photos.filter(p => p.workshopFileId !== workshopFileId));
+				}
+			} else {
+				throw new Error('Failed to delete file');
+			}
+		} catch (error) {
+			console.error(`Error deleting ${fileType}:`, error);
+			setSnackbarMessage(`Error deleting ${fileType}`);
+			setSnackbarSeverity('error');
+			setSnackbarOpen(true);
+		}
 	};
 
 	const handleSaveTrack = async () => {
@@ -481,6 +551,13 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 					<Button
 						size="small"
 						variant="outlined"
+						onClick={() => document.getElementById('image-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+					>
+						Workshop Image
+					</Button>
+					<Button
+						size="small"
+						variant="outlined"
 						onClick={() => document.getElementById('description-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
 					>
 						Description
@@ -562,6 +639,64 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 								Save
 							</Button>
 						</Box>
+					</Grid>
+				</Grid>
+			</Paper>
+
+			<Paper id="image-section" elevation={3} sx={{ p: 3, maxWidth: 800, mb: 3 }}>
+				<Typography variant="h6" sx={{ mb: 2, color: 'primary.main', fontWeight: 600 }}>
+					Workshop Image
+				</Typography>
+				<Grid container spacing={2}>
+					{workshop.image && (
+						<Grid item xs={12}>
+							<Typography variant="caption" sx={{ mb: 0.5, display: 'block', color: 'text.secondary' }}>
+								Current Image
+							</Typography>
+							<Box
+								component="img"
+								src={workshop.image}
+								alt={workshop.title}
+								sx={{
+									width: '100%',
+									maxWidth: 400,
+									height: 'auto',
+									borderRadius: 1,
+									border: '1px solid #e0e0e0',
+									mb: 2
+								}}
+								onError={(e) => {
+									const target = e.target as HTMLImageElement;
+									if (!target.src.includes('placeholder')) {
+										target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300"%3E%3Crect fill="%23ddd" width="400" height="300"/%3E%3Ctext fill="%23999" x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="monospace" font-size="16"%3EImage not found%3C/text%3E%3C/svg%3E';
+									}
+								}}
+							/>
+						</Grid>
+					)}
+					<Grid item xs={12}>
+						<Typography variant="caption" sx={{ mb: 0.5, display: 'block', color: 'text.secondary' }}>
+							Upload workshop cover image
+						</Typography>
+						<Button
+							variant="outlined"
+							component="label"
+							fullWidth
+							sx={{ py: 1.5, justifyContent: 'flex-start' }}
+						>
+							{workshopImageFile ? workshopImageFile.name : 'Choose image file...'}
+							<input
+								type="file"
+								hidden
+								accept="image/*"
+								onChange={(e) => {
+									if (e.target.files && e.target.files[0]) {
+										const file = e.target.files[0];
+										handleWorkshopImageUpload(file);
+									}
+								}}
+							/>
+						</Button>
 					</Grid>
 				</Grid>
 			</Paper>
@@ -712,80 +847,107 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 						{[...workshop.tracks]
 							.sort((a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime())
 							.map((track, index) => (
-								<Card key={track.workshopTrackId} sx={{ mb: 2, backgroundColor: '#f8f9fa' }}>
-									<CardContent>
-										<Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-											<Box sx={{ flex: 1 }}>
-												<Typography variant="h6" sx={{ mb: 1, fontWeight: 600 }}>
-													{track.title}
-												</Typography>
-												<Grid container spacing={2}>
-													<Grid item xs={12} md={6}>
-														<Typography variant="caption" color="text.secondary">
-															Start Time
-														</Typography>
-														<Typography variant="body2">
-															{new Date(track.startTime).toLocaleString('it-IT', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', timeZone: 'UTC' })}
-														</Typography>
-													</Grid>
-													<Grid item xs={12} md={6}>
-														<Typography variant="caption" color="text.secondary">
-															End Time
-														</Typography>
-														<Typography variant="body2">
-															{new Date(track.endTime).toLocaleString('it-IT', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', timeZone: 'UTC' })}
-														</Typography>
-													</Grid>
-													<Grid item xs={12}>
-														<Typography variant="caption" color="text.secondary">
-															Level
-														</Typography>
-														<Typography variant="body2">
-															{track.level}
-														</Typography>
-													</Grid>											{track.speakersName && (
-														<Grid item xs={12}>
-															<Typography variant="caption" color="text.secondary">
-																Speakers
-															</Typography>
-															<Typography variant="body2">
-																{track.speakersName}
-															</Typography>
-														</Grid>
-													)}												{track.abstract && (
-														<Grid item xs={12}>
-															<Typography variant="caption" color="text.secondary">
-																Abstract
-															</Typography>
-															<Typography variant="body2">
-																{track.abstract}
-															</Typography>
-														</Grid>
-													)}
-												</Grid>
-											</Box>
-											<Box sx={{ display: 'flex', gap: 1, ml: 2 }}>
-												<IconButton
-													color="primary"
-													size="small"
-													onClick={() => handleEditTrack(track)}
-												>
-													<EditIcon />
-												</IconButton>
-												<IconButton
-													color="error"
-													size="small"
-													onClick={() => {
-														// TODO: Implementare la cancellazione della track
-														console.log('Delete track:', track.workshopTrackId);
-													}}
-												>
-													<DeleteIcon />
-												</IconButton>
-											</Box>
+								<Accordion
+									key={track.workshopTrackId}
+									expanded={expandedTrackId === track.workshopTrackId}
+									onChange={handleTrackAccordionChange(track.workshopTrackId)}
+									sx={{
+										mb: 1,
+										boxShadow: 'none',
+										border: '1px solid #e0e0e0',
+										'&:before': {
+											display: 'none'
+										},
+										borderLeft: '3px solid #4caf50'
+									}}
+								>
+									<AccordionSummary
+										expandIcon={<ExpandMoreIcon />}
+										sx={{
+											minHeight: '56px',
+											'&.Mui-expanded': {
+												minHeight: '56px'
+											}
+										}}
+									>
+										<Box sx={{ display: 'flex', alignItems: 'center', width: '100%', gap: 2 }}>
+											<Typography variant="h6" sx={{ flex: 1 }}>
+												{track.title}
+											</Typography>
+											<IconButton
+												color="primary"
+												size="small"
+												onClick={(e) => {
+													e.stopPropagation();
+													handleEditTrack(track);
+												}}
+												sx={{ mr: 1 }}
+											>
+												<EditIcon />
+											</IconButton>
+											<IconButton
+												color="error"
+												size="small"
+												onClick={(e) => {
+													e.stopPropagation();
+													// TODO: Implementare la cancellazione della track
+													console.log('Delete track:', track.workshopTrackId);
+												}}
+												sx={{ mr: 1 }}
+											>
+												<DeleteIcon />
+											</IconButton>
 										</Box>
-									</CardContent>
-								</Card>
+									</AccordionSummary>
+									<AccordionDetails sx={{ pt: 2 }}>
+										<Grid container spacing={2}>
+											<Grid item xs={12} md={6}>
+												<Typography variant="caption" color="text.secondary">
+													Start Time
+												</Typography>
+												<Typography variant="body2">
+													{new Date(track.startTime).toLocaleString('it-IT', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', timeZone: 'UTC' })}
+												</Typography>
+											</Grid>
+											<Grid item xs={12} md={6}>
+												<Typography variant="caption" color="text.secondary">
+													End Time
+												</Typography>
+												<Typography variant="body2">
+													{new Date(track.endTime).toLocaleString('it-IT', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', timeZone: 'UTC' })}
+												</Typography>
+											</Grid>
+											<Grid item xs={12}>
+												<Typography variant="caption" color="text.secondary">
+													Level
+												</Typography>
+												<Typography variant="body2">
+													{track.level}
+												</Typography>
+											</Grid>
+											{track.speakersName && (
+												<Grid item xs={12}>
+													<Typography variant="caption" color="text.secondary">
+														Speakers
+													</Typography>
+													<Typography variant="body2">
+														{track.speakersName}
+													</Typography>
+												</Grid>
+											)}
+											{track.abstract && (
+												<Grid item xs={12}>
+													<Typography variant="caption" color="text.secondary">
+														Abstract
+													</Typography>
+													<Typography variant="body2">
+														{track.abstract}
+													</Typography>
+												</Grid>
+											)}
+										</Grid>
+									</AccordionDetails>
+								</Accordion>
 							))}
 					</Box>
 				) : (
@@ -833,6 +995,13 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 												File Type: {material.fileType}
 											</Typography>
 										</Box>
+										<IconButton
+											onClick={() => handleDeleteFile(material.workshopFileId, 'material')}
+											color="error"
+											size="small"
+										>
+											<DeleteIcon />
+										</IconButton>
 									</Box>
 								</CardContent>
 							</Card>
@@ -889,12 +1058,23 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 										}}
 									/>
 									<CardContent>
-										<Typography variant="body2" sx={{ fontWeight: 600, mb: 0.5 }}>
-											{photo.title}
-										</Typography>
-										<Typography variant="caption" color="text.secondary">
-											{photo.fileName}
-										</Typography>
+										<Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+											<Box sx={{ flex: 1 }}>
+												<Typography variant="body2" sx={{ fontWeight: 600, mb: 0.5 }}>
+													{photo.title}
+												</Typography>
+												<Typography variant="caption" color="text.secondary">
+													{photo.fileName}
+												</Typography>
+											</Box>
+											<IconButton
+												onClick={() => handleDeleteFile(photo.workshopFileId, 'photo')}
+												color="error"
+												size="small"
+											>
+												<DeleteIcon />
+											</IconButton>
+										</Box>
 									</CardContent>
 								</Card>
 							</Grid>

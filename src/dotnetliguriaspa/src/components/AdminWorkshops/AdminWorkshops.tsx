@@ -85,7 +85,7 @@ const AdminWorkshops: FC<AdminWorkshopsProps> = () => {
 
     useEffect(() => {
         const loadWorkshops = async () => {
-            await fetch(`${API_BASE_URL}/Workshop/Get`)
+            await fetch(`${API_BASE_URL}/Workshop/Get?onlyPublished=false`)
                 .then(response => response.json())
                 .then(data => {
                     setDataRows(data);

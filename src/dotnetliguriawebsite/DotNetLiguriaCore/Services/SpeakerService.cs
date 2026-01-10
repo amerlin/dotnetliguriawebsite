@@ -17,8 +17,23 @@ namespace DotNetLiguriaCore.Services
             _workshopSpeakersCollection = mongoDatabase.GetCollection<WorkshopSpeaker>(mongoDBDatabaseSettings.Value.SpeakerCollectionName);
         }
 
-        public async Task<List<WorkshopSpeaker>> GetAsync() =>
-            await _workshopSpeakersCollection.Find(_ => true).ToListAsync();
+        public async Task<List<WorkshopSpeaker>> GetAsync(bool onlyActive = false)
+        {
+            var activeSpeakers = await _workshopSpeakersCollection
+                .Find(x => x.IsActive == true)
+                .ToListAsync();
+
+            if (onlyActive)
+            {
+                return activeSpeakers;
+            }
+
+            var inactiveSpeakers = await _workshopSpeakersCollection
+                .Find(x => x.IsActive == false)
+                .ToListAsync();
+
+            return activeSpeakers.Concat(inactiveSpeakers).ToList();
+        }
 
         public async Task<WorkshopSpeaker?> GetAsync(Guid id) =>
             await _workshopSpeakersCollection.Find(x => x.WorkshopSpeakerId == id).FirstOrDefaultAsync();
