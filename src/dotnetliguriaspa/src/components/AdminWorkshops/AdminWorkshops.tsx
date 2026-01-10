@@ -3,8 +3,9 @@ import { API_BASE_URL } from '../../config/apiConfig';
 import { useOidcFetch } from '@axa-fr/react-oidc';
 import { WorkshopModel } from '../../models/WorkshopModel';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import { Box, IconButton, Typography } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
+import { Box, IconButton, Typography, Button } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
 
 interface AdminWorkshopsProps { pageName?: string }
@@ -73,10 +74,10 @@ const AdminWorkshops: FC<AdminWorkshopsProps> = () => {
             sortable: false,
             renderCell: (params) => (
                 <IconButton
-                    color="success"
+                    color="primary"
                     onClick={() => handleViewDetails(params.row.workshopId)}
                 >
-                    <SearchIcon />
+                    <EditIcon />
                 </IconButton>
             ),
         },
@@ -84,7 +85,7 @@ const AdminWorkshops: FC<AdminWorkshopsProps> = () => {
 
     useEffect(() => {
         const loadWorkshops = async () => {
-            await fetch("${API_BASE_URL}/Workshop/Get")
+            await fetch(`${API_BASE_URL}/Workshop/Get`)
                 .then(response => response.json())
                 .then(data => {
                     setDataRows(data);
@@ -98,6 +99,22 @@ const AdminWorkshops: FC<AdminWorkshopsProps> = () => {
             <Typography variant="h4" sx={{ mb: 3 }}>
                 Workshops
             </Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end', width: '80%', mb: 2 }}>
+                <Button
+                    variant="contained"
+                    startIcon={<AddIcon sx={{ color: '#fff' }} />}
+                    onClick={() => navigate('/admin/workshop/create')}
+                    sx={{
+                        backgroundColor: '#4caf50',
+                        color: '#fff',
+                        '&:hover': {
+                            backgroundColor: '#45a049'
+                        }
+                    }}
+                >
+                    Create
+                </Button>
+            </Box>
             <Box sx={{ height: 365, width: '100%' }}>
                 <DataGrid
                     style={{ height: 365, width: "80%" }}

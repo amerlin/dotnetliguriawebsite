@@ -16,7 +16,9 @@ import WorkshopDetail from "./components/WorkshopDetail/WorkshopDetail";
 import AdminDownloads from "./components/AdminDownloads/AdminDownloads";
 import AdminBoard from "./components/AdminBoard/AdminBoard";
 import AdminBoardDetail from "./components/AdminBoardDetail/AdminBoardDetail";
+import AdminSpeakerDetail from "./components/AdminSpeakerDetail/AdminSpeakerDetail";
 import AdminWorkshopDetail from "./components/AdminWorkshopDetail/AdminWorkshopDetail";
+import AdminWorkshopCreate from "./components/AdminWorkshopCreate/AdminWorkshopCreate";
 
 function App() {
     const { isAuthenticated } = useOidc();
@@ -46,7 +48,9 @@ function App() {
                             <Route path='/admin/board/' element={<AdminBoard pageName={"Board"} />} />
                             <Route path='/admin/board/:id' element={<AdminBoardDetail pageName={"Board Detail"} />} />
                             <Route path='/admin/speakers/' element={<AdminSpeakers pageName={"Speakers"} />} />
+                            <Route path='/admin/speakers/:id' element={<AdminSpeakerDetail />} />
                             <Route path='/admin/workshops/' element={<AdminWorkshops pageName={"Workshops"} />} />
+                            <Route path='/admin/workshop/create' element={<AdminWorkshopCreate />} />
                             <Route path='/admin/workshop/:id' element={<AdminWorkshopDetail pageName={"Workshop Detail"} />} />
                             <Route path='/admin/events/' element={<AdminEvents pageName={"Events"} />} />
                             <Route path='/admin/feedbacks' element={<AdminFeedbacks pageName={"Feedbacks"} />} />

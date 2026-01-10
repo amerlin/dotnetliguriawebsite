@@ -21,26 +21,57 @@ const WorkshopItem: FC<WorkshopItemProps> = ({ workshop }) => {
         });
     };
 
-    const formatTime = (date: Date) => {
-        return new Date(date).toLocaleTimeString('it-IT', {
-            hour: '2-digit',
-            minute: '2-digit'
-        });
+    const formatTime = (date: Date | string | any) => {
+        // Convert to ISO string and extract time components directly
+        let dateStr: string;
+
+        if (typeof date === 'string') {
+            dateStr = date;
+        } else {
+            dateStr = date.toISOString();
+        }
+
+        // If the date doesn't have 'Z' at the end, it means the server sent it without timezone
+        // and JavaScript interprets it as local time, adding the timezone offset
+        // We need to subtract that offset to get back to UTC
+        if (!dateStr.endsWith('Z')) {
+            // Date string without Z is interpreted as local time, so we need to handle it differently
+            const localDate = new Date(dateStr);
+            // Get the actual UTC time by subtracting the timezone offset
+            const utcTime = new Date(localDate.getTime() - localDate.getTimezoneOffset() * 60000);
+            dateStr = utcTime.toISOString();
+        }
+
+        // Extract hours and minutes from ISO string (format: YYYY-MM-DDTHH:MM:SS.sssZ)
+        const timePart = dateStr.split('T')[1]; // Get the time part
+        const [hours, minutes] = timePart.split(':');
+
+        return `${hours}:${minutes}`;
     };
 
     const getTrackTimeRange = () => {
         if (!workshop.tracks || workshop.tracks.length === 0) return null;
 
-        // Find earliest start time and latest end time
-        const startTimes = workshop.tracks.map(track => new Date(track.startTime));
-        const endTimes = workshop.tracks.map(track => new Date(track.endTime));
+        // Work directly with the raw date values to avoid timezone conversions
+        const startTimes = workshop.tracks.map(track => track.startTime);
+        const endTimes = workshop.tracks.map(track => track.endTime);
 
-        const earliestStart = new Date(Math.min(...startTimes.map(date => date.getTime())));
-        const latestEnd = new Date(Math.max(...endTimes.map(date => date.getTime())));
+        // Find earliest and latest by comparing ISO strings
+        const earliestStartRaw = startTimes.reduce((earliest, current) => {
+            const earliestStr = typeof earliest === 'string' ? earliest : new Date(earliest).toISOString();
+            const currentStr = typeof current === 'string' ? current : new Date(current).toISOString();
+            return currentStr < earliestStr ? current : earliest;
+        });
+
+        const latestEndRaw = endTimes.reduce((latest, current) => {
+            const latestStr = typeof latest === 'string' ? latest : new Date(latest).toISOString();
+            const currentStr = typeof current === 'string' ? current : new Date(current).toISOString();
+            return currentStr > latestStr ? current : latest;
+        });
 
         return {
-            start: earliestStart,
-            end: latestEnd
+            start: earliestStartRaw,
+            end: latestEndRaw
         };
     };
 

@@ -6,16 +6,18 @@ namespace DotNetLiguriaCore.Model
     {
         [BsonId]
         public Guid WorkshopId { get; set; }
-
         public string? Title { get; set; }
         public string? Description { get; set; }
+        
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         public DateTime? CreationDate { get; set; }
+        
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         public DateTime? EventDate { get; set; }
+        
         public string? BlogHtml { get; set; }
         public string? ImageOld { get; set; }
-
         public string? ImageThumbnail { get; set; }
-
         public string? Image { get; set; }
         public string? Tags { get; set; }
         public bool? Published { get; set; }

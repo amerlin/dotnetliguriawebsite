@@ -72,10 +72,19 @@ const WorkshopDetail: FC<WorkshopDetailProps> = () => {
    };
 
    const formatTime = (date: Date) => {
-      return new Date(date).toLocaleTimeString('it-IT', {
-         hour: '2-digit',
-         minute: '2-digit'
-      });
+      // Convert to ISO string and extract time
+      let dateStr = typeof date === 'string' ? date : new Date(date).toISOString();
+
+      // If the date doesn't have a 'Z' suffix, the server is sending local time
+      // We need to compensate for timezone offset to display the original time
+      if (!dateStr.endsWith('Z')) {
+         const localDate = new Date(dateStr);
+         const utcTime = new Date(localDate.getTime() - localDate.getTimezoneOffset() * 60000);
+         dateStr = utcTime.toISOString();
+      }
+
+      // Extract HH:MM from the ISO string
+      return dateStr.substring(11, 16);
    };
 
    useEffect(() => {

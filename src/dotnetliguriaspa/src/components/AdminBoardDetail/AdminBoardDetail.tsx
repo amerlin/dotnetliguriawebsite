@@ -549,7 +549,7 @@ const AdminBoardDetail: FC<AdminBoardDetailProps> = () => {
 						{/* INFORMAZIONI BASE */}
 						<Paper elevation={1} sx={{ p: 2, mb: 3, backgroundColor: '#f8f9fa' }}>
 							<Typography variant="h6" sx={{ mb: 2, color: 'primary.main', fontWeight: 600 }}>
-								Informazioni Base
+								Quick Info
 							</Typography>
 							<Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 2 }}>
 								<Box sx={{ display: 'flex', alignItems: 'center', flex: 1 }}>

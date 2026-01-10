@@ -6,11 +6,12 @@ namespace DotNetLiguriaCore.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class WorkshopController(WorkshopService workshopService, SpeakerService speakerService, WorkshopFileService workshopFileService) : ControllerBase
+    public class WorkshopController(WorkshopService workshopService, SpeakerService speakerService, WorkshopFileService workshopFileService, IWebHostEnvironment environment) : ControllerBase
     {
         private readonly WorkshopService _workshopService = workshopService;
         private readonly SpeakerService _speakerService = speakerService;
         private readonly WorkshopFileService _workshopFileService = workshopFileService;
+        private readonly IWebHostEnvironment _environment = environment;
 
         [HttpGet]
         public async Task<List<Workshop>> Get()
@@ -64,6 +65,34 @@ namespace DotNetLiguriaCore.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(Workshop newWorkshop)
         {
+            newWorkshop.WorkshopId = Guid.NewGuid();
+            
+            // TODO: Recuperare questo valore dinamicamente in seguito
+            var newWorkshopNumber = 41;
+            var folderName = $"workshop{newWorkshopNumber:000}";
+            newWorkshop.FolderName = folderName;
+            
+            var workshopPath = Path.Combine(_environment.WebRootPath, "workshops", folderName);
+            Directory.CreateDirectory(workshopPath);
+            Directory.CreateDirectory(Path.Combine(workshopPath, "photos"));
+            Directory.CreateDirectory(Path.Combine(workshopPath, "tracks"));
+
+            newWorkshop.Image = "/workshops/workshop041/workshop.png";
+            newWorkshop.ImageThumbnail = "/workshops/workshop041/workshop_thumb.png";
+            newWorkshop.CreationDate = DateTime.Now;
+            newWorkshop.Published = false;
+            
+            if (newWorkshop.Tracks != null)
+            {
+                foreach (var track in newWorkshop.Tracks)
+                {
+                    if (track.WorkshopTrackId == Guid.Empty)
+                    {
+                        track.WorkshopTrackId = Guid.NewGuid();
+                    }
+                }
+            }
+            
             await _workshopService.CreateAsync(newWorkshop);
 
             return CreatedAtAction(nameof(Get), new { id = newWorkshop.WorkshopId }, newWorkshop);
@@ -80,6 +109,17 @@ namespace DotNetLiguriaCore.Controllers
             }
 
             updatedWorkshop.WorkshopId = Workshop.WorkshopId;
+            
+            if (updatedWorkshop.Tracks != null)
+            {
+                foreach (var track in updatedWorkshop.Tracks)
+                {
+                    if (track.WorkshopTrackId == Guid.Empty)
+                    {
+                        track.WorkshopTrackId = Guid.NewGuid();
+                    }
+                }
+            }
 
             await _workshopService.UpdateAsync(id, updatedWorkshop);
 
