@@ -430,6 +430,28 @@ const WorkshopDetail: FC<WorkshopDetailProps> = () => {
                   )}
                </Grid>
             </Grid>
+
+            {/* Google Maps Section */}
+            {workshop.location && workshop.location.coordinates && (
+               <Box sx={{ mt: 4, mb: 4 }}>
+                  <Typography variant="h5" component="h2" sx={{ mb: 2, fontWeight: 'bold' }}>
+                     Sede dell&apos;evento
+                  </Typography>
+                  <Box
+                     component="iframe"
+                     src={`https://maps.google.com/maps?q=${encodeURIComponent(workshop.location.address)}&output=embed&z=17`}
+                     sx={{
+                        width: '100%',
+                        height: '450px',
+                        border: 'none',
+                        borderRadius: '8px',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                     }}
+                     title="Workshop Location"
+                     loading="lazy"
+                  />
+               </Box>
+            )}
          </Container>
 
          {/* Scroll to Top Button */}
