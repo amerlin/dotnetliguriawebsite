@@ -47,13 +47,13 @@
   padding: 16px;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   overflow: hidden;
-  min-width: 280px;
-  width: 280px;
+  min-width: 320px;
+  width: 320px;
   flex-shrink: 0;
 }
 
 .workshopItemImage {
-  width: 280px;
+  width: 320px;
   height: 180px;
   object-fit: cover;
   border-radius: 8px;
