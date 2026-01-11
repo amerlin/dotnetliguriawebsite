@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Box, Typography, Paper, Grid, TextField, IconButton, Button, Snackbar, Alert, CircularProgress, Card, CardContent, Divider, Dialog, DialogTitle, DialogContent, DialogActions, Autocomplete, Switch, FormControlLabel, Fab, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
+import { Box, Typography, Paper, Grid, TextField, IconButton, Button, Snackbar, Alert, CircularProgress, Card, CardContent, Dialog, DialogTitle, DialogContent, DialogActions, Autocomplete, Switch, FormControlLabel, Fab, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import { useParams, useNavigate } from 'react-router-dom';
 import { useOidcFetch } from '@axa-fr/react-oidc';
 import { API_BASE_URL, CONTENT_BASE_URL } from '../../config/apiConfig';
@@ -13,7 +13,6 @@ import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DescriptionIcon from '@mui/icons-material/Description';
-import PhotoIcon from '@mui/icons-material/Photo';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
@@ -47,6 +46,7 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 	const [trackEndTime, setTrackEndTime] = useState('');
 	const [trackAbstract, setTrackAbstract] = useState('');
 	const [trackLevel, setTrackLevel] = useState('0');
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [availableSpeakers, setAvailableSpeakers] = useState<SpeakerModel[]>([]);
 	const [selectedSpeakers, setSelectedSpeakers] = useState<SpeakerModel[]>([]);
 	const [materials, setMaterials] = useState<WorkshopFileModel[]>([]);
@@ -64,7 +64,7 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 	useEffect(() => {
 		const loadSpeakers = async () => {
 			try {
-				const response = await fetch(`${API_BASE_URL}/Speaker/Get?onlyActive=true`);
+				await fetch(`${API_BASE_URL}/Speaker/Get?onlyActive=true`);
 			} catch (error) {
 				console.error('Error loading speakers:', error);
 			}
@@ -139,7 +139,7 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 				setWorkshop(data);
 				// Populate publication fields
 				setPublished(data.published || false);
-				setInHomepage((data as any).in_homepage || false);
+				setInHomepage((data as WorkshopModel & { in_homepage?: boolean }).in_homepage || false);
 				// Populate description field
 				setDescription(data.description || '');
 				// Populate location fields
@@ -853,7 +853,7 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 					<Box>
 						{[...workshop.tracks]
 							.sort((a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime())
-							.map((track, index) => (
+							.map((track) => (
 								<Accordion
 									key={track.workshopTrackId}
 									expanded={expandedTrackId === track.workshopTrackId}
