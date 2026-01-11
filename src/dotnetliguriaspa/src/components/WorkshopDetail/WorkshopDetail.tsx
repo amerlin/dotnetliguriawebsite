@@ -28,6 +28,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import DescriptionIcon from '@mui/icons-material/Description';
 import { WorkshopModel } from '../../models/WorkshopModel';
 import { getWorkshopById } from '../../services/workShopService';
+import { CONTENT_BASE_URL } from '../../config/apiConfig';
 import HeroSection from '../HeroSection/HeroSection';
 import styles from './WorkshopDetail.module.css';
 
@@ -170,7 +171,7 @@ const WorkshopDetail: FC<WorkshopDetailProps> = () => {
                      {workshop.image && (
                         <CardMedia
                            component="img"
-                           image={workshop.image}
+                           image={`${CONTENT_BASE_URL}${workshop.image.replace(/^\//, '')}`}
                            alt={workshop.title}
                            className={styles.workshopImage}
                            sx={{

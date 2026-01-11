@@ -1,4 +1,3 @@
-
 using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 
@@ -12,6 +11,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 
 namespace DotNetLiguriaCore;
@@ -85,6 +85,19 @@ public class Program
         app.UseHttpsRedirection();
         app.UseAuthentication();
         app.UseStaticFiles();
+        
+        var contentsPath = Path.Combine(builder.Environment.ContentRootPath, "Contents");
+        if (!Directory.Exists(contentsPath))
+        {
+            Directory.CreateDirectory(contentsPath);
+        }
+        
+        app.UseStaticFiles(new StaticFileOptions
+        {
+            FileProvider = new PhysicalFileProvider(contentsPath),
+            RequestPath = "/Contents"
+        });
+        
         app.UseRouting();
 
         app.UseAuthorization();

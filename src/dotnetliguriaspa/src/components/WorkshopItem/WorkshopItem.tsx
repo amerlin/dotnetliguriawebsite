@@ -6,6 +6,7 @@ import {
     Box
 } from "@mui/material";
 import { WorkshopModel } from '../../models/WorkshopModel';
+import { CONTENT_BASE_URL } from '../../config/apiConfig';
 import styles from './WorkshopItem.module.css';
 
 export interface WorkshopItemProps {
@@ -157,7 +158,7 @@ const WorkshopItem: FC<WorkshopItemProps> = ({ workshop }) => {
                 {workshop.image && (
                     <Box className={styles.imageContainer} sx={{ flexShrink: 0 }}>
                         <img
-                            src={workshop.image}
+                            src={`${CONTENT_BASE_URL}${workshop.image.replace(/^\//, '')}`}
                             alt={workshop.title}
                             className={styles.workshopItemImage}
                         />

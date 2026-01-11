@@ -50,11 +50,12 @@ namespace DotNetLiguriaCore.Controllers
                 return BadRequest("Workshop folder name is not set.");
             }
 
-            var workshopPath = Path.Combine(_environment.WebRootPath, "workshops", workshop.FolderName);
+            var contentsPath = Path.Combine(_environment.ContentRootPath, "Contents");
+            var workshopPath = Path.Combine(contentsPath, "workshops", workshop.FolderName);
             
             if (!Directory.Exists(workshopPath))
             {
-                return BadRequest("Workshop folder does not exist.");
+                Directory.CreateDirectory(workshopPath);
             }
 
             var fileName = "workshop.png";
@@ -102,11 +103,12 @@ namespace DotNetLiguriaCore.Controllers
                 return BadRequest("Workshop folder name is not set.");
             }
 
-            var workshopPath = Path.Combine(_environment.WebRootPath, "workshops", workshop.FolderName);
+            var contentsPath = Path.Combine(_environment.ContentRootPath, "Contents");
+            var workshopPath = Path.Combine(contentsPath, "workshops", workshop.FolderName);
             
             if (!Directory.Exists(workshopPath))
             {
-                return BadRequest("Workshop folder does not exist.");
+                Directory.CreateDirectory(workshopPath);
             }
 
             string subFolder = fileType switch
@@ -182,7 +184,9 @@ namespace DotNetLiguriaCore.Controllers
 
             if (!string.IsNullOrEmpty(workshopFile.FullPath))
             {
-                var physicalPath = Path.Combine(_environment.WebRootPath, workshopFile.FullPath.TrimStart('/').Replace('/', Path.DirectorySeparatorChar));
+                var contentsPath = Path.Combine(_environment.ContentRootPath, "Contents");
+                var relativePath = workshopFile.FullPath.TrimStart('/').Replace('/', Path.DirectorySeparatorChar);
+                var physicalPath = Path.Combine(contentsPath, relativePath);
 
                 if (System.IO.File.Exists(physicalPath))
                 {

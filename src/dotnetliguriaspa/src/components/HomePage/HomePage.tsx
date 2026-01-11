@@ -8,6 +8,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import ArticleIcon from '@mui/icons-material/Article';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import { CONTENT_BASE_URL } from '../../config/apiConfig';
 import BusinessIcon from '@mui/icons-material/Business';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import TopBar from '../TopBar/TopBar';
@@ -165,7 +166,7 @@ export default function Home() {
                     .map((profile: BoardProfileModel) => ({
                         name: profile.name,
                         title: profile.description || '',
-                        image: profile.profileImageUrl ? `/${profile.profileImageUrl}` : `https://ui-avatars.com/api/?name=${encodeURIComponent(profile.name)}&background=ccc&color=fff&size=300`,
+                        image: profile.profileImageUrl ? `${CONTENT_BASE_URL}${profile.profileImageUrl.replace(/^\//, '')}` : `https://ui-avatars.com/api/?name=${encodeURIComponent(profile.name)}&background=ccc&color=fff&size=300`,
                         description: profile.profileBio || '',
                         shortBio: profile.shortBio,
                         blogUrl: profile.blogHtml,

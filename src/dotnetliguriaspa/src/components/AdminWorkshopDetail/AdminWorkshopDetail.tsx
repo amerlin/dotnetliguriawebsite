@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import { Box, Typography, Paper, Grid, TextField, IconButton, Button, Snackbar, Alert, CircularProgress, Card, CardContent, Divider, Dialog, DialogTitle, DialogContent, DialogActions, Autocomplete, Switch, FormControlLabel, Fab, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import { useParams, useNavigate } from 'react-router-dom';
 import { useOidcFetch } from '@axa-fr/react-oidc';
-import { API_BASE_URL } from '../../config/apiConfig';
+import { API_BASE_URL, CONTENT_BASE_URL } from '../../config/apiConfig';
 import { WorkshopModel } from '../../models/WorkshopModel';
 import { TrackModel } from '../../models/TrackModel';
 import { SpeakerModel } from '../../models/SpeakerModel';
@@ -347,6 +347,13 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 			});
 
 			if (response.ok) {
+				// Ricarica il workshop per ottenere l'immagine aggiornata
+				const workshopResponse = await fetch(`${API_BASE_URL}/Workshop/Get/${workshop.workshopId}`);
+				if (workshopResponse.ok) {
+					const updatedWorkshop: WorkshopModel = await workshopResponse.json();
+					setWorkshop(updatedWorkshop);
+				}
+
 				setSnackbarMessage('Workshop image uploaded successfully');
 				setSnackbarSeverity('success');
 				setSnackbarOpen(true);
@@ -655,7 +662,7 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 							</Typography>
 							<Box
 								component="img"
-								src={workshop.image}
+								src={`${CONTENT_BASE_URL}${workshop.image.replace(/^\//, '')}`}
 								alt={workshop.title}
 								sx={{
 									width: '100%',
