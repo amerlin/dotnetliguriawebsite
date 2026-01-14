@@ -3,9 +3,10 @@ import { API_BASE_URL } from '../../config/apiConfig';
 import { useOidcFetch } from '@axa-fr/react-oidc';
 import { WorkshopModel } from '../../models/WorkshopModel';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import { Box, IconButton, Typography, Button } from '@mui/material';
+import { Box, IconButton, Typography, Button, TextField } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
+import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
 
 interface AdminWorkshopsProps { pageName?: string }
@@ -15,6 +16,7 @@ const AdminWorkshops: FC<AdminWorkshopsProps> = () => {
     const { fetch } = useOidcFetch();
     const navigate = useNavigate();
     const [dataRows, setDataRows] = useState<WorkshopModel[]>([]);
+    const [searchText, setSearchText] = useState<string>('');
 
     const handleViewDetails = (workshopId: string) => {
         navigate(`/admin/workshop/${workshopId}`);
@@ -94,12 +96,16 @@ const AdminWorkshops: FC<AdminWorkshopsProps> = () => {
         loadWorkshops().catch(console.error);
     }, []);
 
+    const filteredRows = dataRows.filter(workshop =>
+        workshop.title.toLowerCase().includes(searchText.toLowerCase())
+    );
+
     return (
         <Box sx={{ width: '100%', p: 3 }}>
-            <Typography variant="h4" sx={{ mb: 3 }}>
-                Workshops
-            </Typography>
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end', width: '80%', mb: 2 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+                <Typography variant="h4">
+                    Workshops
+                </Typography>
                 <Button
                     variant="contained"
                     startIcon={<AddIcon sx={{ color: '#fff' }} />}
@@ -115,11 +121,23 @@ const AdminWorkshops: FC<AdminWorkshopsProps> = () => {
                     Create
                 </Button>
             </Box>
+            <Box sx={{ mb: 2, width: '80%' }}>
+                <TextField
+                    fullWidth
+                    variant="outlined"
+                    placeholder="Cerca per titolo workshop..."
+                    value={searchText}
+                    onChange={(e) => setSearchText(e.target.value)}
+                    InputProps={{
+                        startAdornment: <SearchIcon sx={{ mr: 1, color: 'action.active' }} />
+                    }}
+                />
+            </Box>
             <Box sx={{ height: 365, width: '100%' }}>
                 <DataGrid
                     style={{ height: 365, width: "80%" }}
                     getRowId={(data) => data.workshopId}
-                    rows={dataRows}
+                    rows={filteredRows}
                     columns={columns}
                     initialState={{
                         pagination: {

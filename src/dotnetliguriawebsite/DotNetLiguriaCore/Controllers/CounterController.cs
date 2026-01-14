@@ -49,7 +49,6 @@ namespace DotNetLiguriaCore.Controllers
 			return counterGetModel;
 		}
 
-
 		[HttpPost]
 		public async Task<IActionResult> Post(Counter newCounter)
 		{
@@ -72,5 +71,7 @@ namespace DotNetLiguriaCore.Controllers
 
 			return NoContent();
 		}
+		
+
 	}
 }

@@ -3,9 +3,10 @@ import { API_BASE_URL } from '../../config/apiConfig';
 import { useOidcFetch } from "@axa-fr/react-oidc";
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import SpeakerModel from '../../models/SpeakerModel';
-import { Avatar, Box, Button, IconButton, Typography } from "@mui/material";
+import { Avatar, Box, Button, IconButton, TextField, Typography } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
+import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
 interface AdminSpeakersProps { pageName?: string }
 
@@ -14,6 +15,7 @@ const AdminSpeakers: FC<AdminSpeakersProps> = () => {
     const navigate = useNavigate();
     const [dataRows, setDataRows] = useState<SpeakerModel[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const [searchText, setSearchText] = useState<string>('');
 
     const handleViewDetails = (speakerId: string) => {
         navigate(`/admin/speakers/${speakerId}`);
@@ -74,6 +76,10 @@ const AdminSpeakers: FC<AdminSpeakersProps> = () => {
         loadSpeakers();
     }, [fetch]);
 
+    const filteredRows = dataRows.filter(speaker =>
+        speaker.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+
     return (
         <Box sx={{ width: '100%', p: 3 }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
@@ -95,10 +101,22 @@ const AdminSpeakers: FC<AdminSpeakersProps> = () => {
                     Add
                 </Button>
             </Box>
+            <Box sx={{ mb: 2 }}>
+                <TextField
+                    fullWidth
+                    variant="outlined"
+                    placeholder="Cerca per nome speaker..."
+                    value={searchText}
+                    onChange={(e) => setSearchText(e.target.value)}
+                    InputProps={{
+                        startAdornment: <SearchIcon sx={{ mr: 1, color: 'action.active' }} />
+                    }}
+                />
+            </Box>
             <Box sx={{ height: 600, width: '100%' }}>
                 <DataGrid
                     getRowId={(row) => row.workshopSpeakerId}
-                    rows={dataRows}
+                    rows={filteredRows}
                     columns={columns}
                     loading={loading}
                     pageSize={10}

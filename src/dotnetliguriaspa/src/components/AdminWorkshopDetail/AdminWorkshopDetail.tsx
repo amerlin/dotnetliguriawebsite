@@ -46,7 +46,6 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 	const [trackEndTime, setTrackEndTime] = useState('');
 	const [trackAbstract, setTrackAbstract] = useState('');
 	const [trackLevel, setTrackLevel] = useState('0');
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [availableSpeakers, setAvailableSpeakers] = useState<SpeakerModel[]>([]);
 	const [selectedSpeakers, setSelectedSpeakers] = useState<SpeakerModel[]>([]);
 	const [materials, setMaterials] = useState<WorkshopFileModel[]>([]);
@@ -60,11 +59,16 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 	const [photoFile, setPhotoFile] = useState<File | null>(null);
 	const [expandedTrackId, setExpandedTrackId] = useState<string | false>(false);
 	const [workshopImageFile, setWorkshopImageFile] = useState<File | null>(null);
+	const [imageTimestamp, setImageTimestamp] = useState<number>(Date.now());
 
 	useEffect(() => {
 		const loadSpeakers = async () => {
 			try {
-				await fetch(`${API_BASE_URL}/Speaker/Get?onlyActive=true`);
+				const response = await fetch(`${API_BASE_URL}/Speaker/Get?onlyActive=true`);
+				if (response.ok) {
+					const data: SpeakerModel[] = await response.json();
+					setAvailableSpeakers(data);
+				}
 			} catch (error) {
 				console.error('Error loading speakers:', error);
 			}
@@ -352,6 +356,8 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 				if (workshopResponse.ok) {
 					const updatedWorkshop: WorkshopModel = await workshopResponse.json();
 					setWorkshop(updatedWorkshop);
+					// Aggiorna il timestamp per forzare il reload dell'immagine
+					setImageTimestamp(Date.now());
 				}
 
 				setSnackbarMessage('Workshop image uploaded successfully');
@@ -662,7 +668,7 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 							</Typography>
 							<Box
 								component="img"
-								src={`${CONTENT_BASE_URL}${workshop.image.replace(/^\//, '')}`}
+								src={`${CONTENT_BASE_URL}${workshop.image.replace(/^\//, '')}?t=${imageTimestamp}`}
 								alt={workshop.title}
 								sx={{
 									width: '100%',

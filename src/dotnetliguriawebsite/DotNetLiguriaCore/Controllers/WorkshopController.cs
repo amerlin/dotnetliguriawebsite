@@ -6,11 +6,12 @@ namespace DotNetLiguriaCore.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class WorkshopController(WorkshopService workshopService, SpeakerService speakerService, WorkshopFileService workshopFileService, IWebHostEnvironment environment) : ControllerBase
+    public class WorkshopController(WorkshopService workshopService, SpeakerService speakerService, WorkshopFileService workshopFileService, CounterService counterService, IWebHostEnvironment environment) : ControllerBase
     {
         private readonly WorkshopService _workshopService = workshopService;
         private readonly SpeakerService _speakerService = speakerService;
         private readonly WorkshopFileService _workshopFileService = workshopFileService;
+        private readonly CounterService _counterService = counterService;
         private readonly IWebHostEnvironment _environment = environment;
 
         [HttpGet]
@@ -67,18 +68,25 @@ namespace DotNetLiguriaCore.Controllers
         {
             newWorkshop.WorkshopId = Guid.NewGuid();
             
-            // TODO: Recuperare questo valore dinamicamente in seguito
-            var newWorkshopNumber = 41;
+            var counter = await _counterService.GetByNameAsync("Workshop");
+            
+            if (counter is null)
+            {
+                return BadRequest("Workshop counter not found.");
+            }
+            
+            var newWorkshopNumber = counter.Value ?? 1;
             var folderName = $"workshop{newWorkshopNumber:000}";
             newWorkshop.FolderName = folderName;
             
-            var workshopPath = Path.Combine(_environment.WebRootPath, "workshops", folderName);
+            var contentsPath = Path.Combine(_environment.ContentRootPath, "Contents");
+            var workshopPath = Path.Combine(contentsPath, "workshops", folderName);
             Directory.CreateDirectory(workshopPath);
             Directory.CreateDirectory(Path.Combine(workshopPath, "photos"));
             Directory.CreateDirectory(Path.Combine(workshopPath, "tracks"));
 
-            newWorkshop.Image = "/workshops/workshop041/workshop.png";
-            newWorkshop.ImageThumbnail = "/workshops/workshop041/workshop_thumb.png";
+            newWorkshop.Image = $"/workshops/{folderName}/workshop.png";
+            newWorkshop.ImageThumbnail = $"/workshops/{folderName}/workshop_thumb.png";
             newWorkshop.CreationDate = DateTime.Now;
             newWorkshop.Published = false;
             
@@ -94,6 +102,9 @@ namespace DotNetLiguriaCore.Controllers
             }
             
             await _workshopService.CreateAsync(newWorkshop);
+            
+            counter.Value = newWorkshopNumber + 1;
+            await _counterService.UpdateAsync(counter.CounterId, counter);
 
             return CreatedAtAction(nameof(Get), new { id = newWorkshop.WorkshopId }, newWorkshop);
         }
