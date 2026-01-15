@@ -22,7 +22,7 @@ const WorkshopItem: FC<WorkshopItemProps> = ({ workshop }) => {
         });
     };
 
-    const formatTime = (date: Date | string | any) => {
+    const formatTime = (date: Date | string) => {
         // Convert to ISO string and extract time components directly
         let dateStr: string;
 
@@ -77,16 +77,16 @@ const WorkshopItem: FC<WorkshopItemProps> = ({ workshop }) => {
     };
 
     // Calculate estimated number of lines based on text length
-    const calculateDescriptionHeight = (text: string) => {
-        if (!text) return '1.5em'; // Minimum one line
+    // const calculateDescriptionHeight = (text: string) => {
+    //     if (!text) return '1.5em'; // Minimum one line
 
-        const averageCharsPerLine = 80; // Approximate characters per line
-        const estimatedLines = Math.ceil(text.length / averageCharsPerLine);
-        const minLines = 1;
-        const actualLines = Math.max(minLines, estimatedLines);
+    //     const averageCharsPerLine = 80; // Approximate characters per line
+    //     const estimatedLines = Math.ceil(text.length / averageCharsPerLine);
+    //     const minLines = 1;
+    //     const actualLines = Math.max(minLines, estimatedLines);
 
-        return `${actualLines * 1.5}em`; // 1.5em per line
-    };
+    //     return `${actualLines * 1.5}em`; // 1.5em per line
+    // };
 
     return (
         <Card className={styles.workshopItemCard} data-testid="WorkshopItem" sx={{ backgroundColor: 'white', height: 'auto' }}>

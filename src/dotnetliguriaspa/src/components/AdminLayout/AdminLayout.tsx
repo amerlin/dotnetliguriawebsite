@@ -5,7 +5,7 @@ import CustomSideBar from "../CustomSideBar/CustomSideBar";
 import { Outlet } from "react-router-dom";
 interface AdminLayoutProps { pageName?: string; }
 
-const AdminLayout: FC<AdminLayoutProps> = ({ pageName }) => (
+const AdminLayout: FC<AdminLayoutProps> = () => (
     <>
         <TopBar pageName={""} showMenu={false} />
         <Box component={"div"} display={"flex"} sx={{ marginTop: '60px' }}>

@@ -64,7 +64,7 @@ const AdminSpeakerDetail: FC = () => {
 		loadSpeaker();
 	}, [id, fetch, isNewSpeaker]);
 
-	const handleUpdateField = async (field: string, value: any) => {
+	const handleUpdateField = async (field: string, value: string | boolean | number) => {
 		if (!speaker) return;
 
 		try {
@@ -163,7 +163,7 @@ const AdminSpeakerDetail: FC = () => {
 		}
 	};
 
-	const handleNewSpeakerChange = (field: string, value: any) => {
+	const handleNewSpeakerChange = (field: string, value: string | boolean | number) => {
 		setNewSpeakerForm(prev => ({ ...prev, [field]: value }));
 	};
 
@@ -293,7 +293,7 @@ const AdminSpeakerDetail: FC = () => {
 				<Grid container spacing={3}>
 					<Grid item xs={12} md={3} sx={{ display: 'flex', justifyContent: 'center' }}>
 						<img
-							src={(speaker as any).profileImageUrl ? `/${(speaker as any).profileImageUrl}` : (speaker.profileImage ? `/${speaker.profileImage}` : '/speakers/unknown.jpg')}
+						src={'profileImageUrl' in speaker ? `/${(speaker as Record<string, unknown>).profileImageUrl}` : (speaker.profileImage ? `/${speaker.profileImage}` : '/speakers/unknown.jpg')}
 							alt={speaker.name}
 							onError={(e) => {
 								const target = e.target as HTMLImageElement;

@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { useOidcIdToken, useOidcUser } from '@axa-fr/react-oidc';
+import { useOidcUser } from '@axa-fr/react-oidc';
 import { UserProfileModel } from '../../models/UserProfileModel';
 import { FormProfileData } from '../../models/FormProfileData';
 import { useForm, SubmitHandler } from "react-hook-form";

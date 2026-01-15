@@ -15,7 +15,7 @@ interface MenuItem {
     href: string;
 }
 
-const TopBar: FC<TopBarProps> = ({ showMenu, pageName }) => {
+const TopBar: FC<TopBarProps> = () => {
     const navigate = useNavigate();
     const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
 

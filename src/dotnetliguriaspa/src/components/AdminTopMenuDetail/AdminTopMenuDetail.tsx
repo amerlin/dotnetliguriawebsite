@@ -62,7 +62,7 @@ const AdminTopMenuDetail: FC = () => {
 		loadElement();
 	}, [id, fetch, isNewElement]);
 
-	const handleUpdateField = async (field: string, value: any) => {
+	const handleUpdateField = async (field: string, value: string | boolean | number) => {
 		if (!element) return;
 
 		try {
@@ -161,7 +161,7 @@ const AdminTopMenuDetail: FC = () => {
 		}
 	};
 
-	const handleNewElementChange = (field: string, value: any) => {
+	const handleNewElementChange = (field: string, value: string | boolean | number) => {
 		setNewElementForm(prev => ({ ...prev, [field]: value }));
 	};
 

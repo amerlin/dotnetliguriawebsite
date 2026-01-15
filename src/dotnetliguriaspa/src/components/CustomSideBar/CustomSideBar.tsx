@@ -6,7 +6,7 @@ import FeedIcon from '@mui/icons-material/Feed';
 import PersonIcon from '@mui/icons-material/Person';
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import EventNoteIcon from '@mui/icons-material/EventNote';
-import DownloadIcon from '@mui/icons-material/Download';
+// import DownloadIcon from '@mui/icons-material/Download';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link as RouterLink } from "react-router-dom";
 const CustomSideBar: FC = () => {

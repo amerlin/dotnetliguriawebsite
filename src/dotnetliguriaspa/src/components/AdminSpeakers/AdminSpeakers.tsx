@@ -3,7 +3,7 @@ import { API_BASE_URL } from '../../config/apiConfig';
 import { useOidcFetch } from "@axa-fr/react-oidc";
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import SpeakerModel from '../../models/SpeakerModel';
-import { Avatar, Box, Button, IconButton, TextField, Typography } from "@mui/material";
+import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
