@@ -293,7 +293,7 @@ const AdminSpeakerDetail: FC = () => {
 				<Grid container spacing={3}>
 					<Grid item xs={12} md={3} sx={{ display: 'flex', justifyContent: 'center' }}>
 						<img
-						src={'profileImageUrl' in speaker ? `/${(speaker as Record<string, unknown>).profileImageUrl}` : (speaker.profileImage ? `/${speaker.profileImage}` : '/speakers/unknown.jpg')}
+							src={'profileImageUrl' in speaker ? `/${(speaker as Record<string, unknown>).profileImageUrl}` : (speaker.profileImage ? `/${speaker.profileImage}` : '/speakers/unknown.jpg')}
 							alt={speaker.name}
 							onError={(e) => {
 								const target = e.target as HTMLImageElement;
