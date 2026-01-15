@@ -1,22 +1,54 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import LoginControl from '../loginControl';
 import './TopBar.css';
+import { API_BASE_URL } from '../../config/apiConfig';
+import TopMenuElementModel from '../../models/TopMenuElementModel';
 
 interface TopBarProps {
     pageName?: string;
     showMenu: boolean;
 }
 
-const menuItems = [
-    { label: 'Home', href: '/' },
-    { label: '.NET Conf 2025', href: '/#dotnet-conf' },
-    { label: 'Il Team', href: '/#team' },
-    { label: 'Eventi passati', href: '/workshops' },
-];
+interface MenuItem {
+    label: string;
+    href: string;
+}
 
 const TopBar: FC<TopBarProps> = ({ showMenu, pageName }) => {
     const navigate = useNavigate();
+    const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
+
+    useEffect(() => {
+        const loadMenuItems = async () => {
+            try {
+                const response = await fetch(`${API_BASE_URL}/TopMenu`);
+                const data: TopMenuElementModel[] = await response.json();
+
+                // Filtra solo elementi attivi e ordina per campo order
+                const activeItems = data
+                    .filter(item => item.isActive)
+                    .sort((a, b) => a.order - b.order)
+                    .map(item => ({
+                        label: item.name,
+                        href: item.url
+                    }));
+
+                setMenuItems(activeItems);
+            } catch (error) {
+                console.error('Error loading menu items:', error);
+                // Fallback ai menu items di default in caso di errore
+                setMenuItems([
+                    { label: 'Home', href: '/' },
+                    { label: '.NET Conf 2025', href: '/#evidence' },
+                    { label: 'Il Team', href: '/#team' },
+                    { label: 'Eventi passati', href: '/workshops' },
+                ]);
+            }
+        };
+
+        loadMenuItems();
+    }, []);
 
     const handleNavigation = (href: string) => {
         if (href === '/') {

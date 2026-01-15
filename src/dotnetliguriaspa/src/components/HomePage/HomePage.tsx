@@ -210,7 +210,7 @@ export default function Home() {
                         </Box>
                     </div>
                 </section>
-                <section className="dotnet-conf fullscreen-section" id="dotnet-conf">
+                <section className="dotnet-conf fullscreen-section" id="evidence">
                     <Container maxWidth={false} className="section-content" style={{ padding: '0 4rem', paddingTop: '30px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <Typography variant="h2" align="center" gutterBottom sx={{ fontFamily: "'Titillium Web', sans-serif", fontWeight: 600, marginTop: 0, marginBottom: 3, width: '100%' }}>
                             .NET Conf 2025 - Le Novità di .NET 10

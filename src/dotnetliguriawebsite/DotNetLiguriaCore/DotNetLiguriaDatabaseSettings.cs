@@ -21,5 +21,7 @@ namespace DotNetLiguriaCore
         public string CounterCollectionName { get; set; } = null!;
 
         public string WorkshopFileCollectionName { get; set; } = null!;
+
+        public string TopMenuCollectionName { get; set; } = null!;
     }
 }
