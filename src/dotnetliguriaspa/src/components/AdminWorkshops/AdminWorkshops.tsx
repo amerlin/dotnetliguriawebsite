@@ -54,7 +54,7 @@ const AdminWorkshops: FC<AdminWorkshopsProps> = () => {
             )
         },
         {
-            field: 'in_Homepage',
+            field: 'in_homepage',
             headerName: 'In Homepage',
             width: 130,
             resizable: true,

@@ -26,7 +26,6 @@ namespace DotNetLiguriaCore.Controllers
             return returnValue;
         }
 
-
         [HttpGet("{id}")]
         public async Task<ActionResult<Workshop>> Get(Guid id)
         {
@@ -101,6 +100,11 @@ namespace DotNetLiguriaCore.Controllers
                 }
             }
             
+            if (newWorkshop.In_homepage)
+            {
+                await _workshopService.ClearAllHomepageAsync();
+            }
+            
             await _workshopService.CreateAsync(newWorkshop);
             
             counter.Value = newWorkshopNumber + 1;
@@ -130,6 +134,11 @@ namespace DotNetLiguriaCore.Controllers
                         track.WorkshopTrackId = Guid.NewGuid();
                     }
                 }
+            }
+
+            if (updatedWorkshop.In_homepage)
+            {
+                await _workshopService.ClearAllHomepageAsync();
             }
 
             await _workshopService.UpdateAsync(id, updatedWorkshop);

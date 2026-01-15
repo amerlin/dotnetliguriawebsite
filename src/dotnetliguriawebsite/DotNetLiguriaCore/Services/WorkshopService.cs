@@ -99,6 +99,12 @@ namespace DotNetLiguriaCore.Services
         public async Task RemoveAsync(Guid id) =>
             await _workshopsCollection.DeleteOneAsync(x => x.WorkshopId == id);
 
+        public async Task ClearAllHomepageAsync()
+        {
+            var filter = Builders<Workshop>.Filter.Eq(x => x.In_homepage, true);
+            var update = Builders<Workshop>.Update.Set(x => x.In_homepage, false);
+            await _workshopsCollection.UpdateManyAsync(filter, update);
+        }
 
         private async Task<Workshop?> FindBBsonIdAsync(Guid workshopId)
         {

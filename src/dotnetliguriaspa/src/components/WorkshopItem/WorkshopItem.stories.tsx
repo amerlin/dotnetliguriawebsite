@@ -15,6 +15,7 @@ export const Default = () => <WorkshopItem workshop={{
     blogHtml: '',
     tags: 'react,typescript,frontend',
     published: true,
+    in_homepage: false,
     isExternalEvent: false,
     externalRegistration: false,
     externalRegistrationLink: '',

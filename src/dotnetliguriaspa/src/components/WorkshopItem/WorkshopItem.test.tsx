@@ -15,6 +15,7 @@ describe('<WorkshopItem />', () => {
             blogHtml: '',
             tags: '',
             published: true,
+            in_homepage: false,
             isExternalEvent: false,
             externalRegistration: false,
             externalRegistrationLink: '',

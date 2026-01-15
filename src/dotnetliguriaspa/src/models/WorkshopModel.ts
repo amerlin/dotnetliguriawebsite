@@ -12,6 +12,7 @@ export interface WorkshopModel {
   image: string;
   tags: string;
   published: boolean;
+  in_homepage: boolean;
   isExternalEvent: boolean;
   externalRegistration: boolean;
   externalRegistrationLink: string;
