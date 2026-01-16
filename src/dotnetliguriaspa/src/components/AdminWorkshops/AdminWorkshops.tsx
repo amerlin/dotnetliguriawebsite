@@ -102,7 +102,7 @@ const AdminWorkshops: FC<AdminWorkshopsProps> = () => {
 
     return (
         <Box sx={{ width: '100%', p: 3 }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+            <Box sx={{ width: '80%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
                 <Typography variant="h4">
                     Workshops
                 </Typography>
