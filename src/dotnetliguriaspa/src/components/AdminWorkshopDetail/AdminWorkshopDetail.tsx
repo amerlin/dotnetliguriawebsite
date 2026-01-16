@@ -615,7 +615,7 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 						</Typography>
 					</Grid>
 					<Grid item xs={12} md={7}>
-						<Typography variant="h6" sx={{ color: 'primary.main', fontWeight: 600 }}>
+						<Typography variant="h6" sx={{ color: 'primary.main', fontWeight: 600, textAlign: 'center' }}>
 							Feedback QrCode
 						</Typography>
 					</Grid>
