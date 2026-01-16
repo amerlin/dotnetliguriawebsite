@@ -29,6 +29,7 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 	const [workshop, setWorkshop] = useState<WorkshopModel | null>(null);
 	const [published, setPublished] = useState<boolean>(false);
 	const [inHomepage, setInHomepage] = useState<boolean>(false);
+	const [feedbackEnabled, setFeedbackEnabled] = useState<boolean>(false);
 	const [locationName, setLocationName] = useState<string>('');
 	const [latitude, setLatitude] = useState<string>('');
 	const [longitude, setLongitude] = useState<string>('');
@@ -147,6 +148,7 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 				// Populate publication fields
 				setPublished(data.published || false);
 				setInHomepage((data as WorkshopModel & { in_homepage?: boolean }).in_homepage || false);
+				setFeedbackEnabled((data as WorkshopModel & { feedbackEnabled?: boolean }).feedbackEnabled || false);
 				// Populate title, eventDate and description fields
 				setTitle(data.title || '');
 				setEventDate(data.eventDate ? new Date(data.eventDate).toISOString().slice(0, 10) : '');
@@ -224,6 +226,7 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 				...workshop,
 				published: published,
 				in_homepage: inHomepage,
+				feedbackEnabled: feedbackEnabled,
 			};
 
 			const response = await fetch(`${API_BASE_URL}/Workshop/Update/${workshop.workshopId}`, {
@@ -649,6 +652,17 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 									/>
 								}
 								label="Show in Homepage"
+								sx={{ display: 'block', mb: 2 }}
+							/>
+							<FormControlLabel
+								control={
+									<Switch
+										checked={feedbackEnabled}
+										onChange={(e) => setFeedbackEnabled(e.target.checked)}
+										color="primary"
+									/>
+								}
+								label="Feedback Enabled"
 								sx={{ display: 'block', mb: 3 }}
 							/>
 							<Button

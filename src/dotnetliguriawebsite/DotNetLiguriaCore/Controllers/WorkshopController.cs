@@ -173,6 +173,11 @@ namespace DotNetLiguriaCore.Controllers
                 return NotFound();
             }
 
+            if (!workshop.FeedbackEnabled)
+            {
+                return NotFound();
+            }
+
             await AddSpeakers(workshop);
 
             var feedbackModel = new WorkshopFeedbackModel
@@ -425,6 +430,11 @@ namespace DotNetLiguriaCore.Controllers
             if (workshop is null)
             {
                 return NotFound("Workshop not found.");
+            }
+
+            if (!workshop.FeedbackEnabled)
+            {
+                return NotFound();
             }
 
             var savedFeedbacks = new List<object>();

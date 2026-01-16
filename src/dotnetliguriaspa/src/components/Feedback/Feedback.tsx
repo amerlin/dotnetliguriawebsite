@@ -46,6 +46,9 @@ const Feedback: FC<FeedbackProps> = () => {
 				const response = await fetch(`${API_BASE_URL}/workshop/GetFeedBack/${workshopId}`);
 
 				if (!response.ok) {
+					if (response.status === 404) {
+						throw new Error('Feedback non più attivo');
+					}
 					const contentType = response.headers.get('content-type');
 					if (contentType && contentType.includes('text/html')) {
 						throw new Error(`Endpoint non trovato: ${API_BASE_URL}/workshop/GetFeedBack/${workshopId}`);

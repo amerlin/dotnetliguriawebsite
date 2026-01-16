@@ -37,6 +37,7 @@ namespace DotNetLiguriaCore.Model
         public string? Slug { get; set; }
 
         public bool In_homepage { get; set; }
+        public bool FeedbackEnabled { get; set; }
         public List<WorkshopFile> Materials { get; set; } = [];
         public List<WorkshopFile> Photos { get; set; } = [];
 
