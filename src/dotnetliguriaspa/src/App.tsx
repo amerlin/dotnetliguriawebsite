@@ -21,6 +21,7 @@ import AdminWorkshopDetail from "./components/AdminWorkshopDetail/AdminWorkshopD
 import AdminWorkshopCreate from "./components/AdminWorkshopCreate/AdminWorkshopCreate";
 import AdminTopMenu from "./components/AdminTopMenu/AdminTopMenu";
 import AdminTopMenuDetail from "./components/AdminTopMenuDetail/AdminTopMenuDetail";
+import Feedback from "./components/Feedback/Feedback";
 
 function App() {
     const { isAuthenticated } = useOidc();
@@ -68,6 +69,7 @@ function App() {
                         <Route>
                             <Route path="/workshops" element={<Workshops pageName={"Workshops"} />}></Route>
                             <Route path="/workshop/:id" element={<WorkshopDetail pageName={"Workshop Detail"} />}></Route>
+                            <Route path="/feedback/:workshopId" element={<Feedback workshopId="" />}></Route>
                         </Route>
                     </Route>
                 </Routes>

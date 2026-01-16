@@ -23,5 +23,7 @@ namespace DotNetLiguriaCore
         public string WorkshopFileCollectionName { get; set; } = null!;
 
         public string TopMenuCollectionName { get; set; } = null!;
+
+        public string FeedbackCollectionName { get; set; } = null!;
     }
 }

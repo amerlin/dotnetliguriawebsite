@@ -66,6 +66,7 @@ public class Program
         builder.Services.AddSingleton<CounterService>();
         builder.Services.AddSingleton<WorkshopFileService>();
         builder.Services.AddSingleton<TopMenuService>();
+        builder.Services.AddSingleton<FeedbackService>();
 
         var app = builder.Build();
         app.UseCors(CorsPolicy);
