@@ -34,6 +34,8 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 	const [longitude, setLongitude] = useState<string>('');
 	const [address, setAddress] = useState<string>('');
 	const [maximumSpaces, setMaximumSpaces] = useState<string>('');
+	const [title, setTitle] = useState<string>('');
+	const [eventDate, setEventDate] = useState<string>('');
 	const [description, setDescription] = useState<string>('');
 	const [snackbarOpen, setSnackbarOpen] = useState(false);
 	const [snackbarMessage, setSnackbarMessage] = useState('');
@@ -145,7 +147,9 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 				// Populate publication fields
 				setPublished(data.published || false);
 				setInHomepage((data as WorkshopModel & { in_homepage?: boolean }).in_homepage || false);
-				// Populate description field
+				// Populate title, eventDate and description fields
+				setTitle(data.title || '');
+				setEventDate(data.eventDate ? new Date(data.eventDate).toISOString().slice(0, 10) : '');
 				setDescription(data.description || '');
 				// Populate location fields
 				if (data.location) {
@@ -250,8 +254,10 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 		if (!workshop) return;
 
 		try {
-			const updatedWorkshop = {
+			const updatedWorkshop: WorkshopModel = {
 				...workshop,
+				title: title,
+				eventDate: eventDate ? new Date(eventDate) : workshop.eventDate,
 				description: description,
 			};
 
@@ -265,15 +271,15 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 
 			if (response.ok) {
 				setWorkshop(updatedWorkshop);
-				setSnackbarMessage('Description updated successfully');
+				setSnackbarMessage('Info updated successfully');
 				setSnackbarSeverity('success');
 				setSnackbarOpen(true);
 			} else {
-				throw new Error('Failed to update description');
+				throw new Error('Failed to update info');
 			}
 		} catch (error) {
-			console.error('Error updating description:', error);
-			setSnackbarMessage('Error updating description');
+			console.error('Error updating info:', error);
+			setSnackbarMessage('Error updating info');
 			setSnackbarSeverity('error');
 			setSnackbarOpen(true);
 		}
@@ -574,7 +580,7 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 						variant="outlined"
 						onClick={() => document.getElementById('description-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
 					>
-						Description
+						Info
 					</Button>
 					<Button
 						size="small"
@@ -736,9 +742,34 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 
 			<Paper id="description-section" elevation={3} sx={{ p: 3, maxWidth: 800, mb: 3 }}>
 				<Typography variant="h6" sx={{ mb: 2, color: 'primary.main', fontWeight: 600 }}>
-					Description
+					Info
 				</Typography>
 				<Grid container spacing={2}>
+					<Grid item xs={12}>
+						<Typography variant="caption" sx={{ mb: 0.5, display: 'block', color: 'text.secondary' }}>
+							Title
+						</Typography>
+						<TextField
+							fullWidth
+							value={title}
+							onChange={(e) => setTitle(e.target.value)}
+							placeholder="Workshop title"
+						/>
+					</Grid>
+					<Grid item xs={12}>
+						<Typography variant="caption" sx={{ mb: 0.5, display: 'block', color: 'text.secondary' }}>
+							Event Date
+						</Typography>
+						<TextField
+							fullWidth
+							type="date"
+							value={eventDate}
+							onChange={(e) => setEventDate(e.target.value)}
+							InputLabelProps={{
+								shrink: true,
+							}}
+						/>
+					</Grid>
 					<Grid item xs={12}>
 						<Typography variant="caption" sx={{ mb: 0.5, display: 'block', color: 'text.secondary' }}>
 							Workshop Description
