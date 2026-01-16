@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import { Box, Typography, Paper, Grid, TextField, IconButton, Button, Snackbar, Alert, CircularProgress, Card, CardContent, Dialog, DialogTitle, DialogContent, DialogActions, Autocomplete, Switch, FormControlLabel, Fab, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import { useParams, useNavigate } from 'react-router-dom';
 import { useOidcFetch } from '@axa-fr/react-oidc';
+import { QRCodeSVG } from 'qrcode.react';
 import { API_BASE_URL, CONTENT_BASE_URL } from '../../config/apiConfig';
 import { WorkshopModel } from '../../models/WorkshopModel';
 import { TrackModel } from '../../models/TrackModel';
@@ -607,36 +608,43 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 			</Paper>
 
 			<Paper id="publication-section" elevation={3} sx={{ p: 3, maxWidth: 800, mb: 3 }}>
-				<Typography variant="h6" sx={{ mb: 2, color: 'primary.main', fontWeight: 600 }}>
-					Publication Settings
-				</Typography>
-				<Grid container spacing={2}>
-					<Grid item xs={12} md={6}>
-						<FormControlLabel
-							control={
-								<Switch
-									checked={published}
-									onChange={(e) => setPublished(e.target.checked)}
-									color="primary"
-								/>
-							}
-							label="Published"
-						/>
+				<Grid container spacing={3} sx={{ mb: 2 }}>
+					<Grid item xs={12} md={5}>
+						<Typography variant="h6" sx={{ color: 'primary.main', fontWeight: 600 }}>
+							Publication Settings
+						</Typography>
 					</Grid>
-					<Grid item xs={12} md={6}>
-						<FormControlLabel
-							control={
-								<Switch
-									checked={inHomepage}
-									onChange={(e) => setInHomepage(e.target.checked)}
-									color="primary"
-								/>
-							}
-							label="Show in Homepage"
-						/>
+					<Grid item xs={12} md={7}>
+						<Typography variant="h6" sx={{ color: 'primary.main', fontWeight: 600 }}>
+							Feedback QrCode
+						</Typography>
 					</Grid>
-					<Grid item xs={12}>
-						<Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
+				</Grid>
+				<Grid container spacing={3}>
+					<Grid item xs={12} md={5}>
+						<Box>
+							<FormControlLabel
+								control={
+									<Switch
+										checked={published}
+										onChange={(e) => setPublished(e.target.checked)}
+										color="primary"
+									/>
+								}
+								label="Published"
+								sx={{ display: 'block', mb: 2 }}
+							/>
+							<FormControlLabel
+								control={
+									<Switch
+										checked={inHomepage}
+										onChange={(e) => setInHomepage(e.target.checked)}
+										color="primary"
+									/>
+								}
+								label="Show in Homepage"
+								sx={{ display: 'block', mb: 3 }}
+							/>
 							<Button
 								variant="contained"
 								startIcon={<SaveIcon sx={{ color: '#fff' }} />}
@@ -651,6 +659,18 @@ const AdminWorkshopDetail: FC<AdminWorkshopDetailProps> = () => {
 							>
 								Save
 							</Button>
+						</Box>
+					</Grid>
+					<Grid item xs={12} md={7}>
+						<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+							<QRCodeSVG
+								value={`${window.location.origin}/feedback/${workshop.workshopId}`}
+								size={150}
+								level="H"
+							/>
+							<Typography variant="caption" color="text.secondary" sx={{ mt: 2, textAlign: 'center', wordBreak: 'break-all' }}>
+								{`${window.location.origin}/feedback/${workshop.workshopId}`}
+							</Typography>
 						</Box>
 					</Grid>
 				</Grid>
