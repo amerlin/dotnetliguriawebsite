@@ -663,7 +663,7 @@ const AdminBoardDetail: FC<AdminBoardDetailProps> = () => {
 												color="primary"
 											/>
 										}
-										label="Visibile"
+										label="Visible"
 									/>
 								</Grid>
 							</Grid>
