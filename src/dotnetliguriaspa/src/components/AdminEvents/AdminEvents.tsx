@@ -6,7 +6,7 @@ interface AdminEventsProps { pageName?: string }
 const AdminEvents: FC<AdminEventsProps>=() => {
     return (
         <>
-            <Typography font-size={ 12 }> EVENTS</Typography>
+            <Typography fontSize={12}> EVENTS</Typography>
         </>
     )
 };
