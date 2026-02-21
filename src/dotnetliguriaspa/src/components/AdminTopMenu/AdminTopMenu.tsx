@@ -106,7 +106,7 @@ const AdminTopMenu: FC<AdminTopMenuProps> = () => {
 				<TextField
 					fullWidth
 					variant="outlined"
-					placeholder="Cerca per nome..."
+					placeholder="Search by name..."
 					value={searchText}
 					onChange={(e) => setSearchText(e.target.value)}
 					InputProps={{
